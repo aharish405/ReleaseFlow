@@ -16,22 +16,24 @@ public class AuditController : Controller
         _logger = logger;
     }
 
-    public async Task<IActionResult> Index(DateTime? fromDate, DateTime? toDate, string? action)
+    public async Task<IActionResult> Index(DateTime? fromDate, DateTime? toDate, string? actionType)
     {
         try
         {
-            var logs = await _auditService.GetLogsAsync(fromDate, toDate, action, null);
+            var logs = await _auditService.GetLogsAsync(fromDate, toDate, actionType, null);
+            
+            _logger.LogInformation("Retrieved {Count} audit logs", logs.Count());
             
             ViewBag.FromDate = fromDate;
             ViewBag.ToDate = toDate;
-            ViewBag.Action = action;
+            ViewBag.Action = actionType;
             
             return View(logs);
         }
         catch (Exception ex)
         {
             _logger.LogError(ex, "Error loading audit logs");
-            TempData["Error"] = "Failed to load audit logs";
+            TempData["Error"] = $"Failed to load audit logs: {ex.Message}";
             return View(new List<Models.AuditLog>());
         }
     }

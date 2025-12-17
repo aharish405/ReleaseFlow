@@ -14,9 +14,9 @@
     <div class="card-body">
         <form method="get" class="row g-3">
             <div class="col-md-3">
-                <label class="form-label">Action</label>
-                <input type="text" name="action" class="form-control" placeholder="e.g., Deploy, Start, Stop" 
-                       value="@ViewBag.FilterAction" />
+                <label class="form-label">ActionType</label>
+                <input type="text" name="actionType" class="form-control" placeholder="e.g., Deploy, Start, Stop" 
+                       value="@ViewBag.ActionType" />
             </div>
             <div class="col-md-3">
                 <label class="form-label">Entity Type</label>
@@ -117,11 +117,11 @@
     </div>
 </div>
 
-@section Scripts {
+@* @section Scripts {
     <script>
         // Auto-refresh every 30 seconds
         setTimeout(function() {
             location.reload();
         }, 30000);
     </script>
-}
+} *@

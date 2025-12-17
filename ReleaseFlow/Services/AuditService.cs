@@ -49,7 +49,14 @@ public class AuditService : IAuditService
         string? action = null, 
         string? username = null)
     {
+        _logger.LogInformation("GetLogsAsync called with fromDate={FromDate}, toDate={ToDate}, action={Action}, username={Username}", 
+            fromDate, toDate, action, username);
+        
         var query = _context.AuditLogs.AsQueryable();
+        
+        // Log the total count before filtering
+        var totalCount = await _context.AuditLogs.CountAsync();
+        _logger.LogInformation("Total audit logs in database: {Count}", totalCount);
 
         if (fromDate.HasValue)
         {
@@ -71,9 +78,13 @@ public class AuditService : IAuditService
             query = query.Where(a => a.Username == username);
         }
 
-        return await query
+        var result = await query
             .OrderByDescending(a => a.CreatedAt)
             .Take(1000)
             .ToListAsync();
+            
+        _logger.LogInformation("Returning {Count} audit logs after filtering", result.Count);
+        
+        return result;
     }
 }

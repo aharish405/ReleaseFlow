@@ -354,3 +354,533 @@ Error Number:208,State:1,Class:16
 2025-12-17 22:04:31.344 +05:30 [INF] Updated application: svenbyte/
 2025-12-17 22:04:31.358 +05:30 [INF] Updated application: TestApp/
 2025-12-17 22:04:31.360 +05:30 [INF] Discovered 4 applications. Registered 0 new, updated 7 existing.
+2025-12-17 22:14:36.393 +05:30 [INF] Database initialized successfully
+2025-12-17 22:14:36.577 +05:30 [INF] ReleaseFlow application starting
+2025-12-17 22:14:36.840 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-17 22:14:36.843 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-17 22:14:36.889 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-17 22:14:36.890 +05:30 [INF] Hosting environment: Development
+2025-12-17 22:14:36.890 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-17 22:17:45.310 +05:30 [ERR] An error occurred using the connection to database 'ReleaseFlow' on server 'tcp:HARRISH-PC'.
+2025-12-17 22:17:45.328 +05:30 [ERR] An exception occurred while iterating over the results of a query for context type 'ReleaseFlow.Data.ApplicationDbContext'.
+System.InvalidOperationException: An exception has been raised that is likely due to a transient failure. Consider enabling transient error resiliency by adding 'EnableRetryOnFailure' to the 'UseSqlServer' call.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot open database "ReleaseFlow" requested by the login. The login failed.
+Login failed for user 'sa'.
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.CompleteLogin(Boolean enlistOK)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken, DbConnectionPool pool)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry, SqlConnectionOverrides overrides)
+   at Microsoft.Data.SqlClient.SqlConnection.InternalOpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+ClientConnectionId:afc8b8ef-342c-4ea2-b692-20ea0af84a57
+Error Number:4060,State:1,Class:11
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+System.InvalidOperationException: An exception has been raised that is likely due to a transient failure. Consider enabling transient error resiliency by adding 'EnableRetryOnFailure' to the 'UseSqlServer' call.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot open database "ReleaseFlow" requested by the login. The login failed.
+Login failed for user 'sa'.
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.CompleteLogin(Boolean enlistOK)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken, DbConnectionPool pool)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry, SqlConnectionOverrides overrides)
+   at Microsoft.Data.SqlClient.SqlConnection.InternalOpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+ClientConnectionId:afc8b8ef-342c-4ea2-b692-20ea0af84a57
+Error Number:4060,State:1,Class:11
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+2025-12-17 22:17:45.419 +05:30 [ERR] Error loading audit logs
+System.InvalidOperationException: An exception has been raised that is likely due to a transient failure. Consider enabling transient error resiliency by adding 'EnableRetryOnFailure' to the 'UseSqlServer' call.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot open database "ReleaseFlow" requested by the login. The login failed.
+Login failed for user 'sa'.
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.CompleteLogin(Boolean enlistOK)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken, DbConnectionPool pool)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry, SqlConnectionOverrides overrides)
+   at Microsoft.Data.SqlClient.SqlConnection.InternalOpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+ClientConnectionId:afc8b8ef-342c-4ea2-b692-20ea0af84a57
+Error Number:4060,State:1,Class:11
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at ReleaseFlow.Services.AuditService.GetLogsAsync(Nullable`1 fromDate, Nullable`1 toDate, String action, String username) in C:\Users\ahari\source\ReleaseFlow\ReleaseFlow\Services\AuditService.cs:line 74
+   at ReleaseFlow.Controllers.AuditController.Index(Nullable`1 fromDate, Nullable`1 toDate, String action) in C:\Users\ahari\source\ReleaseFlow\ReleaseFlow\Controllers\AuditController.cs:line 23
+2025-12-17 22:18:26.285 +05:30 [ERR] An error occurred using the connection to database 'ReleaseFlow' on server 'tcp:HARRISH-PC'.
+2025-12-17 22:18:26.288 +05:30 [ERR] An exception occurred while iterating over the results of a query for context type 'ReleaseFlow.Data.ApplicationDbContext'.
+System.InvalidOperationException: An exception has been raised that is likely due to a transient failure. Consider enabling transient error resiliency by adding 'EnableRetryOnFailure' to the 'UseSqlServer' call.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot open database "ReleaseFlow" requested by the login. The login failed.
+Login failed for user 'sa'.
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.CompleteLogin(Boolean enlistOK)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken, DbConnectionPool pool)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.WaitForPendingOpen()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+ClientConnectionId:815c58cd-b40b-4405-93fa-632cc2b04a21
+Error Number:4060,State:1,Class:11
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+System.InvalidOperationException: An exception has been raised that is likely due to a transient failure. Consider enabling transient error resiliency by adding 'EnableRetryOnFailure' to the 'UseSqlServer' call.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot open database "ReleaseFlow" requested by the login. The login failed.
+Login failed for user 'sa'.
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.CompleteLogin(Boolean enlistOK)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken, DbConnectionPool pool)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.WaitForPendingOpen()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+ClientConnectionId:815c58cd-b40b-4405-93fa-632cc2b04a21
+Error Number:4060,State:1,Class:11
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+2025-12-17 22:18:26.350 +05:30 [ERR] Error loading audit logs
+System.InvalidOperationException: An exception has been raised that is likely due to a transient failure. Consider enabling transient error resiliency by adding 'EnableRetryOnFailure' to the 'UseSqlServer' call.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot open database "ReleaseFlow" requested by the login. The login failed.
+Login failed for user 'sa'.
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.CompleteLogin(Boolean enlistOK)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken, DbConnectionPool pool)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.WaitForPendingOpen()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+ClientConnectionId:815c58cd-b40b-4405-93fa-632cc2b04a21
+Error Number:4060,State:1,Class:11
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at ReleaseFlow.Services.AuditService.GetLogsAsync(Nullable`1 fromDate, Nullable`1 toDate, String action, String username) in C:\Users\ahari\source\ReleaseFlow\ReleaseFlow\Services\AuditService.cs:line 74
+   at ReleaseFlow.Controllers.AuditController.Index(Nullable`1 fromDate, Nullable`1 toDate, String action) in C:\Users\ahari\source\ReleaseFlow\ReleaseFlow\Controllers\AuditController.cs:line 23
+2025-12-17 22:18:57.274 +05:30 [ERR] Failed executing DbCommand (4ms) [Parameters=[@__p_2='?' (DbType = Int32), @__fromDate_Value_0='?' (DbType = DateTime2), @__action_1='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_2) [r].[Id], [r].[Action], [r].[CreatedAt], [r].[Details], [r].[EntityId], [r].[EntityType], [r].[IpAddress], [r].[Username]
+FROM [ReleaseFlow_AuditLogs] AS [r]
+WHERE [r].[CreatedAt] >= @__fromDate_Value_0 AND [r].[Action] = @__action_1
+ORDER BY [r].[CreatedAt] DESC
+2025-12-17 22:18:57.278 +05:30 [ERR] An exception occurred while iterating over the results of a query for context type 'ReleaseFlow.Data.ApplicationDbContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'ReleaseFlow_AuditLogs'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:80b2c39c-6c71-40be-a6ea-731432e94fee
+Error Number:208,State:1,Class:16
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'ReleaseFlow_AuditLogs'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:80b2c39c-6c71-40be-a6ea-731432e94fee
+Error Number:208,State:1,Class:16
+2025-12-17 22:18:57.322 +05:30 [ERR] Error loading audit logs
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'ReleaseFlow_AuditLogs'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at ReleaseFlow.Services.AuditService.GetLogsAsync(Nullable`1 fromDate, Nullable`1 toDate, String action, String username) in C:\Users\ahari\source\ReleaseFlow\ReleaseFlow\Services\AuditService.cs:line 74
+   at ReleaseFlow.Controllers.AuditController.Index(Nullable`1 fromDate, Nullable`1 toDate, String action) in C:\Users\ahari\source\ReleaseFlow\ReleaseFlow\Controllers\AuditController.cs:line 23
+ClientConnectionId:80b2c39c-6c71-40be-a6ea-731432e94fee
+Error Number:208,State:1,Class:16
+2025-12-17 22:19:26.195 +05:30 [ERR] Failed executing DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [ReleaseFlow_Applications] AS [r]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-12-17 22:19:26.250 +05:30 [ERR] An exception occurred while iterating over the results of a query for context type 'ReleaseFlow.Data.ApplicationDbContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'ReleaseFlow_Applications'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:c47144d4-e957-4bef-9056-bdfabe8b3c64
+Error Number:208,State:1,Class:16
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'ReleaseFlow_Applications'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:c47144d4-e957-4bef-9056-bdfabe8b3c64
+Error Number:208,State:1,Class:16
+2025-12-17 22:19:39.764 +05:30 [INF] Database initialized successfully
+2025-12-17 22:19:39.884 +05:30 [INF] ReleaseFlow application starting
+2025-12-17 22:19:40.039 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-17 22:19:40.039 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-17 22:19:40.075 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-17 22:19:40.076 +05:30 [INF] Hosting environment: Development
+2025-12-17 22:19:40.076 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-17 22:20:34.163 +05:30 [INF] Starting IIS application discovery...
+2025-12-17 22:20:34.166 +05:30 [INF] Starting IIS application discovery...
+2025-12-17 22:20:34.185 +05:30 [INF] Found 3 IIS sites
+2025-12-17 22:20:34.315 +05:30 [INF] Registered new application: default/
+2025-12-17 22:20:34.430 +05:30 [INF] Registered new application: default/svenbyte
+2025-12-17 22:20:34.436 +05:30 [INF] Registered new application: default/nextgen
+2025-12-17 22:20:34.439 +05:30 [INF] Registered new application: default/SMSApp
+2025-12-17 22:20:34.443 +05:30 [INF] Registered new application: default/enlink
+2025-12-17 22:20:34.459 +05:30 [INF] Registered new application: svenbyte/
+2025-12-17 22:20:34.475 +05:30 [INF] Registered new application: TestApp/
+2025-12-17 22:20:34.477 +05:30 [INF] Discovered 4 applications. Registered 7 new, updated 0 existing.
+2025-12-17 22:21:38.415 +05:30 [INF] Site default stopped successfully
+2025-12-17 22:21:38.441 +05:30 [INF] Audit log created: SiteStop on Site by user admin
+2025-12-17 22:21:42.327 +05:30 [INF] Site default started successfully
+2025-12-17 22:21:42.334 +05:30 [INF] Audit log created: SiteStart on Site by user admin
+2025-12-17 22:22:27.733 +05:30 [INF] Deploying to: default/nextgen
+2025-12-17 22:22:27.765 +05:30 [INF] Site default stopped successfully
+2025-12-17 22:22:27.798 +05:30 [INF] App pool default stopped successfully
+2025-12-17 22:22:31.452 +05:30 [INF] Backup created successfully: C:\ReleaseFlow\Backups\defaultnextgen\defaultnextgen_1_20251217_165229.zip
+2025-12-17 22:22:31.466 +05:30 [INF] Detected nested structure, using: C:\Users\ahari\AppData\Local\Temp\ReleaseFlow_8c6877a5-b74c-4715-bc85-ba17f35b4276\IT-Company-Website-main
+2025-12-17 22:22:31.466 +05:30 [INF] Deploying from: C:\Users\ahari\AppData\Local\Temp\ReleaseFlow_8c6877a5-b74c-4715-bc85-ba17f35b4276\IT-Company-Website-main
+2025-12-17 22:22:31.604 +05:30 [INF] App pool default started successfully
+2025-12-17 22:22:31.623 +05:30 [INF] Site default started successfully
+2025-12-17 22:22:34.645 +05:30 [INF] Deployment 1 completed successfully
+2025-12-17 22:22:34.691 +05:30 [INF] Audit log created: Deploy on Deployment by user admin
+2025-12-17 22:30:08.421 +05:30 [INF] Database initialized successfully
+2025-12-17 22:30:08.589 +05:30 [INF] ReleaseFlow application starting
+2025-12-17 22:30:08.859 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-17 22:30:08.861 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-17 22:30:08.900 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-17 22:30:08.901 +05:30 [INF] Hosting environment: Development
+2025-12-17 22:30:08.901 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-17 22:30:22.803 +05:30 [INF] Retrieved 0 audit logs
+2025-12-17 22:30:32.402 +05:30 [INF] Retrieved 0 audit logs
+2025-12-17 22:30:45.438 +05:30 [INF] Retrieved 0 audit logs
+2025-12-17 22:30:51.729 +05:30 [INF] Retrieved 0 audit logs
+2025-12-17 22:31:05.478 +05:30 [INF] Retrieved 0 audit logs
+2025-12-17 22:31:36.275 +05:30 [INF] Retrieved 0 audit logs
+2025-12-17 22:32:07.282 +05:30 [INF] Retrieved 0 audit logs
+2025-12-17 22:32:38.263 +05:30 [INF] Retrieved 0 audit logs
+2025-12-17 22:33:09.255 +05:30 [INF] Retrieved 0 audit logs
+2025-12-17 22:33:40.269 +05:30 [INF] Retrieved 0 audit logs
+2025-12-17 22:34:11.268 +05:30 [INF] Retrieved 0 audit logs
+2025-12-17 22:34:42.266 +05:30 [INF] Retrieved 0 audit logs
+2025-12-17 22:36:17.931 +05:30 [INF] Database initialized successfully
+2025-12-17 22:36:18.097 +05:30 [INF] ReleaseFlow application starting
+2025-12-17 22:36:18.322 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-17 22:36:18.324 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-17 22:36:18.366 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-17 22:36:18.366 +05:30 [INF] Hosting environment: Development
+2025-12-17 22:36:18.366 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-17 22:36:31.752 +05:30 [INF] GetLogsAsync called with fromDate=null, toDate=null, action=Index, username=null
+2025-12-17 22:36:31.814 +05:30 [INF] Total audit logs in database: 3
+2025-12-17 22:36:31.828 +05:30 [INF] Returning 0 audit logs after filtering
+2025-12-17 22:36:31.828 +05:30 [INF] Retrieved 0 audit logs
+2025-12-17 22:36:58.928 +05:30 [INF] GetLogsAsync called with fromDate="2025-12-16T00:00:00.0000000", toDate=null, action=Index, username=null
+2025-12-17 22:36:58.932 +05:30 [INF] Total audit logs in database: 3
+2025-12-17 22:36:58.941 +05:30 [INF] Returning 0 audit logs after filtering
+2025-12-17 22:36:58.941 +05:30 [INF] Retrieved 0 audit logs
+2025-12-17 22:37:29.265 +05:30 [INF] GetLogsAsync called with fromDate="2025-12-16T00:00:00.0000000", toDate=null, action=Index, username=null
+2025-12-17 22:37:29.269 +05:30 [INF] Total audit logs in database: 3
+2025-12-17 22:37:29.272 +05:30 [INF] Returning 0 audit logs after filtering
+2025-12-17 22:37:29.273 +05:30 [INF] Retrieved 0 audit logs
+2025-12-17 22:38:00.263 +05:30 [INF] GetLogsAsync called with fromDate="2025-12-16T00:00:00.0000000", toDate=null, action=Index, username=null
+2025-12-17 22:38:00.266 +05:30 [INF] Total audit logs in database: 3
+2025-12-17 22:38:00.268 +05:30 [INF] Returning 0 audit logs after filtering
+2025-12-17 22:38:00.268 +05:30 [INF] Retrieved 0 audit logs
+2025-12-17 22:38:36.140 +05:30 [INF] Database initialized successfully
+2025-12-17 22:38:36.291 +05:30 [INF] ReleaseFlow application starting
+2025-12-17 22:38:36.493 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-17 22:38:36.495 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-17 22:38:36.528 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-17 22:38:36.528 +05:30 [INF] Hosting environment: Development
+2025-12-17 22:38:36.528 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-17 22:38:51.530 +05:30 [INF] GetLogsAsync called with fromDate=null, toDate=null, action=Index, username=null
+2025-12-17 22:38:51.591 +05:30 [INF] Total audit logs in database: 3
+2025-12-17 22:38:51.602 +05:30 [INF] Returning 0 audit logs after filtering
+2025-12-17 22:38:51.603 +05:30 [INF] Retrieved 0 audit logs
+2025-12-17 22:38:57.811 +05:30 [INF] GetLogsAsync called with fromDate="2025-12-16T00:00:00.0000000", toDate=null, action=Index, username=null
+2025-12-17 22:38:57.815 +05:30 [INF] Total audit logs in database: 3
+2025-12-17 22:38:57.825 +05:30 [INF] Returning 0 audit logs after filtering
+2025-12-17 22:38:57.825 +05:30 [INF] Retrieved 0 audit logs
+2025-12-17 22:39:00.683 +05:30 [INF] GetLogsAsync called with fromDate=null, toDate=null, action=Index, username=null
+2025-12-17 22:39:00.686 +05:30 [INF] Total audit logs in database: 3
+2025-12-17 22:39:00.690 +05:30 [INF] Returning 0 audit logs after filtering
+2025-12-17 22:39:00.690 +05:30 [INF] Retrieved 0 audit logs
+2025-12-17 22:39:09.828 +05:30 [INF] GetLogsAsync called with fromDate="2025-12-16T00:00:00.0000000", toDate=null, action=Index, username=null
+2025-12-17 22:39:09.831 +05:30 [INF] Total audit logs in database: 3
+2025-12-17 22:39:09.834 +05:30 [INF] Returning 0 audit logs after filtering
+2025-12-17 22:39:09.834 +05:30 [INF] Retrieved 0 audit logs
+2025-12-17 22:39:39.625 +05:30 [INF] GetLogsAsync called with fromDate="2025-12-16T00:00:00.0000000", toDate=null, action=Index, username=null
+2025-12-17 22:39:39.628 +05:30 [INF] Total audit logs in database: 3
+2025-12-17 22:39:39.646 +05:30 [INF] Returning 0 audit logs after filtering
+2025-12-17 22:40:09.722 +05:30 [INF] GetLogsAsync called with fromDate="2025-12-16T00:00:00.0000000", toDate=null, action=Index, username=null
+2025-12-17 22:40:14.014 +05:30 [INF] GetLogsAsync called with fromDate="2025-12-16T00:00:00.0000000", toDate=null, action=Index, username=null
+2025-12-17 22:40:15.745 +05:30 [INF] GetLogsAsync called with fromDate="2025-12-16T00:00:00.0000000", toDate=null, action=Index, username=null
+2025-12-17 22:40:27.093 +05:30 [INF] Total audit logs in database: 3
+2025-12-17 22:40:27.116 +05:30 [INF] Returning 0 audit logs after filtering
+2025-12-17 22:40:42.630 +05:30 [INF] Total audit logs in database: 3
+2025-12-17 22:40:42.659 +05:30 [INF] Total audit logs in database: 3
+2025-12-17 22:40:45.521 +05:30 [INF] Returning 0 audit logs after filtering
+2025-12-17 22:40:45.587 +05:30 [INF] Retrieved 0 audit logs
+2025-12-17 22:41:06.978 +05:30 [INF] Retrieved 0 audit logs
+2025-12-17 22:41:31.676 +05:30 [INF] Returning 0 audit logs after filtering
+2025-12-17 22:44:00.702 +05:30 [INF] Retrieved 0 audit logs
+2025-12-17 22:44:25.349 +05:30 [INF] GetLogsAsync called with fromDate="2025-12-15T00:00:00.0000000", toDate=null, action=Index, username=null
+2025-12-17 22:44:26.408 +05:30 [INF] Total audit logs in database: 3
+2025-12-17 22:45:47.694 +05:30 [INF] GetLogsAsync called with fromDate="2025-12-16T00:00:00.0000000", toDate=null, action=Index, username=null
+2025-12-17 22:45:47.700 +05:30 [INF] GetLogsAsync called with fromDate="2025-12-16T00:00:00.0000000", toDate=null, action=Index, username=null
+2025-12-17 22:45:47.710 +05:30 [INF] Total audit logs in database: 3
+2025-12-17 22:45:47.710 +05:30 [INF] Total audit logs in database: 3
+2025-12-17 22:47:05.679 +05:30 [INF] Returning 0 audit logs after filtering
+2025-12-17 22:47:07.776 +05:30 [INF] Retrieved 0 audit logs
+2025-12-17 22:47:07.779 +05:30 [INF] Returning 0 audit logs after filtering
+2025-12-17 22:47:07.790 +05:30 [INF] Retrieved 0 audit logs
+2025-12-17 22:47:07.801 +05:30 [ERR] Failed executing DbCommand (65,847ms) [Parameters=[@__p_2='?' (DbType = Int32), @__fromDate_Value_0='?' (DbType = DateTime2), @__action_1='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_2) [r].[Id], [r].[Action], [r].[CreatedAt], [r].[Details], [r].[EntityId], [r].[EntityType], [r].[IpAddress], [r].[Username]
+FROM [ReleaseFlow_AuditLogs] AS [r]
+WHERE [r].[CreatedAt] >= @__fromDate_Value_0 AND [r].[Action] = @__action_1
+ORDER BY [r].[CreatedAt] DESC
+2025-12-17 22:47:07.815 +05:30 [ERR] An exception occurred while iterating over the results of a query for context type 'ReleaseFlow.Data.ApplicationDbContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:5e634e70-c32c-446c-a952-3c122656e5a6
+Error Number:-2,State:0,Class:11
+Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:5e634e70-c32c-446c-a952-3c122656e5a6
+Error Number:-2,State:0,Class:11
+2025-12-17 22:47:13.383 +05:30 [ERR] Error loading audit logs
+Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at ReleaseFlow.Services.AuditService.GetLogsAsync(Nullable`1 fromDate, Nullable`1 toDate, String action, String username) in C:\Users\ahari\source\ReleaseFlow\ReleaseFlow\Services\AuditService.cs:line 81
+   at ReleaseFlow.Controllers.AuditController.Index(Nullable`1 fromDate, Nullable`1 toDate, String action) in C:\Users\ahari\source\ReleaseFlow\ReleaseFlow\Controllers\AuditController.cs:line 23
+ClientConnectionId:5e634e70-c32c-446c-a952-3c122656e5a6
+Error Number:-2,State:0,Class:11
+2025-12-17 22:51:11.160 +05:30 [INF] GetLogsAsync called with fromDate="2025-12-16T00:00:00.0000000", toDate=null, action=Index, username=null
+2025-12-17 22:51:11.188 +05:30 [INF] Total audit logs in database: 3
+2025-12-17 22:51:11.201 +05:30 [INF] Returning 0 audit logs after filtering
+2025-12-17 22:51:11.201 +05:30 [INF] Retrieved 0 audit logs
+2025-12-17 22:51:13.418 +05:30 [INF] GetLogsAsync called with fromDate="2025-12-16T00:00:00.0000000", toDate=null, action=Index, username=null
+2025-12-17 22:51:13.420 +05:30 [INF] Total audit logs in database: 3
+2025-12-17 22:51:13.422 +05:30 [INF] Returning 0 audit logs after filtering
+2025-12-17 22:51:13.422 +05:30 [INF] Retrieved 0 audit logs
+2025-12-17 22:51:23.794 +05:30 [INF] GetLogsAsync called with fromDate="2025-12-16T00:00:00.0000000", toDate=null, action=Index, username=null
+2025-12-17 22:51:23.797 +05:30 [INF] Total audit logs in database: 3
+2025-12-17 22:51:23.799 +05:30 [INF] Returning 0 audit logs after filtering
+2025-12-17 22:51:23.799 +05:30 [INF] Retrieved 0 audit logs
+2025-12-17 22:52:57.779 +05:30 [INF] GetLogsAsync called with fromDate="2025-12-16T00:00:00.0000000", toDate=null, action=Index, username=null
+2025-12-17 22:52:57.793 +05:30 [INF] Total audit logs in database: 3
+2025-12-17 22:52:57.823 +05:30 [INF] Returning 0 audit logs after filtering
+2025-12-17 22:52:57.823 +05:30 [INF] Retrieved 0 audit logs
+2025-12-17 22:57:57.332 +05:30 [INF] Database initialized successfully
+2025-12-17 22:57:57.510 +05:30 [INF] ReleaseFlow application starting
+2025-12-17 22:57:57.710 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-17 22:57:57.712 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-17 22:57:57.767 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-17 22:57:57.768 +05:30 [INF] Hosting environment: Development
+2025-12-17 22:57:57.768 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-17 22:58:20.640 +05:30 [INF] GetLogsAsync called with fromDate=null, toDate=null, action=null, username=null
+2025-12-17 22:58:20.692 +05:30 [INF] Total audit logs in database: 3
+2025-12-17 22:58:20.711 +05:30 [INF] Returning 3 audit logs after filtering
+2025-12-17 22:58:20.712 +05:30 [INF] Retrieved 3 audit logs
+2025-12-17 22:58:54.432 +05:30 [INF] GetLogsAsync called with fromDate="2025-12-16T00:00:00.0000000", toDate=null, action=null, username=null
+2025-12-17 22:58:54.440 +05:30 [INF] Total audit logs in database: 3
+2025-12-17 22:58:54.449 +05:30 [INF] Returning 3 audit logs after filtering
+2025-12-17 22:58:54.449 +05:30 [INF] Retrieved 3 audit logs
+2025-12-17 22:59:40.875 +05:30 [INF] GetLogsAsync called with fromDate=null, toDate=null, action=Deploy, username=null
+2025-12-17 22:59:40.882 +05:30 [INF] Total audit logs in database: 3
+2025-12-17 22:59:40.887 +05:30 [INF] Returning 1 audit logs after filtering
+2025-12-17 22:59:40.887 +05:30 [INF] Retrieved 1 audit logs
+2025-12-17 23:02:11.283 +05:30 [INF] GetLogsAsync called with fromDate=null, toDate=null, action=null, username=null
+2025-12-17 23:02:11.287 +05:30 [INF] Total audit logs in database: 3
+2025-12-17 23:02:11.290 +05:30 [INF] Returning 3 audit logs after filtering
+2025-12-17 23:02:11.290 +05:30 [INF] Retrieved 3 audit logs
