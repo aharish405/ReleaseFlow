@@ -1,5 +1,4 @@
-using Microsoft.EntityFrameworkCore;
-using ReleaseFlow.Data;
+using ReleaseFlow.Data.Repositories;
 using ReleaseFlow.Models;
 using ReleaseFlow.Services.IIS;
 
@@ -7,20 +6,23 @@ namespace ReleaseFlow.Services.Deployment;
 
 public class RollbackService : IRollbackService
 {
-    private readonly ApplicationDbContext _context;
+    private readonly IApplicationRepository _applicationRepository;
+    private readonly IDeploymentRepository _deploymentRepository;
     private readonly IBackupService _backupService;
     private readonly IIISSiteService _siteService;
     private readonly IIISAppPoolService _appPoolService;
     private readonly ILogger<RollbackService> _logger;
 
     public RollbackService(
-        ApplicationDbContext context,
+        IApplicationRepository applicationRepository,
+        IDeploymentRepository deploymentRepository,
         IBackupService backupService,
         IIISSiteService siteService,
         IIISAppPoolService appPoolService,
         ILogger<RollbackService> logger)
     {
-        _context = context;
+        _applicationRepository = applicationRepository;
+        _deploymentRepository = deploymentRepository;
         _backupService = backupService;
         _siteService = siteService;
         _appPoolService = appPoolService;
@@ -29,7 +31,7 @@ public class RollbackService : IRollbackService
 
     public async Task<bool> CanRollbackAsync(int deploymentId)
     {
-        var deployment = await _context.Deployments.FindAsync(deploymentId);
+        var deployment = await _deploymentRepository.GetByIdAsync(deploymentId);
         return deployment != null && deployment.CanRollback && !string.IsNullOrEmpty(deployment.BackupPath);
     }
 
@@ -40,10 +42,7 @@ public class RollbackService : IRollbackService
         try
         {
             // Get the deployment to rollback
-            var deployment = await _context.Deployments
-                .Include(d => d.Application)
-                .FirstOrDefaultAsync(d => d.Id == deploymentId);
-
+            var deployment = await _deploymentRepository.GetByIdAsync(deploymentId);
             if (deployment == null)
             {
                 result.Message = "Deployment not found";
@@ -110,7 +109,7 @@ public class RollbackService : IRollbackService
 
             // Update deployment status
             deployment.Status = DeploymentStatus.RolledBack;
-            await _context.SaveChangesAsync();
+            await _deploymentRepository.UpdateAsync(deployment);
 
             // Create rollback deployment record
             var rollbackDeployment = new Models.Deployment
@@ -125,8 +124,7 @@ public class RollbackService : IRollbackService
                 CompletedAt = DateTime.UtcNow
             };
 
-            await _context.Deployments.AddAsync(rollbackDeployment);
-            await _context.SaveChangesAsync();
+            await _deploymentRepository.CreateAsync(rollbackDeployment);
 
             result.Success = true;
             result.Message = "Rollback completed successfully";

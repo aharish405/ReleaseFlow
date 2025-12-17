@@ -1,5 +1,3 @@
-using Microsoft.EntityFrameworkCore;
-using ReleaseFlow.Data;
 using ReleaseFlow.Models;
 using ReleaseFlow.Services.IIS;
 

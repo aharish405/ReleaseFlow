@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using ReleaseFlow.Data;
+using ReleaseFlow.Data.Repositories;
 using ReleaseFlow.Services;
 using ReleaseFlow.Services.Deployment;
 
@@ -10,7 +9,8 @@ namespace ReleaseFlow.Controllers;
 [Authorize]
 public class DeploymentsController : Controller
 {
-    private readonly ApplicationDbContext _context;
+    private readonly IApplicationRepository _applicationRepository;
+    private readonly IDeploymentRepository _deploymentRepository;
     private readonly IDeploymentService _deploymentService;
     private readonly IRollbackService _rollbackService;
     private readonly IAuditService _auditService;
@@ -19,7 +19,8 @@ public class DeploymentsController : Controller
     private readonly ILogger<DeploymentsController> _logger;
 
     public DeploymentsController(
-        ApplicationDbContext context,
+        IApplicationRepository applicationRepository,
+        IDeploymentRepository deploymentRepository,
         IDeploymentService deploymentService,
         IRollbackService rollbackService,
         IAuditService auditService,
@@ -27,7 +28,8 @@ public class DeploymentsController : Controller
         IConfiguration configuration,
         ILogger<DeploymentsController> logger)
     {
-        _context = context;
+        _applicationRepository = applicationRepository;
+        _deploymentRepository = deploymentRepository;
         _deploymentService = deploymentService;
         _rollbackService = rollbackService;
         _auditService = auditService;
@@ -41,7 +43,7 @@ public class DeploymentsController : Controller
         try
         {
             var deployments = await _deploymentService.GetDeploymentHistoryAsync(applicationId);
-            ViewBag.Applications = await _context.Applications.Where(a => a.IsActive).ToListAsync();
+            ViewBag.Applications = await _applicationRepository.GetActiveAsync();
             ViewBag.SelectedApplicationId = applicationId;
             return View(deployments);
         }
@@ -49,7 +51,7 @@ public class DeploymentsController : Controller
         {
             _logger.LogError(ex, "Error loading deployment history");
             TempData["Error"] = "Failed to load deployment history";
-            ViewBag.Applications = await _context.Applications.Where(a => a.IsActive).ToListAsync();
+            ViewBag.Applications = await _applicationRepository.GetActiveAsync();
             ViewBag.SelectedApplicationId = applicationId;
             return View(new List<Models.Deployment>());
         }
@@ -76,7 +78,7 @@ public class DeploymentsController : Controller
 
     public async Task<IActionResult> Deploy(int? applicationId = null)
     {
-        ViewBag.Applications = await _context.Applications.Where(a => a.IsActive).ToListAsync();
+        ViewBag.Applications = await _applicationRepository.GetActiveAsync();
         ViewBag.SelectedApplicationId = applicationId;
         return View();
     }
@@ -86,7 +88,7 @@ public class DeploymentsController : Controller
     [RequestFormLimits(MultipartBodyLengthLimit = 524288000)]
     public async Task<IActionResult> Deploy(int applicationId, string version, IFormFile zipFile)
     {
-        ViewBag.Applications = await _context.Applications.Where(a => a.IsActive).ToListAsync();
+        ViewBag.Applications = await _applicationRepository.GetActiveAsync();
 
         if (zipFile == null || zipFile.Length == 0)
         {

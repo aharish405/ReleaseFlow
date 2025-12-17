@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using ReleaseFlow.Data;
+using ReleaseFlow.Data.Repositories;
 using ReleaseFlow.Models;
 
 namespace ReleaseFlow.Controllers;
@@ -9,16 +8,16 @@ namespace ReleaseFlow.Controllers;
 [Authorize]
 public class ApplicationsController : Controller
 {
-    private readonly ApplicationDbContext _context;
+    private readonly IApplicationRepository _applicationRepository;
     private readonly Services.IIS.IIISDiscoveryService _discoveryService;
     private readonly ILogger<ApplicationsController> _logger;
 
     public ApplicationsController(
-        ApplicationDbContext context,
+        IApplicationRepository applicationRepository,
         Services.IIS.IIISDiscoveryService discoveryService,
         ILogger<ApplicationsController> logger)
     {
-        _context = context;
+        _applicationRepository = applicationRepository;
         _discoveryService = discoveryService;
         _logger = logger;
     }
@@ -27,11 +26,7 @@ public class ApplicationsController : Controller
     {
         try
         {
-            var applications = await _context.Applications
-                .Where(a => a.IsActive)
-                .OrderBy(a => a.Name)
-                .ToListAsync();
-
+            var applications = await _applicationRepository.GetActiveAsync();
             return View(applications);
         }
         catch (Exception ex)
@@ -46,10 +41,7 @@ public class ApplicationsController : Controller
     {
         try
         {
-            var application = await _context.Applications
-                .Include(a => a.Deployments.OrderByDescending(d => d.StartedAt).Take(10))
-                .FirstOrDefaultAsync(a => a.Id == id);
-
+            var application = await _applicationRepository.GetByIdAsync(id);
             if (application == null)
             {
                 return NotFound();
@@ -80,8 +72,7 @@ public class ApplicationsController : Controller
                 application.CreatedAt = DateTime.UtcNow;
                 application.IsActive = true;
 
-                _context.Applications.Add(application);
-                await _context.SaveChangesAsync();
+                application.Id = await _applicationRepository.CreateAsync(application);
 
                 TempData["Success"] = $"Application '{application.Name}' created successfully";
                 return RedirectToAction(nameof(Index));
@@ -100,7 +91,7 @@ public class ApplicationsController : Controller
     {
         try
         {
-            var application = await _context.Applications.FindAsync(id);
+            var application = await _applicationRepository.GetByIdAsync(id);
             if (application == null)
             {
                 return NotFound();
@@ -129,25 +120,17 @@ public class ApplicationsController : Controller
             try
             {
                 application.UpdatedAt = DateTime.UtcNow;
-                _context.Update(application);
-                await _context.SaveChangesAsync();
+                await _applicationRepository.UpdateAsync(application);
 
                 TempData["Success"] = $"Application '{application.Name}' updated successfully";
                 return RedirectToAction(nameof(Index));
             }
-            catch (DbUpdateConcurrencyException)
+            catch (Exception ex)
             {
                 if (!await ApplicationExists(application.Id))
                 {
                     return NotFound();
                 }
-                else
-                {
-                    throw;
-                }
-            }
-            catch (Exception ex)
-            {
                 _logger.LogError(ex, "Error updating application {ApplicationId}", id);
                 ModelState.AddModelError("", "Failed to update application");
             }
@@ -163,7 +146,7 @@ public class ApplicationsController : Controller
     {
         try
         {
-            var application = await _context.Applications.FindAsync(id);
+            var application = await _applicationRepository.GetByIdAsync(id);
             if (application == null)
             {
                 return NotFound();
@@ -172,7 +155,7 @@ public class ApplicationsController : Controller
             // Soft delete
             application.IsActive = false;
             application.UpdatedAt = DateTime.UtcNow;
-            await _context.SaveChangesAsync();
+            await _applicationRepository.UpdateAsync(application);
 
             TempData["Success"] = $"Application '{application.Name}' deleted successfully";
             return RedirectToAction(nameof(Index));
@@ -217,6 +200,6 @@ public class ApplicationsController : Controller
 
     private async Task<bool> ApplicationExists(int id)
     {
-        return await _context.Applications.AnyAsync(e => e.Id == id);
+        return await _applicationRepository.ExistsAsync(id);
     }
 }

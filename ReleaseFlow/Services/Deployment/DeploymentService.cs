@@ -1,6 +1,5 @@
 using System.IO.Compression;
-using Microsoft.EntityFrameworkCore;
-using ReleaseFlow.Data;
+using ReleaseFlow.Data.Repositories;
 using ReleaseFlow.Models;
 using ReleaseFlow.Services.IIS;
 
@@ -8,7 +7,9 @@ namespace ReleaseFlow.Services.Deployment;
 
 public class DeploymentService : IDeploymentService
 {
-    private readonly ApplicationDbContext _context;
+    private readonly IApplicationRepository _applicationRepository;
+    private readonly IDeploymentRepository _deploymentRepository;
+    private readonly IDeploymentStepRepository _deploymentStepRepository;
     private readonly IIISSiteService _siteService;
     private readonly IIISAppPoolService _appPoolService;
     private readonly IHealthCheckService _healthCheckService;
@@ -16,14 +17,18 @@ public class DeploymentService : IDeploymentService
     private readonly ILogger<DeploymentService> _logger;
 
     public DeploymentService(
-        ApplicationDbContext context,
+        IApplicationRepository applicationRepository,
+        IDeploymentRepository deploymentRepository,
+        IDeploymentStepRepository deploymentStepRepository,
         IIISSiteService siteService,
         IIISAppPoolService appPoolService,
         IHealthCheckService healthCheckService,
         IBackupService backupService,
         ILogger<DeploymentService> logger)
     {
-        _context = context;
+        _applicationRepository = applicationRepository;
+        _deploymentRepository = deploymentRepository;
+        _deploymentStepRepository = deploymentStepRepository;
         _siteService = siteService;
         _appPoolService = appPoolService;
         _healthCheckService = healthCheckService;
@@ -47,10 +52,8 @@ public class DeploymentService : IDeploymentService
         try
         {
             // Step 1: Validate application exists
-            var application = await _context.Applications
-                .FirstOrDefaultAsync(a => a.Id == applicationId && a.IsActive);
-
-            if (application == null)
+            var application = await _applicationRepository.GetByIdAsync(applicationId);
+            if (application == null || !application.IsActive)
             {
                 result.Message = "Application not found or inactive";
                 return result;
@@ -70,8 +73,7 @@ public class DeploymentService : IDeploymentService
                 StartedAt = DateTime.UtcNow
             };
 
-            await _context.Deployments.AddAsync(deployment);
-            await _context.SaveChangesAsync();
+            deployment.Id = await _deploymentRepository.CreateAsync(deployment);
             result.DeploymentId = deployment.Id;
 
             await AddDeploymentStepAsync(deployment.Id, 1, "Deployment initialized", StepStatus.Succeeded);
@@ -150,7 +152,7 @@ public class DeploymentService : IDeploymentService
                 {
                     deployment.BackupPath = backupPath;
                     deployment.CanRollback = true;
-                    await _context.SaveChangesAsync();
+                    await _deploymentRepository.UpdateAsync(deployment);
                     await AddDeploymentStepAsync(deployment.Id, 6, $"Backup created at '{backupPath}'", StepStatus.Succeeded);
                     result.Steps.Add("Backup created");
                 }
@@ -158,7 +160,7 @@ public class DeploymentService : IDeploymentService
                 {
                     // First deployment - no backup needed
                     deployment.CanRollback = false;
-                    await _context.SaveChangesAsync();
+                    await _deploymentRepository.UpdateAsync(deployment);
                     await AddDeploymentStepAsync(deployment.Id, 6, "First deployment - backup skipped", StepStatus.Succeeded);
                     result.Steps.Add("Backup skipped (first deployment)");
                 }
@@ -166,7 +168,7 @@ public class DeploymentService : IDeploymentService
             else
             {
                 deployment.CanRollback = false;
-                await _context.SaveChangesAsync();
+                await _deploymentRepository.UpdateAsync(deployment);
                 await AddDeploymentStepAsync(deployment.Id, 6, "Backup skipped (not configured)", StepStatus.Succeeded);
                 result.Steps.Add("Backup skipped");
             }
@@ -237,7 +239,7 @@ public class DeploymentService : IDeploymentService
             // Step 12: Mark deployment as succeeded
             deployment.Status = DeploymentStatus.Succeeded;
             deployment.CompletedAt = DateTime.UtcNow;
-            await _context.SaveChangesAsync();
+            await _deploymentRepository.UpdateAsync(deployment);
 
             result.Success = true;
             result.Message = "Deployment completed successfully";
@@ -255,7 +257,7 @@ public class DeploymentService : IDeploymentService
                 deployment.Status = DeploymentStatus.Failed;
                 deployment.ErrorMessage = ex.Message;
                 deployment.CompletedAt = DateTime.UtcNow;
-                await _context.SaveChangesAsync();
+                await _deploymentRepository.UpdateAsync(deployment);
 
                 await AddDeploymentStepAsync(deployment.Id, 99, $"Deployment failed: {ex.Message}", StepStatus.Failed, ex.ToString());
             }
@@ -263,7 +265,7 @@ public class DeploymentService : IDeploymentService
             // Attempt to restart services if they were stopped
             if (deployment != null)
             {
-                var application = await _context.Applications.FindAsync(applicationId);
+                var application = await _applicationRepository.GetByIdAsync(applicationId);
                 if (application != null)
                 {
                     if (appPoolWasStopped)
@@ -298,27 +300,25 @@ public class DeploymentService : IDeploymentService
 
     public async Task<IEnumerable<Models.Deployment>> GetDeploymentHistoryAsync(int? applicationId = null)
     {
-        var query = _context.Deployments
-            .Include(d => d.Application)
-            .AsQueryable();
-
         if (applicationId.HasValue)
         {
-            query = query.Where(d => d.ApplicationId == applicationId.Value);
+            return await _deploymentRepository.GetByApplicationIdAsync(applicationId.Value);
         }
-
-        return await query
-            .OrderByDescending(d => d.StartedAt)
-            .Take(100)
-            .ToListAsync();
+        return await _deploymentRepository.GetRecentAsync(100);
     }
 
     public async Task<Models.Deployment?> GetDeploymentByIdAsync(int deploymentId)
     {
-        return await _context.Deployments
-            .Include(d => d.Application)
-            .Include(d => d.Steps)
-            .FirstOrDefaultAsync(d => d.Id == deploymentId);
+        var deployment = await _deploymentRepository.GetByIdAsync(deploymentId);
+        
+        if (deployment != null)
+        {
+            // Load deployment steps
+            var steps = await _deploymentStepRepository.GetByDeploymentIdAsync(deploymentId);
+            deployment.Steps = steps.ToList();
+        }
+        
+        return deployment;
     }
 
     private async Task ReplaceFilesAsync(string sourcePath, string destinationPath)
@@ -450,7 +450,6 @@ public class DeploymentService : IDeploymentService
             ErrorDetails = errorDetails
         };
 
-        await _context.DeploymentSteps.AddAsync(step);
-        await _context.SaveChangesAsync();
+        await _deploymentStepRepository.CreateAsync(step);
     }
 }

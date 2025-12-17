@@ -1,5 +1,4 @@
-using Microsoft.EntityFrameworkCore;
-using ReleaseFlow.Data;
+using ReleaseFlow.Data.Repositories;
 using ReleaseFlow.Models;
 
 namespace ReleaseFlow.Services.IIS;
@@ -7,16 +6,16 @@ namespace ReleaseFlow.Services.IIS;
 public class IISDiscoveryService : IIISDiscoveryService
 {
     private readonly IIISSiteService _siteService;
-    private readonly ApplicationDbContext _context;
+    private readonly IApplicationRepository _applicationRepository;
     private readonly ILogger<IISDiscoveryService> _logger;
 
     public IISDiscoveryService(
         IIISSiteService siteService,
-        ApplicationDbContext context,
+        IApplicationRepository applicationRepository,
         ILogger<IISDiscoveryService> logger)
     {
         _siteService = siteService;
-        _context = context;
+        _applicationRepository = applicationRepository;
         _logger = logger;
     }
 
@@ -89,8 +88,8 @@ public class IISDiscoveryService : IIISDiscoveryService
             if (appInfo == null) return;
 
             // Check if application already exists
-            var existing = await _context.Applications
-                .FirstOrDefaultAsync(a => a.IISSiteName == siteName && a.ApplicationPath == appPath);
+            var allApps = await _applicationRepository.GetAllAsync();
+            var existing = allApps.FirstOrDefault(a => a.IISSiteName == siteName && a.ApplicationPath == appPath);
 
             if (existing != null)
             {
@@ -100,6 +99,7 @@ public class IISDiscoveryService : IIISDiscoveryService
                 existing.IsActive = siteDetails.State == "Started";
                 existing.LastDiscoveredAt = DateTime.UtcNow;
                 existing.UpdatedAt = DateTime.UtcNow;
+                await _applicationRepository.UpdateAsync(existing);
 
                 result.ApplicationsUpdated++;
                 _logger.LogInformation("Updated application: {SiteName}{AppPath}", siteName, appPath);
@@ -130,12 +130,10 @@ public class IISDiscoveryService : IIISDiscoveryService
                     DeploymentDelaySeconds = 2
                 };
 
-                await _context.Applications.AddAsync(application);
+                await _applicationRepository.CreateAsync(application);
                 result.ApplicationsRegistered++;
                 _logger.LogInformation("Registered new application: {SiteName}{AppPath}", siteName, appPath);
             }
-
-            await _context.SaveChangesAsync();
         }
         catch (Exception ex)
         {

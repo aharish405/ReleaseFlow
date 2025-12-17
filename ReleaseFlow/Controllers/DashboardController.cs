@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using ReleaseFlow.Data;
+using ReleaseFlow.Data.Repositories;
 using ReleaseFlow.Models;
 using ReleaseFlow.Services.IIS;
 
@@ -10,16 +9,19 @@ namespace ReleaseFlow.Controllers;
 [Authorize]
 public class DashboardController : Controller
 {
-    private readonly ApplicationDbContext _context;
+    private readonly IApplicationRepository _applicationRepository;
+    private readonly IDeploymentRepository _deploymentRepository;
     private readonly IIISSiteService _siteService;
     private readonly ILogger<DashboardController> _logger;
 
     public DashboardController(
-        ApplicationDbContext context,
+        IApplicationRepository applicationRepository,
+        IDeploymentRepository deploymentRepository,
         IIISSiteService siteService,
         ILogger<DashboardController> logger)
     {
-        _context = context;
+        _applicationRepository = applicationRepository;
+        _deploymentRepository = deploymentRepository;
         _siteService = siteService;
         _logger = logger;
     }
@@ -37,19 +39,14 @@ public class DashboardController : Controller
             model.StoppedSites = sites.Count(s => s.State == "Stopped");
 
             // Get deployment statistics
-            model.TotalDeployments = await _context.Deployments.CountAsync();
-            model.SuccessfulDeployments = await _context.Deployments
-                .CountAsync(d => d.Status == DeploymentStatus.Succeeded);
-            model.FailedDeployments = await _context.Deployments
-                .CountAsync(d => d.Status == DeploymentStatus.Failed);
+            var allDeployments = await _deploymentRepository.GetRecentAsync(1000); // Get enough for stats
+            model.TotalDeployments = allDeployments.Count();
+            model.SuccessfulDeployments = allDeployments.Count(d => d.Status == DeploymentStatus.Succeeded);
+            model.FailedDeployments = allDeployments.Count(d => d.Status == DeploymentStatus.Failed);
 
             // Get recent deployments
-            var recentDeployments = await _context.Deployments
-                .Include(d => d.Application)
-                .OrderByDescending(d => d.StartedAt)
-                .Take(5)
-                .ToListAsync();
-            model.RecentDeployments = recentDeployments; // Assign to model after fetching
+            var recentDeployments = await _deploymentRepository.GetRecentAsync(5);
+            model.RecentDeployments = recentDeployments.ToList();
 
             // Server health (simplified)
             model.ServerHealth = "Healthy";

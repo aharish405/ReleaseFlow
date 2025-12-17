@@ -1,10 +1,8 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Server.IISIntegration;
-using Microsoft.EntityFrameworkCore;
-using ReleaseFlow.Authorization;
 using ReleaseFlow.Data;
+using ReleaseFlow.Data.Repositories;
 using ReleaseFlow.Models;
-using ReleaseFlow.Repositories;
 using ReleaseFlow.Services;
 using ReleaseFlow.Services.Deployment;
 using ReleaseFlow.Services.IIS;
@@ -26,9 +24,15 @@ builder.Host.UseSerilog();
 // Add services to the container
 builder.Services.AddControllersWithViews();
 
-// Configure Database
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+// Configure Database (ADO.NET)
+builder.Services.AddSingleton<SqlConnectionFactory>();
+builder.Services.AddScoped<SqlHelper>();
+
+// Register Repositories
+builder.Services.AddScoped<IApplicationRepository, ApplicationRepository>();
+builder.Services.AddScoped<IDeploymentRepository, DeploymentRepository>();
+builder.Services.AddScoped<IDeploymentStepRepository, DeploymentStepRepository>();
+builder.Services.AddScoped<IAuditLogRepository, AuditLogRepository>();
 
 // Configure Authentication
 // For development: use cookie authentication
@@ -52,8 +56,7 @@ builder.Services.AddHttpContextAccessor();
 // Register HttpClient for health checks
 builder.Services.AddHttpClient();
 
-// Register Repositories
-builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+
 
 // Register Services
 builder.Services.AddScoped<IAuditService, AuditService>();
@@ -79,20 +82,7 @@ builder.WebHost.ConfigureKestrel(serverOptions =>
 var app = builder.Build();
 
 // Initialize database
-using (var scope = app.Services.CreateScope())
-{
-    var services = scope.ServiceProvider;
-    try
-    {
-        var context = services.GetRequiredService<ApplicationDbContext>();
-        await DbInitializer.Initialize(context);
-        Log.Information("Database initialized successfully");
-    }
-    catch (Exception ex)
-    {
-        Log.Error(ex, "An error occurred while initializing the database");
-    }
-}
+
 
 // Configure the HTTP request pipeline
 if (!app.Environment.IsDevelopment())
