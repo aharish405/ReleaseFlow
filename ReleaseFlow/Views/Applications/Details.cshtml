@@ -1,0 +1,153 @@
+@model ReleaseFlow.Models.Application
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+<div class="row mb-4">
+    <div class="col-md-8">
+        <h2><i class="bi bi-app-indicator"></i> @Model.Name</h2>
+        <p class="text-muted">@Model.Description</p>
+    </div>
+    <div class="col-md-4 text-end">
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-secondary">
+            <i class="bi bi-pencil"></i> Edit
+        </a>
+        <a asp-action="Index" class="btn btn-outline-secondary">
+            <i class="bi bi-arrow-left"></i> Back
+        </a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card mb-3">
+            <div class="card-header">
+                <h5 class="mb-0">Application Information</h5>
+            </div>
+            <div class="card-body">
+                <table class="table table-sm">
+                    <tr>
+                        <th width="40%">Name:</th>
+                        <td><strong>@Model.Name</strong></td>
+                    </tr>
+                    <tr>
+                        <th>Environment:</th>
+                        <td>
+                            @if (Model.Environment == "Production")
+                            {
+                                <span class="badge bg-danger">@Model.Environment</span>
+                            }
+                            else if (Model.Environment == "Staging")
+                            {
+                                <span class="badge bg-warning">@Model.Environment</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-info">@Model.Environment</span>
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>IIS Site:</th>
+                        <td><code>@Model.IISSiteName</code></td>
+                    </tr>
+                    <tr>
+                        <th>Application Path:</th>
+                        <td><code class="text-primary">@Model.ApplicationPath</code></td>
+                    </tr>
+                    <tr>
+                        <th>App Pool:</th>
+                        <td><code>@Model.AppPoolName</code></td>
+                    </tr>
+                    <tr>
+                        <th>Physical Path:</th>
+                        <td><small>@Model.PhysicalPath</small></td>
+                    </tr>
+                    <tr>
+                        <th>Health Check URL:</th>
+                        <td>
+                            @if (!string.IsNullOrEmpty(Model.HealthCheckUrl))
+                            {
+                                <a href="@Model.HealthCheckUrl" target="_blank">@Model.HealthCheckUrl</a>
+                            }
+                            else
+                            {
+                                <span class="text-muted">Not configured</span>
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Created:</th>
+                        <td>@Model.CreatedAt.ToLocalTime().ToString("g")</td>
+                    </tr>
+                    @if (Model.UpdatedAt.HasValue)
+                    {
+                        <tr>
+                            <th>Last Updated:</th>
+                            <td>@Model.UpdatedAt.Value.ToLocalTime().ToString("g")</td>
+                        </tr>
+                    }
+                </table>
+
+                <div class="d-grid gap-2 mt-3">
+                    <a asp-controller="Deployments" asp-action="Deploy" class="btn btn-primary">
+                        <i class="bi bi-cloud-upload"></i> Deploy New Version
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Recent Deployments</h5>
+            </div>
+            <div class="card-body">
+                @if (Model.Deployments != null && Model.Deployments.Any())
+                {
+                    <div class="list-group">
+                        @foreach (var deployment in Model.Deployments.OrderByDescending(d => d.StartedAt).Take(10))
+                        {
+                            <a asp-controller="Deployments" asp-action="Details" asp-route-id="@deployment.Id" 
+                               class="list-group-item list-group-item-action">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h6 class="mb-1">Version @deployment.Version</h6>
+                                    <small>
+                                        @if (deployment.Status == ReleaseFlow.Models.DeploymentStatus.Succeeded)
+                                        {
+                                            <span class="badge bg-success">Success</span>
+                                        }
+                                        else if (deployment.Status == ReleaseFlow.Models.DeploymentStatus.Failed)
+                                        {
+                                            <span class="badge bg-danger">Failed</span>
+                                        }
+                                        else if (deployment.Status == ReleaseFlow.Models.DeploymentStatus.InProgress)
+                                        {
+                                            <span class="badge bg-warning">In Progress</span>
+                                        }
+                                        else if (deployment.Status == ReleaseFlow.Models.DeploymentStatus.RolledBack)
+                                        {
+                                            <span class="badge bg-secondary">Rolled Back</span>
+                                        }
+                                    </small>
+                                </div>
+                                <small class="text-muted">@deployment.StartedAt.ToLocalTime().ToString("g")</small>
+                            </a>
+                        }
+                    </div>
+                }
+                else
+                {
+                    <p class="text-muted text-center py-4">
+                        No deployments yet
+                        <br />
+                        <a asp-controller="Deployments" asp-action="Deploy" class="btn btn-sm btn-primary mt-2">
+                            <i class="bi bi-cloud-upload"></i> Deploy Now
+                        </a>
+                    </p>
+                }
+            </div>
+        </div>
+    </div>
+</div>

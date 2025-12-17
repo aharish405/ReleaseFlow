@@ -1,0 +1,136 @@
+@model IEnumerable<ReleaseFlow.Models.AuditLog>
+@{
+    ViewData["Title"] = "Audit Logs";
+}
+
+<div class="row mb-4">
+    <div class="col-12">
+        <h2><i class="bi bi-journal-text"></i> Audit Logs</h2>
+        <p class="text-muted">View all system operations and user activities</p>
+    </div>
+</div>
+
+<div class="card mb-3">
+    <div class="card-body">
+        <form method="get" class="row g-3">
+            <div class="col-md-3">
+                <label class="form-label">Action</label>
+                <input type="text" name="action" class="form-control" placeholder="e.g., Deploy, Start, Stop" 
+                       value="@ViewBag.FilterAction" />
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Entity Type</label>
+                <select name="entityType" class="form-select">
+                    <option value="">All Types</option>
+                    <option value="Deployment" selected="@(ViewBag.FilterEntityType == "Deployment")">Deployment</option>
+                    <option value="Site" selected="@(ViewBag.FilterEntityType == "Site")">Site</option>
+                    <option value="AppPool" selected="@(ViewBag.FilterEntityType == "AppPool")">App Pool</option>
+                    <option value="Application" selected="@(ViewBag.FilterEntityType == "Application")">Application</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">From Date</label>
+                <input type="date" name="fromDate" class="form-control" value="@ViewBag.FilterFromDate" />
+            </div>
+            <div class="col-md-3 d-flex align-items-end">
+                <button type="submit" class="btn btn-primary me-2">
+                    <i class="bi bi-funnel"></i> Filter
+                </button>
+                <a asp-action="Index" class="btn btn-outline-secondary">
+                    <i class="bi bi-x-circle"></i> Clear
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        @if (Model.Any())
+        {
+            <div class="table-responsive">
+                <table class="table table-hover table-sm">
+                    <thead>
+                        <tr>
+                            <th>Timestamp</th>
+                            <th>User</th>
+                            <th>Action</th>
+                            <th>Entity Type</th>
+                            <th>Entity ID</th>
+                            <th>Details</th>
+                            <th>IP Address</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var log in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <small>@log.CreatedAt.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss")</small>
+                                </td>
+                                <td>
+                                    @if (log.User != null)
+                                    {
+                                        <span>@log.User.DisplayName</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted">System</span>
+                                    }
+                                </td>
+                                <td>
+                                    <span class="badge bg-primary">@log.Action</span>
+                                </td>
+                                <td>
+                                    <code>@log.EntityType</code>
+                                </td>
+                                <td>
+                                    @if (!string.IsNullOrEmpty(log.EntityId))
+                                    {
+                                        <small>@log.EntityId</small>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted">-</span>
+                                    }
+                                </td>
+                                <td>
+                                    @if (!string.IsNullOrEmpty(log.Details))
+                                    {
+                                        <small class="text-muted">@log.Details</small>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted">-</span>
+                                    }
+                                </td>
+                                <td>
+                                    <small><code>@log.IpAddress</code></small>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="mt-3 text-muted">
+                <small>Showing @Model.Count() audit log entries</small>
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-info text-center">
+                <i class="bi bi-info-circle"></i> No audit logs found matching your criteria.
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Auto-refresh every 30 seconds
+        setTimeout(function() {
+            location.reload();
+        }, 30000);
+    </script>
+}

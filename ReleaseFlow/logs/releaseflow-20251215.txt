@@ -1,0 +1,1783 @@
+2025-12-15 00:00:24.354 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at AspNetCoreGeneratedDocument.Views_Applications_Create.ExecuteAsync() in C:\Users\ahari\source\ReleaseFlow\ReleaseFlow\Views\Applications\Create.cshtml:line 3
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderPageCoreAsync(IRazorPage page, ViewContext context)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderPageAsync(IRazorPage page, ViewContext context, Boolean invokeViewStarts)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderAsync(ViewContext context)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor.ExecuteAsync(ViewContext viewContext, String contentType, Nullable`1 statusCode)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor.ExecuteAsync(ViewContext viewContext, String contentType, Nullable`1 statusCode)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor.ExecuteAsync(ActionContext actionContext, IView view, ViewDataDictionary viewData, ITempDataDictionary tempData, String contentType, Nullable`1 statusCode)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor.ExecuteAsync(ActionContext context, ViewResult result)
+   at Microsoft.AspNetCore.Mvc.ViewResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|30_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-12-15 00:01:38.934 +05:30 [ERR] The view 'Index' was not found. Searched locations: ["/Views/AppPools/Index.cshtml","/Views/Shared/Index.cshtml"]
+2025-12-15 00:01:38.937 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: The view 'Index' was not found. The following locations were searched:
+/Views/AppPools/Index.cshtml
+/Views/Shared/Index.cshtml
+   at Microsoft.AspNetCore.Mvc.ViewEngines.ViewEngineResult.EnsureSuccessful(IEnumerable`1 originalLocations)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor.ExecuteAsync(ActionContext context, ViewResult result)
+   at Microsoft.AspNetCore.Mvc.ViewResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|30_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-12-15 00:01:44.523 +05:30 [ERR] The view 'Index' was not found. Searched locations: ["/Views/Audit/Index.cshtml","/Views/Shared/Index.cshtml"]
+2025-12-15 00:01:44.525 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: The view 'Index' was not found. The following locations were searched:
+/Views/Audit/Index.cshtml
+/Views/Shared/Index.cshtml
+   at Microsoft.AspNetCore.Mvc.ViewEngines.ViewEngineResult.EnsureSuccessful(IEnumerable`1 originalLocations)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor.ExecuteAsync(ActionContext context, ViewResult result)
+   at Microsoft.AspNetCore.Mvc.ViewResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|30_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-12-15 00:02:47.756 +05:30 [ERR] The view 'Details' was not found. Searched locations: ["/Views/Sites/Details.cshtml","/Views/Shared/Details.cshtml"]
+2025-12-15 00:02:47.759 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: The view 'Details' was not found. The following locations were searched:
+/Views/Sites/Details.cshtml
+/Views/Shared/Details.cshtml
+   at Microsoft.AspNetCore.Mvc.ViewEngines.ViewEngineResult.EnsureSuccessful(IEnumerable`1 originalLocations)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor.ExecuteAsync(ActionContext context, ViewResult result)
+   at Microsoft.AspNetCore.Mvc.ViewResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|30_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-12-15 00:02:56.026 +05:30 [INF] Site default stopped successfully
+2025-12-15 00:02:56.059 +05:30 [INF] Audit log created: SiteStop on Site by user null
+2025-12-15 00:03:04.655 +05:30 [INF] Site default started successfully
+2025-12-15 00:03:04.660 +05:30 [INF] Audit log created: SiteStart on Site by user null
+2025-12-15 00:03:44.877 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at AspNetCoreGeneratedDocument.Views_Applications_Create.ExecuteAsync() in C:\Users\ahari\source\ReleaseFlow\ReleaseFlow\Views\Applications\Create.cshtml:line 3
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderPageCoreAsync(IRazorPage page, ViewContext context)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderPageAsync(IRazorPage page, ViewContext context, Boolean invokeViewStarts)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderAsync(ViewContext context)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor.ExecuteAsync(ViewContext viewContext, String contentType, Nullable`1 statusCode)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor.ExecuteAsync(ViewContext viewContext, String contentType, Nullable`1 statusCode)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor.ExecuteAsync(ActionContext actionContext, IView view, ViewDataDictionary viewData, ITempDataDictionary tempData, String contentType, Nullable`1 statusCode)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor.ExecuteAsync(ActionContext context, ViewResult result)
+   at Microsoft.AspNetCore.Mvc.ViewResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|30_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-12-15 00:08:12.922 +05:30 [INF] Database initialized successfully
+2025-12-15 00:08:13.076 +05:30 [INF] ReleaseFlow application starting
+2025-12-15 00:08:13.303 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-15 00:08:13.305 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-15 00:08:13.335 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-15 00:08:13.336 +05:30 [INF] Hosting environment: Development
+2025-12-15 00:08:13.336 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-15 00:11:03.225 +05:30 [WRN] Site TestApp not found
+2025-12-15 00:11:03.320 +05:30 [ERR] Deployment failed for application 1
+System.Exception: Failed to stop IIS site: TestApp
+   at ReleaseFlow.Services.Deployment.DeploymentService.DeployAsync(Int32 applicationId, String zipFilePath, String version, Int32 userId) in C:\Users\ahari\source\ReleaseFlow\ReleaseFlow\Services\Deployment\DeploymentService.cs:line 96
+2025-12-15 00:11:53.740 +05:30 [ERR] The view 'Edit' was not found. Searched locations: ["/Views/Applications/Edit.cshtml","/Views/Shared/Edit.cshtml"]
+2025-12-15 00:11:53.746 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: The view 'Edit' was not found. The following locations were searched:
+/Views/Applications/Edit.cshtml
+/Views/Shared/Edit.cshtml
+   at Microsoft.AspNetCore.Mvc.ViewEngines.ViewEngineResult.EnsureSuccessful(IEnumerable`1 originalLocations)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor.ExecuteAsync(ActionContext context, ViewResult result)
+   at Microsoft.AspNetCore.Mvc.ViewResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|30_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-12-15 00:12:06.400 +05:30 [ERR] The view 'Details' was not found. Searched locations: ["/Views/Applications/Details.cshtml","/Views/Shared/Details.cshtml"]
+2025-12-15 00:12:06.403 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: The view 'Details' was not found. The following locations were searched:
+/Views/Applications/Details.cshtml
+/Views/Shared/Details.cshtml
+   at Microsoft.AspNetCore.Mvc.ViewEngines.ViewEngineResult.EnsureSuccessful(IEnumerable`1 originalLocations)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor.ExecuteAsync(ActionContext context, ViewResult result)
+   at Microsoft.AspNetCore.Mvc.ViewResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|30_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-12-15 00:13:18.245 +05:30 [ERR] The view 'Index' was not found. Searched locations: ["/Views/AppPools/Index.cshtml","/Views/Shared/Index.cshtml"]
+2025-12-15 00:13:18.247 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: The view 'Index' was not found. The following locations were searched:
+/Views/AppPools/Index.cshtml
+/Views/Shared/Index.cshtml
+   at Microsoft.AspNetCore.Mvc.ViewEngines.ViewEngineResult.EnsureSuccessful(IEnumerable`1 originalLocations)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor.ExecuteAsync(ActionContext context, ViewResult result)
+   at Microsoft.AspNetCore.Mvc.ViewResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|30_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-12-15 00:14:42.955 +05:30 [INF] User admin logged in
+2025-12-15 00:15:33.796 +05:30 [ERR] The view 'Index' was not found. Searched locations: ["/Views/AppPools/Index.cshtml","/Views/Shared/Index.cshtml"]
+2025-12-15 00:15:33.798 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: The view 'Index' was not found. The following locations were searched:
+/Views/AppPools/Index.cshtml
+/Views/Shared/Index.cshtml
+   at Microsoft.AspNetCore.Mvc.ViewEngines.ViewEngineResult.EnsureSuccessful(IEnumerable`1 originalLocations)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor.ExecuteAsync(ActionContext context, ViewResult result)
+   at Microsoft.AspNetCore.Mvc.ViewResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|30_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-12-15 00:18:52.409 +05:30 [INF] Database initialized successfully
+2025-12-15 00:18:52.576 +05:30 [INF] ReleaseFlow application starting
+2025-12-15 00:18:52.782 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-15 00:18:52.783 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-15 00:18:52.816 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-15 00:18:52.816 +05:30 [INF] Hosting environment: Development
+2025-12-15 00:18:52.816 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-15 00:20:04.646 +05:30 [ERR] The view 'Details' was not found. Searched locations: ["/Views/Sites/Details.cshtml","/Views/Shared/Details.cshtml"]
+2025-12-15 00:20:04.657 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: The view 'Details' was not found. The following locations were searched:
+/Views/Sites/Details.cshtml
+/Views/Shared/Details.cshtml
+   at Microsoft.AspNetCore.Mvc.ViewEngines.ViewEngineResult.EnsureSuccessful(IEnumerable`1 originalLocations)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor.ExecuteAsync(ActionContext context, ViewResult result)
+   at Microsoft.AspNetCore.Mvc.ViewResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|30_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-12-15 00:24:39.689 +05:30 [INF] Database initialized successfully
+2025-12-15 00:24:39.911 +05:30 [INF] ReleaseFlow application starting
+2025-12-15 00:24:40.170 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-15 00:24:40.172 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-15 00:24:40.204 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-15 00:24:40.204 +05:30 [INF] Hosting environment: Development
+2025-12-15 00:24:40.204 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-15 00:25:28.807 +05:30 [ERR] The view 'Edit' was not found. Searched locations: ["/Views/Applications/Edit.cshtml","/Views/Shared/Edit.cshtml"]
+2025-12-15 00:25:28.815 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: The view 'Edit' was not found. The following locations were searched:
+/Views/Applications/Edit.cshtml
+/Views/Shared/Edit.cshtml
+   at Microsoft.AspNetCore.Mvc.ViewEngines.ViewEngineResult.EnsureSuccessful(IEnumerable`1 originalLocations)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor.ExecuteAsync(ActionContext context, ViewResult result)
+   at Microsoft.AspNetCore.Mvc.ViewResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|30_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-12-15 00:25:32.956 +05:30 [ERR] The view 'Details' was not found. Searched locations: ["/Views/Applications/Details.cshtml","/Views/Shared/Details.cshtml"]
+2025-12-15 00:25:32.959 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: The view 'Details' was not found. The following locations were searched:
+/Views/Applications/Details.cshtml
+/Views/Shared/Details.cshtml
+   at Microsoft.AspNetCore.Mvc.ViewEngines.ViewEngineResult.EnsureSuccessful(IEnumerable`1 originalLocations)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor.ExecuteAsync(ActionContext context, ViewResult result)
+   at Microsoft.AspNetCore.Mvc.ViewResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|30_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-12-15 00:26:53.779 +05:30 [INF] Database initialized successfully
+2025-12-15 00:26:53.949 +05:30 [INF] ReleaseFlow application starting
+2025-12-15 00:26:54.138 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-15 00:26:54.140 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-15 00:26:54.176 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-15 00:26:54.177 +05:30 [INF] Hosting environment: Development
+2025-12-15 00:26:54.177 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-15 00:29:50.652 +05:30 [INF] Site TestApp stopped successfully
+2025-12-15 00:29:50.712 +05:30 [INF] App pool default stopped successfully
+2025-12-15 00:29:52.747 +05:30 [INF] Backup created successfully: C:\ReleaseFlow\Backups\App1\App1_1_20251214_185952.zip
+2025-12-15 00:29:53.002 +05:30 [ERR] Error starting app pool default
+System.Runtime.InteropServices.COMException (0x80070425): The service cannot accept control messages at this time. (0x80070425)
+   at Microsoft.Web.Administration.Interop.IAppHostMethodInstance.Execute()
+   at Microsoft.Web.Administration.ConfigurationMethodInstance.Execute()
+   at Microsoft.Web.Administration.ConfigurationElement.ExecuteMethod(String methodName)
+   at Microsoft.Web.Administration.ApplicationPool.Start()
+   at ReleaseFlow.Services.IIS.IISAppPoolService.<>c__DisplayClass6_0.<StartAppPoolAsync>b__0() in C:\Users\ahari\source\ReleaseFlow\ReleaseFlow\Services\IIS\IISAppPoolService.cs:line 156
+2025-12-15 00:29:53.073 +05:30 [ERR] Deployment failed for application 1
+System.Exception: Failed to start app pool: default
+   at ReleaseFlow.Services.Deployment.DeploymentService.DeployAsync(Int32 applicationId, String zipFilePath, String version, Int32 userId) in C:\Users\ahari\source\ReleaseFlow\ReleaseFlow\Services\Deployment\DeploymentService.cs:line 132
+2025-12-15 00:29:53.109 +05:30 [INF] App pool default started successfully
+2025-12-15 00:29:53.131 +05:30 [INF] Site TestApp started successfully
+2025-12-15 00:35:02.674 +05:30 [INF] Database initialized successfully
+2025-12-15 00:35:02.836 +05:30 [INF] ReleaseFlow application starting
+2025-12-15 00:35:03.092 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-15 00:35:03.095 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-15 00:35:03.134 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-15 00:35:03.134 +05:30 [INF] Hosting environment: Development
+2025-12-15 00:35:03.134 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-15 00:35:33.244 +05:30 [ERR] The view 'Index' was not found. Searched locations: ["/Views/Audit/Index.cshtml","/Views/Shared/Index.cshtml"]
+2025-12-15 00:35:33.254 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: The view 'Index' was not found. The following locations were searched:
+/Views/Audit/Index.cshtml
+/Views/Shared/Index.cshtml
+   at Microsoft.AspNetCore.Mvc.ViewEngines.ViewEngineResult.EnsureSuccessful(IEnumerable`1 originalLocations)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor.ExecuteAsync(ActionContext context, ViewResult result)
+   at Microsoft.AspNetCore.Mvc.ViewResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|30_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-12-15 00:37:11.032 +05:30 [INF] Database initialized successfully
+2025-12-15 00:37:11.227 +05:30 [INF] ReleaseFlow application starting
+2025-12-15 00:37:11.410 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-15 00:37:11.412 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-15 00:37:11.450 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-15 00:37:11.450 +05:30 [INF] Hosting environment: Development
+2025-12-15 00:37:11.450 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-15 00:39:10.689 +05:30 [INF] Site TestApp stopped successfully
+2025-12-15 00:39:10.750 +05:30 [INF] App pool default stopped successfully
+2025-12-15 00:39:15.667 +05:30 [INF] Backup created successfully: C:\ReleaseFlow\Backups\App1\App1_1_20251214_190912.zip
+2025-12-15 00:39:15.895 +05:30 [INF] App pool default started successfully
+2025-12-15 00:39:15.919 +05:30 [INF] Site TestApp started successfully
+2025-12-15 00:39:18.932 +05:30 [INF] Deployment 3 completed successfully
+2025-12-15 00:39:19.008 +05:30 [INF] Audit log created: Deploy on Deployment by user 1
+2025-12-15 00:39:38.490 +05:30 [INF] Site TestApp stopped successfully
+2025-12-15 00:39:38.505 +05:30 [INF] App pool default stopped successfully
+2025-12-15 00:39:40.800 +05:30 [INF] Backup restored successfully from C:\ReleaseFlow\Backups\App1\App1_1_20251214_190912.zip to D:\Sites\TestApp
+2025-12-15 00:39:40.842 +05:30 [INF] App pool default started successfully
+2025-12-15 00:39:40.882 +05:30 [INF] Site TestApp started successfully
+2025-12-15 00:39:40.900 +05:30 [INF] Rollback completed for deployment 3
+2025-12-15 00:39:40.905 +05:30 [INF] Audit log created: Rollback on Deployment by user 1
+2025-12-15 00:41:27.135 +05:30 [INF] Site TestApp stopped successfully
+2025-12-15 00:41:27.177 +05:30 [INF] App pool default stopped successfully
+2025-12-15 00:41:29.435 +05:30 [INF] Backup created successfully: C:\ReleaseFlow\Backups\App1\App1_2_20251214_191129.zip
+2025-12-15 00:41:29.758 +05:30 [INF] App pool default started successfully
+2025-12-15 00:41:29.798 +05:30 [INF] Site TestApp started successfully
+2025-12-15 00:41:32.816 +05:30 [INF] Deployment 5 completed successfully
+2025-12-15 00:41:32.849 +05:30 [INF] Audit log created: Deploy on Deployment by user 1
+2025-12-15 00:42:37.909 +05:30 [INF] Site TestApp stopped successfully
+2025-12-15 00:42:37.961 +05:30 [INF] App pool default stopped successfully
+2025-12-15 00:42:39.976 +05:30 [INF] Backup created successfully: C:\ReleaseFlow\Backups\App1\App1_3_20251214_191239.zip
+2025-12-15 00:42:40.180 +05:30 [ERR] Error starting app pool default
+System.Runtime.InteropServices.COMException (0x80070425): The service cannot accept control messages at this time. (0x80070425)
+   at Microsoft.Web.Administration.Interop.IAppHostMethodInstance.Execute()
+   at Microsoft.Web.Administration.ConfigurationMethodInstance.Execute()
+   at Microsoft.Web.Administration.ConfigurationElement.ExecuteMethod(String methodName)
+   at Microsoft.Web.Administration.ApplicationPool.Start()
+   at ReleaseFlow.Services.IIS.IISAppPoolService.<>c__DisplayClass6_0.<StartAppPoolAsync>b__0() in C:\Users\ahari\source\ReleaseFlow\ReleaseFlow\Services\IIS\IISAppPoolService.cs:line 156
+2025-12-15 00:42:40.228 +05:30 [ERR] Deployment failed for application 1
+System.Exception: Failed to start app pool: default
+   at ReleaseFlow.Services.Deployment.DeploymentService.DeployAsync(Int32 applicationId, String zipFilePath, String version, Int32 userId) in C:\Users\ahari\source\ReleaseFlow\ReleaseFlow\Services\Deployment\DeploymentService.cs:line 132
+2025-12-15 00:42:40.265 +05:30 [ERR] Error starting app pool default
+System.Runtime.InteropServices.COMException (0x80070425): The service cannot accept control messages at this time. (0x80070425)
+   at Microsoft.Web.Administration.Interop.IAppHostMethodInstance.Execute()
+   at Microsoft.Web.Administration.ConfigurationMethodInstance.Execute()
+   at Microsoft.Web.Administration.ConfigurationElement.ExecuteMethod(String methodName)
+   at Microsoft.Web.Administration.ApplicationPool.Start()
+   at ReleaseFlow.Services.IIS.IISAppPoolService.<>c__DisplayClass6_0.<StartAppPoolAsync>b__0() in C:\Users\ahari\source\ReleaseFlow\ReleaseFlow\Services\IIS\IISAppPoolService.cs:line 156
+2025-12-15 00:42:40.279 +05:30 [INF] Site TestApp started successfully
+2025-12-15 00:44:59.134 +05:30 [INF] Database initialized successfully
+2025-12-15 00:44:59.335 +05:30 [INF] ReleaseFlow application starting
+2025-12-15 00:44:59.631 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-15 00:44:59.635 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-15 00:44:59.683 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-15 00:44:59.683 +05:30 [INF] Hosting environment: Development
+2025-12-15 00:44:59.684 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-15 00:45:16.905 +05:30 [INF] Site TestApp stopped successfully
+2025-12-15 00:45:16.952 +05:30 [INF] App pool default is already stopped or stopping
+2025-12-15 00:45:20.493 +05:30 [INF] Backup created successfully: C:\ReleaseFlow\Backups\App1\App1_4_20251214_191518.zip
+2025-12-15 00:45:20.510 +05:30 [INF] Detected nested structure, using: C:\Users\ahari\AppData\Local\Temp\ReleaseFlow_e1829a33-a58f-48df-a7c8-c2b001add1e4\IT-Company-Website-main
+2025-12-15 00:45:20.510 +05:30 [INF] Deploying from: C:\Users\ahari\AppData\Local\Temp\ReleaseFlow_e1829a33-a58f-48df-a7c8-c2b001add1e4\IT-Company-Website-main
+2025-12-15 00:45:20.689 +05:30 [INF] App pool default started successfully
+2025-12-15 00:45:20.719 +05:30 [INF] Site TestApp started successfully
+2025-12-15 00:45:23.740 +05:30 [INF] Deployment 7 completed successfully
+2025-12-15 00:45:23.810 +05:30 [INF] Audit log created: Deploy on Deployment by user 1
+2025-12-15 00:51:27.629 +05:30 [INF] Database initialized successfully
+2025-12-15 00:51:27.814 +05:30 [INF] ReleaseFlow application starting
+2025-12-15 00:51:28.012 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-15 00:51:28.014 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-15 00:51:28.045 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-15 00:51:28.045 +05:30 [INF] Hosting environment: Development
+2025-12-15 00:51:28.045 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-15 00:52:26.598 +05:30 [INF] User SuperAdmin logged in
+2025-12-15 00:53:44.701 +05:30 [INF] Site default stopped successfully
+2025-12-15 00:53:44.747 +05:30 [INF] App pool default stopped successfully
+2025-12-15 00:53:46.787 +05:30 [ERR] Failed to create backup for App2
+System.IO.DirectoryNotFoundException: Source path does not exist: D:\Sites\TestApp2
+   at ReleaseFlow.Services.Deployment.BackupService.CreateBackupAsync(String sourcePath, String applicationName, String version) in C:\Users\ahari\source\ReleaseFlow\ReleaseFlow\Services\Deployment\BackupService.cs:line 28
+2025-12-15 00:53:46.816 +05:30 [ERR] Deployment failed for application 2
+System.IO.DirectoryNotFoundException: Source path does not exist: D:\Sites\TestApp2
+   at ReleaseFlow.Services.Deployment.BackupService.CreateBackupAsync(String sourcePath, String applicationName, String version) in C:\Users\ahari\source\ReleaseFlow\ReleaseFlow\Services\Deployment\BackupService.cs:line 28
+   at ReleaseFlow.Services.Deployment.DeploymentService.DeployAsync(Int32 applicationId, String zipFilePath, String version, Int32 userId) in C:\Users\ahari\source\ReleaseFlow\ReleaseFlow\Services\Deployment\DeploymentService.cs:line 116
+2025-12-15 00:53:46.846 +05:30 [INF] App pool default started successfully
+2025-12-15 00:53:46.862 +05:30 [INF] Site default started successfully
+2025-12-15 00:55:40.074 +05:30 [INF] Database initialized successfully
+2025-12-15 00:55:40.244 +05:30 [INF] ReleaseFlow application starting
+2025-12-15 00:55:40.446 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-15 00:55:40.448 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-15 00:55:40.483 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-15 00:55:40.483 +05:30 [INF] Hosting environment: Development
+2025-12-15 00:55:40.483 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-15 00:55:57.144 +05:30 [INF] Site default stopped successfully
+2025-12-15 00:55:57.201 +05:30 [INF] App pool default stopped successfully
+2025-12-15 00:55:59.222 +05:30 [INF] Source path does not exist (first deployment), skipping backup: D:\Sites\TestApp2
+2025-12-15 00:55:59.228 +05:30 [INF] Detected nested structure, using: C:\Users\ahari\AppData\Local\Temp\ReleaseFlow_89423a76-cff9-41dc-8960-9465048bf0c9\IT-Company-Website-main
+2025-12-15 00:55:59.228 +05:30 [INF] Deploying from: C:\Users\ahari\AppData\Local\Temp\ReleaseFlow_89423a76-cff9-41dc-8960-9465048bf0c9\IT-Company-Website-main
+2025-12-15 00:55:59.384 +05:30 [INF] App pool default started successfully
+2025-12-15 00:55:59.404 +05:30 [INF] Site default started successfully
+2025-12-15 00:56:02.428 +05:30 [INF] Deployment 9 completed successfully
+2025-12-15 00:56:02.501 +05:30 [INF] Audit log created: Deploy on Deployment by user 1
+2025-12-15 01:17:03.594 +05:30 [INF] Database initialized successfully
+2025-12-15 01:17:03.770 +05:30 [INF] ReleaseFlow application starting
+2025-12-15 01:17:04.015 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-15 01:17:04.018 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-15 01:17:04.054 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-15 01:17:04.055 +05:30 [INF] Hosting environment: Development
+2025-12-15 01:17:04.055 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-15 01:17:05.299 +05:30 [ERR] Failed executing DbCommand (8ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[ApplicationId], [t].[BackupPath], [t].[CanRollback], [t].[CompletedAt], [t].[DeployedByUserId], [t].[ErrorMessage], [t].[StartedAt], [t].[Status], [t].[Version], [t].[ZipFileName], [t].[ZipFileSize], [a].[Id], [a].[AppPoolName], [a].[CreateBackup], [a].[CreatedAt], [a].[DeploymentDelaySeconds], [a].[Description], [a].[Environment], [a].[HealthCheckUrl], [a].[IISSiteName], [a].[IsActive], [a].[Name], [a].[PhysicalPath], [a].[RunHealthCheck], [a].[StartAppPoolAfterDeployment], [a].[StartSiteAfterDeployment], [a].[StopAppPoolBeforeDeployment], [a].[StopSiteBeforeDeployment], [a].[UpdatedAt], [u].[Id], [u].[CreatedAt], [u].[DisplayName], [u].[Email], [u].[IsActive], [u].[LastLoginAt], [u].[RoleId], [u].[WindowsIdentity]
+FROM (
+    SELECT TOP(@__p_0) [d].[Id], [d].[ApplicationId], [d].[BackupPath], [d].[CanRollback], [d].[CompletedAt], [d].[DeployedByUserId], [d].[ErrorMessage], [d].[StartedAt], [d].[Status], [d].[Version], [d].[ZipFileName], [d].[ZipFileSize]
+    FROM [Deployments] AS [d]
+    ORDER BY [d].[StartedAt] DESC
+) AS [t]
+INNER JOIN [Applications] AS [a] ON [t].[ApplicationId] = [a].[Id]
+INNER JOIN [Users] AS [u] ON [t].[DeployedByUserId] = [u].[Id]
+ORDER BY [t].[StartedAt] DESC
+2025-12-15 01:17:05.317 +05:30 [ERR] An exception occurred while iterating over the results of a query for context type 'ReleaseFlow.Data.ApplicationDbContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'CreateBackup'.
+Invalid column name 'DeploymentDelaySeconds'.
+Invalid column name 'RunHealthCheck'.
+Invalid column name 'StartAppPoolAfterDeployment'.
+Invalid column name 'StartSiteAfterDeployment'.
+Invalid column name 'StopAppPoolBeforeDeployment'.
+Invalid column name 'StopSiteBeforeDeployment'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:df2c9b3f-d09a-43d6-87ef-25b3e3cf11e6
+Error Number:207,State:1,Class:16
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'CreateBackup'.
+Invalid column name 'DeploymentDelaySeconds'.
+Invalid column name 'RunHealthCheck'.
+Invalid column name 'StartAppPoolAfterDeployment'.
+Invalid column name 'StartSiteAfterDeployment'.
+Invalid column name 'StopAppPoolBeforeDeployment'.
+Invalid column name 'StopSiteBeforeDeployment'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:df2c9b3f-d09a-43d6-87ef-25b3e3cf11e6
+Error Number:207,State:1,Class:16
+2025-12-15 01:17:05.365 +05:30 [ERR] Error loading dashboard
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'CreateBackup'.
+Invalid column name 'DeploymentDelaySeconds'.
+Invalid column name 'RunHealthCheck'.
+Invalid column name 'StartAppPoolAfterDeployment'.
+Invalid column name 'StartSiteAfterDeployment'.
+Invalid column name 'StopAppPoolBeforeDeployment'.
+Invalid column name 'StopSiteBeforeDeployment'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at ReleaseFlow.Controllers.DashboardController.Index() in C:\Users\ahari\source\ReleaseFlow\ReleaseFlow\Controllers\DashboardController.cs:line 47
+ClientConnectionId:df2c9b3f-d09a-43d6-87ef-25b3e3cf11e6
+Error Number:207,State:1,Class:16
+2025-12-15 01:17:10.206 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at AspNetCoreGeneratedDocument.Views_Shared_Error.ExecuteAsync() in C:\Users\ahari\source\ReleaseFlow\ReleaseFlow\Views\Shared\Error.cshtml:line 9
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderPageCoreAsync(IRazorPage page, ViewContext context)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderPageAsync(IRazorPage page, ViewContext context, Boolean invokeViewStarts)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderAsync(ViewContext context)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor.ExecuteAsync(ViewContext viewContext, String contentType, Nullable`1 statusCode)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor.ExecuteAsync(ViewContext viewContext, String contentType, Nullable`1 statusCode)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor.ExecuteAsync(ActionContext actionContext, IView view, ViewDataDictionary viewData, ITempDataDictionary tempData, String contentType, Nullable`1 statusCode)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor.ExecuteAsync(ActionContext context, ViewResult result)
+   at Microsoft.AspNetCore.Mvc.ViewResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|30_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-12-15 01:19:15.702 +05:30 [INF] Database initialized successfully
+2025-12-15 01:19:15.873 +05:30 [INF] ReleaseFlow application starting
+2025-12-15 01:19:16.041 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-15 01:19:16.043 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-15 01:19:16.071 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-15 01:19:16.071 +05:30 [INF] Hosting environment: Development
+2025-12-15 01:19:16.072 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-15 01:19:17.347 +05:30 [ERR] Failed executing DbCommand (6ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[ApplicationId], [t].[BackupPath], [t].[CanRollback], [t].[CompletedAt], [t].[DeployedByUserId], [t].[ErrorMessage], [t].[StartedAt], [t].[Status], [t].[Version], [t].[ZipFileName], [t].[ZipFileSize], [a].[Id], [a].[AppPoolName], [a].[CreateBackup], [a].[CreatedAt], [a].[DeploymentDelaySeconds], [a].[Description], [a].[Environment], [a].[HealthCheckUrl], [a].[IISSiteName], [a].[IsActive], [a].[Name], [a].[PhysicalPath], [a].[RunHealthCheck], [a].[StartAppPoolAfterDeployment], [a].[StartSiteAfterDeployment], [a].[StopAppPoolBeforeDeployment], [a].[StopSiteBeforeDeployment], [a].[UpdatedAt], [u].[Id], [u].[CreatedAt], [u].[DisplayName], [u].[Email], [u].[IsActive], [u].[LastLoginAt], [u].[RoleId], [u].[WindowsIdentity]
+FROM (
+    SELECT TOP(@__p_0) [d].[Id], [d].[ApplicationId], [d].[BackupPath], [d].[CanRollback], [d].[CompletedAt], [d].[DeployedByUserId], [d].[ErrorMessage], [d].[StartedAt], [d].[Status], [d].[Version], [d].[ZipFileName], [d].[ZipFileSize]
+    FROM [Deployments] AS [d]
+    ORDER BY [d].[StartedAt] DESC
+) AS [t]
+INNER JOIN [Applications] AS [a] ON [t].[ApplicationId] = [a].[Id]
+INNER JOIN [Users] AS [u] ON [t].[DeployedByUserId] = [u].[Id]
+ORDER BY [t].[StartedAt] DESC
+2025-12-15 01:19:17.369 +05:30 [ERR] An exception occurred while iterating over the results of a query for context type 'ReleaseFlow.Data.ApplicationDbContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'CreateBackup'.
+Invalid column name 'DeploymentDelaySeconds'.
+Invalid column name 'RunHealthCheck'.
+Invalid column name 'StartAppPoolAfterDeployment'.
+Invalid column name 'StartSiteAfterDeployment'.
+Invalid column name 'StopAppPoolBeforeDeployment'.
+Invalid column name 'StopSiteBeforeDeployment'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:467cfc6c-4013-45f9-a88f-8731c915bfac
+Error Number:207,State:1,Class:16
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'CreateBackup'.
+Invalid column name 'DeploymentDelaySeconds'.
+Invalid column name 'RunHealthCheck'.
+Invalid column name 'StartAppPoolAfterDeployment'.
+Invalid column name 'StartSiteAfterDeployment'.
+Invalid column name 'StopAppPoolBeforeDeployment'.
+Invalid column name 'StopSiteBeforeDeployment'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:467cfc6c-4013-45f9-a88f-8731c915bfac
+Error Number:207,State:1,Class:16
+2025-12-15 01:19:17.420 +05:30 [ERR] Error loading dashboard
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'CreateBackup'.
+Invalid column name 'DeploymentDelaySeconds'.
+Invalid column name 'RunHealthCheck'.
+Invalid column name 'StartAppPoolAfterDeployment'.
+Invalid column name 'StartSiteAfterDeployment'.
+Invalid column name 'StopAppPoolBeforeDeployment'.
+Invalid column name 'StopSiteBeforeDeployment'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at ReleaseFlow.Controllers.DashboardController.Index() in C:\Users\ahari\source\ReleaseFlow\ReleaseFlow\Controllers\DashboardController.cs:line 47
+ClientConnectionId:467cfc6c-4013-45f9-a88f-8731c915bfac
+Error Number:207,State:1,Class:16
+2025-12-15 01:19:34.619 +05:30 [ERR] Failed executing DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[ApplicationId], [t].[BackupPath], [t].[CanRollback], [t].[CompletedAt], [t].[DeployedByUserId], [t].[ErrorMessage], [t].[StartedAt], [t].[Status], [t].[Version], [t].[ZipFileName], [t].[ZipFileSize], [a].[Id], [a].[AppPoolName], [a].[CreateBackup], [a].[CreatedAt], [a].[DeploymentDelaySeconds], [a].[Description], [a].[Environment], [a].[HealthCheckUrl], [a].[IISSiteName], [a].[IsActive], [a].[Name], [a].[PhysicalPath], [a].[RunHealthCheck], [a].[StartAppPoolAfterDeployment], [a].[StartSiteAfterDeployment], [a].[StopAppPoolBeforeDeployment], [a].[StopSiteBeforeDeployment], [a].[UpdatedAt], [u].[Id], [u].[CreatedAt], [u].[DisplayName], [u].[Email], [u].[IsActive], [u].[LastLoginAt], [u].[RoleId], [u].[WindowsIdentity]
+FROM (
+    SELECT TOP(@__p_0) [d].[Id], [d].[ApplicationId], [d].[BackupPath], [d].[CanRollback], [d].[CompletedAt], [d].[DeployedByUserId], [d].[ErrorMessage], [d].[StartedAt], [d].[Status], [d].[Version], [d].[ZipFileName], [d].[ZipFileSize]
+    FROM [Deployments] AS [d]
+    ORDER BY [d].[StartedAt] DESC
+) AS [t]
+INNER JOIN [Applications] AS [a] ON [t].[ApplicationId] = [a].[Id]
+INNER JOIN [Users] AS [u] ON [t].[DeployedByUserId] = [u].[Id]
+ORDER BY [t].[StartedAt] DESC
+2025-12-15 01:19:34.621 +05:30 [ERR] An exception occurred while iterating over the results of a query for context type 'ReleaseFlow.Data.ApplicationDbContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'CreateBackup'.
+Invalid column name 'DeploymentDelaySeconds'.
+Invalid column name 'RunHealthCheck'.
+Invalid column name 'StartAppPoolAfterDeployment'.
+Invalid column name 'StartSiteAfterDeployment'.
+Invalid column name 'StopAppPoolBeforeDeployment'.
+Invalid column name 'StopSiteBeforeDeployment'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:467cfc6c-4013-45f9-a88f-8731c915bfac
+Error Number:207,State:1,Class:16
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'CreateBackup'.
+Invalid column name 'DeploymentDelaySeconds'.
+Invalid column name 'RunHealthCheck'.
+Invalid column name 'StartAppPoolAfterDeployment'.
+Invalid column name 'StartSiteAfterDeployment'.
+Invalid column name 'StopAppPoolBeforeDeployment'.
+Invalid column name 'StopSiteBeforeDeployment'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:467cfc6c-4013-45f9-a88f-8731c915bfac
+Error Number:207,State:1,Class:16
+2025-12-15 01:19:34.647 +05:30 [ERR] Error loading dashboard
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'CreateBackup'.
+Invalid column name 'DeploymentDelaySeconds'.
+Invalid column name 'RunHealthCheck'.
+Invalid column name 'StartAppPoolAfterDeployment'.
+Invalid column name 'StartSiteAfterDeployment'.
+Invalid column name 'StopAppPoolBeforeDeployment'.
+Invalid column name 'StopSiteBeforeDeployment'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at ReleaseFlow.Controllers.DashboardController.Index() in C:\Users\ahari\source\ReleaseFlow\ReleaseFlow\Controllers\DashboardController.cs:line 47
+ClientConnectionId:467cfc6c-4013-45f9-a88f-8731c915bfac
+Error Number:207,State:1,Class:16
+2025-12-15 01:19:36.823 +05:30 [ERR] Failed executing DbCommand (4ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[ApplicationId], [t].[BackupPath], [t].[CanRollback], [t].[CompletedAt], [t].[DeployedByUserId], [t].[ErrorMessage], [t].[StartedAt], [t].[Status], [t].[Version], [t].[ZipFileName], [t].[ZipFileSize], [a].[Id], [a].[AppPoolName], [a].[CreateBackup], [a].[CreatedAt], [a].[DeploymentDelaySeconds], [a].[Description], [a].[Environment], [a].[HealthCheckUrl], [a].[IISSiteName], [a].[IsActive], [a].[Name], [a].[PhysicalPath], [a].[RunHealthCheck], [a].[StartAppPoolAfterDeployment], [a].[StartSiteAfterDeployment], [a].[StopAppPoolBeforeDeployment], [a].[StopSiteBeforeDeployment], [a].[UpdatedAt], [u].[Id], [u].[CreatedAt], [u].[DisplayName], [u].[Email], [u].[IsActive], [u].[LastLoginAt], [u].[RoleId], [u].[WindowsIdentity]
+FROM (
+    SELECT TOP(@__p_0) [d].[Id], [d].[ApplicationId], [d].[BackupPath], [d].[CanRollback], [d].[CompletedAt], [d].[DeployedByUserId], [d].[ErrorMessage], [d].[StartedAt], [d].[Status], [d].[Version], [d].[ZipFileName], [d].[ZipFileSize]
+    FROM [Deployments] AS [d]
+    ORDER BY [d].[StartedAt] DESC
+) AS [t]
+INNER JOIN [Applications] AS [a] ON [t].[ApplicationId] = [a].[Id]
+INNER JOIN [Users] AS [u] ON [t].[DeployedByUserId] = [u].[Id]
+ORDER BY [t].[StartedAt] DESC
+2025-12-15 01:19:36.824 +05:30 [ERR] An exception occurred while iterating over the results of a query for context type 'ReleaseFlow.Data.ApplicationDbContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'CreateBackup'.
+Invalid column name 'DeploymentDelaySeconds'.
+Invalid column name 'RunHealthCheck'.
+Invalid column name 'StartAppPoolAfterDeployment'.
+Invalid column name 'StartSiteAfterDeployment'.
+Invalid column name 'StopAppPoolBeforeDeployment'.
+Invalid column name 'StopSiteBeforeDeployment'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:467cfc6c-4013-45f9-a88f-8731c915bfac
+Error Number:207,State:1,Class:16
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'CreateBackup'.
+Invalid column name 'DeploymentDelaySeconds'.
+Invalid column name 'RunHealthCheck'.
+Invalid column name 'StartAppPoolAfterDeployment'.
+Invalid column name 'StartSiteAfterDeployment'.
+Invalid column name 'StopAppPoolBeforeDeployment'.
+Invalid column name 'StopSiteBeforeDeployment'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:467cfc6c-4013-45f9-a88f-8731c915bfac
+Error Number:207,State:1,Class:16
+2025-12-15 01:19:36.873 +05:30 [ERR] Error loading deployment history
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'CreateBackup'.
+Invalid column name 'DeploymentDelaySeconds'.
+Invalid column name 'RunHealthCheck'.
+Invalid column name 'StartAppPoolAfterDeployment'.
+Invalid column name 'StartSiteAfterDeployment'.
+Invalid column name 'StopAppPoolBeforeDeployment'.
+Invalid column name 'StopSiteBeforeDeployment'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at ReleaseFlow.Services.Deployment.DeploymentService.GetDeploymentHistoryAsync(Nullable`1 applicationId) in C:\Users\ahari\source\ReleaseFlow\ReleaseFlow\Services\Deployment\DeploymentService.cs:line 301
+   at ReleaseFlow.Controllers.DeploymentsController.Index(Nullable`1 applicationId) in C:\Users\ahari\source\ReleaseFlow\ReleaseFlow\Controllers\DeploymentsController.cs:line 40
+ClientConnectionId:467cfc6c-4013-45f9-a88f-8731c915bfac
+Error Number:207,State:1,Class:16
+2025-12-15 01:19:45.758 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at AspNetCoreGeneratedDocument.Views_Deployments_Index.<ExecuteAsync>b__18_1() in C:\Users\ahari\source\ReleaseFlow\ReleaseFlow\Views\Deployments\Index.cshtml:line 25
+   at Microsoft.AspNetCore.Razor.Runtime.TagHelpers.TagHelperExecutionContext.GetChildContentAsync(Boolean useCachedResult, HtmlEncoder encoder)
+   at Microsoft.AspNetCore.Mvc.TagHelpers.RenderAtEndOfFormTagHelper.ProcessAsync(TagHelperContext context, TagHelperOutput output)
+   at Microsoft.AspNetCore.Razor.Runtime.TagHelpers.TagHelperRunner.<RunAsync>g__Awaited|0_0(Task task, TagHelperExecutionContext executionContext, Int32 i, Int32 count)
+   at AspNetCoreGeneratedDocument.Views_Deployments_Index.ExecuteAsync() in C:\Users\ahari\source\ReleaseFlow\ReleaseFlow\Views\Deployments\Index.cshtml:line 3
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderPageCoreAsync(IRazorPage page, ViewContext context)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderPageAsync(IRazorPage page, ViewContext context, Boolean invokeViewStarts)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderAsync(ViewContext context)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor.ExecuteAsync(ViewContext viewContext, String contentType, Nullable`1 statusCode)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor.ExecuteAsync(ViewContext viewContext, String contentType, Nullable`1 statusCode)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor.ExecuteAsync(ActionContext actionContext, IView view, ViewDataDictionary viewData, ITempDataDictionary tempData, String contentType, Nullable`1 statusCode)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor.ExecuteAsync(ActionContext context, ViewResult result)
+   at Microsoft.AspNetCore.Mvc.ViewResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|30_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-12-15 01:21:35.578 +05:30 [INF] Database initialized successfully
+2025-12-15 01:21:35.743 +05:30 [INF] ReleaseFlow application starting
+2025-12-15 01:21:35.920 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-15 01:21:35.922 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-15 01:21:35.957 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-15 01:21:35.957 +05:30 [INF] Hosting environment: Development
+2025-12-15 01:21:35.958 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-15 01:21:36.897 +05:30 [ERR] Failed executing DbCommand (6ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[ApplicationId], [t].[BackupPath], [t].[CanRollback], [t].[CompletedAt], [t].[DeployedByUserId], [t].[ErrorMessage], [t].[StartedAt], [t].[Status], [t].[Version], [t].[ZipFileName], [t].[ZipFileSize], [a].[Id], [a].[AppPoolName], [a].[CreateBackup], [a].[CreatedAt], [a].[DeploymentDelaySeconds], [a].[Description], [a].[Environment], [a].[HealthCheckUrl], [a].[IISSiteName], [a].[IsActive], [a].[Name], [a].[PhysicalPath], [a].[RunHealthCheck], [a].[StartAppPoolAfterDeployment], [a].[StartSiteAfterDeployment], [a].[StopAppPoolBeforeDeployment], [a].[StopSiteBeforeDeployment], [a].[UpdatedAt], [u].[Id], [u].[CreatedAt], [u].[DisplayName], [u].[Email], [u].[IsActive], [u].[LastLoginAt], [u].[RoleId], [u].[WindowsIdentity]
+FROM (
+    SELECT TOP(@__p_0) [d].[Id], [d].[ApplicationId], [d].[BackupPath], [d].[CanRollback], [d].[CompletedAt], [d].[DeployedByUserId], [d].[ErrorMessage], [d].[StartedAt], [d].[Status], [d].[Version], [d].[ZipFileName], [d].[ZipFileSize]
+    FROM [Deployments] AS [d]
+    ORDER BY [d].[StartedAt] DESC
+) AS [t]
+INNER JOIN [Applications] AS [a] ON [t].[ApplicationId] = [a].[Id]
+INNER JOIN [Users] AS [u] ON [t].[DeployedByUserId] = [u].[Id]
+ORDER BY [t].[StartedAt] DESC
+2025-12-15 01:21:36.910 +05:30 [ERR] An exception occurred while iterating over the results of a query for context type 'ReleaseFlow.Data.ApplicationDbContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'CreateBackup'.
+Invalid column name 'DeploymentDelaySeconds'.
+Invalid column name 'RunHealthCheck'.
+Invalid column name 'StartAppPoolAfterDeployment'.
+Invalid column name 'StartSiteAfterDeployment'.
+Invalid column name 'StopAppPoolBeforeDeployment'.
+Invalid column name 'StopSiteBeforeDeployment'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:7a5e549f-41f6-4235-bc8c-090956e93488
+Error Number:207,State:1,Class:16
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'CreateBackup'.
+Invalid column name 'DeploymentDelaySeconds'.
+Invalid column name 'RunHealthCheck'.
+Invalid column name 'StartAppPoolAfterDeployment'.
+Invalid column name 'StartSiteAfterDeployment'.
+Invalid column name 'StopAppPoolBeforeDeployment'.
+Invalid column name 'StopSiteBeforeDeployment'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:7a5e549f-41f6-4235-bc8c-090956e93488
+Error Number:207,State:1,Class:16
+2025-12-15 01:21:36.957 +05:30 [ERR] Error loading dashboard
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'CreateBackup'.
+Invalid column name 'DeploymentDelaySeconds'.
+Invalid column name 'RunHealthCheck'.
+Invalid column name 'StartAppPoolAfterDeployment'.
+Invalid column name 'StartSiteAfterDeployment'.
+Invalid column name 'StopAppPoolBeforeDeployment'.
+Invalid column name 'StopSiteBeforeDeployment'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at ReleaseFlow.Controllers.DashboardController.Index() in C:\Users\ahari\source\ReleaseFlow\ReleaseFlow\Controllers\DashboardController.cs:line 47
+ClientConnectionId:7a5e549f-41f6-4235-bc8c-090956e93488
+Error Number:207,State:1,Class:16
+2025-12-15 01:22:00.570 +05:30 [ERR] Failed executing DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[AppPoolName], [a].[CreateBackup], [a].[CreatedAt], [a].[DeploymentDelaySeconds], [a].[Description], [a].[Environment], [a].[HealthCheckUrl], [a].[IISSiteName], [a].[IsActive], [a].[Name], [a].[PhysicalPath], [a].[RunHealthCheck], [a].[StartAppPoolAfterDeployment], [a].[StartSiteAfterDeployment], [a].[StopAppPoolBeforeDeployment], [a].[StopSiteBeforeDeployment], [a].[UpdatedAt]
+FROM [Applications] AS [a]
+WHERE [a].[IsActive] = CAST(1 AS bit)
+ORDER BY [a].[Name]
+2025-12-15 01:22:00.572 +05:30 [ERR] An exception occurred while iterating over the results of a query for context type 'ReleaseFlow.Data.ApplicationDbContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'CreateBackup'.
+Invalid column name 'DeploymentDelaySeconds'.
+Invalid column name 'RunHealthCheck'.
+Invalid column name 'StartAppPoolAfterDeployment'.
+Invalid column name 'StartSiteAfterDeployment'.
+Invalid column name 'StopAppPoolBeforeDeployment'.
+Invalid column name 'StopSiteBeforeDeployment'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:7a5e549f-41f6-4235-bc8c-090956e93488
+Error Number:207,State:1,Class:16
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'CreateBackup'.
+Invalid column name 'DeploymentDelaySeconds'.
+Invalid column name 'RunHealthCheck'.
+Invalid column name 'StartAppPoolAfterDeployment'.
+Invalid column name 'StartSiteAfterDeployment'.
+Invalid column name 'StopAppPoolBeforeDeployment'.
+Invalid column name 'StopSiteBeforeDeployment'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:7a5e549f-41f6-4235-bc8c-090956e93488
+Error Number:207,State:1,Class:16
+2025-12-15 01:22:00.599 +05:30 [ERR] Error loading applications
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'CreateBackup'.
+Invalid column name 'DeploymentDelaySeconds'.
+Invalid column name 'RunHealthCheck'.
+Invalid column name 'StartAppPoolAfterDeployment'.
+Invalid column name 'StartSiteAfterDeployment'.
+Invalid column name 'StopAppPoolBeforeDeployment'.
+Invalid column name 'StopSiteBeforeDeployment'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at ReleaseFlow.Controllers.ApplicationsController.Index() in C:\Users\ahari\source\ReleaseFlow\ReleaseFlow\Controllers\ApplicationsController.cs:line 25
+ClientConnectionId:7a5e549f-41f6-4235-bc8c-090956e93488
+Error Number:207,State:1,Class:16
+2025-12-15 01:22:14.711 +05:30 [ERR] Failed executing DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[AppPoolName], [a].[CreateBackup], [a].[CreatedAt], [a].[DeploymentDelaySeconds], [a].[Description], [a].[Environment], [a].[HealthCheckUrl], [a].[IISSiteName], [a].[IsActive], [a].[Name], [a].[PhysicalPath], [a].[RunHealthCheck], [a].[StartAppPoolAfterDeployment], [a].[StartSiteAfterDeployment], [a].[StopAppPoolBeforeDeployment], [a].[StopSiteBeforeDeployment], [a].[UpdatedAt]
+FROM [Applications] AS [a]
+WHERE [a].[IsActive] = CAST(1 AS bit)
+ORDER BY [a].[Name]
+2025-12-15 01:22:14.712 +05:30 [ERR] An exception occurred while iterating over the results of a query for context type 'ReleaseFlow.Data.ApplicationDbContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'CreateBackup'.
+Invalid column name 'DeploymentDelaySeconds'.
+Invalid column name 'RunHealthCheck'.
+Invalid column name 'StartAppPoolAfterDeployment'.
+Invalid column name 'StartSiteAfterDeployment'.
+Invalid column name 'StopAppPoolBeforeDeployment'.
+Invalid column name 'StopSiteBeforeDeployment'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:7a5e549f-41f6-4235-bc8c-090956e93488
+Error Number:207,State:1,Class:16
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'CreateBackup'.
+Invalid column name 'DeploymentDelaySeconds'.
+Invalid column name 'RunHealthCheck'.
+Invalid column name 'StartAppPoolAfterDeployment'.
+Invalid column name 'StartSiteAfterDeployment'.
+Invalid column name 'StopAppPoolBeforeDeployment'.
+Invalid column name 'StopSiteBeforeDeployment'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:7a5e549f-41f6-4235-bc8c-090956e93488
+Error Number:207,State:1,Class:16
+2025-12-15 01:22:14.734 +05:30 [ERR] Error loading applications
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'CreateBackup'.
+Invalid column name 'DeploymentDelaySeconds'.
+Invalid column name 'RunHealthCheck'.
+Invalid column name 'StartAppPoolAfterDeployment'.
+Invalid column name 'StartSiteAfterDeployment'.
+Invalid column name 'StopAppPoolBeforeDeployment'.
+Invalid column name 'StopSiteBeforeDeployment'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at ReleaseFlow.Controllers.ApplicationsController.Index() in C:\Users\ahari\source\ReleaseFlow\ReleaseFlow\Controllers\ApplicationsController.cs:line 25
+ClientConnectionId:7a5e549f-41f6-4235-bc8c-090956e93488
+Error Number:207,State:1,Class:16
+2025-12-15 01:22:21.166 +05:30 [ERR] Failed executing DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[AppPoolName], [a].[CreateBackup], [a].[CreatedAt], [a].[DeploymentDelaySeconds], [a].[Description], [a].[Environment], [a].[HealthCheckUrl], [a].[IISSiteName], [a].[IsActive], [a].[Name], [a].[PhysicalPath], [a].[RunHealthCheck], [a].[StartAppPoolAfterDeployment], [a].[StartSiteAfterDeployment], [a].[StopAppPoolBeforeDeployment], [a].[StopSiteBeforeDeployment], [a].[UpdatedAt]
+FROM [Applications] AS [a]
+WHERE [a].[IsActive] = CAST(1 AS bit)
+ORDER BY [a].[Name]
+2025-12-15 01:22:21.168 +05:30 [ERR] An exception occurred while iterating over the results of a query for context type 'ReleaseFlow.Data.ApplicationDbContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'CreateBackup'.
+Invalid column name 'DeploymentDelaySeconds'.
+Invalid column name 'RunHealthCheck'.
+Invalid column name 'StartAppPoolAfterDeployment'.
+Invalid column name 'StartSiteAfterDeployment'.
+Invalid column name 'StopAppPoolBeforeDeployment'.
+Invalid column name 'StopSiteBeforeDeployment'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:7a5e549f-41f6-4235-bc8c-090956e93488
+Error Number:207,State:1,Class:16
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'CreateBackup'.
+Invalid column name 'DeploymentDelaySeconds'.
+Invalid column name 'RunHealthCheck'.
+Invalid column name 'StartAppPoolAfterDeployment'.
+Invalid column name 'StartSiteAfterDeployment'.
+Invalid column name 'StopAppPoolBeforeDeployment'.
+Invalid column name 'StopSiteBeforeDeployment'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:7a5e549f-41f6-4235-bc8c-090956e93488
+Error Number:207,State:1,Class:16
+2025-12-15 01:22:21.188 +05:30 [ERR] Error loading applications
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'CreateBackup'.
+Invalid column name 'DeploymentDelaySeconds'.
+Invalid column name 'RunHealthCheck'.
+Invalid column name 'StartAppPoolAfterDeployment'.
+Invalid column name 'StartSiteAfterDeployment'.
+Invalid column name 'StopAppPoolBeforeDeployment'.
+Invalid column name 'StopSiteBeforeDeployment'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at ReleaseFlow.Controllers.ApplicationsController.Index() in C:\Users\ahari\source\ReleaseFlow\ReleaseFlow\Controllers\ApplicationsController.cs:line 25
+ClientConnectionId:7a5e549f-41f6-4235-bc8c-090956e93488
+Error Number:207,State:1,Class:16
+2025-12-15 01:23:03.030 +05:30 [ERR] Failed executing DbCommand (4ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[ApplicationId], [t].[BackupPath], [t].[CanRollback], [t].[CompletedAt], [t].[DeployedByUserId], [t].[ErrorMessage], [t].[StartedAt], [t].[Status], [t].[Version], [t].[ZipFileName], [t].[ZipFileSize], [a].[Id], [a].[AppPoolName], [a].[CreateBackup], [a].[CreatedAt], [a].[DeploymentDelaySeconds], [a].[Description], [a].[Environment], [a].[HealthCheckUrl], [a].[IISSiteName], [a].[IsActive], [a].[Name], [a].[PhysicalPath], [a].[RunHealthCheck], [a].[StartAppPoolAfterDeployment], [a].[StartSiteAfterDeployment], [a].[StopAppPoolBeforeDeployment], [a].[StopSiteBeforeDeployment], [a].[UpdatedAt], [u].[Id], [u].[CreatedAt], [u].[DisplayName], [u].[Email], [u].[IsActive], [u].[LastLoginAt], [u].[RoleId], [u].[WindowsIdentity]
+FROM (
+    SELECT TOP(@__p_0) [d].[Id], [d].[ApplicationId], [d].[BackupPath], [d].[CanRollback], [d].[CompletedAt], [d].[DeployedByUserId], [d].[ErrorMessage], [d].[StartedAt], [d].[Status], [d].[Version], [d].[ZipFileName], [d].[ZipFileSize]
+    FROM [Deployments] AS [d]
+    ORDER BY [d].[StartedAt] DESC
+) AS [t]
+INNER JOIN [Applications] AS [a] ON [t].[ApplicationId] = [a].[Id]
+INNER JOIN [Users] AS [u] ON [t].[DeployedByUserId] = [u].[Id]
+ORDER BY [t].[StartedAt] DESC
+2025-12-15 01:23:03.033 +05:30 [ERR] An exception occurred while iterating over the results of a query for context type 'ReleaseFlow.Data.ApplicationDbContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'CreateBackup'.
+Invalid column name 'DeploymentDelaySeconds'.
+Invalid column name 'RunHealthCheck'.
+Invalid column name 'StartAppPoolAfterDeployment'.
+Invalid column name 'StartSiteAfterDeployment'.
+Invalid column name 'StopAppPoolBeforeDeployment'.
+Invalid column name 'StopSiteBeforeDeployment'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:7a5e549f-41f6-4235-bc8c-090956e93488
+Error Number:207,State:1,Class:16
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'CreateBackup'.
+Invalid column name 'DeploymentDelaySeconds'.
+Invalid column name 'RunHealthCheck'.
+Invalid column name 'StartAppPoolAfterDeployment'.
+Invalid column name 'StartSiteAfterDeployment'.
+Invalid column name 'StopAppPoolBeforeDeployment'.
+Invalid column name 'StopSiteBeforeDeployment'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:7a5e549f-41f6-4235-bc8c-090956e93488
+Error Number:207,State:1,Class:16
+2025-12-15 01:23:03.064 +05:30 [ERR] Error loading dashboard
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'CreateBackup'.
+Invalid column name 'DeploymentDelaySeconds'.
+Invalid column name 'RunHealthCheck'.
+Invalid column name 'StartAppPoolAfterDeployment'.
+Invalid column name 'StartSiteAfterDeployment'.
+Invalid column name 'StopAppPoolBeforeDeployment'.
+Invalid column name 'StopSiteBeforeDeployment'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at ReleaseFlow.Controllers.DashboardController.Index() in C:\Users\ahari\source\ReleaseFlow\ReleaseFlow\Controllers\DashboardController.cs:line 47
+ClientConnectionId:7a5e549f-41f6-4235-bc8c-090956e93488
+Error Number:207,State:1,Class:16
+2025-12-15 01:23:05.823 +05:30 [ERR] Failed executing DbCommand (5ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[ApplicationId], [t].[BackupPath], [t].[CanRollback], [t].[CompletedAt], [t].[DeployedByUserId], [t].[ErrorMessage], [t].[StartedAt], [t].[Status], [t].[Version], [t].[ZipFileName], [t].[ZipFileSize], [a].[Id], [a].[AppPoolName], [a].[CreateBackup], [a].[CreatedAt], [a].[DeploymentDelaySeconds], [a].[Description], [a].[Environment], [a].[HealthCheckUrl], [a].[IISSiteName], [a].[IsActive], [a].[Name], [a].[PhysicalPath], [a].[RunHealthCheck], [a].[StartAppPoolAfterDeployment], [a].[StartSiteAfterDeployment], [a].[StopAppPoolBeforeDeployment], [a].[StopSiteBeforeDeployment], [a].[UpdatedAt], [u].[Id], [u].[CreatedAt], [u].[DisplayName], [u].[Email], [u].[IsActive], [u].[LastLoginAt], [u].[RoleId], [u].[WindowsIdentity]
+FROM (
+    SELECT TOP(@__p_0) [d].[Id], [d].[ApplicationId], [d].[BackupPath], [d].[CanRollback], [d].[CompletedAt], [d].[DeployedByUserId], [d].[ErrorMessage], [d].[StartedAt], [d].[Status], [d].[Version], [d].[ZipFileName], [d].[ZipFileSize]
+    FROM [Deployments] AS [d]
+    ORDER BY [d].[StartedAt] DESC
+) AS [t]
+INNER JOIN [Applications] AS [a] ON [t].[ApplicationId] = [a].[Id]
+INNER JOIN [Users] AS [u] ON [t].[DeployedByUserId] = [u].[Id]
+ORDER BY [t].[StartedAt] DESC
+2025-12-15 01:23:05.825 +05:30 [ERR] An exception occurred while iterating over the results of a query for context type 'ReleaseFlow.Data.ApplicationDbContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'CreateBackup'.
+Invalid column name 'DeploymentDelaySeconds'.
+Invalid column name 'RunHealthCheck'.
+Invalid column name 'StartAppPoolAfterDeployment'.
+Invalid column name 'StartSiteAfterDeployment'.
+Invalid column name 'StopAppPoolBeforeDeployment'.
+Invalid column name 'StopSiteBeforeDeployment'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:7a5e549f-41f6-4235-bc8c-090956e93488
+Error Number:207,State:1,Class:16
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'CreateBackup'.
+Invalid column name 'DeploymentDelaySeconds'.
+Invalid column name 'RunHealthCheck'.
+Invalid column name 'StartAppPoolAfterDeployment'.
+Invalid column name 'StartSiteAfterDeployment'.
+Invalid column name 'StopAppPoolBeforeDeployment'.
+Invalid column name 'StopSiteBeforeDeployment'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:7a5e549f-41f6-4235-bc8c-090956e93488
+Error Number:207,State:1,Class:16
+2025-12-15 01:23:05.883 +05:30 [ERR] Error loading deployment history
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'CreateBackup'.
+Invalid column name 'DeploymentDelaySeconds'.
+Invalid column name 'RunHealthCheck'.
+Invalid column name 'StartAppPoolAfterDeployment'.
+Invalid column name 'StartSiteAfterDeployment'.
+Invalid column name 'StopAppPoolBeforeDeployment'.
+Invalid column name 'StopSiteBeforeDeployment'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at ReleaseFlow.Services.Deployment.DeploymentService.GetDeploymentHistoryAsync(Nullable`1 applicationId) in C:\Users\ahari\source\ReleaseFlow\ReleaseFlow\Services\Deployment\DeploymentService.cs:line 301
+   at ReleaseFlow.Controllers.DeploymentsController.Index(Nullable`1 applicationId) in C:\Users\ahari\source\ReleaseFlow\ReleaseFlow\Controllers\DeploymentsController.cs:line 40
+ClientConnectionId:7a5e549f-41f6-4235-bc8c-090956e93488
+Error Number:207,State:1,Class:16
+2025-12-15 01:23:05.894 +05:30 [ERR] Failed executing DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[AppPoolName], [a].[CreateBackup], [a].[CreatedAt], [a].[DeploymentDelaySeconds], [a].[Description], [a].[Environment], [a].[HealthCheckUrl], [a].[IISSiteName], [a].[IsActive], [a].[Name], [a].[PhysicalPath], [a].[RunHealthCheck], [a].[StartAppPoolAfterDeployment], [a].[StartSiteAfterDeployment], [a].[StopAppPoolBeforeDeployment], [a].[StopSiteBeforeDeployment], [a].[UpdatedAt]
+FROM [Applications] AS [a]
+WHERE [a].[IsActive] = CAST(1 AS bit)
+2025-12-15 01:23:05.896 +05:30 [ERR] An exception occurred while iterating over the results of a query for context type 'ReleaseFlow.Data.ApplicationDbContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'CreateBackup'.
+Invalid column name 'DeploymentDelaySeconds'.
+Invalid column name 'RunHealthCheck'.
+Invalid column name 'StartAppPoolAfterDeployment'.
+Invalid column name 'StartSiteAfterDeployment'.
+Invalid column name 'StopAppPoolBeforeDeployment'.
+Invalid column name 'StopSiteBeforeDeployment'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:7a5e549f-41f6-4235-bc8c-090956e93488
+Error Number:207,State:1,Class:16
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'CreateBackup'.
+Invalid column name 'DeploymentDelaySeconds'.
+Invalid column name 'RunHealthCheck'.
+Invalid column name 'StartAppPoolAfterDeployment'.
+Invalid column name 'StartSiteAfterDeployment'.
+Invalid column name 'StopAppPoolBeforeDeployment'.
+Invalid column name 'StopSiteBeforeDeployment'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:7a5e549f-41f6-4235-bc8c-090956e93488
+Error Number:207,State:1,Class:16
+2025-12-15 01:23:05.928 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'CreateBackup'.
+Invalid column name 'DeploymentDelaySeconds'.
+Invalid column name 'RunHealthCheck'.
+Invalid column name 'StartAppPoolAfterDeployment'.
+Invalid column name 'StartSiteAfterDeployment'.
+Invalid column name 'StopAppPoolBeforeDeployment'.
+Invalid column name 'StopSiteBeforeDeployment'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at ReleaseFlow.Controllers.DeploymentsController.Index(Nullable`1 applicationId) in C:\Users\ahari\source\ReleaseFlow\ReleaseFlow\Controllers\DeploymentsController.cs:line 49
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+ClientConnectionId:7a5e549f-41f6-4235-bc8c-090956e93488
+Error Number:207,State:1,Class:16
+2025-12-15 01:26:57.037 +05:30 [ERR] Failed executing DbCommand (21ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Roles] AS [r]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-12-15 01:26:57.101 +05:30 [ERR] An exception occurred while iterating over the results of a query for context type 'ReleaseFlow.Data.ApplicationDbContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Roles'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:aca71183-ef33-4c24-870d-f7a7e563dd4e
+Error Number:208,State:1,Class:16
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Roles'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:aca71183-ef33-4c24-870d-f7a7e563dd4e
+Error Number:208,State:1,Class:16
+2025-12-15 01:27:10.963 +05:30 [INF] Database initialized successfully
+2025-12-15 01:27:11.091 +05:30 [INF] ReleaseFlow application starting
+2025-12-15 01:27:11.247 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-15 01:27:11.247 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-15 01:27:11.279 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-15 01:27:11.280 +05:30 [INF] Hosting environment: Development
+2025-12-15 01:27:11.280 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-15 01:27:17.991 +05:30 [INF] User SuperAdmin logged in
+2025-12-15 01:30:05.521 +05:30 [INF] Site TestApp stopped successfully
+2025-12-15 01:30:05.570 +05:30 [INF] App pool default stopped successfully
+2025-12-15 01:32:30.124 +05:30 [INF] Database initialized successfully
+2025-12-15 01:32:30.331 +05:30 [INF] ReleaseFlow application starting
+2025-12-15 01:32:30.541 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-15 01:32:30.543 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-15 01:32:30.578 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-15 01:32:30.579 +05:30 [INF] Hosting environment: Development
+2025-12-15 01:32:30.579 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-15 01:33:33.383 +05:30 [INF] Site TestApp is already stopped or stopping
+2025-12-15 01:33:33.428 +05:30 [INF] App pool default is already stopped or stopping
+2025-12-15 01:33:37.384 +05:30 [INF] Backup created successfully: C:\ReleaseFlow\Backups\New_Calendar\New_Calendar_1_20251214_200335.zip
+2025-12-15 01:33:37.399 +05:30 [INF] Detected nested structure, using: C:\Users\ahari\AppData\Local\Temp\ReleaseFlow_38b06ab3-7385-46d1-8535-344355ad1c28\IT-Company-Website-main
+2025-12-15 01:33:37.399 +05:30 [INF] Deploying from: C:\Users\ahari\AppData\Local\Temp\ReleaseFlow_38b06ab3-7385-46d1-8535-344355ad1c28\IT-Company-Website-main
+2025-12-15 01:33:37.543 +05:30 [INF] App pool default started successfully
+2025-12-15 01:33:37.565 +05:30 [INF] Site TestApp started successfully
+2025-12-15 01:33:40.583 +05:30 [INF] Deployment 2 completed successfully
+2025-12-15 01:33:40.654 +05:30 [INF] Audit log created: Deploy on Deployment by user 1
+2025-12-15 01:37:43.182 +05:30 [INF] App pool teatapp stopped successfully
+2025-12-15 01:38:14.549 +05:30 [INF] Site svenbyte stopped successfully
+2025-12-15 01:38:14.556 +05:30 [INF] Audit log created: SiteStop on Site by user null
+2025-12-15 01:39:25.257 +05:30 [INF] Database initialized successfully
+2025-12-15 01:39:25.425 +05:30 [INF] ReleaseFlow application starting
+2025-12-15 01:39:25.606 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-15 01:39:25.608 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-15 01:39:25.641 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-15 01:39:25.642 +05:30 [INF] Hosting environment: Development
+2025-12-15 01:39:25.642 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-15 01:43:12.337 +05:30 [INF] Database initialized successfully
+2025-12-15 01:43:12.570 +05:30 [INF] ReleaseFlow application starting
+2025-12-15 01:43:12.851 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-15 01:43:12.853 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-15 01:43:12.900 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-15 01:43:12.901 +05:30 [INF] Hosting environment: Development
+2025-12-15 01:43:12.901 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-15 01:50:16.943 +05:30 [INF] Database initialized successfully
+2025-12-15 01:50:17.116 +05:30 [INF] ReleaseFlow application starting
+2025-12-15 01:50:17.374 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-15 01:50:17.377 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-15 01:50:17.417 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-15 01:50:17.418 +05:30 [INF] Hosting environment: Development
+2025-12-15 01:50:17.418 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-15 01:50:19.362 +05:30 [ERR] Failed executing DbCommand (7ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[ApplicationId], [t].[BackupPath], [t].[CanRollback], [t].[CompletedAt], [t].[DeployedByUserId], [t].[ErrorMessage], [t].[StartedAt], [t].[Status], [t].[Version], [t].[ZipFileName], [t].[ZipFileSize], [a].[Id], [a].[AppPoolName], [a].[ApplicationPath], [a].[CreateBackup], [a].[CreatedAt], [a].[DeploymentDelaySeconds], [a].[Description], [a].[Environment], [a].[HealthCheckUrl], [a].[IISSiteName], [a].[IsActive], [a].[Name], [a].[PhysicalPath], [a].[RunHealthCheck], [a].[StartAppPoolAfterDeployment], [a].[StartSiteAfterDeployment], [a].[StopAppPoolBeforeDeployment], [a].[StopSiteBeforeDeployment], [a].[UpdatedAt], [u].[Id], [u].[CreatedAt], [u].[DisplayName], [u].[Email], [u].[IsActive], [u].[LastLoginAt], [u].[RoleId], [u].[WindowsIdentity]
+FROM (
+    SELECT TOP(@__p_0) [d].[Id], [d].[ApplicationId], [d].[BackupPath], [d].[CanRollback], [d].[CompletedAt], [d].[DeployedByUserId], [d].[ErrorMessage], [d].[StartedAt], [d].[Status], [d].[Version], [d].[ZipFileName], [d].[ZipFileSize]
+    FROM [Deployments] AS [d]
+    ORDER BY [d].[StartedAt] DESC
+) AS [t]
+INNER JOIN [Applications] AS [a] ON [t].[ApplicationId] = [a].[Id]
+INNER JOIN [Users] AS [u] ON [t].[DeployedByUserId] = [u].[Id]
+ORDER BY [t].[StartedAt] DESC
+2025-12-15 01:50:19.381 +05:30 [ERR] An exception occurred while iterating over the results of a query for context type 'ReleaseFlow.Data.ApplicationDbContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'ApplicationPath'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:4bf19fef-a223-46e8-a315-6a66a222a9bb
+Error Number:207,State:1,Class:16
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'ApplicationPath'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:4bf19fef-a223-46e8-a315-6a66a222a9bb
+Error Number:207,State:1,Class:16
+2025-12-15 01:50:19.433 +05:30 [ERR] Error loading dashboard
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'ApplicationPath'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at ReleaseFlow.Controllers.DashboardController.Index() in C:\Users\ahari\source\ReleaseFlow\ReleaseFlow\Controllers\DashboardController.cs:line 47
+ClientConnectionId:4bf19fef-a223-46e8-a315-6a66a222a9bb
+Error Number:207,State:1,Class:16
+2025-12-15 01:50:22.816 +05:30 [ERR] Failed executing DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[ApplicationId], [t].[BackupPath], [t].[CanRollback], [t].[CompletedAt], [t].[DeployedByUserId], [t].[ErrorMessage], [t].[StartedAt], [t].[Status], [t].[Version], [t].[ZipFileName], [t].[ZipFileSize], [a].[Id], [a].[AppPoolName], [a].[ApplicationPath], [a].[CreateBackup], [a].[CreatedAt], [a].[DeploymentDelaySeconds], [a].[Description], [a].[Environment], [a].[HealthCheckUrl], [a].[IISSiteName], [a].[IsActive], [a].[Name], [a].[PhysicalPath], [a].[RunHealthCheck], [a].[StartAppPoolAfterDeployment], [a].[StartSiteAfterDeployment], [a].[StopAppPoolBeforeDeployment], [a].[StopSiteBeforeDeployment], [a].[UpdatedAt], [u].[Id], [u].[CreatedAt], [u].[DisplayName], [u].[Email], [u].[IsActive], [u].[LastLoginAt], [u].[RoleId], [u].[WindowsIdentity]
+FROM (
+    SELECT TOP(@__p_0) [d].[Id], [d].[ApplicationId], [d].[BackupPath], [d].[CanRollback], [d].[CompletedAt], [d].[DeployedByUserId], [d].[ErrorMessage], [d].[StartedAt], [d].[Status], [d].[Version], [d].[ZipFileName], [d].[ZipFileSize]
+    FROM [Deployments] AS [d]
+    ORDER BY [d].[StartedAt] DESC
+) AS [t]
+INNER JOIN [Applications] AS [a] ON [t].[ApplicationId] = [a].[Id]
+INNER JOIN [Users] AS [u] ON [t].[DeployedByUserId] = [u].[Id]
+ORDER BY [t].[StartedAt] DESC
+2025-12-15 01:50:22.818 +05:30 [ERR] An exception occurred while iterating over the results of a query for context type 'ReleaseFlow.Data.ApplicationDbContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'ApplicationPath'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:4bf19fef-a223-46e8-a315-6a66a222a9bb
+Error Number:207,State:1,Class:16
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'ApplicationPath'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:4bf19fef-a223-46e8-a315-6a66a222a9bb
+Error Number:207,State:1,Class:16
+2025-12-15 01:50:22.844 +05:30 [ERR] Error loading dashboard
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'ApplicationPath'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at ReleaseFlow.Controllers.DashboardController.Index() in C:\Users\ahari\source\ReleaseFlow\ReleaseFlow\Controllers\DashboardController.cs:line 47
+ClientConnectionId:4bf19fef-a223-46e8-a315-6a66a222a9bb
+Error Number:207,State:1,Class:16
+2025-12-15 01:52:12.452 +05:30 [INF] Database initialized successfully
+2025-12-15 01:52:12.629 +05:30 [INF] ReleaseFlow application starting
+2025-12-15 01:52:12.897 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-15 01:52:12.899 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-15 01:52:12.940 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-15 01:52:12.941 +05:30 [INF] Hosting environment: Development
+2025-12-15 01:52:12.941 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-15 01:52:14.885 +05:30 [ERR] Failed executing DbCommand (9ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[ApplicationId], [t].[BackupPath], [t].[CanRollback], [t].[CompletedAt], [t].[DeployedByUserId], [t].[ErrorMessage], [t].[StartedAt], [t].[Status], [t].[Version], [t].[ZipFileName], [t].[ZipFileSize], [a].[Id], [a].[AppPoolName], [a].[ApplicationPath], [a].[CreateBackup], [a].[CreatedAt], [a].[DeploymentDelaySeconds], [a].[Description], [a].[Environment], [a].[HealthCheckUrl], [a].[IISSiteName], [a].[IsActive], [a].[Name], [a].[PhysicalPath], [a].[RunHealthCheck], [a].[StartAppPoolAfterDeployment], [a].[StartSiteAfterDeployment], [a].[StopAppPoolBeforeDeployment], [a].[StopSiteBeforeDeployment], [a].[UpdatedAt], [u].[Id], [u].[CreatedAt], [u].[DisplayName], [u].[Email], [u].[IsActive], [u].[LastLoginAt], [u].[RoleId], [u].[WindowsIdentity]
+FROM (
+    SELECT TOP(@__p_0) [d].[Id], [d].[ApplicationId], [d].[BackupPath], [d].[CanRollback], [d].[CompletedAt], [d].[DeployedByUserId], [d].[ErrorMessage], [d].[StartedAt], [d].[Status], [d].[Version], [d].[ZipFileName], [d].[ZipFileSize]
+    FROM [Deployments] AS [d]
+    ORDER BY [d].[StartedAt] DESC
+) AS [t]
+INNER JOIN [Applications] AS [a] ON [t].[ApplicationId] = [a].[Id]
+INNER JOIN [Users] AS [u] ON [t].[DeployedByUserId] = [u].[Id]
+ORDER BY [t].[StartedAt] DESC
+2025-12-15 01:52:14.919 +05:30 [ERR] An exception occurred while iterating over the results of a query for context type 'ReleaseFlow.Data.ApplicationDbContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'ApplicationPath'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:39b85e5b-54e4-4087-bab1-8e7fccec0a69
+Error Number:207,State:1,Class:16
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'ApplicationPath'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:39b85e5b-54e4-4087-bab1-8e7fccec0a69
+Error Number:207,State:1,Class:16
+2025-12-15 01:52:14.994 +05:30 [ERR] Error loading dashboard
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'ApplicationPath'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at ReleaseFlow.Controllers.DashboardController.Index() in C:\Users\ahari\source\ReleaseFlow\ReleaseFlow\Controllers\DashboardController.cs:line 47
+ClientConnectionId:39b85e5b-54e4-4087-bab1-8e7fccec0a69
+Error Number:207,State:1,Class:16
+2025-12-15 01:52:17.826 +05:30 [ERR] Failed executing DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[ApplicationId], [t].[BackupPath], [t].[CanRollback], [t].[CompletedAt], [t].[DeployedByUserId], [t].[ErrorMessage], [t].[StartedAt], [t].[Status], [t].[Version], [t].[ZipFileName], [t].[ZipFileSize], [a].[Id], [a].[AppPoolName], [a].[ApplicationPath], [a].[CreateBackup], [a].[CreatedAt], [a].[DeploymentDelaySeconds], [a].[Description], [a].[Environment], [a].[HealthCheckUrl], [a].[IISSiteName], [a].[IsActive], [a].[Name], [a].[PhysicalPath], [a].[RunHealthCheck], [a].[StartAppPoolAfterDeployment], [a].[StartSiteAfterDeployment], [a].[StopAppPoolBeforeDeployment], [a].[StopSiteBeforeDeployment], [a].[UpdatedAt], [u].[Id], [u].[CreatedAt], [u].[DisplayName], [u].[Email], [u].[IsActive], [u].[LastLoginAt], [u].[RoleId], [u].[WindowsIdentity]
+FROM (
+    SELECT TOP(@__p_0) [d].[Id], [d].[ApplicationId], [d].[BackupPath], [d].[CanRollback], [d].[CompletedAt], [d].[DeployedByUserId], [d].[ErrorMessage], [d].[StartedAt], [d].[Status], [d].[Version], [d].[ZipFileName], [d].[ZipFileSize]
+    FROM [Deployments] AS [d]
+    ORDER BY [d].[StartedAt] DESC
+) AS [t]
+INNER JOIN [Applications] AS [a] ON [t].[ApplicationId] = [a].[Id]
+INNER JOIN [Users] AS [u] ON [t].[DeployedByUserId] = [u].[Id]
+ORDER BY [t].[StartedAt] DESC
+2025-12-15 01:52:17.827 +05:30 [ERR] An exception occurred while iterating over the results of a query for context type 'ReleaseFlow.Data.ApplicationDbContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'ApplicationPath'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:39b85e5b-54e4-4087-bab1-8e7fccec0a69
+Error Number:207,State:1,Class:16
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'ApplicationPath'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:39b85e5b-54e4-4087-bab1-8e7fccec0a69
+Error Number:207,State:1,Class:16
+2025-12-15 01:52:17.859 +05:30 [ERR] Error loading dashboard
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'ApplicationPath'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at ReleaseFlow.Controllers.DashboardController.Index() in C:\Users\ahari\source\ReleaseFlow\ReleaseFlow\Controllers\DashboardController.cs:line 47
+ClientConnectionId:39b85e5b-54e4-4087-bab1-8e7fccec0a69
+Error Number:207,State:1,Class:16
+2025-12-15 01:53:05.300 +05:30 [ERR] Failed executing DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Roles] AS [r]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-12-15 01:53:05.349 +05:30 [ERR] An exception occurred while iterating over the results of a query for context type 'ReleaseFlow.Data.ApplicationDbContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Roles'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:36e14d59-917a-42ca-8457-8bbe86add072
+Error Number:208,State:1,Class:16
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Roles'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:36e14d59-917a-42ca-8457-8bbe86add072
+Error Number:208,State:1,Class:16
+2025-12-15 01:53:19.945 +05:30 [INF] Database initialized successfully
+2025-12-15 01:53:20.069 +05:30 [INF] ReleaseFlow application starting
+2025-12-15 01:53:20.271 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-15 01:53:20.271 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-15 01:53:20.307 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-15 01:53:20.308 +05:30 [INF] Hosting environment: Development
+2025-12-15 01:53:20.308 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-15 01:53:43.883 +05:30 [INF] User SuperAdmin logged in
+2025-12-15 01:54:36.615 +05:30 [INF] Deploying to: default/nextgen
+2025-12-15 01:54:36.661 +05:30 [INF] Site default stopped successfully
+2025-12-15 01:54:36.699 +05:30 [INF] App pool default stopped successfully
+2025-12-15 01:54:40.202 +05:30 [INF] Backup created successfully: C:\ReleaseFlow\Backups\New_Calendar\New_Calendar_1_20251214_202438.zip
+2025-12-15 01:54:40.210 +05:30 [INF] Detected nested structure, using: C:\Users\ahari\AppData\Local\Temp\ReleaseFlow_546da90c-586a-42ab-bfc3-f0dd9680c6ef\IT-Company-Website-main
+2025-12-15 01:54:40.210 +05:30 [INF] Deploying from: C:\Users\ahari\AppData\Local\Temp\ReleaseFlow_546da90c-586a-42ab-bfc3-f0dd9680c6ef\IT-Company-Website-main
+2025-12-15 01:54:40.344 +05:30 [INF] App pool default started successfully
+2025-12-15 01:54:40.367 +05:30 [INF] Site default started successfully
+2025-12-15 01:54:43.376 +05:30 [INF] Deployment 1 completed successfully
+2025-12-15 01:54:43.440 +05:30 [INF] Audit log created: Deploy on Deployment by user 1
+2025-12-15 01:55:38.656 +05:30 [INF] Deploying to: default/
+2025-12-15 01:55:38.695 +05:30 [INF] Site default stopped successfully
+2025-12-15 01:55:38.732 +05:30 [INF] App pool default stopped successfully
+2025-12-15 01:56:06.476 +05:30 [INF] Backup created successfully: C:\ReleaseFlow\Backups\New_Calendar\New_Calendar_2_20251214_202540.zip
+2025-12-15 01:56:06.482 +05:30 [INF] Detected nested structure, using: C:\Users\ahari\AppData\Local\Temp\ReleaseFlow_d34825a8-306d-48fa-9f1b-ada0ceff0436\IT-Company-Website-main
+2025-12-15 01:56:06.482 +05:30 [INF] Deploying from: C:\Users\ahari\AppData\Local\Temp\ReleaseFlow_d34825a8-306d-48fa-9f1b-ada0ceff0436\IT-Company-Website-main
+2025-12-15 01:56:06.664 +05:30 [INF] App pool default started successfully
+2025-12-15 01:56:06.685 +05:30 [INF] Site default started successfully
+2025-12-15 01:56:09.704 +05:30 [INF] Deployment 2 completed successfully
+2025-12-15 01:56:09.737 +05:30 [INF] Audit log created: Deploy on Deployment by user 1

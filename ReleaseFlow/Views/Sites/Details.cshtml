@@ -1,0 +1,190 @@
+@model ReleaseFlow.Services.IIS.SiteInfo
+@{
+    ViewData["Title"] = $"Site: {Model.Name}";
+}
+
+<div class="row mb-4">
+    <div class="col-md-8">
+        <h2><i class="bi bi-server"></i> @Model.Name</h2>
+        <p class="text-muted">IIS Site Details</p>
+    </div>
+    <div class="col-md-4 text-end">
+        <a asp-action="Index" class="btn btn-secondary">
+            <i class="bi bi-arrow-left"></i> Back to Sites
+        </a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card mb-3">
+            <div class="card-header">
+                <h5 class="mb-0">Site Information</h5>
+            </div>
+            <div class="card-body">
+                <table class="table table-sm">
+                    <tr>
+                        <th width="40%">Site Name:</th>
+                        <td><strong>@Model.Name</strong></td>
+                    </tr>
+                    <tr>
+                        <th>Site ID:</th>
+                        <td>@Model.Id</td>
+                    </tr>
+                    <tr>
+                        <th>Status:</th>
+                        <td>
+                            @if (Model.State == "Started")
+                            {
+                                <span class="badge bg-success"><i class="bi bi-play-fill"></i> Running</span>
+                            }
+                            else if (Model.State == "Stopped")
+                            {
+                                <span class="badge bg-danger"><i class="bi bi-stop-fill"></i> Stopped</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-warning">@Model.State</span>
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Application Pool:</th>
+                        <td><code>@Model.AppPoolName</code></td>
+                    </tr>
+                    <tr>
+                        <th>Physical Path:</th>
+                        <td><small>@Model.PhysicalPath</small></td>
+                    </tr>
+                </table>
+
+                <div class="d-grid gap-2 mt-3">
+                    @if (Model.State == "Stopped")
+                    {
+                        <form asp-action="Start" asp-route-name="@Model.Name" method="post">
+                            <button type="submit" class="btn btn-success w-100">
+                                <i class="bi bi-play-fill"></i> Start Site
+                            </button>
+                        </form>
+                    }
+                    else if (Model.State == "Started")
+                    {
+                        <form asp-action="Stop" asp-route-name="@Model.Name" method="post">
+                            <button type="submit" class="btn btn-danger w-100">
+                                <i class="bi bi-stop-fill"></i> Stop Site
+                            </button>
+                        </form>
+                        <form asp-action="Restart" asp-route-name="@Model.Name" method="post">
+                            <button type="submit" class="btn btn-warning w-100">
+                                <i class="bi bi-arrow-clockwise"></i> Restart Site
+                            </button>
+                        </form>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Bindings</h5>
+            </div>
+            <div class="card-body">
+                @if (Model.Bindings.Any())
+                {
+                    <div class="list-group">
+                        @foreach (var binding in Model.Bindings)
+                        {
+                            <div class="list-group-item">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h6 class="mb-1">@binding.Protocol</h6>
+                                    <small>
+                                        @if (binding.Protocol.Equals("https", StringComparison.OrdinalIgnoreCase))
+                                        {
+                                            <span class="badge bg-success">Secure</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-secondary">@binding.Protocol.ToUpper()</span>
+                                        }
+                                    </small>
+                                </div>
+                                <p class="mb-1">
+                                    <code>@binding.BindingInformation</code>
+                                </p>
+                                @if (!string.IsNullOrEmpty(binding.HostName))
+                                {
+                                    <small class="text-muted">Host: @binding.HostName</small>
+                                }
+                            </div>
+                        }
+                    </div>
+                }
+                else
+                {
+                    <p class="text-muted">No bindings configured</p>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header bg-white border-bottom">
+                <h5 class="mb-0"><i class="bi bi-folder-symlink"></i> Nested Applications</h5>
+            </div>
+            <div class="card-body">
+                @if (Model.Applications.Any())
+                {
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Application Path</th>
+                                    <th>Physical Path</th>
+                                    <th>Application Pool</th>
+                                    <th>Protocols</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var app in Model.Applications)
+                                {
+                                    <tr>
+                                        <td>
+                                            <strong><i class="bi bi-folder"></i> @app.Path</strong>
+                                        </td>
+                                        <td>
+                                            <small class="text-muted">@app.PhysicalPath</small>
+                                        </td>
+                                        <td>
+                                            <code>@app.AppPoolName</code>
+                                        </td>
+                                        <td>
+                                            @if (app.EnabledProtocols)
+                                            {
+                                                <span class="badge bg-success-subtle text-success">Enabled</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="badge bg-secondary-subtle text-secondary">Disabled</span>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+                else
+                {
+                    <div class="alert alert-info mb-0">
+                        <i class="bi bi-info-circle"></i> No nested applications found. This site only has the root application.
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

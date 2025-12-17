@@ -1,0 +1,29 @@
+namespace ReleaseFlow.Models;
+
+public class Application
+{
+    public int Id { get; set; }
+    public string Name { get; set; } = string.Empty;
+    public string Description { get; set; } = string.Empty;
+    public string IISSiteName { get; set; } = string.Empty;
+    public string AppPoolName { get; set; } = string.Empty;
+    public string PhysicalPath { get; set; } = string.Empty;
+    public string Environment { get; set; } = string.Empty; // Dev, Staging, Production
+    public string? HealthCheckUrl { get; set; }
+    public string ApplicationPath { get; set; } = "/"; // IIS Application Path (e.g., "/" or "/enlink")
+    public bool IsActive { get; set; } = true;
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    public DateTime? UpdatedAt { get; set; }
+    
+    // Deployment Configuration
+    public bool StopSiteBeforeDeployment { get; set; } = true;
+    public bool StopAppPoolBeforeDeployment { get; set; } = true;
+    public bool StartAppPoolAfterDeployment { get; set; } = true;
+    public bool StartSiteAfterDeployment { get; set; } = true;
+    public bool CreateBackup { get; set; } = true;
+    public bool RunHealthCheck { get; set; } = true;
+    public int DeploymentDelaySeconds { get; set; } = 2; // Delay after stopping services
+    
+    // Navigation properties
+    public ICollection<Deployment> Deployments { get; set; } = new List<Deployment>();
+}

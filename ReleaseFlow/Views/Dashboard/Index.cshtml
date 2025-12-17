@@ -1,0 +1,192 @@
+@model DashboardViewModel
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="row mb-4">
+    <div class="col-12">
+        <h2 class="mb-1"><i class="bi bi-speedometer2"></i> Dashboard</h2>
+        <p class="text-muted">Overview of your IIS deployment environment</p>
+    </div>
+</div>
+
+<div class="row g-4 mb-4">
+    <div class="col-md-3">
+        <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                    <div>
+                        <h6 class="text-muted mb-0">Total IIS Sites</h6>
+                    </div>
+                    <div class="text-primary">
+                        <i class="bi bi-server" style="font-size: 1.5rem;"></i>
+                    </div>
+                </div>
+                <h2 class="mb-3">@Model.TotalSites</h2>
+                <div class="d-flex gap-2">
+                    <span class="badge bg-success-subtle text-success">@Model.RunningSites Running</span>
+                    <span class="badge bg-danger-subtle text-danger">@Model.StoppedSites Stopped</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                    <div>
+                        <h6 class="text-muted mb-0">Total Deployments</h6>
+                    </div>
+                    <div class="text-info">
+                        <i class="bi bi-cloud-upload" style="font-size: 1.5rem;"></i>
+                    </div>
+                </div>
+                <h2 class="mb-3">@Model.TotalDeployments</h2>
+                <div class="d-flex gap-2">
+                    <span class="badge bg-success-subtle text-success">@Model.SuccessfulDeployments Success</span>
+                    <span class="badge bg-danger-subtle text-danger">@Model.FailedDeployments Failed</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card h-100 border-0 shadow-sm">
+            <div class="card-header bg-white border-bottom">
+                <h6 class="mb-0"><i class="bi bi-hdd"></i> Server Storage</h6>
+            </div>
+            <div class="card-body">
+                @if (Model.Drives.Any())
+                {
+                    <div class="row g-3">
+                        @foreach (var drive in Model.Drives)
+                        {
+                            <div class="col-12">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <div>
+                                        <strong class="d-flex align-items-center gap-2">
+                                            <i class="bi bi-hdd-fill text-primary"></i>
+                                            @drive.Label (@drive.Name)
+                                        </strong>
+                                        <small class="text-muted">@drive.DriveType</small>
+                                    </div>
+                                    <div class="text-end">
+                                        <strong>@drive.FreeSpaceGB GB</strong>
+                                        <small class="text-muted d-block">of @drive.TotalSizeGB GB</small>
+                                    </div>
+                                </div>
+                                <div class="progress" style="height: 8px;">
+                                    <div class="progress-bar @(drive.UsedPercentage > 90 ? "bg-danger" : drive.UsedPercentage > 75 ? "bg-warning" : "bg-primary")" 
+                                         role="progressbar" 
+                                         style="width: @drive.UsedPercentage%"
+                                         aria-valuenow="@drive.UsedPercentage" 
+                                         aria-valuemin="0" 
+                                         aria-valuemax="100">
+                                    </div>
+                                </div>
+                                <small class="text-muted">@drive.UsedSpaceGB GB used (@drive.UsedPercentage%)</small>
+                            </div>
+                        }
+                    </div>
+                }
+                else
+                {
+                    <p class="text-muted mb-0">No drives available</p>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card border-0 shadow-sm">
+            <div class="card-header bg-white border-bottom d-flex justify-content-between align-items-center">
+                <h5 class="mb-0"><i class="bi bi-clock-history"></i> Recent Deployments</h5>
+                <a asp-controller="Deployments" asp-action="Deploy" class="btn btn-primary btn-sm">
+                    <i class="bi bi-cloud-upload"></i> New Deployment
+                </a>
+            </div>
+            <div class="card-body">
+                @if (Model.RecentDeployments.Any())
+                {
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Application</th>
+                                    <th>Version</th>
+                                    <th>Status</th>
+                                    <th>Deployed By</th>
+                                    <th>Started</th>
+                                    <th>Duration</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var deployment in Model.RecentDeployments)
+                                {
+                                    <tr>
+                                        <td>@deployment.Application.Name</td>
+                                        <td><code>@deployment.Version</code></td>
+                                        <td>
+                                            @if (deployment.Status == ReleaseFlow.Models.DeploymentStatus.Succeeded)
+                                            {
+                                                <span class="badge bg-success">Success</span>
+                                            }
+                                            else if (deployment.Status == ReleaseFlow.Models.DeploymentStatus.Failed)
+                                            {
+                                                <span class="badge bg-danger">Failed</span>
+                                            }
+                                            else if (deployment.Status == ReleaseFlow.Models.DeploymentStatus.InProgress)
+                                            {
+                                                <span class="badge bg-warning">In Progress</span>
+                                            }
+                                            else if (deployment.Status == ReleaseFlow.Models.DeploymentStatus.RolledBack)
+                                            {
+                                                <span class="badge bg-secondary">Rolled Back</span>
+                                            }
+                                        </td>
+                                        <td>@deployment.DeployedBy.DisplayName</td>
+                                        <td>@deployment.StartedAt.ToLocalTime().ToString("g")</td>
+                                        <td>
+                                            @if (deployment.CompletedAt.HasValue)
+                                            {
+                                                var duration = deployment.CompletedAt.Value - deployment.StartedAt;
+                                                <span>@duration.TotalSeconds.ToString("F1")s</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="text-muted">-</span>
+                                            }
+                                        </td>
+                                        <td>
+                                            <a asp-controller="Deployments" asp-action="Details" asp-route-id="@deployment.Id" 
+                                               class="btn btn-sm btn-outline-primary">
+                                                <i class="bi bi-eye"></i> View
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+                else
+                {
+                    <p class="text-muted text-center py-4">No deployments yet</p>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Auto-refresh dashboard every 30 seconds
+        setTimeout(function() {
+            location.reload();
+        }, 30000);
+    </script>
+}

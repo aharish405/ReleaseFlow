@@ -1,0 +1,97 @@
+@model ReleaseFlow.Models.Application
+@{
+    ViewData["Title"] = Model.Id == 0 ? "Register Application" : "Edit Application";
+}
+
+<div class="row mb-4">
+    <div class="col-12">
+        <h2><i class="bi bi-app-indicator"></i> @ViewData["Title"]</h2>
+        <p class="text-muted">Configure application settings for deployment</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <div class="card">
+            <div class="card-body">
+                <form asp-action="@(Model.Id == 0 ? "Create" : "Edit")" method="post">
+                    @if (Model.Id > 0)
+                    {
+                        <input type="hidden" asp-for="Id" />
+                        <input type="hidden" asp-for="CreatedAt" />
+                        <input type="hidden" asp-for="IsActive" />
+                    }
+
+                    <div class="mb-3">
+                        <label asp-for="Name" class="form-label">Application Name *</label>
+                        <input asp-for="Name" class="form-control" placeholder="My Application" required />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Description" class="form-label">Description</label>
+                        <textarea asp-for="Description" class="form-control" rows="2" 
+                                  placeholder="Brief description of the application"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Environment" class="form-label">Environment *</label>
+                        <select asp-for="Environment" class="form-select" required>
+                            <option value="">-- Select Environment --</option>
+                            <option value="Development">Development</option>
+                            <option value="Staging">Staging</option>
+                            <option value="Production">Production</option>
+                        </select>
+                        <span asp-validation-for="Environment" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="IISSiteName" class="form-label">IIS Site Name *</label>
+                        <input asp-for="IISSiteName" class="form-control" 
+                               placeholder="Default Web Site" required />
+                        <div class="form-text">The name of the IIS site where this application will be deployed</div>
+                        <span asp-validation-for="IISSiteName" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="AppPoolName" class="form-label">Application Pool Name *</label>
+                        <input asp-for="AppPoolName" class="form-control" 
+                               placeholder="DefaultAppPool" required />
+                        <div class="form-text">The IIS application pool for this site</div>
+                        <span asp-validation-for="AppPoolName" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="PhysicalPath" class="form-label">Physical Path *</label>
+                        <input asp-for="PhysicalPath" class="form-control" 
+                               placeholder="C:\inetpub\wwwroot\MyApp" required />
+                        <div class="form-text">The physical directory where application files will be deployed</div>
+                        <span asp-validation-for="PhysicalPath" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="HealthCheckUrl" class="form-label">Health Check URL</label>
+                        <input asp-for="HealthCheckUrl" class="form-control" type="url"
+                               placeholder="http://localhost/health" />
+                        <div class="form-text">Optional URL to verify the application is running after deployment</div>
+                        <span asp-validation-for="HealthCheckUrl" class="text-danger"></span>
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="bi bi-save"></i> @(Model.Id == 0 ? "Register Application" : "Update Application")
+                        </button>
+                        <a asp-action="Index" class="btn btn-outline-secondary">
+                            <i class="bi bi-x-circle"></i> Cancel
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

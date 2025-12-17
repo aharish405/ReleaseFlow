@@ -1,0 +1,205 @@
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using ReleaseFlow.Data;
+using ReleaseFlow.Services;
+using ReleaseFlow.Services.Deployment;
+
+namespace ReleaseFlow.Controllers;
+
+[Authorize(Policy = "DeployerOrAbove")]
+public class DeploymentsController : Controller
+{
+    private readonly ApplicationDbContext _context;
+    private readonly IDeploymentService _deploymentService;
+    private readonly IRollbackService _rollbackService;
+    private readonly IAuditService _auditService;
+    private readonly ILogger<DeploymentsController> _logger;
+    private readonly IWebHostEnvironment _environment;
+
+    public DeploymentsController(
+        ApplicationDbContext context,
+        IDeploymentService deploymentService,
+        IRollbackService rollbackService,
+        IAuditService auditService,
+        ILogger<DeploymentsController> logger,
+        IWebHostEnvironment environment)
+    {
+        _context = context;
+        _deploymentService = deploymentService;
+        _rollbackService = rollbackService;
+        _auditService = auditService;
+        _logger = logger;
+        _environment = environment;
+    }
+
+    public async Task<IActionResult> Index(int? applicationId)
+    {
+        try
+        {
+            var deployments = await _deploymentService.GetDeploymentHistoryAsync(applicationId);
+            ViewBag.Applications = await _context.Applications.Where(a => a.IsActive).ToListAsync();
+            ViewBag.SelectedApplicationId = applicationId;
+            return View(deployments);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error loading deployment history");
+            TempData["Error"] = "Failed to load deployment history";
+            ViewBag.Applications = await _context.Applications.Where(a => a.IsActive).ToListAsync();
+            ViewBag.SelectedApplicationId = applicationId;
+            return View(new List<Models.Deployment>());
+        }
+    }
+
+    public async Task<IActionResult> Details(int id)
+    {
+        try
+        {
+            var deployment = await _deploymentService.GetDeploymentByIdAsync(id);
+            if (deployment == null)
+            {
+                return NotFound();
+            }
+
+            return View(deployment);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error loading deployment details for {DeploymentId}", id);
+            return NotFound();
+        }
+    }
+
+    public async Task<IActionResult> Deploy()
+    {
+        ViewBag.Applications = await _context.Applications.Where(a => a.IsActive).ToListAsync();
+        return View();
+    }
+
+    [HttpPost]
+    [RequestSizeLimit(524288000)] // 500 MB
+    [RequestFormLimits(MultipartBodyLengthLimit = 524288000)]
+    public async Task<IActionResult> Deploy(int applicationId, string version, IFormFile zipFile)
+    {
+        ViewBag.Applications = await _context.Applications.Where(a => a.IsActive).ToListAsync();
+
+        if (zipFile == null || zipFile.Length == 0)
+        {
+            ModelState.AddModelError("zipFile", "Please select a ZIP file to upload");
+            return View();
+        }
+
+        if (!zipFile.FileName.EndsWith(".zip", StringComparison.OrdinalIgnoreCase))
+        {
+            ModelState.AddModelError("zipFile", "Only ZIP files are allowed");
+            return View();
+        }
+
+        if (string.IsNullOrWhiteSpace(version))
+        {
+            ModelState.AddModelError("version", "Version is required");
+            return View();
+        }
+
+        try
+        {
+            // Save uploaded file to temp location
+            var uploadsPath = Path.Combine(_environment.ContentRootPath, "Uploads");
+            if (!Directory.Exists(uploadsPath))
+            {
+                Directory.CreateDirectory(uploadsPath);
+            }
+
+            var fileName = $"{Guid.NewGuid()}_{zipFile.FileName}";
+            var filePath = Path.Combine(uploadsPath, fileName);
+
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                await zipFile.CopyToAsync(stream);
+            }
+
+            // Get current user ID (simplified - should get from database based on Windows identity)
+            var userId = 1; // TODO: Get actual user ID
+
+            // Execute deployment
+            var result = await _deploymentService.DeployAsync(applicationId, filePath, version, userId);
+
+            if (result.Success)
+            {
+                await _auditService.LogAsync(
+                    Models.AuditActions.Deploy,
+                    "Deployment",
+                    result.DeploymentId?.ToString(),
+                    $"Deployment {version} completed successfully",
+                    userId,
+                    GetClientIpAddress());
+
+                TempData["Success"] = "Deployment completed successfully";
+                return RedirectToAction(nameof(Details), new { id = result.DeploymentId });
+            }
+            else
+            {
+                TempData["Error"] = $"Deployment failed: {result.Message}";
+                if (!string.IsNullOrEmpty(result.ErrorDetails))
+                {
+                    ViewBag.ErrorDetails = result.ErrorDetails;
+                }
+                return View();
+            }
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error during deployment");
+            TempData["Error"] = $"Deployment error: {ex.Message}";
+            return View();
+        }
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Rollback(int id)
+    {
+        try
+        {
+            var canRollback = await _rollbackService.CanRollbackAsync(id);
+            if (!canRollback)
+            {
+                TempData["Error"] = "This deployment cannot be rolled back";
+                return RedirectToAction(nameof(Details), new { id });
+            }
+
+            var userId = 1; // TODO: Get actual user ID
+            var result = await _rollbackService.RollbackDeploymentAsync(id, userId);
+
+            if (result.Success)
+            {
+                await _auditService.LogAsync(
+                    Models.AuditActions.Rollback,
+                    "Deployment",
+                    id.ToString(),
+                    $"Deployment rolled back successfully",
+                    userId,
+                    GetClientIpAddress());
+
+                TempData["Success"] = "Rollback completed successfully";
+            }
+            else
+            {
+                TempData["Error"] = $"Rollback failed: {result.Message}";
+            }
+
+            return RedirectToAction(nameof(Details), new { id });
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error during rollback for deployment {DeploymentId}", id);
+            TempData["Error"] = $"Rollback error: {ex.Message}";
+            return RedirectToAction(nameof(Details), new { id });
+        }
+    }
+
+    private string GetClientIpAddress()
+    {
+        return HttpContext.Connection.RemoteIpAddress?.ToString() ?? "Unknown";
+    }
+}

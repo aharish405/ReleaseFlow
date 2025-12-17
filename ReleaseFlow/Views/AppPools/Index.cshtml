@@ -1,0 +1,89 @@
+@model IEnumerable<ReleaseFlow.Services.IIS.AppPoolInfo>
+@{
+    ViewData["Title"] = "Application Pools";
+}
+
+<div class="row mb-4">
+    <div class="col-12">
+        <h2><i class="bi bi-layers"></i> Application Pools</h2>
+        <p class="text-muted">Manage IIS application pools</p>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        @if (Model.Any())
+        {
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Pool Name</th>
+                            <th>Status</th>
+                            <th>.NET Version</th>
+                            <th>Pipeline Mode</th>
+                            <th>Identity</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var pool in Model)
+                        {
+                            <tr>
+                                <td><strong>@pool.Name</strong></td>
+                                <td>
+                                    @if (pool.State == "Started")
+                                    {
+                                        <span class="badge bg-success"><i class="bi bi-play-fill"></i> Running</span>
+                                    }
+                                    else if (pool.State == "Stopped")
+                                    {
+                                        <span class="badge bg-danger"><i class="bi bi-stop-fill"></i> Stopped</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-warning">@pool.State</span>
+                                    }
+                                </td>
+                                <td><code>@pool.ManagedRuntimeVersion</code></td>
+                                <td>@pool.ManagedPipelineMode</td>
+                                <td><small>@pool.IdentityType</small></td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        @if (pool.State == "Started")
+                                        {
+                                            <form asp-action="Recycle" asp-route-name="@pool.Name" method="post" class="d-inline">
+                                                <button type="submit" class="btn btn-sm btn-warning" title="Recycle">
+                                                    <i class="bi bi-arrow-clockwise"></i>
+                                                </button>
+                                            </form>
+                                            <form asp-action="Stop" asp-route-name="@pool.Name" method="post" class="d-inline">
+                                                <button type="submit" class="btn btn-sm btn-danger" title="Stop">
+                                                    <i class="bi bi-stop-fill"></i>
+                                                </button>
+                                            </form>
+                                        }
+                                        else if (pool.State == "Stopped")
+                                        {
+                                            <form asp-action="Start" asp-route-name="@pool.Name" method="post" class="d-inline">
+                                                <button type="submit" class="btn btn-sm btn-success" title="Start">
+                                                    <i class="bi bi-play-fill"></i>
+                                                </button>
+                                            </form>
+                                        }
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-info">
+                <i class="bi bi-info-circle"></i> No application pools found on this server.
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,118 @@
+@model IEnumerable<ReleaseFlow.Models.Deployment>
+@{
+    ViewData["Title"] = "Deployment History";
+}
+
+<div class="row mb-4">
+    <div class="col-md-8">
+        <h2><i class="bi bi-clock-history"></i> Deployment History</h2>
+        <p class="text-muted">View all deployment activities</p>
+    </div>
+    <div class="col-md-4 text-end">
+        <a asp-action="Deploy" class="btn btn-primary">
+            <i class="bi bi-cloud-upload"></i> New Deployment
+        </a>
+    </div>
+</div>
+
+<div class="card mb-3">
+    <div class="card-body">
+        <form method="get" class="row g-3">
+            <div class="col-md-6">
+                <label class="form-label">Filter by Application</label>
+                <select name="applicationId" class="form-select">
+                    <option value="">All Applications</option>
+                    @if (ViewBag.Applications != null)
+                    {
+                        @foreach (var app in ViewBag.Applications as List<ReleaseFlow.Models.Application>)
+                        {
+                            <option value="@app.Id" selected="@(app.Id == ViewBag.SelectedApplicationId)">@app.Name</option>
+                        }
+                    }
+                </select>
+            </div>
+            <div class="col-md-6 d-flex align-items-end">
+                <button type="submit" class="btn btn-secondary">
+                    <i class="bi bi-funnel"></i> Filter
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        @if (Model.Any())
+        {
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Application</th>
+                            <th>Version</th>
+                            <th>Status</th>
+                            <th>Deployed By</th>
+                            <th>Started</th>
+                            <th>Duration</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var deployment in Model)
+                        {
+                            <tr>
+                                <td><strong>#@deployment.Id</strong></td>
+                                <td>@deployment.Application.Name</td>
+                                <td><code>@deployment.Version</code></td>
+                                <td>
+                                    @if (deployment.Status == ReleaseFlow.Models.DeploymentStatus.Succeeded)
+                                    {
+                                        <span class="badge bg-success"><i class="bi bi-check-circle"></i> Success</span>
+                                    }
+                                    else if (deployment.Status == ReleaseFlow.Models.DeploymentStatus.Failed)
+                                    {
+                                        <span class="badge bg-danger"><i class="bi bi-x-circle"></i> Failed</span>
+                                    }
+                                    else if (deployment.Status == ReleaseFlow.Models.DeploymentStatus.InProgress)
+                                    {
+                                        <span class="badge bg-warning"><i class="bi bi-hourglass-split"></i> In Progress</span>
+                                    }
+                                    else if (deployment.Status == ReleaseFlow.Models.DeploymentStatus.RolledBack)
+                                    {
+                                        <span class="badge bg-secondary"><i class="bi bi-arrow-counterclockwise"></i> Rolled Back</span>
+                                    }
+                                </td>
+                                <td>@deployment.DeployedBy.DisplayName</td>
+                                <td>@deployment.StartedAt.ToLocalTime().ToString("g")</td>
+                                <td>
+                                    @if (deployment.CompletedAt.HasValue)
+                                    {
+                                        var duration = deployment.CompletedAt.Value - deployment.StartedAt;
+                                        <span>@duration.TotalSeconds.ToString("F1")s</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted">-</span>
+                                    }
+                                </td>
+                                <td>
+                                    <a asp-action="Details" asp-route-id="@deployment.Id" class="btn btn-sm btn-outline-primary">
+                                        <i class="bi bi-eye"></i> View
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-info text-center">
+                <i class="bi bi-info-circle"></i> No deployments found. 
+                <a asp-action="Deploy" class="alert-link">Create your first deployment</a>
+            </div>
+        }
+    </div>
+</div>

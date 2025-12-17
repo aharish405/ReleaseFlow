@@ -1,0 +1,93 @@
+@{
+    ViewData["Title"] = "New Deployment";
+}
+
+<div class="row mb-4">
+    <div class="col-12">
+        <h2><i class="bi bi-cloud-upload"></i> New Deployment</h2>
+        <p class="text-muted">Deploy a new version of your application</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">Deployment Wizard</h5>
+            </div>
+            <div class="card-body">
+                <form asp-action="Deploy" method="post" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="applicationId" class="form-label">Application *</label>
+                        <select name="applicationId" id="applicationId" class="form-select" required>
+                            <option value="">-- Select Application --</option>
+                            @foreach (var app in ViewBag.Applications as List<ReleaseFlow.Models.Application>)
+                            {
+                                <option value="@app.Id">@app.Name (@app.Environment)</option>
+                            }
+                        </select>
+                        <div class="form-text">Select the application to deploy</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="version" class="form-label">Version *</label>
+                        <input type="text" name="version" id="version" class="form-control" 
+                               placeholder="e.g., 1.0.0, v2.3.1" required />
+                        <div class="form-text">Enter the version number for this deployment</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="zipFile" class="form-label">ZIP Package *</label>
+                        <input type="file" name="zipFile" id="zipFile" class="form-control" 
+                               accept=".zip" required />
+                        <div class="form-text">Upload a ZIP file containing your application files (max 500MB)</div>
+                    </div>
+
+                    @if (ViewBag.ErrorDetails != null)
+                    {
+                        <div class="alert alert-danger">
+                            <h6>Deployment Error Details:</h6>
+                            <pre>@ViewBag.ErrorDetails</pre>
+                        </div>
+                    }
+
+                    <div class="alert alert-warning">
+                        <i class="bi bi-exclamation-triangle"></i>
+                        <strong>Important:</strong> The deployment process will:
+                        <ul class="mb-0 mt-2">
+                            <li>Stop the IIS site and application pool</li>
+                            <li>Create a backup of the current deployment</li>
+                            <li>Deploy the new version</li>
+                            <li>Restart the site and app pool</li>
+                            <li>Perform health checks</li>
+                        </ul>
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <i class="bi bi-cloud-upload"></i> Deploy Now
+                        </button>
+                        <a asp-action="Index" class="btn btn-outline-secondary">
+                            <i class="bi bi-x-circle"></i> Cancel
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.getElementById('zipFile').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const maxSize = 500 * 1024 * 1024; // 500MB
+                if (file.size > maxSize) {
+                    alert('File size exceeds 500MB limit');
+                    e.target.value = '';
+                }
+            }
+        });
+    </script>
+}

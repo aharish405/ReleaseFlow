@@ -1,0 +1,94 @@
+@model IEnumerable<ReleaseFlow.Models.Application>
+@{
+    ViewData["Title"] = "Applications";
+}
+
+<div class="row mb-4">
+    <div class="col-md-8">
+        <h2><i class="bi bi-app-indicator"></i> Applications</h2>
+        <p class="text-muted">Manage registered applications for deployment</p>
+    </div>
+    <div class="col-md-4 text-end">
+        <a asp-action="Create" class="btn btn-primary">
+            <i class="bi bi-plus-circle"></i> Register Application
+        </a>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        @if (Model.Any())
+        {
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Environment</th>
+                            <th>IIS Site</th>
+                            <th>App Path</th>
+                            <th>App Pool</th>
+                            <th>Physical Path</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var app in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <strong>@app.Name</strong>
+                                    @if (!string.IsNullOrEmpty(app.Description))
+                                    {
+                                        <br />
+                                        <small class="text-muted">@app.Description</small>
+                                    }
+                                </td>
+                                <td>
+                                    @if (app.Environment == "Production")
+                                    {
+                                        <span class="badge bg-danger">@app.Environment</span>
+                                    }
+                                    else if (app.Environment == "Staging")
+                                    {
+                                        <span class="badge bg-warning">@app.Environment</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-info">@app.Environment</span>
+                                    }
+                                </td>
+                                <td><code>@app.IISSiteName</code></td>
+                                <td>
+                                    <code class="text-primary">@app.ApplicationPath</code>
+                                </td>
+                                <td><code>@app.AppPoolName</code></td>
+                                <td><small>@app.PhysicalPath</small></td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <a asp-action="Details" asp-route-id="@app.Id" class="btn btn-sm btn-outline-primary">
+                                            <i class="bi bi-eye"></i>
+                                        </a>
+                                        <a asp-action="Edit" asp-route-id="@app.Id" class="btn btn-sm btn-outline-secondary">
+                                            <i class="bi bi-pencil"></i>
+                                        </a>
+                                        <a asp-controller="Deployments" asp-action="Deploy" class="btn btn-sm btn-success">
+                                            <i class="bi bi-cloud-upload"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-info text-center">
+                <i class="bi bi-info-circle"></i> No applications registered yet. 
+                <a asp-action="Create" class="alert-link">Register your first application</a>
+            </div>
+        }
+    </div>
+</div>

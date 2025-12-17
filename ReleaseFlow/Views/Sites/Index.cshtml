@@ -1,0 +1,103 @@
+@model IEnumerable<ReleaseFlow.Services.IIS.SiteInfo>
+@{
+    ViewData["Title"] = "IIS Sites";
+}
+
+<div class="row mb-4">
+    <div class="col-12">
+        <h2><i class="bi bi-server"></i> IIS Sites</h2>
+        <p class="text-muted">Manage IIS websites and their lifecycle</p>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        @if (Model.Any())
+        {
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Site Name</th>
+                            <th>Status</th>
+                            <th>Bindings</th>
+                            <th>App Pool</th>
+                            <th>Physical Path</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var site in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <strong>@site.Name</strong>
+                                    <br />
+                                    <small class="text-muted">ID: @site.Id</small>
+                                </td>
+                                <td>
+                                    @if (site.State == "Started")
+                                    {
+                                        <span class="badge bg-success"><i class="bi bi-play-fill"></i> Running</span>
+                                    }
+                                    else if (site.State == "Stopped")
+                                    {
+                                        <span class="badge bg-danger"><i class="bi bi-stop-fill"></i> Stopped</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-warning">@site.State</span>
+                                    }
+                                </td>
+                                <td>
+                                    @foreach (var binding in site.Bindings)
+                                    {
+                                        <div>
+                                            <code>@binding.Protocol://@binding.BindingInformation</code>
+                                        </div>
+                                    }
+                                </td>
+                                <td><code>@site.AppPoolName</code></td>
+                                <td><small>@site.PhysicalPath</small></td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <a asp-action="Details" asp-route-name="@site.Name" class="btn btn-sm btn-outline-primary">
+                                            <i class="bi bi-eye"></i>
+                                        </a>
+                                        @if (site.State == "Stopped")
+                                        {
+                                            <form asp-action="Start" asp-route-name="@site.Name" method="post" class="d-inline">
+                                                <button type="submit" class="btn btn-sm btn-success" title="Start">
+                                                    <i class="bi bi-play-fill"></i>
+                                                </button>
+                                            </form>
+                                        }
+                                        else if (site.State == "Started")
+                                        {
+                                            <form asp-action="Stop" asp-route-name="@site.Name" method="post" class="d-inline">
+                                                <button type="submit" class="btn btn-sm btn-danger" title="Stop">
+                                                    <i class="bi bi-stop-fill"></i>
+                                                </button>
+                                            </form>
+                                            <form asp-action="Restart" asp-route-name="@site.Name" method="post" class="d-inline">
+                                                <button type="submit" class="btn btn-sm btn-warning" title="Restart">
+                                                    <i class="bi bi-arrow-clockwise"></i>
+                                                </button>
+                                            </form>
+                                        }
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-info">
+                <i class="bi bi-info-circle"></i> No IIS sites found on this server.
+            </div>
+        }
+    </div>
+</div>
