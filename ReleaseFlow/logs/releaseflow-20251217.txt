@@ -1,0 +1,356 @@
+2025-12-17 20:28:56.800 +05:30 [INF] Database initialized successfully
+2025-12-17 20:28:56.965 +05:30 [INF] ReleaseFlow application starting
+2025-12-17 20:28:57.366 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-17 20:28:57.368 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-17 20:28:57.414 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-17 20:28:57.415 +05:30 [INF] Hosting environment: Development
+2025-12-17 20:28:57.415 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-17 20:29:08.314 +05:30 [INF] User admin logged in
+2025-12-17 20:29:08.611 +05:30 [ERR] Error retrieving IIS sites
+System.UnauthorizedAccessException: Filename: redirection.config
+Error: Cannot read configuration file due to insufficient permissions
+
+
+   at Microsoft.Web.Administration.Interop.IAppHostAdminManager.GetAdminSection(String bstrSectionName, String bstrPath)
+   at Microsoft.Web.Administration.Configuration.GetSectionInternal(ConfigurationSection section, String sectionPath, String locationPath)
+   at Microsoft.Web.Administration.Configuration.GetSection(String sectionPath)
+   at Microsoft.Web.Administration.ServerManager.SitesSectionCreator()
+   at Microsoft.Web.Administration.Lazy.Initialize[T](T& target, CreateInstanceDelegate`1 valueFactory)
+   at Microsoft.Web.Administration.ServerManager.get_SitesSection()
+   at Microsoft.Web.Administration.ServerManager.SitesCollectionCreator()
+   at Microsoft.Web.Administration.Lazy.Initialize[T](T& target, CreateInstanceDelegate`1 valueFactory)
+   at Microsoft.Web.Administration.ServerManager.get_Sites()
+   at ReleaseFlow.Services.IIS.IISSiteService.<GetAllSitesAsync>b__2_0() in C:\Users\ahari\source\ReleaseFlow\ReleaseFlow\Services\IIS\IISSiteService.cs:line 24
+2025-12-17 20:29:32.069 +05:30 [INF] Database initialized successfully
+2025-12-17 20:29:32.291 +05:30 [INF] ReleaseFlow application starting
+2025-12-17 20:29:32.490 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-17 20:29:32.492 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-17 20:29:32.527 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-17 20:29:32.527 +05:30 [INF] Hosting environment: Development
+2025-12-17 20:29:32.527 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-17 20:29:34.807 +05:30 [ERR] Error retrieving IIS sites
+System.UnauthorizedAccessException: Filename: redirection.config
+Error: Cannot read configuration file due to insufficient permissions
+
+
+   at Microsoft.Web.Administration.Interop.IAppHostAdminManager.GetAdminSection(String bstrSectionName, String bstrPath)
+   at Microsoft.Web.Administration.Configuration.GetSectionInternal(ConfigurationSection section, String sectionPath, String locationPath)
+   at Microsoft.Web.Administration.Configuration.GetSection(String sectionPath)
+   at Microsoft.Web.Administration.ServerManager.SitesSectionCreator()
+   at Microsoft.Web.Administration.Lazy.Initialize[T](T& target, CreateInstanceDelegate`1 valueFactory)
+   at Microsoft.Web.Administration.ServerManager.get_SitesSection()
+   at Microsoft.Web.Administration.ServerManager.SitesCollectionCreator()
+   at Microsoft.Web.Administration.Lazy.Initialize[T](T& target, CreateInstanceDelegate`1 valueFactory)
+   at Microsoft.Web.Administration.ServerManager.get_Sites()
+   at ReleaseFlow.Services.IIS.IISSiteService.<GetAllSitesAsync>b__2_0() in C:\Users\ahari\source\ReleaseFlow\ReleaseFlow\Services\IIS\IISSiteService.cs:line 24
+2025-12-17 20:29:41.631 +05:30 [ERR] Error loading dashboard
+System.UnauthorizedAccessException: Filename: redirection.config
+Error: Cannot read configuration file due to insufficient permissions
+
+
+   at Microsoft.Web.Administration.Interop.IAppHostAdminManager.GetAdminSection(String bstrSectionName, String bstrPath)
+   at Microsoft.Web.Administration.Configuration.GetSectionInternal(ConfigurationSection section, String sectionPath, String locationPath)
+   at Microsoft.Web.Administration.Configuration.GetSection(String sectionPath)
+   at Microsoft.Web.Administration.ServerManager.SitesSectionCreator()
+   at Microsoft.Web.Administration.Lazy.Initialize[T](T& target, CreateInstanceDelegate`1 valueFactory)
+   at Microsoft.Web.Administration.ServerManager.get_SitesSection()
+   at Microsoft.Web.Administration.ServerManager.SitesCollectionCreator()
+   at Microsoft.Web.Administration.Lazy.Initialize[T](T& target, CreateInstanceDelegate`1 valueFactory)
+   at Microsoft.Web.Administration.ServerManager.get_Sites()
+   at ReleaseFlow.Services.IIS.IISSiteService.<GetAllSitesAsync>b__2_0() in C:\Users\ahari\source\ReleaseFlow\ReleaseFlow\Services\IIS\IISSiteService.cs:line 24
+   at System.Threading.Tasks.Task`1.InnerInvoke()
+   at System.Threading.ExecutionContext.RunFromThreadPoolDispatchLoop(Thread threadPoolThread, ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunFromThreadPoolDispatchLoop(Thread threadPoolThread, ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at ReleaseFlow.Services.IIS.IISSiteService.GetAllSitesAsync() in C:\Users\ahari\source\ReleaseFlow\ReleaseFlow\Services\IIS\IISSiteService.cs:line 16
+   at ReleaseFlow.Controllers.DashboardController.Index() in C:\Users\ahari\source\ReleaseFlow\ReleaseFlow\Controllers\DashboardController.cs:line 34
+2025-12-17 20:29:49.716 +05:30 [ERR] Error retrieving IIS sites
+System.UnauthorizedAccessException: Filename: redirection.config
+Error: Cannot read configuration file due to insufficient permissions
+
+
+   at Microsoft.Web.Administration.Interop.IAppHostAdminManager.GetAdminSection(String bstrSectionName, String bstrPath)
+   at Microsoft.Web.Administration.Configuration.GetSectionInternal(ConfigurationSection section, String sectionPath, String locationPath)
+   at Microsoft.Web.Administration.Configuration.GetSection(String sectionPath)
+   at Microsoft.Web.Administration.ServerManager.SitesSectionCreator()
+   at Microsoft.Web.Administration.Lazy.Initialize[T](T& target, CreateInstanceDelegate`1 valueFactory)
+   at Microsoft.Web.Administration.ServerManager.get_SitesSection()
+   at Microsoft.Web.Administration.ServerManager.SitesCollectionCreator()
+   at Microsoft.Web.Administration.Lazy.Initialize[T](T& target, CreateInstanceDelegate`1 valueFactory)
+   at Microsoft.Web.Administration.ServerManager.get_Sites()
+   at ReleaseFlow.Services.IIS.IISSiteService.<GetAllSitesAsync>b__2_0() in C:\Users\ahari\source\ReleaseFlow\ReleaseFlow\Services\IIS\IISSiteService.cs:line 24
+2025-12-17 20:29:57.840 +05:30 [ERR] Error loading dashboard
+System.UnauthorizedAccessException: Filename: redirection.config
+Error: Cannot read configuration file due to insufficient permissions
+
+
+   at Microsoft.Web.Administration.Interop.IAppHostAdminManager.GetAdminSection(String bstrSectionName, String bstrPath)
+   at Microsoft.Web.Administration.Configuration.GetSectionInternal(ConfigurationSection section, String sectionPath, String locationPath)
+   at Microsoft.Web.Administration.Configuration.GetSection(String sectionPath)
+   at Microsoft.Web.Administration.ServerManager.SitesSectionCreator()
+   at Microsoft.Web.Administration.Lazy.Initialize[T](T& target, CreateInstanceDelegate`1 valueFactory)
+   at Microsoft.Web.Administration.ServerManager.get_SitesSection()
+   at Microsoft.Web.Administration.ServerManager.SitesCollectionCreator()
+   at Microsoft.Web.Administration.Lazy.Initialize[T](T& target, CreateInstanceDelegate`1 valueFactory)
+   at Microsoft.Web.Administration.ServerManager.get_Sites()
+   at ReleaseFlow.Services.IIS.IISSiteService.<GetAllSitesAsync>b__2_0() in C:\Users\ahari\source\ReleaseFlow\ReleaseFlow\Services\IIS\IISSiteService.cs:line 24
+   at System.Threading.Tasks.Task`1.InnerInvoke()
+   at System.Threading.ExecutionContext.RunFromThreadPoolDispatchLoop(Thread threadPoolThread, ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunFromThreadPoolDispatchLoop(Thread threadPoolThread, ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at ReleaseFlow.Services.IIS.IISSiteService.GetAllSitesAsync() in C:\Users\ahari\source\ReleaseFlow\ReleaseFlow\Services\IIS\IISSiteService.cs:line 16
+   at ReleaseFlow.Controllers.DashboardController.Index() in C:\Users\ahari\source\ReleaseFlow\ReleaseFlow\Controllers\DashboardController.cs:line 34
+2025-12-17 20:30:05.377 +05:30 [INF] User SuperAdmin logged in
+2025-12-17 20:30:05.407 +05:30 [ERR] Error retrieving IIS sites
+System.UnauthorizedAccessException: Filename: redirection.config
+Error: Cannot read configuration file due to insufficient permissions
+
+
+   at Microsoft.Web.Administration.Interop.IAppHostAdminManager.GetAdminSection(String bstrSectionName, String bstrPath)
+   at Microsoft.Web.Administration.Configuration.GetSectionInternal(ConfigurationSection section, String sectionPath, String locationPath)
+   at Microsoft.Web.Administration.Configuration.GetSection(String sectionPath)
+   at Microsoft.Web.Administration.ServerManager.SitesSectionCreator()
+   at Microsoft.Web.Administration.Lazy.Initialize[T](T& target, CreateInstanceDelegate`1 valueFactory)
+   at Microsoft.Web.Administration.ServerManager.get_SitesSection()
+   at Microsoft.Web.Administration.ServerManager.SitesCollectionCreator()
+   at Microsoft.Web.Administration.Lazy.Initialize[T](T& target, CreateInstanceDelegate`1 valueFactory)
+   at Microsoft.Web.Administration.ServerManager.get_Sites()
+   at ReleaseFlow.Services.IIS.IISSiteService.<GetAllSitesAsync>b__2_0() in C:\Users\ahari\source\ReleaseFlow\ReleaseFlow\Services\IIS\IISSiteService.cs:line 24
+2025-12-17 20:32:10.274 +05:30 [INF] Database initialized successfully
+2025-12-17 20:32:10.488 +05:30 [INF] ReleaseFlow application starting
+2025-12-17 20:32:10.745 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-17 20:32:10.748 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-17 20:32:10.798 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-17 20:32:10.799 +05:30 [INF] Hosting environment: Development
+2025-12-17 20:32:10.799 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-17 21:11:32.989 +05:30 [ERR] Failed executing DbCommand (22ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [ReleaseFlow_Applications] AS [r]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-12-17 21:11:33.048 +05:30 [ERR] An exception occurred while iterating over the results of a query for context type 'ReleaseFlow.Data.ApplicationDbContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'ReleaseFlow_Applications'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:765b6286-6ed5-486f-95ce-044f41c6c0d7
+Error Number:208,State:1,Class:16
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'ReleaseFlow_Applications'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:765b6286-6ed5-486f-95ce-044f41c6c0d7
+Error Number:208,State:1,Class:16
+2025-12-17 21:11:46.546 +05:30 [INF] Database initialized successfully
+2025-12-17 21:11:46.650 +05:30 [INF] ReleaseFlow application starting
+2025-12-17 21:11:46.783 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-17 21:11:46.783 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-17 21:11:46.808 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-17 21:11:46.808 +05:30 [INF] Hosting environment: Development
+2025-12-17 21:11:46.808 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-17 21:11:47.980 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: The AuthorizationPolicy named: 'Authenticated' was not found.
+   at Microsoft.AspNetCore.Authorization.AuthorizationPolicy.CombineAsync(IAuthorizationPolicyProvider policyProvider, IEnumerable`1 authorizeData, IEnumerable`1 policies)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-12-17 21:13:42.151 +05:30 [INF] Database initialized successfully
+2025-12-17 21:13:42.315 +05:30 [INF] ReleaseFlow application starting
+2025-12-17 21:13:42.593 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-17 21:13:42.596 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-17 21:13:42.640 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-17 21:13:42.640 +05:30 [INF] Hosting environment: Development
+2025-12-17 21:13:42.640 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-17 21:14:05.850 +05:30 [INF] User admin logged in
+2025-12-17 21:14:15.323 +05:30 [INF] Site svenbyte started successfully
+2025-12-17 21:14:15.489 +05:30 [INF] Audit log created: SiteStart on Site by user admin
+2025-12-17 21:14:43.109 +05:30 [INF] App pool teatapp started successfully
+2025-12-17 21:19:10.106 +05:30 [INF] Deploying to: default/nextgen
+2025-12-17 21:19:40.628 +05:30 [INF] Backup created successfully: C:\ReleaseFlow\Backups\App2\App2_1_20251217_154912.zip
+2025-12-17 21:19:40.637 +05:30 [INF] Detected nested structure, using: C:\Users\ahari\AppData\Local\Temp\ReleaseFlow_4370f26e-4543-424c-9c95-a2c900dbeed8\IT-Company-Website-main
+2025-12-17 21:19:40.637 +05:30 [INF] Deploying from: C:\Users\ahari\AppData\Local\Temp\ReleaseFlow_4370f26e-4543-424c-9c95-a2c900dbeed8\IT-Company-Website-main
+2025-12-17 21:19:40.780 +05:30 [INF] Deployment 1 completed successfully
+2025-12-17 21:19:40.834 +05:30 [INF] Audit log created: Deploy on Deployment by user admin
+2025-12-17 21:24:00.513 +05:30 [INF] Deploying to: default/nextgen
+2025-12-17 21:24:02.531 +05:30 [INF] Source path is empty (first deployment), skipping backup: C:\inetpub\wwwroot\nextgen
+2025-12-17 21:24:02.534 +05:30 [INF] Detected nested structure, using: C:\Users\ahari\AppData\Local\Temp\ReleaseFlow_e27132ac-abac-4cbd-bfdc-f96246e7122c\IT-Company-Website-main
+2025-12-17 21:24:02.534 +05:30 [INF] Deploying from: C:\Users\ahari\AppData\Local\Temp\ReleaseFlow_e27132ac-abac-4cbd-bfdc-f96246e7122c\IT-Company-Website-main
+2025-12-17 21:24:02.722 +05:30 [INF] Deployment 2 completed successfully
+2025-12-17 21:24:02.780 +05:30 [INF] Audit log created: Deploy on Deployment by user admin
+2025-12-17 21:36:49.490 +05:30 [ERR] Failed executing DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [ReleaseFlow_Applications] AS [r]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-12-17 21:36:49.540 +05:30 [ERR] An exception occurred while iterating over the results of a query for context type 'ReleaseFlow.Data.ApplicationDbContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'ReleaseFlow_Applications'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:0ad0edbe-ecb3-4628-845b-feccc72fb67e
+Error Number:208,State:1,Class:16
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'ReleaseFlow_Applications'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:0ad0edbe-ecb3-4628-845b-feccc72fb67e
+Error Number:208,State:1,Class:16
+2025-12-17 21:37:02.951 +05:30 [INF] Database initialized successfully
+2025-12-17 21:37:03.050 +05:30 [INF] ReleaseFlow application starting
+2025-12-17 21:37:03.221 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-17 21:37:03.221 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-17 21:37:03.247 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-17 21:37:03.248 +05:30 [INF] Hosting environment: Development
+2025-12-17 21:37:03.248 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-17 21:39:13.674 +05:30 [ERR] Failed executing DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [ReleaseFlow_Applications] AS [r]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-12-17 21:39:13.725 +05:30 [ERR] An exception occurred while iterating over the results of a query for context type 'ReleaseFlow.Data.ApplicationDbContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'ReleaseFlow_Applications'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:0970b13f-4562-4e0a-8643-6173f5068d57
+Error Number:208,State:1,Class:16
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'ReleaseFlow_Applications'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:0970b13f-4562-4e0a-8643-6173f5068d57
+Error Number:208,State:1,Class:16
+2025-12-17 21:39:27.180 +05:30 [INF] Database initialized successfully
+2025-12-17 21:39:27.294 +05:30 [INF] ReleaseFlow application starting
+2025-12-17 21:39:27.443 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-17 21:39:27.443 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-17 21:39:27.471 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-17 21:39:27.471 +05:30 [INF] Hosting environment: Development
+2025-12-17 21:39:27.471 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-17 21:39:40.659 +05:30 [INF] Starting IIS application discovery...
+2025-12-17 21:39:40.662 +05:30 [INF] Starting IIS application discovery...
+2025-12-17 21:39:40.674 +05:30 [INF] Found 3 IIS sites
+2025-12-17 21:39:40.778 +05:30 [INF] Registered new application: default/
+2025-12-17 21:39:40.881 +05:30 [INF] Registered new application: default/svenbyte
+2025-12-17 21:39:40.887 +05:30 [INF] Registered new application: default/nextgen
+2025-12-17 21:39:40.891 +05:30 [INF] Registered new application: default/SMSApp
+2025-12-17 21:39:40.894 +05:30 [INF] Registered new application: default/enlink
+2025-12-17 21:39:40.912 +05:30 [INF] Registered new application: svenbyte/
+2025-12-17 21:39:40.930 +05:30 [INF] Registered new application: TestApp/
+2025-12-17 21:39:40.932 +05:30 [INF] Discovered 4 applications. Registered 7 new, updated 0 existing.
+2025-12-17 21:47:28.896 +05:30 [INF] Database initialized successfully
+2025-12-17 21:47:29.062 +05:30 [INF] ReleaseFlow application starting
+2025-12-17 21:47:29.265 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-17 21:47:29.267 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-17 21:47:29.299 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-17 21:47:29.300 +05:30 [INF] Hosting environment: Development
+2025-12-17 21:47:29.300 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-17 21:53:08.365 +05:30 [INF] Database initialized successfully
+2025-12-17 21:53:08.527 +05:30 [INF] ReleaseFlow application starting
+2025-12-17 21:53:08.773 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-17 21:53:08.775 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-17 21:53:08.810 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-17 21:53:08.811 +05:30 [INF] Hosting environment: Development
+2025-12-17 21:53:08.811 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-17 21:54:17.745 +05:30 [INF] Deploying to: default/nextgen
+2025-12-17 21:54:17.796 +05:30 [INF] Site default stopped successfully
+2025-12-17 21:54:17.842 +05:30 [INF] App pool default stopped successfully
+2025-12-17 21:54:21.559 +05:30 [INF] Backup created successfully: C:\ReleaseFlow\Backups\defaultnextgen\defaultnextgen_1_20251217_162419.zip
+2025-12-17 21:54:21.575 +05:30 [INF] Detected nested structure, using: C:\Users\ahari\AppData\Local\Temp\ReleaseFlow_14ede33b-3a9f-483f-9365-4103411df939\IT-Company-Website-main
+2025-12-17 21:54:21.576 +05:30 [INF] Deploying from: C:\Users\ahari\AppData\Local\Temp\ReleaseFlow_14ede33b-3a9f-483f-9365-4103411df939\IT-Company-Website-main
+2025-12-17 21:54:21.744 +05:30 [INF] App pool default started successfully
+2025-12-17 21:54:21.773 +05:30 [INF] Site default started successfully
+2025-12-17 21:54:24.789 +05:30 [INF] Deployment 1 completed successfully
+2025-12-17 21:54:24.891 +05:30 [INF] Audit log created: Deploy on Deployment by user admin
+2025-12-17 21:57:52.868 +05:30 [INF] Database initialized successfully
+2025-12-17 21:57:53.026 +05:30 [INF] ReleaseFlow application starting
+2025-12-17 21:57:53.238 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-17 21:57:53.240 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-17 21:57:53.269 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-17 21:57:53.269 +05:30 [INF] Hosting environment: Development
+2025-12-17 21:57:53.269 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-17 22:00:52.763 +05:30 [INF] Deploying to: default/nextgen
+2025-12-17 22:00:52.810 +05:30 [INF] Site default stopped successfully
+2025-12-17 22:00:52.847 +05:30 [INF] App pool default stopped successfully
+2025-12-17 22:00:55.992 +05:30 [INF] Backup created successfully: C:\ReleaseFlow\Backups\defaultnextgen\defaultnextgen_2_20251217_163054.zip
+2025-12-17 22:00:56.007 +05:30 [INF] Detected nested structure, using: C:\Users\ahari\AppData\Local\Temp\ReleaseFlow_162dc0d9-2d54-4e4a-b851-297208864da5\IT-Company-Website-main
+2025-12-17 22:00:56.007 +05:30 [INF] Deploying from: C:\Users\ahari\AppData\Local\Temp\ReleaseFlow_162dc0d9-2d54-4e4a-b851-297208864da5\IT-Company-Website-main
+2025-12-17 22:00:56.160 +05:30 [INF] App pool default started successfully
+2025-12-17 22:00:56.182 +05:30 [INF] Site default started successfully
+2025-12-17 22:00:59.197 +05:30 [INF] Deployment 2 completed successfully
+2025-12-17 22:00:59.252 +05:30 [INF] Audit log created: Deploy on Deployment by user admin
+2025-12-17 22:04:31.265 +05:30 [INF] Starting IIS application discovery...
+2025-12-17 22:04:31.267 +05:30 [INF] Starting IIS application discovery...
+2025-12-17 22:04:31.283 +05:30 [INF] Found 3 IIS sites
+2025-12-17 22:04:31.313 +05:30 [INF] Updated application: default/
+2025-12-17 22:04:31.320 +05:30 [INF] Updated application: default/svenbyte
+2025-12-17 22:04:31.323 +05:30 [INF] Updated application: default/nextgen
+2025-12-17 22:04:31.326 +05:30 [INF] Updated application: default/SMSApp
+2025-12-17 22:04:31.328 +05:30 [INF] Updated application: default/enlink
+2025-12-17 22:04:31.344 +05:30 [INF] Updated application: svenbyte/
+2025-12-17 22:04:31.358 +05:30 [INF] Updated application: TestApp/
+2025-12-17 22:04:31.360 +05:30 [INF] Discovered 4 applications. Registered 0 new, updated 7 existing.

@@ -68,16 +68,7 @@
                                 <td>
                                     <small>@log.CreatedAt.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss")</small>
                                 </td>
-                                <td>
-                                    @if (log.User != null)
-                                    {
-                                        <span>@log.User.DisplayName</span>
-                                    }
-                                    else
-                                    {
-                                        <span class="text-muted">System</span>
-                                    }
-                                </td>
+                                <td>@log.Username</td>
                                 <td>
                                     <span class="badge bg-primary">@log.Action</span>
                                 </td>

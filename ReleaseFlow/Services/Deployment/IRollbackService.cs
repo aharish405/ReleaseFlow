@@ -7,7 +7,7 @@ namespace ReleaseFlow.Services.Deployment;
 
 public interface IRollbackService
 {
-    Task<RollbackResult> RollbackDeploymentAsync(int deploymentId, int userId);
+    Task<RollbackResult> RollbackDeploymentAsync(int deploymentId, string username);
     Task<bool> CanRollbackAsync(int deploymentId);
 }
 

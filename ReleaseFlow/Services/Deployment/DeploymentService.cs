@@ -31,9 +31,14 @@ public class DeploymentService : IDeploymentService
         _logger = logger;
     }
 
-    public async Task<DeploymentResult> DeployAsync(int applicationId, string zipFilePath, string version, int userId)
+    public async Task<DeploymentResult> DeployAsync(int applicationId, string zipFilePath, string version, string username)
     {
-        var result = new DeploymentResult();
+        var result = new DeploymentResult
+        {
+            Success = false,
+            Steps = new List<string>()
+        };
+
         Models.Deployment? deployment = null;
         string? tempExtractPath = null;
         bool siteWasStopped = false;
@@ -57,7 +62,7 @@ public class DeploymentService : IDeploymentService
             deployment = new Models.Deployment
             {
                 ApplicationId = applicationId,
-                DeployedByUserId = userId,
+                DeployedByUsername = username,
                 Version = version,
                 ZipFileName = Path.GetFileName(zipFilePath),
                 ZipFileSize = new FileInfo(zipFilePath).Length,
@@ -295,7 +300,6 @@ public class DeploymentService : IDeploymentService
     {
         var query = _context.Deployments
             .Include(d => d.Application)
-            .Include(d => d.DeployedBy)
             .AsQueryable();
 
         if (applicationId.HasValue)
@@ -313,7 +317,6 @@ public class DeploymentService : IDeploymentService
     {
         return await _context.Deployments
             .Include(d => d.Application)
-            .Include(d => d.DeployedBy)
             .Include(d => d.Steps)
             .FirstOrDefaultAsync(d => d.Id == deploymentId);
     }

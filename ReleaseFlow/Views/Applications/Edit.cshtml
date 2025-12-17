@@ -20,6 +20,8 @@
                         <input type="hidden" asp-for="Id" />
                         <input type="hidden" asp-for="CreatedAt" />
                         <input type="hidden" asp-for="IsActive" />
+                        <input type="hidden" asp-for="IsDiscovered" />
+                        <input type="hidden" asp-for="LastDiscoveredAt" />
                     }
 
                     <div class="mb-3">
@@ -71,11 +73,77 @@
                     </div>
 
                     <div class="mb-3">
+                        <label asp-for="ApplicationPath" class="form-label">Application Path *</label>
+                        <input asp-for="ApplicationPath" class="form-control" 
+                               placeholder="/" required pattern="^/.*" />
+                        <div class="form-text">
+                            IIS application path. Use "/" for root application or "/appname" for nested applications (e.g., "/enlink", "/nextgen")
+                        </div>
+                        <span asp-validation-for="ApplicationPath" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
                         <label asp-for="HealthCheckUrl" class="form-label">Health Check URL</label>
                         <input asp-for="HealthCheckUrl" class="form-control" type="url"
                                placeholder="http://localhost/health" />
                         <div class="form-text">Optional URL to verify the application is running after deployment</div>
                         <span asp-validation-for="HealthCheckUrl" class="text-danger"></span>
+                    </div>
+
+                    <hr class="my-4" />
+
+                    <h5 class="mb-3"><i class="bi bi-gear"></i> Deployment Configuration</h5>
+                    <p class="text-muted small">Configure which steps to execute during deployment</p>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-check mb-2">
+                                <input asp-for="StopSiteBeforeDeployment" class="form-check-input" type="checkbox" />
+                                <label asp-for="StopSiteBeforeDeployment" class="form-check-label">
+                                    Stop IIS Site Before Deployment
+                                </label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input asp-for="StopAppPoolBeforeDeployment" class="form-check-input" type="checkbox" />
+                                <label asp-for="StopAppPoolBeforeDeployment" class="form-check-label">
+                                    Stop App Pool Before Deployment
+                                </label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input asp-for="CreateBackup" class="form-check-input" type="checkbox" />
+                                <label asp-for="CreateBackup" class="form-check-label">
+                                    Create Backup Before Deployment
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-check mb-2">
+                                <input asp-for="StartAppPoolAfterDeployment" class="form-check-input" type="checkbox" />
+                                <label asp-for="StartAppPoolAfterDeployment" class="form-check-label">
+                                    Start App Pool After Deployment
+                                </label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input asp-for="StartSiteAfterDeployment" class="form-check-input" type="checkbox" />
+                                <label asp-for="StartSiteAfterDeployment" class="form-check-label">
+                                    Start IIS Site After Deployment
+                                </label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input asp-for="RunHealthCheck" class="form-check-input" type="checkbox" />
+                                <label asp-for="RunHealthCheck" class="form-check-label">
+                                    Run Health Check After Deployment
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3 mt-3">
+                        <label asp-for="DeploymentDelaySeconds" class="form-label">
+                            Deployment Delay (seconds)
+                        </label>
+                        <input asp-for="DeploymentDelaySeconds" class="form-control" type="number" min="0" max="30" />
+                        <div class="form-text">Time to wait after stopping services before deploying files</div>
                     </div>
 
                     <div class="d-grid gap-2">

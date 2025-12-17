@@ -4,7 +4,7 @@ namespace ReleaseFlow.Services.Deployment;
 
 public interface IDeploymentService
 {
-    Task<DeploymentResult> DeployAsync(int applicationId, string zipFilePath, string version, int userId);
+    Task<DeploymentResult> DeployAsync(int applicationId, string zipFilePath, string version, string username);
     Task<IEnumerable<Models.Deployment>> GetDeploymentHistoryAsync(int? applicationId = null);
     Task<Models.Deployment?> GetDeploymentByIdAsync(int deploymentId);
 }

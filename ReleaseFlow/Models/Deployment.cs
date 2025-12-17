@@ -5,8 +5,7 @@ public class Deployment
     public int Id { get; set; }
     public int ApplicationId { get; set; }
     public Application Application { get; set; } = null!;
-    public int DeployedByUserId { get; set; }
-    public User DeployedBy { get; set; } = null!;
+    public string DeployedByUsername { get; set; } = string.Empty;
     public string Version { get; set; } = string.Empty;
     public string ZipFileName { get; set; } = string.Empty;
     public long ZipFileSize { get; set; }

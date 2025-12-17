@@ -23,7 +23,7 @@
                             <option value="">-- Select Application --</option>
                             @foreach (var app in ViewBag.Applications as List<ReleaseFlow.Models.Application>)
                             {
-                                <option value="@app.Id">@app.Name (@app.Environment)</option>
+                                <option value="@app.Id" selected="@(ViewBag.SelectedApplicationId == app.Id)">@app.Name (@app.Environment)</option>
                             }
                         </select>
                         <div class="form-text">Select the application to deploy</div>

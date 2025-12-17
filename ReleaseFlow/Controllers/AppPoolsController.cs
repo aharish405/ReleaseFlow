@@ -5,7 +5,7 @@ using ReleaseFlow.Services.IIS;
 
 namespace ReleaseFlow.Controllers;
 
-[Authorize(Policy = "DeployerOrAbove")]
+[Authorize]
 public class AppPoolsController : Controller
 {
     private readonly IIISAppPoolService _appPoolService;
@@ -74,7 +74,7 @@ public class AppPoolsController : Controller
                     "AppPool",
                     name,
                     $"App pool '{name}' recycled",
-                    null,
+                    User.Identity?.Name ?? "Unknown",
                     GetClientIpAddress());
 
                 TempData["Success"] = $"App pool '{name}' recycled successfully";

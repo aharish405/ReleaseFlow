@@ -33,7 +33,7 @@ public class RollbackService : IRollbackService
         return deployment != null && deployment.CanRollback && !string.IsNullOrEmpty(deployment.BackupPath);
     }
 
-    public async Task<RollbackResult> RollbackDeploymentAsync(int deploymentId, int userId)
+    public async Task<RollbackResult> RollbackDeploymentAsync(int deploymentId, string username)
     {
         var result = new RollbackResult();
 
@@ -112,11 +112,11 @@ public class RollbackService : IRollbackService
             deployment.Status = DeploymentStatus.RolledBack;
             await _context.SaveChangesAsync();
 
-            // Create a rollback audit entry
+            // Create rollback deployment record
             var rollbackDeployment = new Models.Deployment
             {
                 ApplicationId = application.Id,
-                DeployedByUserId = userId,
+                DeployedByUsername = username,
                 Version = $"Rollback from {deployment.Version}",
                 ZipFileName = Path.GetFileName(deployment.BackupPath),
                 ZipFileSize = new FileInfo(deployment.BackupPath).Length,

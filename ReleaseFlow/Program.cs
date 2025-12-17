@@ -18,7 +18,7 @@ Log.Logger = new LoggerConfiguration()
     .WriteTo.File("logs/releaseflow-.txt", rollingInterval: RollingInterval.Day)
     .WriteTo.MSSqlServer(
         connectionString: builder.Configuration.GetConnectionString("DefaultConnection"),
-        sinkOptions: new Serilog.Sinks.MSSqlServer.MSSqlServerSinkOptions { TableName = "Logs", AutoCreateSqlTable = true })
+        sinkOptions: new Serilog.Sinks.MSSqlServer.MSSqlServerSinkOptions { TableName = "ReleaseFlow_Logs", AutoCreateSqlTable = true })
     .CreateLogger();
 
 builder.Host.UseSerilog();
@@ -44,20 +44,9 @@ builder.Services.AddAuthentication(options =>
     options.AccessDeniedPath = "/Home/AccessDenied";
 });
 
-// Configure Authorization
-builder.Services.AddAuthorization(options =>
-{
-    options.AddPolicy("SuperAdminOnly", policy =>
-        policy.Requirements.Add(new RoleRequirement(RoleNames.SuperAdmin)));
-    
-    options.AddPolicy("DeployerOrAbove", policy =>
-        policy.Requirements.Add(new RoleRequirement(RoleNames.SuperAdmin, RoleNames.Deployer)));
-    
-    options.AddPolicy("Authenticated", policy =>
-        policy.Requirements.Add(new RoleRequirement(RoleNames.SuperAdmin, RoleNames.Deployer, RoleNames.ReadOnly)));
-});
+// Simple authorization - all authenticated users are admins
+builder.Services.AddAuthorization();
 
-builder.Services.AddScoped<IAuthorizationHandler, RoleHandler>();
 builder.Services.AddHttpContextAccessor();
 
 // Register HttpClient for health checks
@@ -74,6 +63,7 @@ builder.Services.AddScoped<IHealthCheckService, HealthCheckService>();
 builder.Services.AddScoped<IBackupService, BackupService>();
 builder.Services.AddScoped<IDeploymentService, DeploymentService>();
 builder.Services.AddScoped<IRollbackService, RollbackService>();
+builder.Services.AddScoped<ReleaseFlow.Services.IIS.IIISDiscoveryService, ReleaseFlow.Services.IIS.IISDiscoveryService>();
 
 // Configure file upload size limits
 builder.Services.Configure<IISServerOptions>(options =>

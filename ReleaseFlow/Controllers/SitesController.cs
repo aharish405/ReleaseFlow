@@ -5,7 +5,7 @@ using ReleaseFlow.Services.IIS;
 
 namespace ReleaseFlow.Controllers;
 
-[Authorize(Policy = "DeployerOrAbove")]
+[Authorize]
 public class SitesController : Controller
 {
     private readonly IIISSiteService _siteService;
@@ -77,7 +77,7 @@ public class SitesController : Controller
                     "Site",
                     name,
                     $"Site '{name}' started",
-                    GetCurrentUserId(),
+                    GetCurrentUsername(),
                     GetClientIpAddress());
 
                 TempData["Success"] = $"Site '{name}' started successfully";
@@ -109,7 +109,7 @@ public class SitesController : Controller
                     "Site",
                     name,
                     $"Site '{name}' stopped",
-                    GetCurrentUserId(),
+                    GetCurrentUsername(),
                     GetClientIpAddress());
 
                 TempData["Success"] = $"Site '{name}' stopped successfully";
@@ -141,7 +141,7 @@ public class SitesController : Controller
                     "Site",
                     name,
                     $"Site '{name}' restarted",
-                    GetCurrentUserId(),
+                    GetCurrentUsername(),
                     GetClientIpAddress());
 
                 TempData["Success"] = $"Site '{name}' restarted successfully";
@@ -160,11 +160,9 @@ public class SitesController : Controller
         return RedirectToAction(nameof(Index));
     }
 
-    private int? GetCurrentUserId()
+    private string GetCurrentUsername()
     {
-        // This would be implemented to get the actual user ID from the database
-        // based on the Windows identity
-        return null;
+        return User.Identity?.Name ?? "Unknown";
     }
 
     private string GetClientIpAddress()

@@ -9,6 +9,11 @@
         <p class="text-muted">Manage registered applications for deployment</p>
     </div>
     <div class="col-md-4 text-end">
+        <form asp-action="DiscoverFromIIS" method="post" class="d-inline">
+            <button type="submit" class="btn btn-success me-2">
+                <i class="bi bi-search"></i> Auto-Discover from IIS
+            </button>
+        </form>
         <a asp-action="Create" class="btn btn-primary">
             <i class="bi bi-plus-circle"></i> Register Application
         </a>
@@ -72,8 +77,8 @@
                                         <a asp-action="Edit" asp-route-id="@app.Id" class="btn btn-sm btn-outline-secondary">
                                             <i class="bi bi-pencil"></i>
                                         </a>
-                                        <a asp-controller="Deployments" asp-action="Deploy" class="btn btn-sm btn-success">
-                                            <i class="bi bi-cloud-upload"></i>
+                                        <a asp-controller="Deployments" asp-action="Deploy" asp-route-applicationId="@app.Id" class="btn btn-sm btn-success">
+                                            <i class="bi bi-upload"></i> Deploy
                                         </a>
                                     </div>
                                 </td>

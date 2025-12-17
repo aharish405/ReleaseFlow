@@ -7,7 +7,7 @@ using ReleaseFlow.Services.IIS;
 
 namespace ReleaseFlow.Controllers;
 
-[Authorize(Policy = "Authenticated")]
+[Authorize]
 public class DashboardController : Controller
 {
     private readonly ApplicationDbContext _context;
@@ -44,12 +44,12 @@ public class DashboardController : Controller
                 .CountAsync(d => d.Status == DeploymentStatus.Failed);
 
             // Get recent deployments
-            model.RecentDeployments = await _context.Deployments
+            var recentDeployments = await _context.Deployments
                 .Include(d => d.Application)
-                .Include(d => d.DeployedBy)
                 .OrderByDescending(d => d.StartedAt)
-                .Take(10)
+                .Take(5)
                 .ToListAsync();
+            model.RecentDeployments = recentDeployments; // Assign to model after fetching
 
             // Server health (simplified)
             model.ServerHealth = "Healthy";

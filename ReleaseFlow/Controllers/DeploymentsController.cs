@@ -7,30 +7,33 @@ using ReleaseFlow.Services.Deployment;
 
 namespace ReleaseFlow.Controllers;
 
-[Authorize(Policy = "DeployerOrAbove")]
+[Authorize]
 public class DeploymentsController : Controller
 {
     private readonly ApplicationDbContext _context;
     private readonly IDeploymentService _deploymentService;
     private readonly IRollbackService _rollbackService;
     private readonly IAuditService _auditService;
-    private readonly ILogger<DeploymentsController> _logger;
     private readonly IWebHostEnvironment _environment;
+    private readonly IConfiguration _configuration;
+    private readonly ILogger<DeploymentsController> _logger;
 
     public DeploymentsController(
         ApplicationDbContext context,
         IDeploymentService deploymentService,
         IRollbackService rollbackService,
         IAuditService auditService,
-        ILogger<DeploymentsController> logger,
-        IWebHostEnvironment environment)
+        IWebHostEnvironment environment,
+        IConfiguration configuration,
+        ILogger<DeploymentsController> logger)
     {
         _context = context;
         _deploymentService = deploymentService;
         _rollbackService = rollbackService;
         _auditService = auditService;
-        _logger = logger;
         _environment = environment;
+        _configuration = configuration;
+        _logger = logger;
     }
 
     public async Task<IActionResult> Index(int? applicationId)
@@ -71,9 +74,10 @@ public class DeploymentsController : Controller
         }
     }
 
-    public async Task<IActionResult> Deploy()
+    public async Task<IActionResult> Deploy(int? applicationId = null)
     {
         ViewBag.Applications = await _context.Applications.Where(a => a.IsActive).ToListAsync();
+        ViewBag.SelectedApplicationId = applicationId;
         return View();
     }
 
@@ -104,8 +108,8 @@ public class DeploymentsController : Controller
 
         try
         {
-            // Save uploaded file to temp location
-            var uploadsPath = Path.Combine(_environment.ContentRootPath, "Uploads");
+            // Save uploaded file to configured upload location
+            var uploadsPath = _configuration["UploadBasePath"] ?? Path.Combine(_environment.ContentRootPath, "Uploads");
             if (!Directory.Exists(uploadsPath))
             {
                 Directory.CreateDirectory(uploadsPath);
@@ -119,11 +123,11 @@ public class DeploymentsController : Controller
                 await zipFile.CopyToAsync(stream);
             }
 
-            // Get current user ID (simplified - should get from database based on Windows identity)
-            var userId = 1; // TODO: Get actual user ID
+            // Get current username
+            var username = User.Identity?.Name ?? "Unknown";
 
             // Execute deployment
-            var result = await _deploymentService.DeployAsync(applicationId, filePath, version, userId);
+            var result = await _deploymentService.DeployAsync(applicationId, filePath, version, username);
 
             if (result.Success)
             {
@@ -132,7 +136,7 @@ public class DeploymentsController : Controller
                     "Deployment",
                     result.DeploymentId?.ToString(),
                     $"Deployment {version} completed successfully",
-                    userId,
+                    username,
                     GetClientIpAddress());
 
                 TempData["Success"] = "Deployment completed successfully";
@@ -168,8 +172,8 @@ public class DeploymentsController : Controller
                 return RedirectToAction(nameof(Details), new { id });
             }
 
-            var userId = 1; // TODO: Get actual user ID
-            var result = await _rollbackService.RollbackDeploymentAsync(id, userId);
+            var username = User.Identity?.Name ?? "Unknown";
+            var result = await _rollbackService.RollbackDeploymentAsync(id, username);
 
             if (result.Success)
             {
@@ -178,7 +182,7 @@ public class DeploymentsController : Controller
                     "Deployment",
                     id.ToString(),
                     $"Deployment rolled back successfully",
-                    userId,
+                    username,
                     GetClientIpAddress());
 
                 TempData["Success"] = "Rollback completed successfully";

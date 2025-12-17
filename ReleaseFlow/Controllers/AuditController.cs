@@ -4,7 +4,7 @@ using ReleaseFlow.Services;
 
 namespace ReleaseFlow.Controllers;
 
-[Authorize(Policy = "SuperAdminOnly")]
+[Authorize]
 public class AuditController : Controller
 {
     private readonly IAuditService _auditService;

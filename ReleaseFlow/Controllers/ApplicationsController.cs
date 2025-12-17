@@ -6,15 +6,20 @@ using ReleaseFlow.Models;
 
 namespace ReleaseFlow.Controllers;
 
-[Authorize(Policy = "DeployerOrAbove")]
+[Authorize]
 public class ApplicationsController : Controller
 {
     private readonly ApplicationDbContext _context;
+    private readonly Services.IIS.IIISDiscoveryService _discoveryService;
     private readonly ILogger<ApplicationsController> _logger;
 
-    public ApplicationsController(ApplicationDbContext context, ILogger<ApplicationsController> logger)
+    public ApplicationsController(
+        ApplicationDbContext context,
+        Services.IIS.IIISDiscoveryService discoveryService,
+        ILogger<ApplicationsController> logger)
     {
         _context = context;
+        _discoveryService = discoveryService;
         _logger = logger;
     }
 
@@ -153,7 +158,7 @@ public class ApplicationsController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    [Authorize(Policy = "SuperAdminOnly")]
+    [Authorize]
     public async Task<IActionResult> Delete(int id)
     {
         try
@@ -178,6 +183,36 @@ public class ApplicationsController : Controller
             TempData["Error"] = "Failed to delete application";
             return RedirectToAction(nameof(Index));
         }
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> DiscoverFromIIS()
+    {
+        try
+        {
+            _logger.LogInformation("Starting IIS application discovery...");
+            var result = await _discoveryService.DiscoverAndRegisterApplicationsAsync();
+
+            if (result.Success)
+            {
+                TempData["Success"] = result.Message;
+                if (result.Errors.Any())
+                {
+                    TempData["Warning"] = $"Some errors occurred: {string.Join(", ", result.Errors.Take(3))}";
+                }
+            }
+            else
+            {
+                TempData["Error"] = result.Message;
+            }
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error during IIS discovery");
+            TempData["Error"] = $"Discovery failed: {ex.Message}";
+        }
+
+        return RedirectToAction(nameof(Index));
     }
 
     private async Task<bool> ApplicationExists(int id)

@@ -12,6 +12,8 @@ public class Application
     public string? HealthCheckUrl { get; set; }
     public string ApplicationPath { get; set; } = "/"; // IIS Application Path (e.g., "/" or "/enlink")
     public bool IsActive { get; set; } = true;
+    public bool IsDiscovered { get; set; } = false; // Auto-discovered from IIS
+    public DateTime? LastDiscoveredAt { get; set; } // Last IIS discovery timestamp
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     public DateTime? UpdatedAt { get; set; }
     

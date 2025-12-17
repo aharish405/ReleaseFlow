@@ -148,7 +148,7 @@
                                                 <span class="badge bg-secondary">Rolled Back</span>
                                             }
                                         </td>
-                                        <td>@deployment.DeployedBy.DisplayName</td>
+                                        <td>@deployment.DeployedByUsername</td>
                                         <td>@deployment.StartedAt.ToLocalTime().ToString("g")</td>
                                         <td>
                                             @if (deployment.CompletedAt.HasValue)

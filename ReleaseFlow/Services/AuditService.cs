@@ -15,7 +15,7 @@ public class AuditService : IAuditService
         _logger = logger;
     }
 
-    public async Task LogAsync(string action, string entityType, string? entityId, string? details, int? userId, string ipAddress)
+    public async Task LogAsync(string action, string entityType, string? entityId, string? details, string username, string ipAddress)
     {
         try
         {
@@ -25,7 +25,7 @@ public class AuditService : IAuditService
                 EntityType = entityType,
                 EntityId = entityId,
                 Details = details,
-                UserId = userId,
+                Username = username,
                 IpAddress = ipAddress,
                 CreatedAt = DateTime.UtcNow
             };
@@ -33,8 +33,8 @@ public class AuditService : IAuditService
             await _context.AuditLogs.AddAsync(auditLog);
             await _context.SaveChangesAsync();
 
-            _logger.LogInformation("Audit log created: {Action} on {EntityType} by user {UserId}", 
-                action, entityType, userId);
+            _logger.LogInformation("Audit log created: {Action} on {EntityType} by user {Username}", 
+                action, entityType, username);
         }
         catch (Exception ex)
         {
@@ -47,11 +47,9 @@ public class AuditService : IAuditService
         DateTime? fromDate = null, 
         DateTime? toDate = null, 
         string? action = null, 
-        int? userId = null)
+        string? username = null)
     {
-        var query = _context.AuditLogs
-            .Include(a => a.User)
-            .AsQueryable();
+        var query = _context.AuditLogs.AsQueryable();
 
         if (fromDate.HasValue)
         {
@@ -68,9 +66,9 @@ public class AuditService : IAuditService
             query = query.Where(a => a.Action == action);
         }
 
-        if (userId.HasValue)
+        if (!string.IsNullOrEmpty(username))
         {
-            query = query.Where(a => a.UserId == userId.Value);
+            query = query.Where(a => a.Username == username);
         }
 
         return await query
