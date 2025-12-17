@@ -1,304 +1,478 @@
-# ReleaseFlow - IIS Deployment Management System
+# ReleaseFlow
 
-## Overview
+**Enterprise IIS Deployment Management System**
 
-ReleaseFlow is an enterprise-grade, on-premise IIS deployment management application built with ASP.NET Core (.NET 8). It provides secure, automated ZIP-based deployments with full IIS lifecycle management, rollback capabilities, and comprehensive audit logging.
+ReleaseFlow is a modern ASP.NET Core MVC application designed to streamline and automate IIS application deployments with comprehensive monitoring, rollback capabilities, and audit trails.
 
-## Features
-
-### Core Capabilities
-- **ZIP-Based Deployments**: Upload and deploy applications via ZIP archives
-- **Transactional Deployment Engine**: Atomic deployments with automatic rollback on failure
-- **IIS Management**: Full control over IIS sites and application pools
-- **Rollback Support**: One-click rollback to previous deployment versions
-- **Health Checks**: Post-deployment validation with configurable endpoints
-- **Audit Logging**: Comprehensive logging of all privileged operations
-- **Windows Authentication**: Integrated Windows Authentication with role-based access control
-
-### Security
-- **Role-Based Access Control**: Three-tier permission model (SuperAdmin, Deployer, ReadOnly)
-- **Windows Authentication**: Seamless integration with Active Directory
-- **Audit Trail**: Complete audit log of all system operations
-- **Secure File Handling**: Path traversal protection and file validation
-
-### Deployment Features
-- Backup creation before each deployment
-- Versioned backup retention
-- Detailed step-by-step deployment logging
-- Automatic site and app pool lifecycle management
-- Health check validation
-- Rollback on deployment failure
-
-## Prerequisites
-
-- Windows Server 2016 or later
-- .NET 8.0 SDK or Runtime
-- IIS 10.0 or later
-- Administrator privileges (for IIS management)
-
-## Installation
-
-### 1. Clone or Download the Repository
-
-```powershell
-git clone <repository-url>
-cd ReleaseFlow
-```
-
-### 2. Restore Dependencies
-
-```powershell
-dotnet restore
-```
-
-### 3. Build the Application
-
-```powershell
-dotnet build
-```
-
-### 4. Configure Application Settings
-
-Edit `appsettings.json` to configure:
-- Database connection string
-- Deployment and backup paths
-- Retention policies
-- Upload size limits
-
-```json
-{
-  "DeploymentBasePath": "C:\\ReleaseFlow\\Deployments",
-  "BackupBasePath": "C:\\ReleaseFlow\\Backups",
-  "BackupRetentionDays": 30,
-  "MaxUploadSizeMB": 500
-}
-```
-
-### 5. Initialize Database
-
-The database will be automatically created and seeded on first run. The default admin user will be created with the current Windows user identity.
-
-### 6. Run the Application
-
-#### Option A: Development (Kestrel)
-
-```powershell
-dotnet run --project ReleaseFlow/ReleaseFlow.csproj
-```
-
-Access the application at `https://localhost:5001`
-
-#### Option B: Production (IIS)
-
-1. Publish the application:
-```powershell
-dotnet publish -c Release -o C:\\inetpub\\ReleaseFlow
-```
-
-2. Create IIS Application Pool:
-   - Open IIS Manager
-   - Create new Application Pool named "ReleaseFlow"
-   - Set .NET CLR Version to "No Managed Code"
-   - Set Identity to "ApplicationPoolIdentity" or a custom account with admin privileges
-
-3. Create IIS Site:
-   - Create new site named "ReleaseFlow"
-   - Point to `C:\\inetpub\\ReleaseFlow`
-   - Bind to desired port (e.g., 8080)
-   - Select "ReleaseFlow" application pool
-
-4. Configure Windows Authentication:
-   - Select the ReleaseFlow site
-   - Open "Authentication"
-   - Disable "Anonymous Authentication"
-   - Enable "Windows Authentication"
-
-5. Grant Permissions:
-   - Ensure the application pool identity has:
-     - Read/Write access to deployment and backup directories
-     - Administrator privileges for IIS management
-
-#### Option C: Windows Service
-
-1. Install as Windows Service using `sc.exe` or a service installer
-2. Configure service to run with elevated privileges
-3. Set startup type to "Automatic"
-
-## Initial Configuration
-
-### 1. User Setup
-
-The first time you run the application, a default admin user will be created using your current Windows identity. To add more users:
-
-1. Log in as SuperAdmin
-2. Manually add users to the database with their Windows identities
-3. Assign appropriate roles
-
-### 2. Register Applications
-
-Before deploying, register your applications:
-
-1. Navigate to **Applications** → **Create**
-2. Fill in:
-   - Application Name
-   - IIS Site Name
-   - App Pool Name
-   - Physical Path
-   - Environment (Dev/Staging/Production)
-   - Health Check URL (optional)
-
-### 3. Prepare Deployment Packages
-
-Create ZIP files containing your application files:
-
-```
-MyApp.zip
-├── bin/
-├── wwwroot/
-├── appsettings.json
-└── web.config
-```
-
-## Usage
-
-### Deploying an Application
-
-1. Navigate to **Deployments** → **Deploy**
-2. Select the application
-3. Enter version number
-4. Upload ZIP file
-5. Click **Deploy**
-
-The system will:
-- Validate the ZIP file
-- Stop the IIS site and app pool
-- Create a backup of the current deployment
-- Extract and copy new files
-- Restart the site and app pool
-- Perform health check
-- Log all steps
-
-### Rolling Back a Deployment
-
-1. Navigate to **Deployments** → **History**
-2. Find the deployment to rollback
-3. Click **Rollback**
-
-The system will restore the backup and restart services.
-
-### Managing IIS Sites
-
-Navigate to **IIS Management** → **Sites** to:
-- View all IIS sites
-- Start/Stop/Restart sites
-- View bindings and configuration
-
-### Managing Application Pools
-
-Navigate to **IIS Management** → **App Pools** to:
-- View all application pools
-- Start/Stop/Recycle pools
-- View runtime configuration
-
-### Viewing Audit Logs
-
-Navigate to **Audit Logs** to:
-- View all system operations
-- Filter by date, action, or user
-- Export logs for compliance
-
-## Security Considerations
-
-### Running with Elevated Privileges
-
-ReleaseFlow requires administrator privileges to manage IIS. Ensure:
-
-1. The application pool identity has admin rights
-2. Windows Authentication is properly configured
-3. Only authorized users have access to the application
-
-### Role-Based Access Control
-
-Three roles are available:
-
-- **SuperAdmin**: Full system access including user management and settings
-- **Deployer**: Can deploy applications and manage IIS sites
-- **ReadOnly**: View-only access to deployments and IIS status
-
-### Best Practices
-
-1. **Use HTTPS**: Always run over HTTPS in production
-2. **Limit Access**: Restrict network access to authorized users only
-3. **Regular Backups**: Monitor backup retention and storage
-4. **Audit Regularly**: Review audit logs for suspicious activity
-5. **Update Regularly**: Keep the application and dependencies up to date
-
-## Troubleshooting
-
-### Common Issues
-
-#### "Access Denied" when managing IIS
-
-**Solution**: Ensure the application is running with administrator privileges.
-
-#### Deployment fails with "Cannot access file"
-
-**Solution**: Check that the IIS site and app pool are fully stopped before file operations.
-
-#### Health check fails
-
-**Solution**: Verify the health check URL is correct and the site is accessible.
-
-#### Database errors
-
-**Solution**: Check that the application has write access to the database file location.
-
-### Logs
-
-Application logs are stored in:
-- File: `logs/releaseflow-{date}.txt`
-- Database: `Logs` table in SQLite database
-
-## Architecture
-
-### Technology Stack
-
-- **Backend**: ASP.NET Core MVC (.NET 8)
-- **Frontend**: Razor Pages + Bootstrap 5
-- **IIS Control**: Microsoft.Web.Administration
-- **Database**: SQLite (replaceable with SQL Server)
-- **Logging**: Serilog
-- **Authentication**: Windows Authentication
-
-### Project Structure
-
-```
-ReleaseFlow/
-├── Controllers/          # MVC Controllers
-├── Models/              # Domain entities
-├── Views/               # Razor views
-├── Services/            # Business logic
-│   ├── IIS/            # IIS management services
-│   └── Deployment/     # Deployment engine
-├── Data/                # Database context
-├── Repositories/        # Data access layer
-├── Authorization/       # Custom authorization
-└── wwwroot/            # Static files
-```
-
-## Contributing
-
-This is an enterprise application. For contributions or modifications, please follow standard .NET coding conventions and ensure all changes are thoroughly tested.
-
-## License
-
-Copyright © 2025 ReleaseFlow. All rights reserved.
-
-## Support
-
-For issues or questions, please contact your system administrator.
+![Version](https://img.shields.io/badge/version-1.0.0-blue)
+![.NET](https://img.shields.io/badge/.NET-8.0-purple)
+![License](https://img.shields.io/badge/license-MIT-green)
 
 ---
 
-**Version**: 1.0.0  
-**Last Updated**: December 2025
+## 🎯 Key Features
+
+- **🚀 Automated Deployments** - One-click deployment with configurable pre/post actions
+- **🔄 Smart Rollback** - Instant rollback to previous versions with automatic backup restoration
+- **📊 Real-time Monitoring** - Live deployment progress with Azure DevOps-style console output
+- **🔍 IIS Auto-Discovery** - Automatically detect and register IIS applications
+- **📝 Audit Trail** - Complete deployment history with detailed step-by-step logs
+- **⚙️ Flexible Configuration** - Per-application deployment settings and exclusions
+- **🎨 Modern UI** - Beautiful, responsive interface with Bootstrap 5 and custom gradients
+
+---
+
+## 🏗️ Architecture
+
+### High-Level Architecture
+
+```mermaid
+graph TB
+    subgraph "Presentation Layer"
+        UI[ASP.NET MVC Views]
+        Controllers[MVC Controllers]
+    end
+    
+    subgraph "Business Logic Layer"
+        DS[Deployment Service]
+        RS[Rollback Service]
+        BS[Backup Service]
+        IISS[IIS Services]
+        AS[Audit Service]
+    end
+    
+    subgraph "Data Access Layer"
+        Repos[Repositories<br/>ADO.NET]
+        DB[(SQL Server<br/>Database)]
+    end
+    
+    subgraph "External Systems"
+        IIS[IIS Manager]
+        FS[File System]
+    end
+    
+    UI --> Controllers
+    Controllers --> DS
+    Controllers --> RS
+    Controllers --> AS
+    DS --> BS
+    DS --> IISS
+    RS --> BS
+    RS --> IISS
+    IISS --> IIS
+    DS --> FS
+    BS --> FS
+    Controllers --> Repos
+    DS --> Repos
+    RS --> Repos
+    AS --> Repos
+    Repos --> DB
+    
+    style UI fill:#667eea
+    style Controllers fill:#764ba2
+    style DS fill:#f093fb
+    style DB fill:#4facfe
+```
+
+### Technology Stack
+
+| Layer | Technology |
+|-------|-----------|
+| **Frontend** | ASP.NET Core MVC, Bootstrap 5, Bootstrap Icons |
+| **Backend** | .NET 8, C# 12 |
+| **Data Access** | ADO.NET (Raw SQL) |
+| **Database** | SQL Server 2019+ |
+| **IIS Management** | Microsoft.Web.Administration |
+| **Logging** | Serilog (File + Database) |
+| **Grid** | NonFactors MVC Grid |
+
+---
+
+## 📊 Database Schema
+
+```mermaid
+erDiagram
+    Applications ||--o{ Deployments : has
+    Deployments ||--o{ DeploymentSteps : contains
+    
+    Applications {
+        int Id PK
+        string Name
+        string Environment
+        string IISSiteName
+        string AppPoolName
+        string PhysicalPath
+        string ExcludedPaths
+        bool StopSiteBeforeDeployment
+        bool CreateBackup
+        datetime CreatedAt
+    }
+    
+    Deployments {
+        int Id PK
+        int ApplicationId FK
+        string Version
+        string Status
+        string BackupPath
+        bool CanRollback
+        datetime StartedAt
+        datetime CompletedAt
+    }
+    
+    DeploymentSteps {
+        int Id PK
+        int DeploymentId FK
+        int StepNumber
+        string StepName
+        string Status
+        string Message
+        datetime StartedAt
+        datetime CompletedAt
+    }
+    
+    AuditLogs {
+        int Id PK
+        string Username
+        string Action
+        string EntityType
+        string Details
+        datetime CreatedAt
+    }
+```
+
+---
+
+## 🔄 Deployment Flow
+
+### Standard Deployment Process
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant UI
+    participant Controller
+    participant DeploymentService
+    participant BackupService
+    participant IIS
+    participant FileSystem
+    participant DB
+    
+    User->>UI: Upload ZIP & Start Deployment
+    UI->>Controller: POST /Deployments/Deploy
+    Controller->>DeploymentService: DeployAsync()
+    
+    DeploymentService->>DB: Create Deployment Record
+    DeploymentService->>DB: Log Step: Initialized
+    
+    DeploymentService->>IIS: Stop IIS Site
+    DeploymentService->>DB: Log Step: Site Stopped
+    
+    DeploymentService->>IIS: Stop App Pool
+    DeploymentService->>DB: Log Step: App Pool Stopped
+    
+    DeploymentService->>BackupService: CreateBackupAsync()
+    BackupService->>FileSystem: ZIP Current Files
+    BackupService-->>DeploymentService: Backup Path
+    DeploymentService->>DB: Log Step: Backup Created
+    
+    DeploymentService->>FileSystem: Extract ZIP to Temp
+    DeploymentService->>FileSystem: Copy Files (Skip Exclusions)
+    DeploymentService->>DB: Log Step: Files Replaced
+    
+    DeploymentService->>IIS: Start App Pool
+    DeploymentService->>DB: Log Step: App Pool Started
+    
+    DeploymentService->>IIS: Start IIS Site
+    DeploymentService->>DB: Log Step: Site Started
+    
+    opt Health Check Enabled
+        DeploymentService->>IIS: HTTP GET Health Check URL
+        DeploymentService->>DB: Log Step: Health Check Passed
+    end
+    
+    DeploymentService->>DB: Update Deployment Status: Succeeded
+    DeploymentService-->>Controller: Deployment Result
+    Controller-->>UI: Redirect to Details
+    UI-->>User: Show Success
+```
+
+### Rollback Flow
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant Controller
+    participant RollbackService
+    participant BackupService
+    participant IIS
+    participant FileSystem
+    participant DB
+    
+    User->>Controller: Click Rollback
+    Controller->>RollbackService: RollbackAsync()
+    
+    RollbackService->>DB: Get Deployment & Backup Path
+    
+    RollbackService->>IIS: Stop Site & App Pool
+    RollbackService->>DB: Log: Services Stopped
+    
+    RollbackService->>BackupService: RestoreBackupAsync()
+    BackupService->>FileSystem: Clear Current Files
+    BackupService->>FileSystem: Extract Backup ZIP
+    BackupService-->>RollbackService: Success
+    
+    RollbackService->>IIS: Start App Pool & Site
+    RollbackService->>DB: Log: Services Started
+    
+    RollbackService->>DB: Create Rollback Deployment Record
+    RollbackService-->>Controller: Success
+    Controller-->>User: Rollback Complete
+```
+
+---
+
+## 🎨 Application Flow
+
+### User Journey: Deploy Application
+
+```mermaid
+graph LR
+    A[Login] --> B[Dashboard]
+    B --> C{Action?}
+    C -->|New App| D[Register Application]
+    C -->|Deploy| E[Select Application]
+    
+    D --> F[Configure Settings]
+    F --> G[Set Exclusions]
+    G --> H[Save]
+    
+    E --> I[Upload ZIP]
+    I --> J[Enter Version]
+    J --> K[Start Deployment]
+    K --> L[Monitor Progress]
+    L --> M{Success?}
+    M -->|Yes| N[View Details]
+    M -->|No| O[View Errors]
+    O --> P{Rollback?}
+    P -->|Yes| Q[Confirm Rollback]
+    Q --> R[Restore Previous]
+    
+    style A fill:#667eea
+    style K fill:#f093fb
+    style M fill:#ffeaa7
+    style Q fill:#ff6b6b
+```
+
+---
+
+## 📁 Project Structure
+
+```
+ReleaseFlow/
+├── Controllers/           # MVC Controllers
+│   ├── ApplicationsController.cs
+│   ├── DeploymentsController.cs
+│   ├── AppPoolsController.cs
+│   └── AuditController.cs
+├── Services/             # Business Logic
+│   ├── Deployment/
+│   │   ├── DeploymentService.cs
+│   │   ├── RollbackService.cs
+│   │   └── BackupService.cs
+│   ├── IIS/
+│   │   ├── SiteService.cs
+│   │   ├── AppPoolService.cs
+│   │   └── IISDiscoveryService.cs
+│   └── AuditService.cs
+├── Data/                 # Data Access Layer
+│   ├── Repositories/
+│   │   ├── ApplicationRepository.cs
+│   │   ├── DeploymentRepository.cs
+│   │   └── AuditLogRepository.cs
+│   └── SqlHelper.cs
+├── Models/               # Domain Models
+│   ├── Application.cs
+│   ├── Deployment.cs
+│   ├── DeploymentStep.cs
+│   └── AuditLog.cs
+├── Views/                # Razor Views
+│   ├── Applications/
+│   ├── Deployments/
+│   ├── AppPools/
+│   └── Shared/
+└── wwwroot/             # Static Files
+    ├── css/
+    └── js/
+```
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- .NET 8 SDK
+- SQL Server 2019+
+- IIS 10+ (Windows Server 2016+)
+- Administrator privileges (for IIS management)
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/ReleaseFlow.git
+   cd ReleaseFlow
+   ```
+
+2. **Configure database connection**
+   ```json
+   // appsettings.json
+   {
+     "ConnectionStrings": {
+       "DefaultConnection": "Server=localhost;Database=ReleaseFlowDB;Trusted_Connection=True;TrustServerCertificate=True;"
+     }
+   }
+   ```
+
+3. **Create database**
+   ```bash
+   # Run database creation script
+   sqlcmd -S localhost -i Database/CreateDatabase.sql
+   ```
+
+4. **Build and run**
+   ```bash
+   dotnet build
+   dotnet run
+   ```
+
+5. **Access application**
+   ```
+   https://localhost:5001
+   ```
+
+### First-Time Setup
+
+1. **Auto-discover IIS applications**
+   - Navigate to Applications → Auto-Discover
+   - System will scan IIS and register applications
+
+2. **Configure application**
+   - Edit discovered application
+   - Set deployment options
+   - Configure exclusions (e.g., `web.config,StaticContent`)
+
+3. **Deploy**
+   - Go to Deployments → New Deployment
+   - Select application
+   - Upload ZIP package
+   - Monitor real-time progress
+
+---
+
+## ⚙️ Configuration
+
+### Application Settings
+
+Each application can be configured with:
+
+| Setting | Description | Example |
+|---------|-------------|---------|
+| **Stop Site Before Deployment** | Stop IIS site before copying files | ✅ Enabled |
+| **Stop App Pool Before Deployment** | Stop application pool | ✅ Enabled |
+| **Create Backup** | Backup current files before deployment | ✅ Enabled |
+| **Start Services After** | Auto-start site and pool after deployment | ✅ Enabled |
+| **Health Check** | Verify application after deployment | URL: `/health` |
+| **Deployment Delay** | Wait time after stopping services | 2 seconds |
+| **Excluded Paths** | Files/folders to preserve | `web.config,StaticContent` |
+
+### Exclusion Patterns
+
+Supports flexible exclusion patterns:
+
+```
+# Exact file names
+web.config,appsettings.json
+
+# Exact folder names
+StaticContent,Documents,Uploads
+
+# Wildcards
+*.config,appsettings.*.json,Uploads/*.pdf
+
+# Combined
+web.config,StaticContent,*.config,Uploads
+```
+
+---
+
+## 📸 Screenshots
+
+### Dashboard
+Modern overview with deployment statistics and recent activity.
+
+### Deployment Console
+Real-time deployment progress with Azure DevOps-style step visualization.
+
+### Application Management
+Grid-based application listing with filtering, sorting, and quick actions.
+
+---
+
+## 🔐 Security
+
+- **Windows Authentication** - Integrated with Active Directory
+- **Audit Logging** - All actions tracked with user, timestamp, and IP
+- **Administrator Privileges** - Required for IIS management operations
+- **Backup Encryption** - Optional encryption for backup files
+
+---
+
+## 📝 Deployment Best Practices
+
+1. **Always enable backups** - Allows instant rollback
+2. **Use exclusions wisely** - Preserve config files and user content
+3. **Test health checks** - Ensure application is accessible post-deployment
+4. **Monitor logs** - Review deployment steps for issues
+5. **Rollback quickly** - Don't hesitate to rollback on errors
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please follow these guidelines:
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+---
+
+## 🆘 Support
+
+For issues and questions:
+- **GitHub Issues**: [Create an issue](https://github.com/yourusername/ReleaseFlow/issues)
+- **Documentation**: See `/docs` folder
+- **Email**: support@releaseflow.com
+
+---
+
+## 🎯 Roadmap
+
+- [ ] Multi-server deployment support
+- [ ] Deployment scheduling
+- [ ] Email notifications
+- [ ] API for CI/CD integration
+- [ ] Docker container support
+- [ ] Kubernetes deployment
+
+---
+
+**Built with ❤️ using ASP.NET Core**
