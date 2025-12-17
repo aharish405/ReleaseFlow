@@ -274,3 +274,365 @@ Error Number:137,State:2,Class:15
 2025-12-18 01:00:19.444 +05:30 [INF] Application started. Press Ctrl+C to shut down.
 2025-12-18 01:00:19.444 +05:30 [INF] Hosting environment: Development
 2025-12-18 01:00:19.445 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-18 01:06:06.355 +05:30 [INF] ReleaseFlow application starting
+2025-12-18 01:06:06.636 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-18 01:06:06.638 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-18 01:06:06.722 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-18 01:06:06.723 +05:30 [INF] Hosting environment: Development
+2025-12-18 01:06:06.723 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-18 01:08:04.150 +05:30 [INF] GetLogsAsync called with fromDate=null, toDate=null, action=null, username=null
+2025-12-18 01:08:04.157 +05:30 [INF] Returning 7 audit logs
+2025-12-18 01:08:04.158 +05:30 [INF] Retrieved 7 audit logs
+2025-12-18 01:16:25.636 +05:30 [INF] ReleaseFlow application starting
+2025-12-18 01:16:25.863 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-18 01:16:25.865 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-18 01:16:25.912 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-18 01:16:25.913 +05:30 [INF] Hosting environment: Development
+2025-12-18 01:16:25.914 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-18 01:17:20.527 +05:30 [INF] GetLogsAsync called with fromDate=null, toDate=null, action=null, username=null
+2025-12-18 01:17:20.534 +05:30 [INF] Returning 7 audit logs
+2025-12-18 01:17:20.535 +05:30 [INF] Retrieved 7 audit logs
+2025-12-18 01:20:22.111 +05:30 [INF] ReleaseFlow application starting
+2025-12-18 01:20:22.384 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-18 01:20:22.386 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-18 01:20:22.433 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-18 01:20:22.433 +05:30 [INF] Hosting environment: Development
+2025-12-18 01:20:22.434 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-18 01:20:47.027 +05:30 [INF] GetLogsAsync called with fromDate=null, toDate=null, action=null, username=null
+2025-12-18 01:20:47.033 +05:30 [INF] Returning 7 audit logs
+2025-12-18 01:20:47.034 +05:30 [INF] Retrieved 7 audit logs
+2025-12-18 01:20:58.158 +05:30 [INF] GetLogsAsync called with fromDate=null, toDate=null, action=null, username=null
+2025-12-18 01:20:58.161 +05:30 [INF] Returning 7 audit logs
+2025-12-18 01:20:58.161 +05:30 [INF] Retrieved 7 audit logs
+2025-12-18 01:23:03.707 +05:30 [INF] ReleaseFlow application starting
+2025-12-18 01:23:03.960 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-18 01:23:03.962 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-18 01:23:03.996 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-18 01:23:03.997 +05:30 [INF] Hosting environment: Development
+2025-12-18 01:23:03.997 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-18 01:25:25.019 +05:30 [INF] GetLogsAsync called with fromDate=null, toDate=null, action=null, username=null
+2025-12-18 01:25:25.026 +05:30 [INF] Returning 7 audit logs
+2025-12-18 01:25:25.026 +05:30 [INF] Retrieved 7 audit logs
+2025-12-18 01:26:05.397 +05:30 [INF] ReleaseFlow application starting
+2025-12-18 01:26:05.643 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-18 01:26:05.645 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-18 01:26:05.684 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-18 01:26:05.685 +05:30 [INF] Hosting environment: Development
+2025-12-18 01:26:05.685 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-18 01:26:24.191 +05:30 [INF] GetLogsAsync called with fromDate=null, toDate=null, action=null, username=null
+2025-12-18 01:26:24.197 +05:30 [INF] Returning 7 audit logs
+2025-12-18 01:26:24.198 +05:30 [INF] Retrieved 7 audit logs
+2025-12-18 01:27:40.950 +05:30 [INF] ReleaseFlow application starting
+2025-12-18 01:27:41.199 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-18 01:27:41.201 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-18 01:27:41.233 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-18 01:27:41.234 +05:30 [INF] Hosting environment: Development
+2025-12-18 01:27:41.234 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-18 01:28:01.479 +05:30 [INF] GetLogsAsync called with fromDate=null, toDate=null, action=null, username=null
+2025-12-18 01:28:01.486 +05:30 [INF] Returning 7 audit logs
+2025-12-18 01:28:01.486 +05:30 [INF] Retrieved 7 audit logs
+2025-12-18 01:28:05.516 +05:30 [INF] Starting IIS application discovery...
+2025-12-18 01:28:05.518 +05:30 [INF] Starting IIS application discovery...
+2025-12-18 01:28:05.537 +05:30 [INF] Found 3 IIS sites
+2025-12-18 01:28:05.585 +05:30 [INF] Updated application: default/
+2025-12-18 01:28:05.590 +05:30 [INF] Updated application: default/svenbyte
+2025-12-18 01:28:05.594 +05:30 [INF] Updated application: default/nextgen
+2025-12-18 01:28:05.599 +05:30 [INF] Updated application: default/SMSApp
+2025-12-18 01:28:05.601 +05:30 [INF] Updated application: default/enlink
+2025-12-18 01:28:05.616 +05:30 [INF] Updated application: svenbyte/
+2025-12-18 01:28:05.636 +05:30 [INF] Updated application: TestApp/
+2025-12-18 01:28:05.636 +05:30 [INF] Discovered 4 applications. Registered 0 new, updated 7 existing.
+2025-12-18 01:39:32.409 +05:30 [INF] ReleaseFlow application starting
+2025-12-18 01:39:32.702 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-18 01:39:32.704 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-18 01:39:32.742 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-18 01:39:32.742 +05:30 [INF] Hosting environment: Development
+2025-12-18 01:39:32.742 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-18 01:39:40.586 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: The following sections have been defined but have not been rendered by the page at '/Views/Shared/_Layout.cshtml': 'Styles'. To ignore an unrendered section call IgnoreSection("sectionName").
+   at Microsoft.AspNetCore.Mvc.Razor.RazorPage.EnsureRenderedBodyOrSections()
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderLayoutAsync(ViewContext context, ViewBufferTextWriter bodyWriter)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderAsync(ViewContext context)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor.ExecuteAsync(ViewContext viewContext, String contentType, Nullable`1 statusCode)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor.ExecuteAsync(ViewContext viewContext, String contentType, Nullable`1 statusCode)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor.ExecuteAsync(ActionContext actionContext, IView view, ViewDataDictionary viewData, ITempDataDictionary tempData, String contentType, Nullable`1 statusCode)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor.ExecuteAsync(ActionContext context, ViewResult result)
+   at Microsoft.AspNetCore.Mvc.ViewResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|30_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-12-18 01:40:00.099 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: The following sections have been defined but have not been rendered by the page at '/Views/Shared/_Layout.cshtml': 'Styles'. To ignore an unrendered section call IgnoreSection("sectionName").
+   at Microsoft.AspNetCore.Mvc.Razor.RazorPage.EnsureRenderedBodyOrSections()
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderLayoutAsync(ViewContext context, ViewBufferTextWriter bodyWriter)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderAsync(ViewContext context)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor.ExecuteAsync(ViewContext viewContext, String contentType, Nullable`1 statusCode)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor.ExecuteAsync(ViewContext viewContext, String contentType, Nullable`1 statusCode)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor.ExecuteAsync(ActionContext actionContext, IView view, ViewDataDictionary viewData, ITempDataDictionary tempData, String contentType, Nullable`1 statusCode)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor.ExecuteAsync(ActionContext context, ViewResult result)
+   at Microsoft.AspNetCore.Mvc.ViewResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|30_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-12-18 01:41:10.872 +05:30 [INF] ReleaseFlow application starting
+2025-12-18 01:41:11.122 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-18 01:41:11.125 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-18 01:41:11.166 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-18 01:41:11.166 +05:30 [INF] Hosting environment: Development
+2025-12-18 01:41:11.166 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-18 01:41:50.472 +05:30 [INF] GetLogsAsync called with fromDate=null, toDate=null, action=null, username=null
+2025-12-18 01:41:50.480 +05:30 [INF] Returning 7 audit logs
+2025-12-18 01:41:50.481 +05:30 [INF] Retrieved 7 audit logs
+2025-12-18 01:41:54.201 +05:30 [INF] GetLogsAsync called with fromDate=null, toDate=null, action=null, username=null
+2025-12-18 01:41:54.204 +05:30 [INF] Returning 7 audit logs
+2025-12-18 01:41:54.204 +05:30 [INF] Retrieved 7 audit logs
+2025-12-18 01:43:44.985 +05:30 [INF] ReleaseFlow application starting
+2025-12-18 01:43:45.268 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-18 01:43:45.271 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-18 01:43:45.305 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-18 01:43:45.305 +05:30 [INF] Hosting environment: Development
+2025-12-18 01:43:45.305 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-18 01:44:29.789 +05:30 [INF] GetLogsAsync called with fromDate=null, toDate=null, action=null, username=null
+2025-12-18 01:44:29.797 +05:30 [INF] Returning 7 audit logs
+2025-12-18 01:44:29.797 +05:30 [INF] Retrieved 7 audit logs
+2025-12-18 01:44:49.689 +05:30 [INF] Starting IIS application discovery...
+2025-12-18 01:44:49.690 +05:30 [INF] Starting IIS application discovery...
+2025-12-18 01:44:49.707 +05:30 [INF] Found 3 IIS sites
+2025-12-18 01:44:49.761 +05:30 [INF] Updated application: default/
+2025-12-18 01:44:49.768 +05:30 [INF] Updated application: default/svenbyte
+2025-12-18 01:44:49.773 +05:30 [INF] Updated application: default/nextgen
+2025-12-18 01:44:49.778 +05:30 [INF] Updated application: default/SMSApp
+2025-12-18 01:44:49.780 +05:30 [INF] Updated application: default/enlink
+2025-12-18 01:44:49.800 +05:30 [INF] Updated application: svenbyte/
+2025-12-18 01:44:49.818 +05:30 [INF] Updated application: TestApp/
+2025-12-18 01:44:49.819 +05:30 [INF] Discovered 4 applications. Registered 0 new, updated 7 existing.
+2025-12-18 01:49:21.297 +05:30 [INF] ReleaseFlow application starting
+2025-12-18 01:49:21.608 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-18 01:49:21.610 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-18 01:49:21.656 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-18 01:49:21.656 +05:30 [INF] Hosting environment: Development
+2025-12-18 01:49:21.656 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-18 01:49:49.107 +05:30 [INF] GetLogsAsync called with fromDate=null, toDate=null, action=null, username=null
+2025-12-18 01:49:49.115 +05:30 [INF] Returning 7 audit logs
+2025-12-18 01:49:49.116 +05:30 [INF] Retrieved 7 audit logs
+2025-12-18 01:52:25.501 +05:30 [INF] ReleaseFlow application starting
+2025-12-18 01:52:25.720 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-18 01:52:25.721 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-18 01:52:25.754 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-18 01:52:25.754 +05:30 [INF] Hosting environment: Development
+2025-12-18 01:52:25.754 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-18 01:53:22.120 +05:30 [INF] GetLogsAsync called with fromDate=null, toDate=null, action=null, username=null
+2025-12-18 01:53:22.129 +05:30 [INF] Returning 7 audit logs
+2025-12-18 01:53:22.130 +05:30 [INF] Retrieved 7 audit logs
+2025-12-18 01:54:11.041 +05:30 [INF] Deploying to: default/nextgen
+2025-12-18 01:54:11.087 +05:30 [INF] Site default stopped successfully
+2025-12-18 01:54:11.129 +05:30 [INF] App pool default stopped successfully
+2025-12-18 01:54:15.096 +05:30 [INF] Backup created successfully: C:\ReleaseFlow\Backups\defaultnextgen\defaultnextgen_2_20251217_202413.zip
+2025-12-18 01:54:15.113 +05:30 [INF] Detected nested structure, using: C:\Users\ahari\AppData\Local\Temp\ReleaseFlow_02ef9f9c-6061-4f62-bb54-45ae4114d2da\IT-Company-Website-main
+2025-12-18 01:54:15.113 +05:30 [INF] Deploying from: C:\Users\ahari\AppData\Local\Temp\ReleaseFlow_02ef9f9c-6061-4f62-bb54-45ae4114d2da\IT-Company-Website-main
+2025-12-18 01:54:15.281 +05:30 [INF] App pool default started successfully
+2025-12-18 01:54:15.303 +05:30 [INF] Site default started successfully
+2025-12-18 01:54:18.320 +05:30 [INF] Deployment 3 completed successfully
+2025-12-18 01:54:18.376 +05:30 [INF] Audit log created: Deploy on Deployment by user admin
+2025-12-18 01:55:06.222 +05:30 [INF] GetLogsAsync called with fromDate=null, toDate=null, action=null, username=null
+2025-12-18 01:55:06.225 +05:30 [INF] Returning 8 audit logs
+2025-12-18 01:55:06.225 +05:30 [INF] Retrieved 8 audit logs
+2025-12-18 01:55:24.965 +05:30 [INF] Deploying to: default/enlink
+2025-12-18 01:55:25.004 +05:30 [INF] Site default stopped successfully
+2025-12-18 01:55:25.050 +05:30 [INF] App pool default stopped successfully
+2025-12-18 01:55:44.969 +05:30 [INF] Backup created successfully: C:\ReleaseFlow\Backups\defaultenlink\defaultenlink_1_20251217_202527.zip
+2025-12-18 01:55:44.978 +05:30 [INF] Detected nested structure, using: C:\Users\ahari\AppData\Local\Temp\ReleaseFlow_6802d841-ffd7-4e77-9bed-4c16432d67b4\IT-Company-Website-main
+2025-12-18 01:55:44.979 +05:30 [INF] Deploying from: C:\Users\ahari\AppData\Local\Temp\ReleaseFlow_6802d841-ffd7-4e77-9bed-4c16432d67b4\IT-Company-Website-main
+2025-12-18 01:55:45.190 +05:30 [INF] App pool default started successfully
+2025-12-18 01:55:45.210 +05:30 [INF] Site default started successfully
+2025-12-18 01:55:48.223 +05:30 [INF] Deployment 4 completed successfully
+2025-12-18 01:55:48.275 +05:30 [INF] Audit log created: Deploy on Deployment by user admin
+2025-12-18 01:55:56.544 +05:30 [INF] Deploying to: default/enlink
+2025-12-18 01:55:56.578 +05:30 [INF] Site default stopped successfully
+2025-12-18 01:55:56.611 +05:30 [INF] App pool default stopped successfully
+2025-12-18 01:56:02.191 +05:30 [INF] Backup created successfully: C:\ReleaseFlow\Backups\defaultenlink\defaultenlink_1_20251217_202558.zip
+2025-12-18 01:56:02.199 +05:30 [INF] Detected nested structure, using: C:\Users\ahari\AppData\Local\Temp\ReleaseFlow_8ece8c00-c7be-4ec6-bfca-9582b5957916\IT-Company-Website-main
+2025-12-18 01:56:02.199 +05:30 [INF] Deploying from: C:\Users\ahari\AppData\Local\Temp\ReleaseFlow_8ece8c00-c7be-4ec6-bfca-9582b5957916\IT-Company-Website-main
+2025-12-18 01:56:02.392 +05:30 [INF] App pool default started successfully
+2025-12-18 01:56:02.424 +05:30 [INF] Site default started successfully
+2025-12-18 01:56:05.440 +05:30 [INF] Deployment 5 completed successfully
+2025-12-18 01:56:05.485 +05:30 [INF] Audit log created: Deploy on Deployment by user admin
+2025-12-18 01:56:33.383 +05:30 [INF] Deploying to: default/svenbyte
+2025-12-18 01:56:33.417 +05:30 [INF] Site default stopped successfully
+2025-12-18 01:56:33.448 +05:30 [INF] App pool default stopped successfully
+2025-12-18 01:56:37.353 +05:30 [INF] Backup created successfully: C:\ReleaseFlow\Backups\defaultsvenbyte\defaultsvenbyte_3_20251217_202635.zip
+2025-12-18 01:56:37.364 +05:30 [INF] Detected nested structure, using: C:\Users\ahari\AppData\Local\Temp\ReleaseFlow_9fc3ec83-6153-484a-a064-bf3229d32d10\IT-Company-Website-main
+2025-12-18 01:56:37.364 +05:30 [INF] Deploying from: C:\Users\ahari\AppData\Local\Temp\ReleaseFlow_9fc3ec83-6153-484a-a064-bf3229d32d10\IT-Company-Website-main
+2025-12-18 01:56:37.582 +05:30 [INF] App pool default started successfully
+2025-12-18 01:56:37.608 +05:30 [INF] Site default started successfully
+2025-12-18 01:56:40.626 +05:30 [INF] Deployment 6 completed successfully
+2025-12-18 01:56:40.681 +05:30 [INF] Audit log created: Deploy on Deployment by user admin
+2025-12-18 02:01:40.407 +05:30 [INF] ReleaseFlow application starting
+2025-12-18 02:01:40.763 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-18 02:01:40.767 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-18 02:01:40.838 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-18 02:01:40.838 +05:30 [INF] Hosting environment: Development
+2025-12-18 02:01:40.839 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-18 02:03:02.138 +05:30 [INF] Site default stopped successfully
+2025-12-18 02:03:02.158 +05:30 [WRN] App pool  not found
+2025-12-18 02:03:02.193 +05:30 [ERR] Rollback failed for deployment 6
+System.Exception: Failed to stop app pool: 
+   at ReleaseFlow.Services.Deployment.RollbackService.RollbackDeploymentAsync(Int32 deploymentId, String username) in C:\Users\ahari\source\ReleaseFlow\ReleaseFlow\Services\Deployment\RollbackService.cs:line 79
+2025-12-18 02:06:26.226 +05:30 [INF] ReleaseFlow application starting
+2025-12-18 02:06:26.462 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-18 02:06:26.463 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-18 02:06:26.496 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-18 02:06:26.496 +05:30 [INF] Hosting environment: Development
+2025-12-18 02:06:26.496 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-18 02:09:26.932 +05:30 [INF] ReleaseFlow application starting
+2025-12-18 02:09:27.164 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-18 02:09:27.166 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-18 02:09:27.204 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-18 02:09:27.204 +05:30 [INF] Hosting environment: Development
+2025-12-18 02:09:27.204 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-18 02:12:25.026 +05:30 [INF] ReleaseFlow application starting
+2025-12-18 02:12:25.263 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-18 02:12:25.265 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-18 02:12:25.303 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-18 02:12:25.304 +05:30 [INF] Hosting environment: Development
+2025-12-18 02:12:25.304 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-18 02:13:04.783 +05:30 [INF] Deploying to: default/svenbyte
+2025-12-18 02:13:04.821 +05:30 [INF] Site default is already stopped or stopping
+2025-12-18 02:13:04.869 +05:30 [INF] App pool default stopped successfully
+2025-12-18 02:13:08.630 +05:30 [INF] Backup created successfully: C:\ReleaseFlow\Backups\defaultsvenbyte\defaultsvenbyte_2_20251217_204306.zip
+2025-12-18 02:13:08.650 +05:30 [INF] Detected nested structure, using: C:\Users\ahari\AppData\Local\Temp\ReleaseFlow_96649bd3-5267-45ce-85b8-3d48ed5c42d9\IT-Company-Website-main
+2025-12-18 02:13:08.650 +05:30 [INF] Deploying from: C:\Users\ahari\AppData\Local\Temp\ReleaseFlow_96649bd3-5267-45ce-85b8-3d48ed5c42d9\IT-Company-Website-main
+2025-12-18 02:13:08.820 +05:30 [INF] App pool default started successfully
+2025-12-18 02:13:08.844 +05:30 [INF] Site default started successfully
+2025-12-18 02:13:11.882 +05:30 [INF] Deployment 7 completed successfully
+2025-12-18 02:13:11.938 +05:30 [INF] Audit log created: Deploy on Deployment by user admin
+2025-12-18 02:13:31.039 +05:30 [INF] Deploying to: default/svenbyte
+2025-12-18 02:13:31.073 +05:30 [INF] Site default stopped successfully
+2025-12-18 02:13:31.104 +05:30 [INF] App pool default stopped successfully
+2025-12-18 02:13:34.672 +05:30 [INF] Backup created successfully: C:\ReleaseFlow\Backups\defaultsvenbyte\defaultsvenbyte_2_20251217_204333.zip
+2025-12-18 02:13:34.674 +05:30 [INF] Detected nested structure, using: C:\Users\ahari\AppData\Local\Temp\ReleaseFlow_9c7efe08-fb66-4180-b11f-1a5782566732\IT-Company-Website-main
+2025-12-18 02:13:34.675 +05:30 [INF] Deploying from: C:\Users\ahari\AppData\Local\Temp\ReleaseFlow_9c7efe08-fb66-4180-b11f-1a5782566732\IT-Company-Website-main
+2025-12-18 02:13:34.842 +05:30 [INF] App pool default started successfully
+2025-12-18 02:13:34.864 +05:30 [INF] Site default started successfully
+2025-12-18 02:13:37.873 +05:30 [INF] Deployment 8 completed successfully
+2025-12-18 02:13:37.919 +05:30 [INF] Audit log created: Deploy on Deployment by user admin
+2025-12-18 02:16:20.371 +05:30 [INF] ReleaseFlow application starting
+2025-12-18 02:16:20.592 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-18 02:16:20.594 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-18 02:16:20.633 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-18 02:16:20.634 +05:30 [INF] Hosting environment: Development
+2025-12-18 02:16:20.634 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-18 02:17:03.278 +05:30 [INF] GetLogsAsync called with fromDate=null, toDate=null, action=null, username=null
+2025-12-18 02:17:03.288 +05:30 [INF] Returning 13 audit logs
+2025-12-18 02:17:03.288 +05:30 [INF] Retrieved 13 audit logs
+2025-12-18 02:22:54.835 +05:30 [INF] ReleaseFlow application starting
+2025-12-18 02:22:55.152 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-18 02:22:55.154 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-18 02:22:55.194 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-18 02:22:55.195 +05:30 [INF] Hosting environment: Development
+2025-12-18 02:22:55.195 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-18 02:23:56.141 +05:30 [INF] Deploying to: default/
+2025-12-18 02:23:56.187 +05:30 [INF] Site default stopped successfully
+2025-12-18 02:23:56.227 +05:30 [INF] App pool default stopped successfully
+2025-12-18 02:24:06.649 +05:30 [INF] Backup created successfully: C:\ReleaseFlow\Backups\default\default_2025.12.17.1_20251217_205358.zip
+2025-12-18 02:24:06.668 +05:30 [INF] Detected nested structure, using: C:\Users\ahari\AppData\Local\Temp\ReleaseFlow_d643323e-c351-4204-b639-1505b3c7b586\IT-Company-Website-main
+2025-12-18 02:24:06.668 +05:30 [INF] Deploying from: C:\Users\ahari\AppData\Local\Temp\ReleaseFlow_d643323e-c351-4204-b639-1505b3c7b586\IT-Company-Website-main
+2025-12-18 02:24:06.910 +05:30 [INF] App pool default started successfully
+2025-12-18 02:24:06.936 +05:30 [INF] Site default started successfully
+2025-12-18 02:24:09.964 +05:30 [INF] Deployment 9 completed successfully
+2025-12-18 02:24:10.031 +05:30 [INF] Audit log created: Deploy on Deployment by user admin
+2025-12-18 02:27:44.130 +05:30 [INF] ReleaseFlow application starting
+2025-12-18 02:27:44.403 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-18 02:27:44.405 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-18 02:27:44.437 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-18 02:27:44.438 +05:30 [INF] Hosting environment: Development
+2025-12-18 02:27:44.438 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-18 02:28:58.699 +05:30 [INF] Deploying to: default/
+2025-12-18 02:29:04.713 +05:30 [INF] Backup created successfully: C:\ReleaseFlow\Backups\default\default_2025.12.17.2_20251217_205900.zip
+2025-12-18 02:29:04.721 +05:30 [INF] Detected nested structure, using: C:\Users\ahari\AppData\Local\Temp\ReleaseFlow_5846edeb-0c44-43b9-930d-feb18ff460ea\IT-Company-Website-main
+2025-12-18 02:29:04.721 +05:30 [INF] Deploying from: C:\Users\ahari\AppData\Local\Temp\ReleaseFlow_5846edeb-0c44-43b9-930d-feb18ff460ea\IT-Company-Website-main
+2025-12-18 02:29:04.894 +05:30 [INF] Site default is already started or starting
+2025-12-18 02:29:07.907 +05:30 [INF] Deployment 10 completed successfully
+2025-12-18 02:29:07.960 +05:30 [INF] Audit log created: Deploy on Deployment by user admin
+2025-12-18 02:32:16.229 +05:30 [INF] ReleaseFlow application starting
+2025-12-18 02:32:16.579 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-18 02:32:16.582 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-18 02:32:16.636 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-18 02:32:16.637 +05:30 [INF] Hosting environment: Development
+2025-12-18 02:32:16.637 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-18 02:33:24.130 +05:30 [INF] Deploying to: default/enlink
+2025-12-18 02:33:24.193 +05:30 [INF] Site default stopped successfully
+2025-12-18 02:33:24.243 +05:30 [INF] App pool default stopped successfully
+2025-12-18 02:33:28.744 +05:30 [INF] Backup created successfully: C:\ReleaseFlow\Backups\defaultenlink\defaultenlink_2025.12.17.1_20251217_210326.zip
+2025-12-18 02:33:28.764 +05:30 [INF] Deploying from: C:\Users\ahari\AppData\Local\Temp\ReleaseFlow_edad817e-6448-4d85-b87b-73627c6c7c6c
+2025-12-18 02:33:28.940 +05:30 [INF] App pool default started successfully
+2025-12-18 02:33:28.963 +05:30 [INF] Site default started successfully
+2025-12-18 02:33:31.985 +05:30 [INF] Deployment 11 completed successfully
+2025-12-18 02:33:32.030 +05:30 [INF] Audit log created: Deploy on Deployment by user admin
+2025-12-18 02:33:59.966 +05:30 [INF] Site default stopped successfully
+2025-12-18 02:33:59.978 +05:30 [WRN] App pool  not found
+2025-12-18 02:34:00.015 +05:30 [ERR] Rollback failed for deployment 11
+System.Exception: Failed to stop app pool: 
+   at ReleaseFlow.Services.Deployment.RollbackService.RollbackDeploymentAsync(Int32 deploymentId, String username) in C:\Users\ahari\source\ReleaseFlow\ReleaseFlow\Services\Deployment\RollbackService.cs:line 79
+2025-12-18 02:34:22.905 +05:30 [INF] Site default is already stopped or stopping
+2025-12-18 02:34:22.922 +05:30 [WRN] App pool  not found
+2025-12-18 02:34:22.939 +05:30 [ERR] Rollback failed for deployment 10
+System.Exception: Failed to stop app pool: 
+   at ReleaseFlow.Services.Deployment.RollbackService.RollbackDeploymentAsync(Int32 deploymentId, String username) in C:\Users\ahari\source\ReleaseFlow\ReleaseFlow\Services\Deployment\RollbackService.cs:line 79
+2025-12-18 02:35:59.308 +05:30 [INF] ReleaseFlow application starting
+2025-12-18 02:35:59.553 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-18 02:35:59.556 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-18 02:35:59.596 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-18 02:35:59.597 +05:30 [INF] Hosting environment: Development
+2025-12-18 02:35:59.597 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-18 02:36:09.496 +05:30 [INF] Site default is already stopped or stopping
+2025-12-18 02:36:09.517 +05:30 [WRN] App pool  not found
+2025-12-18 02:36:09.560 +05:30 [ERR] Rollback failed for deployment 11
+System.Exception: Failed to stop app pool: 
+   at ReleaseFlow.Services.Deployment.RollbackService.RollbackDeploymentAsync(Int32 deploymentId, String username) in C:\Users\ahari\source\ReleaseFlow\ReleaseFlow\Services\Deployment\RollbackService.cs:line 79
+2025-12-18 02:38:32.810 +05:30 [INF] ReleaseFlow application starting
+2025-12-18 02:38:33.047 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-18 02:38:33.051 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-18 02:38:33.093 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-18 02:38:33.094 +05:30 [INF] Hosting environment: Development
+2025-12-18 02:38:33.094 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-18 02:53:46.123 +05:30 [INF] ReleaseFlow application starting
+2025-12-18 02:53:46.356 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-18 02:53:46.358 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-18 02:53:46.395 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-18 02:53:46.395 +05:30 [INF] Hosting environment: Development
+2025-12-18 02:53:46.395 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-18 02:55:08.999 +05:30 [INF] Deploying to: default/
+2025-12-18 02:55:17.723 +05:30 [INF] Backup created successfully: C:\ReleaseFlow\Backups\default\default_2025.12.17.3_20251217_212511.zip
+2025-12-18 02:55:17.734 +05:30 [INF] Deployment exclusions: web.config, appsettings.json, appsettings.*.json, documents
+2025-12-18 02:55:17.735 +05:30 [INF] Deploying from: C:\Users\ahari\AppData\Local\Temp\ReleaseFlow_7f225154-d592-4e6d-85e3-36215b94ba6b
+2025-12-18 02:55:17.948 +05:30 [INF] Deployment 12 completed successfully
+2025-12-18 02:55:18.021 +05:30 [INF] Audit log created: Deploy on Deployment by user admin
+2025-12-18 02:56:20.658 +05:30 [INF] Deploying to: default/
+2025-12-18 02:56:22.667 +05:30 [INF] Source path is empty (first deployment), skipping backup: C:\inetpub\wwwroot
+2025-12-18 02:56:22.673 +05:30 [INF] Deployment exclusions: web.config, appsettings.json, appsettings.*.json, documents
+2025-12-18 02:56:22.674 +05:30 [INF] Deploying from: C:\Users\ahari\AppData\Local\Temp\ReleaseFlow_f88eb396-8056-453e-a421-335516364dab
+2025-12-18 02:56:22.825 +05:30 [INF] Deployment 13 completed successfully
+2025-12-18 02:56:22.877 +05:30 [INF] Audit log created: Deploy on Deployment by user admin

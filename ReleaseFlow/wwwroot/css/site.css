@@ -1,22 +1,528 @@
+/* ReleaseFlow - Modern UI Design System */
+
+/* ============================================
+   Base Styles & Typography
+   ============================================ */
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
+    html {
+        font-size: 16px;
+    }
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ============================================
+   Premium Gradient Hero Sections
+   ============================================ */
+.page-hero {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 20px;
+    padding: 2.5rem 2rem;
+    color: white;
+    margin-bottom: 2rem;
+    box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.page-hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 400px;
+    height: 400px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-20px) rotate(10deg);
+    }
+}
+
+.page-hero h1,
+.page-hero h2 {
+    position: relative;
+    z-index: 1;
+}
+
+.page-hero p {
+    position: relative;
+    z-index: 1;
+    opacity: 0.95;
+}
+
+/* ============================================
+   Modern Cards & Glass Effects
+   ============================================ */
+.modern-card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+.modern-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.card-gradient-border {
+    position: relative;
+}
+
+.card-gradient-border::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    border-radius: 16px 16px 0 0;
+}
+
+/* ============================================
+   Stat Cards
+   ============================================ */
+.stat-card {
+    background: white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--card-gradient-start), var(--card-gradient-end));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover::before {
+    transform: scaleX(1);
+}
+
+.stat-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.stat-card.primary {
+    --card-gradient-start: #667eea;
+    --card-gradient-end: #764ba2;
+}
+
+.stat-card.success {
+    --card-gradient-start: #11998e;
+    --card-gradient-end: #38ef7d;
+}
+
+.stat-card.warning {
+    --card-gradient-start: #f093fb;
+    --card-gradient-end: #f5576c;
+}
+
+.stat-card.info {
+    --card-gradient-start: #4facfe;
+    --card-gradient-end: #00f2fe;
+}
+
+.stat-card.danger {
+    --card-gradient-start: #ff6b6b;
+    --card-gradient-end: #ee5a6f;
+}
+
+.stat-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    background: linear-gradient(135deg, var(--card-gradient-start), var(--card-gradient-end));
+    color: white;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--card-gradient-start), var(--card-gradient-end));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ============================================
+   Modern Buttons
+   ============================================ */
+.btn-modern {
+    border-radius: 8px;
+    padding: 0.6rem 1.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.btn-modern:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Gradient Buttons - Always visible */
+.btn-gradient-primary {
+    background: linear-gradient(135deg, #667eea, #764ba2) !important;
+    color: white !important;
+    border: 2px solid transparent !important;
+}
+
+.btn-gradient-primary:hover {
+    background: linear-gradient(135deg, #5568d3, #6a3f8f) !important;
+    color: white !important;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4) !important;
+}
+
+.btn-gradient-success {
+    background: linear-gradient(135deg, #11998e, #38ef7d) !important;
+    color: white !important;
+    border: 2px solid transparent !important;
+}
+
+.btn-gradient-success:hover {
+    background: linear-gradient(135deg, #0d7a72, #2dd968) !important;
+    color: white !important;
+    box-shadow: 0 4px 12px rgba(17, 153, 142, 0.4) !important;
+}
+
+.btn-gradient-danger {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a6f) !important;
+    color: white !important;
+    border: 2px solid transparent !important;
+}
+
+.btn-gradient-danger:hover {
+    background: linear-gradient(135deg, #ff5252, #e04a5d) !important;
+    color: white !important;
+    box-shadow: 0 4px 12px rgba(255, 107, 107, 0.4) !important;
+}
+
+.btn-gradient-info {
+    background: linear-gradient(135deg, #4facfe, #00f2fe) !important;
+    color: white !important;
+    border: 2px solid transparent !important;
+}
+
+/* Ensure Bootstrap outline buttons are visible */
+.btn-outline-primary {
+    color: #667eea !important;
+    border: 2px solid #667eea !important;
+    background: white !important;
+}
+
+.btn-outline-primary:hover {
+    background: #667eea !important;
+    color: white !important;
+    border-color: #667eea !important;
+}
+
+.btn-outline-secondary {
+    color: #6c757d !important;
+    border: 2px solid #6c757d !important;
+    background: white !important;
+}
+
+.btn-outline-secondary:hover {
+    background: #6c757d !important;
+    color: white !important;
+    border-color: #6c757d !important;
+}
+
+.btn-outline-success {
+    color: #11998e !important;
+    border: 2px solid #11998e !important;
+    background: white !important;
+}
+
+.btn-outline-success:hover {
+    background: #11998e !important;
+    color: white !important;
+    border-color: #11998e !important;
+}
+
+.btn-outline-danger {
+    color: #dc3545 !important;
+    border: 2px solid #dc3545 !important;
+    background: white !important;
+}
+
+.btn-outline-danger:hover {
+    background: #dc3545 !important;
+    color: white !important;
+    border-color: #dc3545 !important;
+}
+
+.btn-outline-warning {
+    color: #ffc107 !important;
+    border: 2px solid #ffc107 !important;
+    background: white !important;
+}
+
+.btn-outline-warning:hover {
+    background: #ffc107 !important;
+    color: #000 !important;
+    border-color: #ffc107 !important;
+}
+
+.btn-outline-info {
+    color: #4facfe !important;
+    border: 2px solid #4facfe !important;
+    background: white !important;
+}
+
+.btn-outline-info:hover {
+    background: #4facfe !important;
+    color: white !important;
+    border-color: #4facfe !important;
+}
+
+/* ============================================
+   Modern Badges
+   ============================================ */
+.badge-modern {
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+}
+
+/* ============================================
+   Enhanced Tables
+   ============================================ */
+.table-modern {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.table-modern thead {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+}
+
+.table-modern thead th {
+    border: none;
+    padding: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    color: #6c757d;
+}
+
+.table-modern tbody tr {
+    transition: all 0.2s ease;
+    border-left: 3px solid transparent;
+}
+
+.table-modern tbody tr:hover {
+    background: linear-gradient(90deg, rgba(102, 126, 234, 0.05) 0%, transparent 100%);
+    border-left-color: #667eea;
+    transform: translateX(4px);
+}
+
+.table-modern tbody td {
+    padding: 1rem;
+    vertical-align: middle;
+    border-top: 1px solid #f0f0f0;
+}
+
+/* ============================================
+   Progress Bars & Storage
+   ============================================ */
+.storage-bar {
+    height: 12px;
+    border-radius: 10px;
+    background: #f0f0f0;
+    overflow: hidden;
+    position: relative;
+}
+
+.storage-bar-fill {
+    height: 100%;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    transition: width 0.5s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.storage-bar-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* ============================================
+   Form Controls
+   ============================================ */
+.form-control-modern {
+    border-radius: 12px;
+    border: 2px solid #e9ecef;
+    padding: 0.75rem 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-control-modern:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.15);
+}
+
+.form-label-modern {
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 0.5rem;
+}
+
+/* ============================================
+   Focus States
+   ============================================ */
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #667eea;
+}
+
+/* ============================================
+   Animations
+   ============================================ */
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.slide-in {
+    animation: slideIn 0.4s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* ============================================
+   Utility Classes
+   ============================================ */
+.gradient-text {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.shadow-modern {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.shadow-modern-lg {
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+/* ============================================
+   Responsive Utilities
+   ============================================ */
+@media (max-width: 768px) {
+    .page-hero {
+        padding: 2rem 1.5rem;
+    }
+
+    .stat-card {
+        margin-bottom: 1rem;
+    }
 }

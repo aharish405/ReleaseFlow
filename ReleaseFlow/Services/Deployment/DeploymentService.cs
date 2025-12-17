@@ -174,7 +174,7 @@ public class DeploymentService : IDeploymentService
             }
 
             // Step 8: Replace files (atomic swap)
-            await ReplaceFilesAsync(tempExtractPath, application.PhysicalPath);
+            await ReplaceFilesAsync(tempExtractPath, application.PhysicalPath, application.ExcludedPaths);
             await AddDeploymentStepAsync(deployment.Id, 7, "Files replaced successfully", StepStatus.Succeeded);
             result.Steps.Add("Files replaced");
 
@@ -321,12 +321,19 @@ public class DeploymentService : IDeploymentService
         return deployment;
     }
 
-    private async Task ReplaceFilesAsync(string sourcePath, string destinationPath)
+    private async Task ReplaceFilesAsync(string sourcePath, string destinationPath, string? excludedPaths = null)
     {
         // Ensure destination exists
         if (!Directory.Exists(destinationPath))
         {
             Directory.CreateDirectory(destinationPath);
+        }
+
+        // Parse exclusion patterns
+        var exclusions = ParseExclusionPatterns(excludedPaths);
+        if (exclusions.Any())
+        {
+            _logger.LogInformation("Deployment exclusions: {Exclusions}", string.Join(", ", exclusions));
         }
 
         // Smart folder detection: Check if ZIP has nested structure
@@ -336,7 +343,7 @@ public class DeploymentService : IDeploymentService
         _logger.LogInformation("Deploying from: {SourcePath}", actualSourcePath);
 
         // Copy all files and directories
-        await CopyDirectoryAsync(actualSourcePath, destinationPath);
+        await CopyDirectoryAsync(actualSourcePath, destinationPath, exclusions);
     }
 
     private string FindActualContentFolder(string extractedPath)
@@ -404,7 +411,7 @@ public class DeploymentService : IDeploymentService
         return false;
     }
 
-    private async Task CopyDirectoryAsync(string sourceDir, string destDir)
+    private async Task CopyDirectoryAsync(string sourceDir, string destDir, List<string>? exclusions = null)
     {
         await Task.Run(() =>
         {
@@ -424,6 +431,13 @@ public class DeploymentService : IDeploymentService
             var files = dir.GetFiles();
             foreach (var file in files)
             {
+                // Check if file should be excluded
+                if (ShouldExclude(file.Name, exclusions))
+                {
+                    _logger.LogInformation("Skipping excluded file: {FileName}", file.Name);
+                    continue;
+                }
+
                 var tempPath = Path.Combine(destDir, file.Name);
                 file.CopyTo(tempPath, true);
             }
@@ -431,10 +445,62 @@ public class DeploymentService : IDeploymentService
             // Copy subdirectories and their contents
             foreach (var subdir in dirs)
             {
+                // Check if folder should be excluded
+                if (ShouldExclude(subdir.Name, exclusions))
+                {
+                    _logger.LogInformation("Skipping excluded folder: {FolderName}", subdir.Name);
+                    continue;
+                }
+
                 var tempPath = Path.Combine(destDir, subdir.Name);
-                CopyDirectoryAsync(subdir.FullName, tempPath).Wait();
+                CopyDirectoryAsync(subdir.FullName, tempPath, exclusions).Wait();
             }
         });
+    }
+
+    private List<string> ParseExclusionPatterns(string? excludedPaths)
+    {
+        if (string.IsNullOrWhiteSpace(excludedPaths))
+        {
+            return new List<string>();
+        }
+
+        return excludedPaths
+            .Split(new[] { ',', ';' }, StringSplitOptions.RemoveEmptyEntries)
+            .Select(p => p.Trim())
+            .Where(p => !string.IsNullOrWhiteSpace(p))
+            .ToList();
+    }
+
+    private bool ShouldExclude(string name, List<string>? exclusions)
+    {
+        if (exclusions == null || !exclusions.Any())
+        {
+            return false;
+        }
+
+        foreach (var pattern in exclusions)
+        {
+            // Exact match
+            if (name.Equals(pattern, StringComparison.OrdinalIgnoreCase))
+            {
+                return true;
+            }
+
+            // Wildcard match (simple * support)
+            if (pattern.Contains('*'))
+            {
+                var regexPattern = "^" + System.Text.RegularExpressions.Regex.Escape(pattern)
+                    .Replace("\\*", ".*") + "$";
+                if (System.Text.RegularExpressions.Regex.IsMatch(name, regexPattern, 
+                    System.Text.RegularExpressions.RegexOptions.IgnoreCase))
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 
     private async Task AddDeploymentStepAsync(int deploymentId, int stepNumber, string stepName, StepStatus status, string? errorDetails = null)

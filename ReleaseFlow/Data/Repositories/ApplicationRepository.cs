@@ -57,14 +57,14 @@ public class ApplicationRepository : IApplicationRepository
                 LastDiscoveredAt, CreatedAt, UpdatedAt,
                 StopSiteBeforeDeployment, StopAppPoolBeforeDeployment,
                 StartAppPoolAfterDeployment, StartSiteAfterDeployment,
-                CreateBackup, RunHealthCheck, DeploymentDelaySeconds
+                CreateBackup, RunHealthCheck, DeploymentDelaySeconds, ExcludedPaths
             ) VALUES (
                 @Name, @Description, @IISSiteName, @AppPoolName, @PhysicalPath,
                 @Environment, @HealthCheckUrl, @ApplicationPath, @IsActive, @IsDiscovered,
                 @LastDiscoveredAt, @CreatedAt, @UpdatedAt,
                 @StopSiteBeforeDeployment, @StopAppPoolBeforeDeployment,
                 @StartAppPoolAfterDeployment, @StartSiteAfterDeployment,
-                @CreateBackup, @RunHealthCheck, @DeploymentDelaySeconds
+                @CreateBackup, @RunHealthCheck, @DeploymentDelaySeconds, @ExcludedPaths
             );
             SELECT CAST(SCOPE_IDENTITY() as int)";
 
@@ -88,7 +88,8 @@ public class ApplicationRepository : IApplicationRepository
             new SqlParameter("@StartSiteAfterDeployment", application.StartSiteAfterDeployment),
             new SqlParameter("@CreateBackup", application.CreateBackup),
             new SqlParameter("@RunHealthCheck", application.RunHealthCheck),
-            new SqlParameter("@DeploymentDelaySeconds", application.DeploymentDelaySeconds)
+            new SqlParameter("@DeploymentDelaySeconds", application.DeploymentDelaySeconds),
+            new SqlParameter("@ExcludedPaths", application.ExcludedPaths ?? (object)DBNull.Value)
         );
 
         return id;
@@ -116,7 +117,8 @@ public class ApplicationRepository : IApplicationRepository
                 StartSiteAfterDeployment = @StartSiteAfterDeployment,
                 CreateBackup = @CreateBackup,
                 RunHealthCheck = @RunHealthCheck,
-                DeploymentDelaySeconds = @DeploymentDelaySeconds
+                DeploymentDelaySeconds = @DeploymentDelaySeconds,
+                ExcludedPaths = @ExcludedPaths
             WHERE Id = @Id";
 
         await _sqlHelper.ExecuteNonQueryAsync(sql,
@@ -139,7 +141,8 @@ public class ApplicationRepository : IApplicationRepository
             new SqlParameter("@StartSiteAfterDeployment", application.StartSiteAfterDeployment),
             new SqlParameter("@CreateBackup", application.CreateBackup),
             new SqlParameter("@RunHealthCheck", application.RunHealthCheck),
-            new SqlParameter("@DeploymentDelaySeconds", application.DeploymentDelaySeconds)
+            new SqlParameter("@DeploymentDelaySeconds", application.DeploymentDelaySeconds),
+            new SqlParameter("@ExcludedPaths", application.ExcludedPaths ?? (object)DBNull.Value)
         );
     }
 
@@ -180,7 +183,8 @@ public class ApplicationRepository : IApplicationRepository
             StartSiteAfterDeployment = SqlHelper.GetBoolean(reader, "StartSiteAfterDeployment", true),
             CreateBackup = SqlHelper.GetBoolean(reader, "CreateBackup", true),
             RunHealthCheck = SqlHelper.GetBoolean(reader, "RunHealthCheck", true),
-            DeploymentDelaySeconds = SqlHelper.GetInt32(reader, "DeploymentDelaySeconds", 2)
+            DeploymentDelaySeconds = SqlHelper.GetInt32(reader, "DeploymentDelaySeconds", 2),
+            ExcludedPaths = SqlHelper.GetValue<string>(reader, "ExcludedPaths")
         };
     }
 }

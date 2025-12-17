@@ -3,97 +3,109 @@
     ViewData["Title"] = "Applications";
 }
 
-<div class="row mb-4">
-    <div class="col-md-8">
-        <h2><i class="bi bi-app-indicator"></i> Applications</h2>
-        <p class="text-muted">Manage registered applications for deployment</p>
-    </div>
-    <div class="col-md-4 text-end">
-        <form asp-action="DiscoverFromIIS" method="post" class="d-inline">
-            <button type="submit" class="btn btn-success me-2">
-                <i class="bi bi-search"></i> Auto-Discover from IIS
-            </button>
-        </form>
-        <a asp-action="Create" class="btn btn-primary">
-            <i class="bi bi-plus-circle"></i> Register Application
-        </a>
+<!-- Hero Section -->
+<div class="page-hero mb-4">
+    <div class="position-relative">
+        <h2 class="mb-2">
+            <i class="bi bi-app-indicator me-2"></i>
+            Applications
+        </h2>
+        <p class="mb-0 opacity-90">
+            Manage registered applications for deployment
+        </p>
     </div>
 </div>
 
-<div class="card">
-    <div class="card-body">
+<!-- Action Buttons -->
+<div class="d-flex justify-content-end gap-2 mb-4">
+    <form asp-action="DiscoverFromIIS" method="post" class="d-inline">
+        <button type="submit" class="btn btn-success" style="background: linear-gradient(135deg, #11998e, #38ef7d); border: none; border-radius: 8px; padding: 0.6rem 1.5rem; font-weight: 600;">
+            <i class="bi bi-search me-1"></i>Auto-Discover from IIS
+        </button>
+    </form>
+    <a asp-action="Create" class="btn btn-primary" style="background: linear-gradient(135deg, #667eea, #764ba2); border: none; border-radius: 8px; padding: 0.6rem 1.5rem; font-weight: 600; color: white; text-decoration: none; display: inline-block;">
+        <i class="bi bi-plus-circle me-1"></i>Register Application
+    </a>
+</div>
+
+<!-- Applications Grid -->
+<div class="card modern-card" style="background: white;">
+    <div class="card-body p-0">
         @if (Model.Any())
         {
-            <div class="table-responsive">
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Environment</th>
-                            <th>IIS Site</th>
-                            <th>App Path</th>
-                            <th>App Pool</th>
-                            <th>Physical Path</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var app in Model)
-                        {
-                            <tr>
-                                <td>
-                                    <strong>@app.Name</strong>
-                                    @if (!string.IsNullOrEmpty(app.Description))
-                                    {
-                                        <br />
-                                        <small class="text-muted">@app.Description</small>
-                                    }
-                                </td>
-                                <td>
-                                    @if (app.Environment == "Production")
-                                    {
-                                        <span class="badge bg-danger">@app.Environment</span>
-                                    }
-                                    else if (app.Environment == "Staging")
-                                    {
-                                        <span class="badge bg-warning">@app.Environment</span>
-                                    }
-                                    else
-                                    {
-                                        <span class="badge bg-info">@app.Environment</span>
-                                    }
-                                </td>
-                                <td><code>@app.IISSiteName</code></td>
-                                <td>
-                                    <code class="text-primary">@app.ApplicationPath</code>
-                                </td>
-                                <td><code>@app.AppPoolName</code></td>
-                                <td><small>@app.PhysicalPath</small></td>
-                                <td>
-                                    <div class="btn-group" role="group">
-                                        <a asp-action="Details" asp-route-id="@app.Id" class="btn btn-sm btn-outline-primary">
-                                            <i class="bi bi-eye"></i>
-                                        </a>
-                                        <a asp-action="Edit" asp-route-id="@app.Id" class="btn btn-sm btn-outline-secondary">
-                                            <i class="bi bi-pencil"></i>
-                                        </a>
-                                        <a asp-controller="Deployments" asp-action="Deploy" asp-route-applicationId="@app.Id" class="btn btn-sm btn-success">
-                                            <i class="bi bi-upload"></i> Deploy
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
+            @(Html.Grid(Model).Build(columns =>
+            {
+                columns.Add(m => m.Name).Titled("Application").Filterable(true).Sortable(true);
+                columns.Add(m => m.Environment).Titled("Environment").Filterable(true).Sortable(true).RenderedAs(model =>
+                {
+                    var badgeClass = model.Environment switch
+                    {
+                        "Production" => "bg-danger",
+                        "Staging" => "bg-warning text-dark",
+                        "Development" => "bg-info",
+                        _ => "bg-secondary"
+                    };
+                    var icon = model.Environment switch
+                    {
+                        "Production" => "shield-fill-exclamation",
+                        "Staging" => "shield-fill-check",
+                        "Development" => "code-slash",
+                        _ => "circle"
+                    };
+                    return Html.Raw($"<span class='badge {badgeClass}'><i class='bi bi-{icon} me-1'></i>{model.Environment}</span>");
+                });
+                columns.Add(m => m.IISSiteName).Titled("IIS Site").Filterable(true).Sortable(true);
+                columns.Add(m => m.AppPoolName).Titled("App Pool").Filterable(true).Sortable(true);
+                columns.Add(m => m.PhysicalPath).Titled("Physical Path").Filterable(true).Sortable(true);
+                columns.Add().Titled("Actions").Css("text-end").RenderedAs(model => Html.Raw($@"
+                    <div class='btn-group' role='group'>
+                        <a href='/Deployments/Deploy?applicationId={model.Id}' class='btn btn-sm btn-primary' style='background: linear-gradient(135deg, #667eea, #764ba2); border: none; border-radius: 8px 0 0 8px; color: white;' title='Deploy'>
+                            <i class='bi bi-cloud-upload'></i>
+                        </a>
+                        <a href='/Applications/Details/{model.Id}' class='btn btn-sm btn-outline-primary' style='border: 2px solid #667eea; background: white; color: #667eea;' title='View'>
+                            <i class='bi bi-eye'></i>
+                        </a>
+                        <a href='/Applications/Edit/{model.Id}' class='btn btn-sm btn-outline-secondary' style='border: 2px solid #6c757d; background: white; color: #6c757d;' title='Edit'>
+                            <i class='bi bi-pencil'></i>
+                        </a>
+                        <a href='/Applications/Delete/{model.Id}' class='btn btn-sm btn-outline-danger' style='border: 2px solid #dc3545; background: white; color: #dc3545; border-radius: 0 8px 8px 0;' title='Delete'>
+                            <i class='bi bi-trash'></i>
+                        </a>
+                    </div>
+                "));
+            }).Pageable(pager =>
+            {
+                pager.RowsPerPage = 10;
+                pager.PageSizes = new Dictionary<int, string> { { 10, "10" }, { 50, "50" }, { 100, "100" } };
+            }).Filterable().Sortable())
         }
         else
         {
-            <div class="alert alert-info text-center">
-                <i class="bi bi-info-circle"></i> No applications registered yet. 
-                <a asp-action="Create" class="alert-link">Register your first application</a>
+            <div class="text-center py-5">
+                <i class="bi bi-inbox display-1 text-muted opacity-25"></i>
+                <p class="text-muted mt-3 mb-4">No applications registered yet</p>
+                <div class="d-flex gap-2 justify-content-center">
+                    <form asp-action="DiscoverFromIIS" method="post" class="d-inline">
+                        <button type="submit" class="btn btn-success" style="background: linear-gradient(135deg, #11998e, #38ef7d); border: none; border-radius: 8px; padding: 0.6rem 1.5rem; font-weight: 600; color: white;">
+                            <i class="bi bi-search me-1"></i>Auto-Discover from IIS
+                        </button>
+                    </form>
+                    <a asp-action="Create" class="btn btn-primary" style="background: linear-gradient(135deg, #667eea, #764ba2); border: none; border-radius: 8px; padding: 0.6rem 1.5rem; font-weight: 600; color: white; text-decoration: none; display: inline-block;">
+                        <i class="bi bi-plus-circle me-1"></i>Register Manually
+                    </a>
+                </div>
             </div>
         }
     </div>
 </div>
+
+@section Styles {
+    <link href="~/lib/mvc-grid/css/mvc-grid.css" rel="stylesheet" />
+}
+
+@section Scripts {
+    <script src="~/lib/mvc-grid/js/mvc-grid.js"></script>
+    <script>
+        document.querySelectorAll('.mvc-grid').forEach(element => new MvcGrid(element));
+    </script>
+}

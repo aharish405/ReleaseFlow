@@ -3,125 +3,70 @@
     ViewData["Title"] = "Audit Logs";
 }
 
-<div class="row mb-4">
-    <div class="col-12">
-        <h2><i class="bi bi-journal-text"></i> Audit Logs</h2>
-        <p class="text-muted">View all system operations and user activities</p>
+<!-- Hero Section -->
+<div class="page-hero mb-4">
+    <div class="position-relative">
+        <h2 class="mb-2">
+            <i class="bi bi-shield-check me-2"></i>
+            Audit Logs
+        </h2>
+        <p class="mb-0 opacity-90">
+            Track all system activities and changes
+        </p>
     </div>
 </div>
 
-<div class="card mb-3">
-    <div class="card-body">
-        <form method="get" class="row g-3">
-            <div class="col-md-3">
-                <label class="form-label">ActionType</label>
-                <input type="text" name="actionType" class="form-control" placeholder="e.g., Deploy, Start, Stop" 
-                       value="@ViewBag.ActionType" />
-            </div>
-            <div class="col-md-3">
-                <label class="form-label">Entity Type</label>
-                <select name="entityType" class="form-select">
-                    <option value="">All Types</option>
-                    <option value="Deployment" selected="@(ViewBag.FilterEntityType == "Deployment")">Deployment</option>
-                    <option value="Site" selected="@(ViewBag.FilterEntityType == "Site")">Site</option>
-                    <option value="AppPool" selected="@(ViewBag.FilterEntityType == "AppPool")">App Pool</option>
-                    <option value="Application" selected="@(ViewBag.FilterEntityType == "Application")">Application</option>
-                </select>
-            </div>
-            <div class="col-md-3">
-                <label class="form-label">From Date</label>
-                <input type="date" name="fromDate" class="form-control" value="@ViewBag.FilterFromDate" />
-            </div>
-            <div class="col-md-3 d-flex align-items-end">
-                <button type="submit" class="btn btn-primary me-2">
-                    <i class="bi bi-funnel"></i> Filter
-                </button>
-                <a asp-action="Index" class="btn btn-outline-secondary">
-                    <i class="bi bi-x-circle"></i> Clear
-                </a>
-            </div>
-        </form>
-    </div>
-</div>
-
-<div class="card">
-    <div class="card-body">
+<!-- Audit Logs Grid -->
+<div class="card modern-card" style="background: white;">
+    <div class="card-body p-0">
         @if (Model.Any())
         {
-            <div class="table-responsive">
-                <table class="table table-hover table-sm">
-                    <thead>
-                        <tr>
-                            <th>Timestamp</th>
-                            <th>User</th>
-                            <th>Action</th>
-                            <th>Entity Type</th>
-                            <th>Entity ID</th>
-                            <th>Details</th>
-                            <th>IP Address</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var log in Model)
-                        {
-                            <tr>
-                                <td>
-                                    <small>@log.CreatedAt.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss")</small>
-                                </td>
-                                <td>@log.Username</td>
-                                <td>
-                                    <span class="badge bg-primary">@log.Action</span>
-                                </td>
-                                <td>
-                                    <code>@log.EntityType</code>
-                                </td>
-                                <td>
-                                    @if (!string.IsNullOrEmpty(log.EntityId))
-                                    {
-                                        <small>@log.EntityId</small>
-                                    }
-                                    else
-                                    {
-                                        <span class="text-muted">-</span>
-                                    }
-                                </td>
-                                <td>
-                                    @if (!string.IsNullOrEmpty(log.Details))
-                                    {
-                                        <small class="text-muted">@log.Details</small>
-                                    }
-                                    else
-                                    {
-                                        <span class="text-muted">-</span>
-                                    }
-                                </td>
-                                <td>
-                                    <small><code>@log.IpAddress</code></small>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="mt-3 text-muted">
-                <small>Showing @Model.Count() audit log entries</small>
-            </div>
+            @(Html.Grid(Model).Build(columns =>
+            {
+                columns.Add(m => m.CreatedAt).Titled("Timestamp").Filterable(true).Sortable(true).Formatted("{0:g}");
+                columns.Add(m => m.Username).Titled("User").Filterable(true).Sortable(true);
+                columns.Add(m => m.Action).Titled("Action").Filterable(true).Sortable(true).RenderedAs(model =>
+                {
+                    var (badgeClass, icon) = model.Action switch
+                    {
+                        "Create" => ("bg-success", "plus-circle"),
+                        "Update" => ("bg-info", "pencil-square"),
+                        "Delete" => ("bg-danger", "trash"),
+                        "Deploy" => ("bg-primary", "cloud-upload"),
+                        "Rollback" => ("bg-warning text-dark", "arrow-counterclockwise"),
+                        "Start" => ("bg-success", "play-fill"),
+                        "Stop" => ("bg-danger", "stop-fill"),
+                        "Recycle" => ("bg-warning text-dark", "arrow-clockwise"),
+                        _ => ("bg-secondary", "circle")
+                    };
+                    return Html.Raw($"<span class='badge {badgeClass}'><i class='bi bi-{icon} me-1'></i>{model.Action}</span>");
+                });
+                columns.Add(m => m.EntityType).Titled("Entity Type").Filterable(true).Sortable(true);
+                columns.Add(m => m.Details).Titled("Details").Filterable(true).Sortable(true);
+                columns.Add(m => m.IpAddress).Titled("IP Address").Filterable(true).Sortable(true);
+            }).Pageable(pager =>
+            {
+                pager.RowsPerPage = 10;
+                pager.PageSizes = new Dictionary<int, string> { { 10, "10" }, { 50, "50" }, { 100, "100" } };
+            }).Filterable().Sortable())
         }
         else
         {
-            <div class="alert alert-info text-center">
-                <i class="bi bi-info-circle"></i> No audit logs found matching your criteria.
+            <div class="text-center py-5">
+                <i class="bi bi-inbox display-1 text-muted opacity-25"></i>
+                <p class="text-muted mt-3">No audit logs found</p>
             </div>
         }
     </div>
 </div>
 
-@* @section Scripts {
+@section Styles {
+    <link href="~/lib/mvc-grid/css/mvc-grid.css" rel="stylesheet" />
+}
+
+@section Scripts {
+    <script src="~/lib/mvc-grid/js/mvc-grid.js"></script>
     <script>
-        // Auto-refresh every 30 seconds
-        setTimeout(function() {
-            location.reload();
-        }, 30000);
+        document.querySelectorAll('.mvc-grid').forEach(element => new MvcGrid(element));
     </script>
-} *@
+}

@@ -1,195 +1,365 @@
 @model ReleaseFlow.Models.Deployment
 @{
     ViewData["Title"] = $"Deployment #{Model.Id}";
+    var duration = Model.CompletedAt.HasValue ? (Model.CompletedAt.Value - Model.StartedAt).TotalSeconds : 0;
 }
 
-<div class="row mb-4">
-    <div class="col-md-8">
-        <h2><i class="bi bi-info-circle"></i> Deployment Details</h2>
-        <p class="text-muted">Deployment #@Model.Id - @Model.Application.Name</p>
-    </div>
-    <div class="col-md-4 text-end">
-        @if (Model.CanRollback && Model.Status == ReleaseFlow.Models.DeploymentStatus.Succeeded)
-        {
-            <form asp-action="Rollback" asp-route-id="@Model.Id" method="post" 
-                  onsubmit="return confirm('Are you sure you want to rollback this deployment?');">
-                <button type="submit" class="btn btn-warning">
-                    <i class="bi bi-arrow-counterclockwise"></i> Rollback
-                </button>
-            </form>
-        }
+<!-- Hero Section -->
+<div class="page-hero mb-4">
+    <div class="position-relative">
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+                <h2 class="mb-2">
+                    <i class="bi bi-box-seam me-2"></i>
+                    Deployment #@Model.Id
+                </h2>
+                <p class="mb-0 opacity-90">
+                    @Model.Application.Name - Version @Model.Version
+                </p>
+            </div>
+            @if (Model.CanRollback && Model.Status == ReleaseFlow.Models.DeploymentStatus.Succeeded)
+            {
+                <form asp-action="Rollback" asp-route-id="@Model.Id" method="post" 
+                      onsubmit="return confirm('Are you sure you want to rollback this deployment?');">
+                    <button type="submit" class="btn btn-warning" style="border-radius: 8px; padding: 0.6rem 1.5rem; font-weight: 600;">
+                        <i class="bi bi-arrow-counterclockwise me-1"></i>Rollback
+                    </button>
+                </form>
+            }
+        </div>
     </div>
 </div>
 
-<div class="row">
-    <div class="col-md-6">
-        <div class="card mb-3">
-            <div class="card-header">
-                <h5 class="mb-0">Deployment Information</h5>
-            </div>
-            <div class="card-body">
-                <table class="table table-sm">
-                    <tr>
-                        <th width="40%">Application:</th>
-                        <td>@Model.Application.Name</td>
-                    </tr>
-                    <tr>
-                        <th>Version:</th>
-                        <td><code>@Model.Version</code></td>
-                    </tr>
-                    <tr>
-                        <th>Status:</th>
-                        <td>
+<!-- Deployment Summary -->
+<div class="row mb-4">
+    <div class="col-md-12">
+        <div class="card modern-card" style="background: white;">
+            <div class="card-body p-4">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="d-flex align-items-center gap-3">
                             @if (Model.Status == ReleaseFlow.Models.DeploymentStatus.Succeeded)
                             {
-                                <span class="badge bg-success"><i class="bi bi-check-circle"></i> Success</span>
+                                <div class="stat-icon" style="--card-gradient-start: #11998e; --card-gradient-end: #38ef7d;">
+                                    <i class="bi bi-check-circle"></i>
+                                </div>
+                                <div>
+                                    <div class="text-muted small">Status</div>
+                                    <div class="fw-bold text-success">Succeeded</div>
+                                </div>
                             }
                             else if (Model.Status == ReleaseFlow.Models.DeploymentStatus.Failed)
                             {
-                                <span class="badge bg-danger"><i class="bi bi-x-circle"></i> Failed</span>
+                                <div class="stat-icon" style="--card-gradient-start: #ff6b6b; --card-gradient-end: #ee5a6f;">
+                                    <i class="bi bi-x-circle"></i>
+                                </div>
+                                <div>
+                                    <div class="text-muted small">Status</div>
+                                    <div class="fw-bold text-danger">Failed</div>
+                                </div>
                             }
                             else if (Model.Status == ReleaseFlow.Models.DeploymentStatus.InProgress)
                             {
-                                <span class="badge bg-warning"><i class="bi bi-hourglass-split"></i> In Progress</span>
-                            }
-                            else if (Model.Status == ReleaseFlow.Models.DeploymentStatus.RolledBack)
-                            {
-                                <span class="badge bg-secondary"><i class="bi bi-arrow-counterclockwise"></i> Rolled Back</span>
-                            }
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>Deployed By:</th>
-                        <td>@Model.DeployedByUsername</td>
-                    </tr>
-                    <tr>
-                        <th>Started:</th>
-                        <td>@Model.StartedAt.ToLocalTime().ToString("F")</td>
-                    </tr>
-                    <tr>
-                        <th>Completed:</th>
-                        <td>
-                            @if (Model.CompletedAt.HasValue)
-                            {
-                                @Model.CompletedAt.Value.ToLocalTime().ToString("F")
+                                <div class="stat-icon" style="--card-gradient-start: #f093fb; --card-gradient-end: #f5576c;">
+                                    <i class="bi bi-hourglass-split"></i>
+                                </div>
+                                <div>
+                                    <div class="text-muted small">Status</div>
+                                    <div class="fw-bold text-warning">In Progress</div>
+                                </div>
                             }
                             else
                             {
-                                <span class="text-muted">In Progress</span>
+                                <div class="stat-icon" style="--card-gradient-start: #6c757d; --card-gradient-end: #495057;">
+                                    <i class="bi bi-arrow-counterclockwise"></i>
+                                </div>
+                                <div>
+                                    <div class="text-muted small">Status</div>
+                                    <div class="fw-bold">Rolled Back</div>
+                                </div>
                             }
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>Duration:</th>
-                        <td>
-                            @if (Model.CompletedAt.HasValue)
-                            {
-                                var duration = Model.CompletedAt.Value - Model.StartedAt;
-                                <span>@duration.TotalSeconds.ToString("F1") seconds</span>
-                            }
-                            else
-                            {
-                                <span class="text-muted">-</span>
-                            }
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>Package:</th>
-                        <td>
-                            @Model.ZipFileName
-                            <br />
-                            <small class="text-muted">@((Model.ZipFileSize / 1024.0 / 1024.0).ToString("F2")) MB</small>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>Can Rollback:</th>
-                        <td>
-                            @if (Model.CanRollback)
-                            {
-                                <span class="badge bg-success">Yes</span>
-                            }
-                            else
-                            {
-                                <span class="badge bg-secondary">No</span>
-                            }
-                        </td>
-                    </tr>
-                </table>
-
-                @if (!string.IsNullOrEmpty(Model.ErrorMessage))
-                {
-                    <div class="alert alert-danger mt-3">
-                        <h6>Error Message:</h6>
-                        <p class="mb-0">@Model.ErrorMessage</p>
+                        </div>
                     </div>
-                }
+                    <div class="col-md-3">
+                        <div class="text-muted small">Deployed By</div>
+                        <div class="fw-bold"><i class="bi bi-person-circle me-1"></i>@Model.DeployedByUsername</div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="text-muted small">Started</div>
+                        <div class="fw-bold">@Model.StartedAt.ToLocalTime().ToString("dd-MMM-yyyy hh:mm:ss tt") IST</div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="text-muted small">Duration</div>
+                        <div class="fw-bold">
+                            @if (Model.CompletedAt.HasValue)
+                            {
+                                <span>@duration.ToString("F1")s</span>
+                            }
+                            else
+                            {
+                                <span class="text-muted">In Progress...</span>
+                            }
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+</div>
 
-    <div class="col-md-6">
-        <div class="card">
-            <div class="card-header">
-                <h5 class="mb-0">Deployment Steps</h5>
+<!-- Deployment Steps - Console Style -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="card modern-card" style="background: white;">
+            <div class="card-header bg-light border-bottom">
+                <h5 class="mb-0 fw-bold">
+                    <i class="bi bi-terminal me-2"></i>Deployment Console
+                </h5>
             </div>
-            <div class="card-body">
-                @if (Model.Steps.Any())
+            <div class="card-body p-0">
+                @if (Model.Steps != null && Model.Steps.Any())
                 {
-                    <div class="list-group">
+                    <div class="console-container">
                         @foreach (var step in Model.Steps.OrderBy(s => s.StepNumber))
                         {
-                            <div class="list-group-item">
-                                <div class="d-flex w-100 justify-content-between">
-                                    <h6 class="mb-1">
-                                        Step @step.StepNumber: @step.StepName
-                                    </h6>
-                                    <small>
-                                        @if (step.Status == ReleaseFlow.Models.StepStatus.Succeeded)
-                                        {
-                                            <span class="badge bg-success"><i class="bi bi-check"></i></span>
-                                        }
-                                        else if (step.Status == ReleaseFlow.Models.StepStatus.Failed)
-                                        {
-                                            <span class="badge bg-danger"><i class="bi bi-x"></i></span>
-                                        }
-                                        else if (step.Status == ReleaseFlow.Models.StepStatus.InProgress)
-                                        {
-                                            <span class="badge bg-warning"><i class="bi bi-hourglass-split"></i></span>
-                                        }
-                                    </small>
-                                </div>
-                                @if (!string.IsNullOrEmpty(step.Message))
+                            var stepDuration = step.CompletedAt.HasValue ? (step.CompletedAt.Value - step.StartedAt).TotalSeconds : 0;
+                            var statusColor = step.Status switch
+                            {
+                                ReleaseFlow.Models.StepStatus.Succeeded => "console-success",
+                                ReleaseFlow.Models.StepStatus.Failed => "console-error",
+                                ReleaseFlow.Models.StepStatus.InProgress => "console-warning",
+                                ReleaseFlow.Models.StepStatus.Skipped => "console-muted",
+                                _ => "console-info"
+                            };
+                            
+                            var statusIcon = step.Status switch
+                            {
+                                ReleaseFlow.Models.StepStatus.Succeeded => "✓",
+                                ReleaseFlow.Models.StepStatus.Failed => "✗",
+                                ReleaseFlow.Models.StepStatus.InProgress => "⟳",
+                                ReleaseFlow.Models.StepStatus.Skipped => "○",
+                                _ => "•"
+                            };
+
+                            <div class="console-line console-step-header @statusColor">
+                                <span class="console-timestamp">[@step.StartedAt.ToLocalTime().ToString("hh:mm:ss tt")]</span>
+                                <span class="console-icon">@statusIcon</span>
+                                <span class="console-step-name">@step.StepName</span>
+                                @if (step.CompletedAt.HasValue)
                                 {
-                                    <p class="mb-1 small">@step.Message</p>
+                                    <span class="console-duration">(@stepDuration.ToString("F2")s)</span>
                                 }
-                                @if (!string.IsNullOrEmpty(step.ErrorDetails))
+                            </div>
+
+                            @if (!string.IsNullOrEmpty(step.Message))
+                            {
+                                foreach (var line in step.Message.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None))
                                 {
-                                    <div class="alert alert-danger small mb-0 mt-2">
-                                        <pre class="mb-0">@step.ErrorDetails</pre>
+                                    <div class="console-line console-output">
+                                        <span class="console-text">@line</span>
                                     </div>
                                 }
-                                <small class="text-muted">
-                                    @step.StartedAt.ToLocalTime().ToString("HH:mm:ss")
-                                    @if (step.CompletedAt.HasValue)
-                                    {
-                                        <span> - @step.CompletedAt.Value.ToLocalTime().ToString("HH:mm:ss")</span>
-                                    }
-                                </small>
-                            </div>
+                            }
+
+                            @if (!string.IsNullOrEmpty(step.ErrorDetails) && step.Status == ReleaseFlow.Models.StepStatus.Failed)
+                            {
+                                <div class="console-line console-error-header">
+                                    <span class="console-icon">⚠</span>
+                                    <span class="console-text">ERROR DETAILS:</span>
+                                </div>
+                                foreach (var line in step.ErrorDetails.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None))
+                                {
+                                    <div class="console-line console-error-text">
+                                        <span class="console-text">@line</span>
+                                    </div>
+                                }
+                            }
+
+                            @if (step.CompletedAt.HasValue)
+                            {
+                                <div class="console-line console-step-footer @statusColor">
+                                    <span class="console-timestamp">[@step.CompletedAt.Value.ToLocalTime().ToString("hh:mm:ss tt")]</span>
+                                    <span class="console-text">Step completed - @step.Status</span>
+                                </div>
+                            }
+
+                            <div class="console-separator"></div>
                         }
                     </div>
                 }
                 else
                 {
-                    <p class="text-muted">No deployment steps recorded</p>
+                    <div class="text-center py-5">
+                        <i class="bi bi-terminal display-1 text-muted opacity-25"></i>
+                        <p class="text-muted mt-3">No deployment steps recorded</p>
+                    </div>
                 }
             </div>
         </div>
     </div>
 </div>
 
-<div class="mt-3">
-    <a asp-action="Index" class="btn btn-secondary">
-        <i class="bi bi-arrow-left"></i> Back to History
-    </a>
-</div>
+<style>
+/* Console-Style Deployment Output */
+.console-container {
+    background: #1e1e1e;
+    color: #d4d4d4;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    padding: 1.5rem;
+    max-height: 800px;
+    overflow-y: auto;
+}
+
+.console-line {
+    padding: 0.25rem 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+}
+
+.console-timestamp {
+    color: #808080;
+    flex-shrink: 0;
+    font-weight: 500;
+}
+
+.console-icon {
+    flex-shrink: 0;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.console-step-name {
+    font-weight: 600;
+    flex: 1;
+}
+
+.console-duration {
+    color: #808080;
+    flex-shrink: 0;
+}
+
+.console-text {
+    flex: 1;
+}
+
+/* Status Colors */
+.console-success {
+    color: #4ec9b0;
+}
+
+.console-success .console-icon {
+    color: #4ec9b0;
+}
+
+.console-error {
+    color: #f48771;
+}
+
+.console-error .console-icon {
+    color: #f48771;
+}
+
+.console-warning {
+    color: #dcdcaa;
+}
+
+.console-warning .console-icon {
+    color: #dcdcaa;
+}
+
+.console-muted {
+    color: #808080;
+}
+
+.console-info {
+    color: #9cdcfe;
+}
+
+/* Step Header */
+.console-step-header {
+    font-weight: 600;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #333;
+    margin-bottom: 0.25rem;
+}
+
+/* Step Footer */
+.console-step-footer {
+    padding: 0.5rem 0;
+    font-style: italic;
+    opacity: 0.8;
+}
+
+/* Output Lines */
+.console-output {
+    color: #d4d4d4;
+    padding-left: 2rem;
+}
+
+/* Error Lines */
+.console-error-header {
+    color: #f48771;
+    font-weight: 600;
+    background: #3a1f1f;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+    border-left: 3px solid #f48771;
+}
+
+.console-error-text {
+    color: #ffb3b3;
+    background: #2d1f1f;
+    padding-left: 2rem;
+}
+
+/* Separator */
+.console-separator {
+    height: 1px;
+    background: #333;
+    margin: 1rem 0;
+}
+
+/* Scrollbar Styling */
+.console-container::-webkit-scrollbar {
+    width: 10px;
+}
+
+.console-container::-webkit-scrollbar-track {
+    background: #252526;
+}
+
+.console-container::-webkit-scrollbar-thumb {
+    background: #3e3e42;
+    border-radius: 5px;
+}
+
+.console-container::-webkit-scrollbar-thumb:hover {
+    background: #4e4e52;
+}
+
+/* Status icon styling */
+.stat-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+    background: linear-gradient(135deg, var(--card-gradient-start), var(--card-gradient-end));
+    color: white;
+}
+</style>
+
+<script>
+    // Auto-scroll to bottom of console
+    document.addEventListener('DOMContentLoaded', function() {
+        const console = document.querySelector('.console-container');
+        if (console) {
+            console.scrollTop = console.scrollHeight;
+        }
+    });
+</script>

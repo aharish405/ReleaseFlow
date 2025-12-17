@@ -25,6 +25,7 @@ public class Application
     public bool CreateBackup { get; set; } = true;
     public bool RunHealthCheck { get; set; } = true;
     public int DeploymentDelaySeconds { get; set; } = 2; // Delay after stopping services
+    public string? ExcludedPaths { get; set; } // Comma-separated list of paths to exclude from deployment
     
     // Navigation properties
     public ICollection<Deployment> Deployments { get; set; } = new List<Deployment>();

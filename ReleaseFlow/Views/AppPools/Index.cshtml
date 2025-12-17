@@ -3,87 +3,65 @@
     ViewData["Title"] = "Application Pools";
 }
 
-<div class="row mb-4">
-    <div class="col-12">
-        <h2><i class="bi bi-layers"></i> Application Pools</h2>
-        <p class="text-muted">Manage IIS application pools</p>
+<!-- Hero Section -->
+<div class="page-hero mb-4">
+    <div class="position-relative">
+        <h2 class="mb-2">
+            <i class="bi bi-layers me-2"></i>
+            Application Pools
+        </h2>
+        <p class="mb-0 opacity-90">
+            Monitor and manage IIS application pools
+        </p>
     </div>
 </div>
 
-<div class="card">
-    <div class="card-body">
+<!-- Application Pools Grid -->
+<div class="card modern-card" style="background: white;">
+    <div class="card-body p-0">
         @if (Model.Any())
         {
-            <div class="table-responsive">
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th>Pool Name</th>
-                            <th>Status</th>
-                            <th>.NET Version</th>
-                            <th>Pipeline Mode</th>
-                            <th>Identity</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var pool in Model)
-                        {
-                            <tr>
-                                <td><strong>@pool.Name</strong></td>
-                                <td>
-                                    @if (pool.State == "Started")
-                                    {
-                                        <span class="badge bg-success"><i class="bi bi-play-fill"></i> Running</span>
-                                    }
-                                    else if (pool.State == "Stopped")
-                                    {
-                                        <span class="badge bg-danger"><i class="bi bi-stop-fill"></i> Stopped</span>
-                                    }
-                                    else
-                                    {
-                                        <span class="badge bg-warning">@pool.State</span>
-                                    }
-                                </td>
-                                <td><code>@pool.ManagedRuntimeVersion</code></td>
-                                <td>@pool.ManagedPipelineMode</td>
-                                <td><small>@pool.IdentityType</small></td>
-                                <td>
-                                    <div class="btn-group" role="group">
-                                        @if (pool.State == "Started")
-                                        {
-                                            <form asp-action="Recycle" asp-route-name="@pool.Name" method="post" class="d-inline">
-                                                <button type="submit" class="btn btn-sm btn-warning" title="Recycle">
-                                                    <i class="bi bi-arrow-clockwise"></i>
-                                                </button>
-                                            </form>
-                                            <form asp-action="Stop" asp-route-name="@pool.Name" method="post" class="d-inline">
-                                                <button type="submit" class="btn btn-sm btn-danger" title="Stop">
-                                                    <i class="bi bi-stop-fill"></i>
-                                                </button>
-                                            </form>
-                                        }
-                                        else if (pool.State == "Stopped")
-                                        {
-                                            <form asp-action="Start" asp-route-name="@pool.Name" method="post" class="d-inline">
-                                                <button type="submit" class="btn btn-sm btn-success" title="Start">
-                                                    <i class="bi bi-play-fill"></i>
-                                                </button>
-                                            </form>
-                                        }
-                                    </div>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
+            @(Html.Grid(Model).Build(columns =>
+            {
+                columns.Add(m => m.Name).Titled("Pool Name").Filterable(true).Sortable(true);
+                columns.Add(m => m.State).Titled("Status").Filterable(true).Sortable(true).RenderedAs(model =>
+                {
+                    var (badgeClass, icon, text) = model.State switch
+                    {
+                        "Started" => ("bg-success", "play-fill", "Running"),
+                        "Stopped" => ("bg-danger", "stop-fill", "Stopped"),
+                        "Stopping" => ("bg-warning text-dark", "hourglass-split", "Stopping"),
+                        "Starting" => ("bg-info", "hourglass-split", "Starting"),
+                        _ => ("bg-secondary", "circle", model.State)
+                    };
+                    return Html.Raw($"<span class='badge {badgeClass}'><i class='bi bi-{icon} me-1'></i>{text}</span>");
+                });
+                columns.Add(m => m.ManagedRuntimeVersion).Titled(".NET Version").Filterable(true).Sortable(true);
+                columns.Add(m => m.ManagedPipelineMode).Titled("Pipeline Mode").Filterable(true).Sortable(true);
+                columns.Add(m => m.IdentityType).Titled("Identity").Filterable(true).Sortable(true);
+            }).Pageable(pager =>
+            {
+                pager.RowsPerPage = 10;
+                pager.PageSizes = new Dictionary<int, string> { { 10, "10" }, { 50, "50" }, { 100, "100" } };
+            }).Filterable().Sortable())
         }
         else
         {
-            <div class="alert alert-info">
-                <i class="bi bi-info-circle"></i> No application pools found on this server.
+            <div class="text-center py-5">
+                <i class="bi bi-layers display-1 text-muted opacity-25"></i>
+                <p class="text-muted mt-3">No application pools found</p>
             </div>
         }
     </div>
 </div>
+
+@section Styles {
+    <link href="~/lib/mvc-grid/css/mvc-grid.css" rel="stylesheet" />
+}
+
+@section Scripts {
+    <script src="~/lib/mvc-grid/js/mvc-grid.js"></script>
+    <script>
+        document.querySelectorAll('.mvc-grid').forEach(element => new MvcGrid(element));
+    </script>
+}

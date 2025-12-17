@@ -1,158 +1,204 @@
 @model ReleaseFlow.Models.Application
 @{
-    ViewData["Title"] = Model.Id == 0 ? "Register Application" : "Edit Application";
+    ViewData["Title"] = "Edit Application";
 }
 
-<div class="row mb-4">
-    <div class="col-12">
-        <h2><i class="bi bi-app-indicator"></i> @ViewData["Title"]</h2>
-        <p class="text-muted">Configure application settings for deployment</p>
+<!-- Hero Section -->
+<div class="page-hero mb-4">
+    <div class="position-relative">
+        <h2 class="mb-2">
+            <i class="bi bi-app-indicator me-2"></i>
+            Edit Application
+        </h2>
+        <p class="mb-0 opacity-90">
+            Configure application settings for deployment
+        </p>
     </div>
 </div>
 
+<!-- Application Form -->
 <div class="row">
-    <div class="col-md-8 offset-md-2">
-        <div class="card">
-            <div class="card-body">
-                <form asp-action="@(Model.Id == 0 ? "Create" : "Edit")" method="post">
-                    @if (Model.Id > 0)
-                    {
-                        <input type="hidden" asp-for="Id" />
-                        <input type="hidden" asp-for="CreatedAt" />
-                        <input type="hidden" asp-for="IsActive" />
-                        <input type="hidden" asp-for="IsDiscovered" />
-                        <input type="hidden" asp-for="LastDiscoveredAt" />
-                    }
+    <div class="col-md-10 offset-md-1">
+        <div class="card modern-card" style="background: white;">
+            <div class="card-header bg-light border-bottom">
+                <h5 class="mb-0 fw-bold">
+                    <i class="bi bi-sliders me-2"></i>Application Configuration
+                </h5>
+            </div>
+            <div class="card-body p-4">
+                <form asp-action="Edit" method="post">
+                    <input type="hidden" asp-for="Id" />
+                    <input type="hidden" asp-for="CreatedAt" />
+                    <input type="hidden" asp-for="IsActive" />
+                    <input type="hidden" asp-for="IsDiscovered" />
+                    <input type="hidden" asp-for="LastDiscoveredAt" />
 
-                    <div class="mb-3">
-                        <label asp-for="Name" class="form-label">Application Name *</label>
-                        <input asp-for="Name" class="form-control" placeholder="My Application" required />
-                        <span asp-validation-for="Name" class="text-danger"></span>
-                    </div>
-
-                    <div class="mb-3">
-                        <label asp-for="Description" class="form-label">Description</label>
-                        <textarea asp-for="Description" class="form-control" rows="2" 
-                                  placeholder="Brief description of the application"></textarea>
-                        <span asp-validation-for="Description" class="text-danger"></span>
-                    </div>
-
-                    <div class="mb-3">
-                        <label asp-for="Environment" class="form-label">Environment *</label>
-                        <select asp-for="Environment" class="form-select" required>
-                            <option value="">-- Select Environment --</option>
-                            <option value="Development">Development</option>
-                            <option value="Staging">Staging</option>
-                            <option value="Production">Production</option>
-                        </select>
-                        <span asp-validation-for="Environment" class="text-danger"></span>
-                    </div>
-
-                    <div class="mb-3">
-                        <label asp-for="IISSiteName" class="form-label">IIS Site Name *</label>
-                        <input asp-for="IISSiteName" class="form-control" 
-                               placeholder="Default Web Site" required />
-                        <div class="form-text">The name of the IIS site where this application will be deployed</div>
-                        <span asp-validation-for="IISSiteName" class="text-danger"></span>
-                    </div>
-
-                    <div class="mb-3">
-                        <label asp-for="AppPoolName" class="form-label">Application Pool Name *</label>
-                        <input asp-for="AppPoolName" class="form-control" 
-                               placeholder="DefaultAppPool" required />
-                        <div class="form-text">The IIS application pool for this site</div>
-                        <span asp-validation-for="AppPoolName" class="text-danger"></span>
-                    </div>
-
-                    <div class="mb-3">
-                        <label asp-for="PhysicalPath" class="form-label">Physical Path *</label>
-                        <input asp-for="PhysicalPath" class="form-control" 
-                               placeholder="C:\inetpub\wwwroot\MyApp" required />
-                        <div class="form-text">The physical directory where application files will be deployed</div>
-                        <span asp-validation-for="PhysicalPath" class="text-danger"></span>
-                    </div>
-
-                    <div class="mb-3">
-                        <label asp-for="ApplicationPath" class="form-label">Application Path *</label>
-                        <input asp-for="ApplicationPath" class="form-control" 
-                               placeholder="/" required pattern="^/.*" />
-                        <div class="form-text">
-                            IIS application path. Use "/" for root application or "/appname" for nested applications (e.g., "/enlink", "/nextgen")
-                        </div>
-                        <span asp-validation-for="ApplicationPath" class="text-danger"></span>
-                    </div>
-
-                    <div class="mb-3">
-                        <label asp-for="HealthCheckUrl" class="form-label">Health Check URL</label>
-                        <input asp-for="HealthCheckUrl" class="form-control" type="url"
-                               placeholder="http://localhost/health" />
-                        <div class="form-text">Optional URL to verify the application is running after deployment</div>
-                        <span asp-validation-for="HealthCheckUrl" class="text-danger"></span>
-                    </div>
-
-                    <hr class="my-4" />
-
-                    <h5 class="mb-3"><i class="bi bi-gear"></i> Deployment Configuration</h5>
-                    <p class="text-muted small">Configure which steps to execute during deployment</p>
-
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-check mb-2">
-                                <input asp-for="StopSiteBeforeDeployment" class="form-check-input" type="checkbox" />
-                                <label asp-for="StopSiteBeforeDeployment" class="form-check-label">
-                                    Stop IIS Site Before Deployment
-                                </label>
+                    <!-- Basic Information -->
+                    <div class="mb-4">
+                        <h6 class="fw-bold text-muted mb-3">
+                            <i class="bi bi-info-circle me-2"></i>Basic Information
+                        </h6>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Name" class="form-label-modern">Application Name *</label>
+                                <input asp-for="Name" class="form-control form-control-modern" placeholder="My Application" required />
+                                <span asp-validation-for="Name" class="text-danger"></span>
                             </div>
-                            <div class="form-check mb-2">
-                                <input asp-for="StopAppPoolBeforeDeployment" class="form-check-input" type="checkbox" />
-                                <label asp-for="StopAppPoolBeforeDeployment" class="form-check-label">
-                                    Stop App Pool Before Deployment
-                                </label>
-                            </div>
-                            <div class="form-check mb-2">
-                                <input asp-for="CreateBackup" class="form-check-input" type="checkbox" />
-                                <label asp-for="CreateBackup" class="form-check-label">
-                                    Create Backup Before Deployment
-                                </label>
+
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Environment" class="form-label-modern">Environment *</label>
+                                <select asp-for="Environment" class="form-control form-control-modern" required>
+                                    <option value="">-- Select Environment --</option>
+                                    <option value="Development">Development</option>
+                                    <option value="Staging">Staging</option>
+                                    <option value="Production">Production</option>
+                                </select>
+                                <span asp-validation-for="Environment" class="text-danger"></span>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-check mb-2">
-                                <input asp-for="StartAppPoolAfterDeployment" class="form-check-input" type="checkbox" />
-                                <label asp-for="StartAppPoolAfterDeployment" class="form-check-label">
-                                    Start App Pool After Deployment
-                                </label>
+
+                        <div class="mb-3">
+                            <label asp-for="Description" class="form-label-modern">Description</label>
+                            <textarea asp-for="Description" class="form-control form-control-modern" rows="2" 
+                                      placeholder="Brief description of the application"></textarea>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <hr class="my-4">
+
+                    <!-- IIS Configuration -->
+                    <div class="mb-4">
+                        <h6 class="fw-bold text-muted mb-3">
+                            <i class="bi bi-server me-2"></i>IIS Configuration
+                        </h6>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="IISSiteName" class="form-label-modern">IIS Site Name *</label>
+                                <input asp-for="IISSiteName" class="form-control form-control-modern" 
+                                       placeholder="Default Web Site" required />
+                                <span asp-validation-for="IISSiteName" class="text-danger"></span>
                             </div>
-                            <div class="form-check mb-2">
-                                <input asp-for="StartSiteAfterDeployment" class="form-check-input" type="checkbox" />
-                                <label asp-for="StartSiteAfterDeployment" class="form-check-label">
-                                    Start IIS Site After Deployment
-                                </label>
+
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="ApplicationPath" class="form-label-modern">Application Path *</label>
+                                <input asp-for="ApplicationPath" class="form-control form-control-modern" 
+                                       placeholder="/" required />
+                                <div class="form-text">Virtual path in IIS (e.g., / or /myapp)</div>
+                                <span asp-validation-for="ApplicationPath" class="text-danger"></span>
                             </div>
-                            <div class="form-check mb-2">
-                                <input asp-for="RunHealthCheck" class="form-check-input" type="checkbox" />
-                                <label asp-for="RunHealthCheck" class="form-check-label">
-                                    Run Health Check After Deployment
-                                </label>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="AppPoolName" class="form-label-modern">Application Pool *</label>
+                                <input asp-for="AppPoolName" class="form-control form-control-modern" 
+                                       placeholder="DefaultAppPool" required />
+                                <span asp-validation-for="AppPoolName" class="text-danger"></span>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="PhysicalPath" class="form-label-modern">Physical Path *</label>
+                                <input asp-for="PhysicalPath" class="form-control form-control-modern" 
+                                       placeholder="C:\inetpub\wwwroot" required />
+                                <div class="form-text">Full path on the server</div>
+                                <span asp-validation-for="PhysicalPath" class="text-danger"></span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="mb-3 mt-3">
-                        <label asp-for="DeploymentDelaySeconds" class="form-label">
-                            Deployment Delay (seconds)
-                        </label>
-                        <input asp-for="DeploymentDelaySeconds" class="form-control" type="number" min="0" max="30" />
-                        <div class="form-text">Time to wait after stopping services before deploying files</div>
+                    <hr class="my-4">
+
+                    <!-- Deployment Configuration -->
+                    <div class="mb-4">
+                        <h6 class="fw-bold text-muted mb-3">
+                            <i class="bi bi-gear me-2"></i>Deployment Configuration
+                        </h6>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-check mb-3">
+                                    <input asp-for="StopSiteBeforeDeployment" class="form-check-input" type="checkbox" />
+                                    <label asp-for="StopSiteBeforeDeployment" class="form-check-label">
+                                        Stop Site Before Deployment
+                                    </label>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input asp-for="StopAppPoolBeforeDeployment" class="form-check-input" type="checkbox" />
+                                    <label asp-for="StopAppPoolBeforeDeployment" class="form-check-label">
+                                        Stop Application Pool Before Deployment
+                                    </label>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input asp-for="CreateBackup" class="form-check-input" type="checkbox" />
+                                    <label asp-for="CreateBackup" class="form-check-label">
+                                        Create Backup Before Deployment
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-check mb-3">
+                                    <input asp-for="StartAppPoolAfterDeployment" class="form-check-input" type="checkbox" />
+                                    <label asp-for="StartAppPoolAfterDeployment" class="form-check-label">
+                                        Start Application Pool After Deployment
+                                    </label>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input asp-for="StartSiteAfterDeployment" class="form-check-input" type="checkbox" />
+                                    <label asp-for="StartSiteAfterDeployment" class="form-check-label">
+                                        Start Site After Deployment
+                                    </label>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input asp-for="RunHealthCheck" class="form-check-input" type="checkbox" />
+                                    <label asp-for="RunHealthCheck" class="form-check-label">
+                                        Run Health Check After Deployment
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="DeploymentDelaySeconds" class="form-label-modern">Deployment Delay (Seconds)</label>
+                                <input asp-for="DeploymentDelaySeconds" type="number" class="form-control form-control-modern" 
+                                       placeholder="2" min="0" max="60" />
+                                <div class="form-text">Delay after stopping services before deployment</div>
+                                <span asp-validation-for="DeploymentDelaySeconds" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="HealthCheckUrl" class="form-label-modern">Health Check URL</label>
+                                <input asp-for="HealthCheckUrl" type="url" class="form-control form-control-modern" 
+                                       placeholder="https://example.com/health" />
+                                <div class="form-text">URL to check application health (optional)</div>
+                                <span asp-validation-for="HealthCheckUrl" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label asp-for="ExcludedPaths" class="form-label-modern">
+                                <i class="bi bi-slash-circle me-2 text-primary"></i>Excluded Paths
+                            </label>
+                            <input asp-for="ExcludedPaths" class="form-control form-control-modern" 
+                                   placeholder="web.config,appsettings.json,StaticContent,Uploads" />
+                            <div class="form-text">
+                                Comma-separated list of files/folders to exclude from deployment. 
+                                Supports wildcards (e.g., *.config, Uploads/*.pdf). 
+                                These paths won't be replaced during deployment.
+                            </div>
+                            <span asp-validation-for="ExcludedPaths" class="text-danger"></span>
+                        </div>
                     </div>
 
-                    <div class="d-grid gap-2">
-                        <button type="submit" class="btn btn-primary">
-                            <i class="bi bi-save"></i> @(Model.Id == 0 ? "Register Application" : "Update Application")
-                        </button>
-                        <a asp-action="Index" class="btn btn-outline-secondary">
-                            <i class="bi bi-x-circle"></i> Cancel
+                    <div class="d-flex gap-2 justify-content-end">
+                        <a asp-action="Index" class="btn btn-outline-secondary" style="border-radius: 8px; padding: 0.6rem 1.5rem; font-weight: 600;">
+                            <i class="bi bi-x-circle me-1"></i>Cancel
                         </a>
+                        <button type="submit" class="btn btn-primary" style="background: linear-gradient(135deg, #667eea, #764ba2); border: none; border-radius: 8px; padding: 0.6rem 1.5rem; font-weight: 600;">
+                            <i class="bi bi-check-circle me-1"></i>Save Changes
+                        </button>
                     </div>
                 </form>
             </div>

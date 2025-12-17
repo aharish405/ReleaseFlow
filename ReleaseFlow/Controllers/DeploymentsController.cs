@@ -80,6 +80,45 @@ public class DeploymentsController : Controller
     {
         ViewBag.Applications = await _applicationRepository.GetActiveAsync();
         ViewBag.SelectedApplicationId = applicationId;
+
+        // Calculate suggested version based on date and deployment count
+        if (applicationId.HasValue)
+        {
+            var today = DateTime.UtcNow.Date;
+            var todayPrefix = today.ToString("yyyy.MM.dd");
+            
+            // Get all deployments for this application today
+            var allDeployments = await _deploymentRepository.GetByApplicationIdAsync(applicationId.Value);
+            var todayDeployments = allDeployments
+                .Where(d => d.StartedAt.Date == today &&
+                           d.Version.StartsWith(todayPrefix))
+                .ToList();
+
+            // Calculate next version number
+            int nextVersionNumber = 1;
+            if (todayDeployments.Any())
+            {
+                // Extract version numbers and find the max
+                var versionNumbers = todayDeployments
+                    .Select(d => d.Version.Split('.').LastOrDefault())
+                    .Where(v => int.TryParse(v, out _))
+                    .Select(int.Parse)
+                    .ToList();
+                
+                if (versionNumbers.Any())
+                {
+                    nextVersionNumber = versionNumbers.Max() + 1;
+                }
+            }
+
+            ViewBag.SuggestedVersion = $"{todayPrefix}.{nextVersionNumber}";
+        }
+        else
+        {
+            // Default version if no application selected
+            ViewBag.SuggestedVersion = DateTime.UtcNow.ToString("yyyy.MM.dd") + ".1";
+        }
+
         return View();
     }
 
