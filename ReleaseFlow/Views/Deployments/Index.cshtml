@@ -46,10 +46,13 @@
                 });
                 columns.Add(m => m.DeployedByUsername).Titled("Deployed By").Filterable(true).Sortable(true);
                 columns.Add(m => m.StartedAt).Titled("Started").Filterable(true).Sortable(true).Formatted("{0:g}");
-                columns.Add().Titled("Actions").Css("text-end").RenderedAs(model => Html.Raw($@"
-                    <a href='/Deployments/Details/{model.Id}' class='btn btn-sm btn-outline-primary' style='border: 2px solid #667eea; background: white; color: #667eea; border-radius: 8px;' title='View Details'>
-                        <i class='bi bi-eye me-1'></i>View Details
+                columns.Add().Titled("Actions").Css("text-center").RenderedAs(model => Html.Raw($@"
+                    <a href='{Url.Action("Details", "Deployments", new { id = model.Id })}' class='btn btn-sm btn-outline-primary' style='border: 2px solid #667eea; background: white; color: #667eea; border-radius: 8px;' title='View Details'>
+                        <i class='bi bi-eye'></i> Details
                     </a>
+                    {(model.CanRollback && model.Status == ReleaseFlow.Models.DeploymentStatus.Succeeded ? 
+                        $"<a href='{Url.Action("Rollback", "Deployments", new { id = model.Id })}' class='btn btn-sm btn-outline-warning ms-2' style='border: 2px solid #ffc107; background: white; color: #ffc107; border-radius: 8px;' title='Rollback' onclick='return confirm(\"Are you sure you want to rollback this deployment?\");'><i class='bi bi-arrow-counterclockwise'></i> Rollback</a>" 
+                        : "")}
                 "));
             }).Pageable(pager =>
             {
