@@ -57,22 +57,29 @@
                 columns.Add(m => m.IISSiteName).Titled("IIS Site").Filterable(true).Sortable(true);
                 columns.Add(m => m.AppPoolName).Titled("App Pool").Filterable(true).Sortable(true);
                 columns.Add(m => m.PhysicalPath).Titled("Physical Path").Filterable(true).Sortable(true);
-                columns.Add().Titled("Actions").Css("text-end").RenderedAs(model => Html.Raw($@"
+                columns.Add().Titled("Actions").Css("text-end").RenderedAs(model =>
+                {
+                    var deployUrl = Url.Action("Deploy", "Deployments", new { applicationId = model.Id });
+                    var detailsUrl = Url.Action("Details", "Applications", new { id = model.Id });
+                    var editUrl = Url.Action("Edit", "Applications", new { id = model.Id });
+                    var deleteUrl = Url.Action("Delete", "Applications", new { id = model.Id });
+                    
+                    return Html.Raw($@"
                     <div class='btn-group' role='group'>
-                        <a href='{Url.Action("Deploy", "Deployments", new { applicationId = model.Id })}' class='btn btn-sm btn-primary' style='background: linear-gradient(135deg, #667eea, #764ba2); border: none; border-radius: 8px 0 0 8px; color: white;' title='Deploy'>
+                        <a href='{deployUrl}' class='btn btn-sm btn-primary' style='background: linear-gradient(135deg, #667eea, #764ba2); border: none; border-radius: 8px 0 0 8px; color: white;' title='Deploy'>
                             <i class='bi bi-cloud-upload'></i>
                         </a>
-                        <a href='{Url.Action("Details", "Applications", new { id = model.Id })}' class='btn btn-sm btn-outline-primary' style='border: 2px solid #667eea; background: white; color: #667eea;' title='View'>
+                        <a href='{detailsUrl}' class='btn btn-sm btn-outline-primary' style='border: 2px solid #667eea; background: white; color: #667eea;' title='View'>
                             <i class='bi bi-eye'></i>
                         </a>
-                        <a href='{Url.Action("Edit", "Applications", new { id = model.Id })}' class='btn btn-sm btn-outline-secondary' style='border: 2px solid #6c757d; background: white; color: #6c757d;' title='Edit'>
+                        <a href='{editUrl}' class='btn btn-sm btn-outline-secondary' style='border: 2px solid #6c757d; background: white; color: #6c757d;' title='Edit'>
                             <i class='bi bi-pencil'></i>
                         </a>
-                        <a href='{Url.Action("Delete", "Applications", new { id = model.Id })}' class='btn btn-sm btn-outline-danger' style='border: 2px solid #dc3545; background: white; color: #dc3545; border-radius: 0 8px 8px 0;' title='Delete'>
+                        <a href='{deleteUrl}' class='btn btn-sm btn-outline-danger' style='border: 2px solid #dc3545; background: white; color: #dc3545; border-radius: 0 8px 8px 0;' title='Delete'>
                             <i class='bi bi-trash'></i>
                         </a>
-                    </div>
-                "));
+                    </div>");
+                });
             }).Pageable(pager =>
             {
                 pager.RowsPerPage = 10;
