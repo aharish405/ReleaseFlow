@@ -636,3 +636,108 @@ System.Exception: Failed to stop app pool:
 2025-12-18 02:56:22.674 +05:30 [INF] Deploying from: C:\Users\ahari\AppData\Local\Temp\ReleaseFlow_f88eb396-8056-453e-a421-335516364dab
 2025-12-18 02:56:22.825 +05:30 [INF] Deployment 13 completed successfully
 2025-12-18 02:56:22.877 +05:30 [INF] Audit log created: Deploy on Deployment by user admin
+2025-12-18 03:13:40.660 +05:30 [INF] ReleaseFlow application starting
+2025-12-18 03:13:40.852 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-18 03:13:40.854 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-18 03:13:40.880 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-18 03:13:40.881 +05:30 [INF] Hosting environment: Development
+2025-12-18 03:13:40.881 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-18 03:14:22.234 +05:30 [INF] Site default started successfully
+2025-12-18 03:14:22.251 +05:30 [INF] Audit log created: SiteStart on Site by user admin
+2025-12-18 03:14:35.227 +05:30 [INF] Site default started successfully
+2025-12-18 03:14:35.231 +05:30 [INF] Audit log created: SiteStart on Site by user admin
+2025-12-18 03:15:15.321 +05:30 [INF] Deploying to: default/nextgen
+2025-12-18 03:15:15.346 +05:30 [INF] Site default stopped successfully
+2025-12-18 03:15:15.374 +05:30 [INF] App pool default stopped successfully
+2025-12-18 03:15:17.390 +05:30 [INF] Source path does not exist (first deployment), skipping backup: C:\inetpub\wwwroot\nextgen
+2025-12-18 03:15:17.399 +05:30 [INF] Deployment exclusions: web.config, appsettings.json, appsettings.*.json
+2025-12-18 03:15:17.399 +05:30 [INF] Deploying from: C:\Users\ahari\AppData\Local\Temp\ReleaseFlow_64614338-91fc-43af-8432-d843436b6b04
+2025-12-18 03:15:17.604 +05:30 [ERR] Error starting app pool default
+System.Runtime.InteropServices.COMException (0x80070425): The service cannot accept control messages at this time. (0x80070425)
+   at Microsoft.Web.Administration.Interop.IAppHostMethodInstance.Execute()
+   at Microsoft.Web.Administration.ConfigurationMethodInstance.Execute()
+   at Microsoft.Web.Administration.ConfigurationElement.ExecuteMethod(String methodName)
+   at Microsoft.Web.Administration.ApplicationPool.Start()
+   at ReleaseFlow.Services.IIS.IISAppPoolService.<>c__DisplayClass6_0.<StartAppPoolAsync>b__0() in C:\Users\ahari\source\ReleaseFlow\ReleaseFlow\Services\IIS\IISAppPoolService.cs:line 156
+2025-12-18 03:15:17.671 +05:30 [ERR] Deployment failed for application 3
+System.Exception: Failed to start app pool: default
+   at ReleaseFlow.Services.Deployment.DeploymentService.DeployAsync(Int32 applicationId, String zipFilePath, String version, String username) in C:\Users\ahari\source\ReleaseFlow\ReleaseFlow\Services\Deployment\DeploymentService.cs:line 187
+2025-12-18 03:15:17.720 +05:30 [ERR] Error starting app pool default
+System.Runtime.InteropServices.COMException (0x80070425): The service cannot accept control messages at this time. (0x80070425)
+   at Microsoft.Web.Administration.Interop.IAppHostMethodInstance.Execute()
+   at Microsoft.Web.Administration.ConfigurationMethodInstance.Execute()
+   at Microsoft.Web.Administration.ConfigurationElement.ExecuteMethod(String methodName)
+   at Microsoft.Web.Administration.ApplicationPool.Start()
+   at ReleaseFlow.Services.IIS.IISAppPoolService.<>c__DisplayClass6_0.<StartAppPoolAsync>b__0() in C:\Users\ahari\source\ReleaseFlow\ReleaseFlow\Services\IIS\IISAppPoolService.cs:line 156
+2025-12-18 03:15:17.738 +05:30 [INF] Site default started successfully
+2025-12-18 03:15:59.674 +05:30 [INF] Deploying to: default/nextgen
+2025-12-18 03:15:59.699 +05:30 [INF] Site default stopped successfully
+2025-12-18 03:15:59.721 +05:30 [INF] App pool default stopped successfully
+2025-12-18 03:16:02.322 +05:30 [INF] Backup created successfully: C:\ReleaseFlow\Backups\defaultnextgen\defaultnextgen_2025.12.17.2_20251217_214601.zip
+2025-12-18 03:16:02.327 +05:30 [INF] Deployment exclusions: web.config, appsettings.json, appsettings.*.json
+2025-12-18 03:16:02.327 +05:30 [INF] Deploying from: C:\Users\ahari\AppData\Local\Temp\ReleaseFlow_e4bfcb62-164f-4592-a845-8efed2e36e7c
+2025-12-18 03:16:02.454 +05:30 [INF] App pool default started successfully
+2025-12-18 03:16:02.473 +05:30 [INF] Site default started successfully
+2025-12-18 03:16:05.487 +05:30 [INF] Deployment 15 completed successfully
+2025-12-18 03:16:05.523 +05:30 [INF] Audit log created: Deploy on Deployment by user admin
+2025-12-18 03:16:11.296 +05:30 [INF] Site default stopped successfully
+2025-12-18 03:16:11.317 +05:30 [WRN] App pool  not found
+2025-12-18 03:16:11.335 +05:30 [ERR] Rollback failed for deployment 15
+System.Exception: Failed to stop app pool: 
+   at ReleaseFlow.Services.Deployment.RollbackService.RollbackDeploymentAsync(Int32 deploymentId, String username) in C:\Users\ahari\source\ReleaseFlow\ReleaseFlow\Services\Deployment\RollbackService.cs:line 79
+2025-12-18 03:16:52.706 +05:30 [INF] Deploying to: default/nextgen
+2025-12-18 03:16:55.243 +05:30 [INF] Backup created successfully: C:\ReleaseFlow\Backups\defaultnextgen\defaultnextgen_2025.12.17.3_20251217_214654.zip
+2025-12-18 03:16:55.250 +05:30 [INF] Deployment exclusions: web.config, appsettings.json, appsettings.*.json
+2025-12-18 03:16:55.250 +05:30 [INF] Deploying from: C:\Users\ahari\AppData\Local\Temp\ReleaseFlow_c6b2f8f7-4d15-45c8-aabb-0ec344acd961
+2025-12-18 03:16:55.381 +05:30 [INF] Deployment 16 completed successfully
+2025-12-18 03:16:55.425 +05:30 [INF] Audit log created: Deploy on Deployment by user admin
+2025-12-18 03:17:11.457 +05:30 [INF] Site default is already stopped or stopping
+2025-12-18 03:17:11.474 +05:30 [WRN] App pool  not found
+2025-12-18 03:17:11.492 +05:30 [ERR] Rollback failed for deployment 16
+System.Exception: Failed to stop app pool: 
+   at ReleaseFlow.Services.Deployment.RollbackService.RollbackDeploymentAsync(Int32 deploymentId, String username) in C:\Users\ahari\source\ReleaseFlow\ReleaseFlow\Services\Deployment\RollbackService.cs:line 79
+2025-12-18 11:53:19.954 +05:30 [INF] ReleaseFlow application starting
+2025-12-18 11:53:20.255 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-18 11:53:20.257 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-18 11:53:20.292 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-18 11:53:20.293 +05:30 [INF] Hosting environment: Development
+2025-12-18 11:53:20.293 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-18 11:53:33.035 +05:30 [INF] User admin logged in
+2025-12-18 11:54:10.576 +05:30 [INF] GetLogsAsync called with fromDate=null, toDate=null, action=null, username=null
+2025-12-18 11:54:10.584 +05:30 [INF] Returning 22 audit logs
+2025-12-18 11:54:10.585 +05:30 [INF] Retrieved 22 audit logs
+2025-12-18 11:54:13.802 +05:30 [INF] GetLogsAsync called with fromDate=null, toDate=null, action=null, username=null
+2025-12-18 11:54:13.806 +05:30 [INF] Returning 22 audit logs
+2025-12-18 11:54:13.806 +05:30 [INF] Retrieved 22 audit logs
+2025-12-18 11:54:31.047 +05:30 [INF] GetLogsAsync called with fromDate=null, toDate=null, action=null, username=null
+2025-12-18 11:54:31.049 +05:30 [INF] Returning 22 audit logs
+2025-12-18 11:54:31.050 +05:30 [INF] Retrieved 22 audit logs
+2025-12-18 12:16:03.941 +05:30 [INF] ReleaseFlow application starting
+2025-12-18 12:16:04.238 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-18 12:16:04.242 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-18 12:16:04.439 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-18 12:16:04.440 +05:30 [INF] Hosting environment: Development
+2025-12-18 12:16:04.441 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-18 12:16:20.173 +05:30 [INF] User admin logged in
+2025-12-18 12:24:02.343 +05:30 [INF] ReleaseFlow application starting
+2025-12-18 12:24:02.610 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-18 12:24:02.613 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-18 12:24:02.665 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-18 12:24:02.666 +05:30 [INF] Hosting environment: Development
+2025-12-18 12:24:02.666 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-18 12:27:55.918 +05:30 [INF] ReleaseFlow application starting
+2025-12-18 12:27:56.231 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-18 12:27:56.236 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-18 12:27:56.304 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-18 12:27:56.305 +05:30 [INF] Hosting environment: Development
+2025-12-18 12:27:56.305 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-18 12:28:09.985 +05:30 [INF] User admin logged in
+2025-12-18 12:29:51.489 +05:30 [INF] GetLogsAsync called with fromDate=null, toDate=null, action=null, username=null
+2025-12-18 12:29:51.494 +05:30 [INF] Returning 22 audit logs
+2025-12-18 12:29:51.494 +05:30 [INF] Retrieved 22 audit logs
+2025-12-18 12:30:22.964 +05:30 [INF] ReleaseFlow application starting
+2025-12-18 12:30:23.225 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-18 12:30:23.227 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-18 12:30:23.263 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-18 12:30:23.264 +05:30 [INF] Hosting environment: Development
+2025-12-18 12:30:23.264 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
