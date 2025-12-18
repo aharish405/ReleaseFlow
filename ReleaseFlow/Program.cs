@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Server.IISIntegration;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 using ReleaseFlow.Data;
 using ReleaseFlow.Data.Repositories;
 using ReleaseFlow.Models;
@@ -74,10 +75,16 @@ builder.Services.Configure<IISServerOptions>(options =>
     options.MaxRequestBodySize = 524288000; // 500 MB
 });
 
-builder.WebHost.ConfigureKestrel(serverOptions =>
+builder.Services.Configure<IISServerOptions>(options =>
 {
-    serverOptions.Limits.MaxRequestBodySize = 524288000; // 500 MB
+    options.MaxRequestBodySize = 524288000;
 });
+
+builder.Services.Configure<KestrelServerOptions>(options =>
+{
+    options.Limits.MaxRequestBodySize = 524288000;
+});
+
 
 var app = builder.Build();
 
