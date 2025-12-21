@@ -90,8 +90,9 @@
                 });
             }).Pageable(pager =>
             {
-                pager.RowsPerPage = 10;
-                pager.PageSizes = new Dictionary<int, string> { { 10, "10" }, { 50, "50" }, { 100, "100" } };
+                pager.RowsPerPage = 20;
+                pager.PageSizes = new Dictionary<int, string> { { 10, "10" }, { 20, "20" }, { 50, "50" }, { 100, "100" } };
+                pager.ShowPageSizes = true;
             }).Filterable().Sortable())
         }
         else
@@ -112,12 +113,7 @@
             </div>
         }
         
-        @if (Model.Any())
-        {
-            <div class="px-3 pb-3">
-                @await Html.PartialAsync("_Pagination")
-            </div>
-        }
+
     </div>
 </div>
 

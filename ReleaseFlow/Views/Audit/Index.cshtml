@@ -49,8 +49,9 @@
                 columns.Add(m => m.IpAddress).Titled("IP Address").Filterable(true).Sortable(true);
             }).Pageable(pager =>
             {
-                pager.RowsPerPage = 10;
-                pager.PageSizes = new Dictionary<int, string> { { 10, "10" }, { 50, "50" }, { 100, "100" } };
+                pager.RowsPerPage = 20;
+                pager.PageSizes = new Dictionary<int, string> { { 10, "10" }, { 20, "20" }, { 50, "50" }, { 100, "100" } };
+                pager.ShowPageSizes = true;
             }).Filterable().Sortable())
         }
         else
