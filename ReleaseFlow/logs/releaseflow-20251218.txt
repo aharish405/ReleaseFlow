@@ -741,3 +741,9 @@ System.Exception: Failed to stop app pool:
 2025-12-18 12:30:23.263 +05:30 [INF] Application started. Press Ctrl+C to shut down.
 2025-12-18 12:30:23.264 +05:30 [INF] Hosting environment: Development
 2025-12-18 12:30:23.264 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow
+2025-12-18 13:30:12.172 +05:30 [INF] ReleaseFlow application starting
+2025-12-18 13:30:12.588 +05:30 [INF] Now listening on: https://localhost:7057
+2025-12-18 13:30:12.591 +05:30 [INF] Now listening on: http://localhost:5032
+2025-12-18 13:30:12.645 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-18 13:30:12.645 +05:30 [INF] Hosting environment: Development
+2025-12-18 13:30:12.645 +05:30 [INF] Content root path: C:\Users\ahari\source\ReleaseFlow\ReleaseFlow

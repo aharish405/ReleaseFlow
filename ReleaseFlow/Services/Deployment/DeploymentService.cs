@@ -48,6 +48,7 @@ public class DeploymentService : IDeploymentService
         string? tempExtractPath = null;
         bool siteWasStopped = false;
         bool appPoolWasStopped = false;
+        string? backupPath = null;
 
         try
         {
@@ -91,7 +92,7 @@ public class DeploymentService : IDeploymentService
             // Step 4: Extract to temp directory
             tempExtractPath = Path.Combine(Path.GetTempPath(), $"ReleaseFlow_{Guid.NewGuid()}");
             Directory.CreateDirectory(tempExtractPath);
-            
+
             ZipFile.ExtractToDirectory(zipFilePath, tempExtractPath);
             await AddDeploymentStepAsync(deployment.Id, 3, "ZIP extracted to temp directory", StepStatus.Succeeded);
             result.Steps.Add("ZIP extracted");
@@ -146,8 +147,8 @@ public class DeploymentService : IDeploymentService
             // Step 7: Create backup (if configured)
             if (application.CreateBackup)
             {
-                var backupPath = await _backupService.CreateBackupAsync(application.PhysicalPath, application.Name, version);
-                
+                backupPath = await _backupService.CreateBackupAsync(application.PhysicalPath, application.Name, version);
+
                 if (!string.IsNullOrEmpty(backupPath))
                 {
                     deployment.BackupPath = backupPath;
@@ -205,7 +206,7 @@ public class DeploymentService : IDeploymentService
                 }
                 await AddDeploymentStepAsync(deployment.Id, 9, $"IIS site '{application.IISSiteName}' started", StepStatus.Succeeded);
                 result.Steps.Add("IIS site started");
-                
+
                 // Wait for site to warm up
                 await Task.Delay(3000);
             }
@@ -260,21 +261,100 @@ public class DeploymentService : IDeploymentService
                 await _deploymentRepository.UpdateAsync(deployment);
 
                 await AddDeploymentStepAsync(deployment.Id, 99, $"Deployment failed: {ex.Message}", StepStatus.Failed, ex.ToString());
-            }
 
-            // Attempt to restart services if they were stopped
-            if (deployment != null)
-            {
-                var application = await _applicationRepository.GetByIdAsync(applicationId);
-                if (application != null)
+                // Attempt automatic rollback if backup was created
+                if (!string.IsNullOrEmpty(backupPath) && File.Exists(backupPath))
                 {
-                    if (appPoolWasStopped)
+                    _logger.LogWarning("Attempting automatic rollback for failed deployment {DeploymentId}", deployment.Id);
+
+                    try
                     {
-                        await _appPoolService.StartAppPoolAsync(application.AppPoolName);
+                        await AddDeploymentStepAsync(deployment.Id, 100, "Initiating automatic rollback", StepStatus.InProgress);
+
+                        var application = await _applicationRepository.GetByIdAsync(applicationId);
+                        if (application != null)
+                        {
+                            // Stop services
+                            if (!appPoolWasStopped)
+                            {
+                                await _appPoolService.StopAppPoolAsync(application.AppPoolName);
+                            }
+                            if (!siteWasStopped)
+                            {
+                                await _siteService.StopSiteAsync(application.IISSiteName);
+                            }
+
+                            // Wait for services to stop
+                            await Task.Delay(2000);
+
+                            // Restore backup
+                            var restored = await _backupService.RestoreBackupAsync(backupPath, application.PhysicalPath);
+                            if (restored)
+                            {
+                                await AddDeploymentStepAsync(deployment.Id, 101, "Backup restored successfully", StepStatus.Succeeded);
+
+                                // Start services
+                                await _appPoolService.StartAppPoolAsync(application.AppPoolName);
+                                await _siteService.StartSiteAsync(application.IISSiteName);
+
+                                await AddDeploymentStepAsync(deployment.Id, 102, "Services restarted after rollback", StepStatus.Succeeded);
+
+                                // Update deployment status to indicate rollback
+                                deployment.Status = DeploymentStatus.FailedRolledBack;
+                                deployment.ErrorMessage = $"{ex.Message} (Automatically rolled back to previous version)";
+                                await _deploymentRepository.UpdateAsync(deployment);
+
+                                result.Message = "Deployment failed but was automatically rolled back to previous version";
+                                _logger.LogInformation("Automatic rollback completed successfully for deployment {DeploymentId}", deployment.Id);
+                            }
+                            else
+                            {
+                                await AddDeploymentStepAsync(deployment.Id, 101, "Automatic rollback failed - backup restoration failed", StepStatus.Failed);
+
+                                // Try to at least restart services
+                                await _appPoolService.StartAppPoolAsync(application.AppPoolName);
+                                await _siteService.StartSiteAsync(application.IISSiteName);
+
+                                _logger.LogError("Automatic rollback failed for deployment {DeploymentId}", deployment.Id);
+                            }
+                        }
                     }
-                    if (siteWasStopped)
+                    catch (Exception rollbackEx)
                     {
-                        await _siteService.StartSiteAsync(application.IISSiteName);
+                        _logger.LogError(rollbackEx, "Automatic rollback failed for deployment {DeploymentId}", deployment.Id);
+                        await AddDeploymentStepAsync(deployment.Id, 101, $"Automatic rollback failed: {rollbackEx.Message}", StepStatus.Failed);
+
+                        // Attempt to restart services as last resort
+                        var application = await _applicationRepository.GetByIdAsync(applicationId);
+                        if (application != null)
+                        {
+                            if (appPoolWasStopped)
+                            {
+                                await _appPoolService.StartAppPoolAsync(application.AppPoolName);
+                            }
+                            if (siteWasStopped)
+                            {
+                                await _siteService.StartSiteAsync(application.IISSiteName);
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    // No backup available, just try to restart services
+                    _logger.LogWarning("No backup available for automatic rollback of deployment {DeploymentId}", deployment.Id);
+
+                    var application = await _applicationRepository.GetByIdAsync(applicationId);
+                    if (application != null)
+                    {
+                        if (appPoolWasStopped)
+                        {
+                            await _appPoolService.StartAppPoolAsync(application.AppPoolName);
+                        }
+                        if (siteWasStopped)
+                        {
+                            await _siteService.StartSiteAsync(application.IISSiteName);
+                        }
                     }
                 }
             }
@@ -310,14 +390,14 @@ public class DeploymentService : IDeploymentService
     public async Task<Models.Deployment?> GetDeploymentByIdAsync(int deploymentId)
     {
         var deployment = await _deploymentRepository.GetByIdAsync(deploymentId);
-        
+
         if (deployment != null)
         {
             // Load deployment steps
             var steps = await _deploymentStepRepository.GetByDeploymentIdAsync(deploymentId);
             deployment.Steps = steps.ToList();
         }
-        
+
         return deployment;
     }
 
@@ -339,7 +419,7 @@ public class DeploymentService : IDeploymentService
         // Smart folder detection: Check if ZIP has nested structure
         // e.g., App.zip/App/App/<ActualFiles>
         var actualSourcePath = FindActualContentFolder(sourcePath);
-        
+
         _logger.LogInformation("Deploying from: {SourcePath}", actualSourcePath);
 
         // Copy all files and directories
@@ -492,7 +572,7 @@ public class DeploymentService : IDeploymentService
             {
                 var regexPattern = "^" + System.Text.RegularExpressions.Regex.Escape(pattern)
                     .Replace("\\*", ".*") + "$";
-                if (System.Text.RegularExpressions.Regex.IsMatch(name, regexPattern, 
+                if (System.Text.RegularExpressions.Regex.IsMatch(name, regexPattern,
                     System.Text.RegularExpressions.RegexOptions.IgnoreCase))
                 {
                     return true;

@@ -65,76 +65,24 @@ public class SitesController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> Start(string name)
-    {
-        try
-        {
-            var result = await _siteService.StartSiteAsync(name);
-            if (result)
-            {
-                await _auditService.LogAsync(
-                    Models.AuditActions.SiteStart,
-                    "Site",
-                    name,
-                    $"Site '{name}' started",
-                    GetCurrentUsername(),
-                    GetClientIpAddress());
-
-                TempData["Success"] = $"Site '{name}' started successfully";
-            }
-            else
-            {
-                TempData["Error"] = $"Failed to start site '{name}'";
-            }
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, "Error starting site {SiteName}", name);
-            TempData["Error"] = $"Error starting site: {ex.Message}";
-        }
-
-        return RedirectToAction(nameof(Index));
-    }
-
-    [HttpPost]
-    public async Task<IActionResult> Stop(string name)
-    {
-        try
-        {
-            var result = await _siteService.StopSiteAsync(name);
-            if (result)
-            {
-                await _auditService.LogAsync(
-                    Models.AuditActions.SiteStop,
-                    "Site",
-                    name,
-                    $"Site '{name}' stopped",
-                    GetCurrentUsername(),
-                    GetClientIpAddress());
-
-                TempData["Success"] = $"Site '{name}' stopped successfully";
-            }
-            else
-            {
-                TempData["Error"] = $"Failed to stop site '{name}'";
-            }
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, "Error stopping site {SiteName}", name);
-            TempData["Error"] = $"Error stopping site: {ex.Message}";
-        }
-
-        return RedirectToAction(nameof(Index));
-    }
-
-    [HttpPost]
     public async Task<IActionResult> Restart(string name)
     {
         try
         {
-            var result = await _siteService.RestartSiteAsync(name);
-            if (result)
+            // Stop the site first
+            var stopResult = await _siteService.StopSiteAsync(name);
+            if (!stopResult)
+            {
+                TempData["Error"] = $"Failed to stop site '{name}' for restart";
+                return RedirectToAction(nameof(Index));
+            }
+
+            // Wait a moment for the site to fully stop
+            await Task.Delay(2000);
+
+            // Start the site
+            var startResult = await _siteService.StartSiteAsync(name);
+            if (startResult)
             {
                 await _auditService.LogAsync(
                     Models.AuditActions.SiteRestart,
@@ -148,7 +96,7 @@ public class SitesController : Controller
             }
             else
             {
-                TempData["Error"] = $"Failed to restart site '{name}'";
+                TempData["Error"] = $"Failed to start site '{name}' after stopping";
             }
         }
         catch (Exception ex)

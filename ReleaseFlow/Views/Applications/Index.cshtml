@@ -57,6 +57,15 @@
                 columns.Add(m => m.IISSiteName).Titled("IIS Site").Filterable(true).Sortable(true);
                 columns.Add(m => m.AppPoolName).Titled("App Pool").Filterable(true).Sortable(true);
                 columns.Add(m => m.PhysicalPath).Titled("Physical Path").Filterable(true).Sortable(true);
+                columns.Add().Titled("Current Version").Css("text-center").RenderedAs(model =>
+                {
+                    var latestDeployment = model.Deployments.FirstOrDefault();
+                    if (latestDeployment != null)
+                    {
+                        return Html.Raw($"<span class='badge bg-success'><i class='bi bi-check-circle me-1'></i>{latestDeployment.Version}</span>");
+                    }
+                    return Html.Raw("<span class='text-muted'><i class='bi bi-dash-circle'></i> Not deployed</span>");
+                });
                 columns.Add().Titled("Actions").Css("text-end").RenderedAs(model =>
                 {
                     var deployUrl = Url.Action("Deploy", "Deployments", new { applicationId = model.Id });

@@ -150,4 +150,162 @@
             </div>
         </div>
     </div>
+
+    <!-- File Structure Section -->
+    <div class="col-md-12 mt-4">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">
+                    <i class="bi bi-folder-tree me-2"></i>Deployed File Structure
+                </h5>
+                <button id="refreshFileTree" class="btn btn-sm btn-outline-primary">
+                    <i class="bi bi-arrow-clockwise"></i> Refresh
+                </button>
+            </div>
+            <div class="card-body">
+                <div id="fileTreeContainer" style="max-height: 600px; overflow-y: auto;">
+                    <div class="text-center py-4">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <p class="text-muted mt-2">Loading file structure...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+@section Scripts {
+<script>
+    let fileTreeData = null;
+
+    function loadFileTree() {
+        const container = document.getElementById('fileTreeContainer');
+        container.innerHTML = '<div class="text-center py-4"><div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div><p class="text-muted mt-2">Loading file structure...</p></div>';
+
+        fetch('@Url.Action("GetFileStructure", "Applications", new { id = Model.Id })')
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    container.innerHTML = `<div class="alert alert-danger"><i class="bi bi-exclamation-triangle"></i> ${data.error}</div>`;
+                } else {
+                    fileTreeData = data;
+                    container.innerHTML = renderTree(data);
+                    attachTreeEvents();
+                }
+            })
+            .catch(error => {
+                container.innerHTML = `<div class="alert alert-danger"><i class="bi bi-exclamation-triangle"></i> Error loading file structure: ${error.message}</div>`;
+            });
+    }
+
+    function renderTree(node, level = 0) {
+        if (node.type === 'error') {
+            return `<div class="text-danger ms-${level * 3}"><i class="bi bi-exclamation-circle"></i> ${node.name}</div>`;
+        }
+
+        if (node.type === 'limit') {
+            return `<div class="text-muted ms-${level * 3}"><i class="bi bi-three-dots"></i> ${node.name}</div>`;
+        }
+
+        let html = '';
+        
+        if (node.type === 'directory') {
+            const hasChildren = node.children && node.children.length > 0;
+            const icon = hasChildren ? 'bi-folder-fill' : 'bi-folder';
+            const toggleIcon = hasChildren ? 'bi-chevron-right' : '';
+            
+            html += `<div class="tree-node" data-level="${level}">`;
+            html += `<div class="tree-item d-flex align-items-center py-1" style="padding-left: ${level * 20}px; cursor: ${hasChildren ? 'pointer' : 'default'};">`;
+            if (hasChildren) {
+                html += `<i class="bi ${toggleIcon} tree-toggle me-1" style="font-size: 0.8rem;"></i>`;
+            } else {
+                html += `<span style="width: 13px; display: inline-block;"></span>`;
+            }
+            html += `<i class="bi ${icon} text-warning me-2"></i>`;
+            html += `<span class="fw-bold">${node.name}</span>`;
+            html += `</div>`;
+            
+            if (hasChildren) {
+                html += `<div class="tree-children" style="display: none;">`;
+                node.children.forEach(child => {
+                    html += renderTree(child, level + 1);
+                });
+                html += `</div>`;
+            }
+            html += `</div>`;
+        } else if (node.type === 'file') {
+            const icon = getFileIcon(node.name);
+            html += `<div class="tree-node" data-level="${level}">`;
+            html += `<div class="tree-item d-flex align-items-center justify-content-between py-1" style="padding-left: ${level * 20 + 13}px;">`;
+            html += `<div><i class="bi ${icon} me-2"></i><span>${node.name}</span></div>`;
+            html += `<div class="text-muted small">${node.size} <span class="ms-2">${node.modified}</span></div>`;
+            html += `</div>`;
+            html += `</div>`;
+        }
+        
+        return html;
+    }
+
+    function getFileIcon(filename) {
+        const ext = filename.split('.').pop().toLowerCase();
+        const iconMap = {
+            'dll': 'bi-file-earmark-binary text-secondary',
+            'exe': 'bi-file-earmark-binary text-primary',
+            'config': 'bi-file-earmark-code text-info',
+            'json': 'bi-file-earmark-code text-warning',
+            'xml': 'bi-file-earmark-code text-success',
+            'cs': 'bi-file-earmark-code text-primary',
+            'cshtml': 'bi-file-earmark-code text-danger',
+            'js': 'bi-file-earmark-code text-warning',
+            'css': 'bi-file-earmark-code text-info',
+            'html': 'bi-file-earmark-code text-danger',
+            'txt': 'bi-file-earmark-text',
+            'log': 'bi-file-earmark-text text-muted',
+            'zip': 'bi-file-earmark-zip text-warning',
+            'pdf': 'bi-file-earmark-pdf text-danger',
+            'png': 'bi-file-earmark-image text-primary',
+            'jpg': 'bi-file-earmark-image text-primary',
+            'jpeg': 'bi-file-earmark-image text-primary',
+            'gif': 'bi-file-earmark-image text-primary',
+            'svg': 'bi-file-earmark-image text-success'
+        };
+        return iconMap[ext] || 'bi-file-earmark';
+    }
+
+    function attachTreeEvents() {
+        document.querySelectorAll('.tree-item').forEach(item => {
+            const parent = item.parentElement;
+            const children = parent.querySelector('.tree-children');
+            const toggle = item.querySelector('.tree-toggle');
+            
+            if (children && toggle) {
+                item.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const isExpanded = children.style.display !== 'none';
+                    children.style.display = isExpanded ? 'none' : 'block';
+                    toggle.classList.toggle('bi-chevron-right', isExpanded);
+                    toggle.classList.toggle('bi-chevron-down', !isExpanded);
+                });
+            }
+        });
+    }
+
+    // Load tree on page load
+    document.addEventListener('DOMContentLoaded', loadFileTree);
+
+    // Refresh button
+    document.getElementById('refreshFileTree').addEventListener('click', loadFileTree);
+</script>
+
+<style>
+    .tree-item:hover {
+        background-color: #f8f9fa;
+    }
+    
+    .tree-toggle {
+        transition: transform 0.2s;
+    }
+</style>
+}

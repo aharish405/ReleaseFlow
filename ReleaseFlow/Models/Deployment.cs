@@ -15,7 +15,7 @@ public class Deployment
     public string? ErrorMessage { get; set; }
     public string? BackupPath { get; set; }
     public bool CanRollback { get; set; } = false;
-    
+
     // Navigation properties
     public ICollection<DeploymentStep> Steps { get; set; } = new List<DeploymentStep>();
 }
@@ -26,5 +26,6 @@ public enum DeploymentStatus
     InProgress,
     Succeeded,
     Failed,
+    FailedRolledBack,
     RolledBack
 }
