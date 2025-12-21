@@ -25,7 +25,7 @@ public class ApplicationsController : Controller
         _logger = logger;
     }
 
-    public async Task<IActionResult> Index(int page = 1, int pageSize = 10)
+    public async Task<IActionResult> Index()
     {
         try
         {
@@ -45,20 +45,7 @@ public class ApplicationsController : Controller
                 }
             }
 
-            // Apply pagination
-            var totalItems = allApplications.Count();
-            var applications = allApplications
-                .Skip((page - 1) * pageSize)
-                .Take(pageSize)
-                .ToList();
-
-            // Set pagination data for view
-            ViewBag.CurrentPage = page;
-            ViewBag.PageSize = pageSize;
-            ViewBag.TotalItems = totalItems;
-            ViewBag.TotalPages = (int)Math.Ceiling(totalItems / (double)pageSize);
-
-            return View(applications);
+            return View(allApplications);
         }
         catch (Exception ex)
         {
