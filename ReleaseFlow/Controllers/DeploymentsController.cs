@@ -38,11 +38,25 @@ public class DeploymentsController : Controller
         _logger = logger;
     }
 
-    public async Task<IActionResult> Index(int? applicationId)
+    public async Task<IActionResult> Index(int? applicationId, int page = 1, int pageSize = 10)
     {
         try
         {
-            var deployments = await _deploymentService.GetDeploymentHistoryAsync(applicationId);
+            var allDeployments = await _deploymentService.GetDeploymentHistoryAsync(applicationId);
+
+            // Apply pagination
+            var totalItems = allDeployments.Count();
+            var deployments = allDeployments
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
+
+            // Set pagination data
+            ViewBag.CurrentPage = page;
+            ViewBag.PageSize = pageSize;
+            ViewBag.TotalItems = totalItems;
+            ViewBag.TotalPages = (int)Math.Ceiling(totalItems / (double)pageSize);
+
             ViewBag.Applications = await _applicationRepository.GetActiveAsync();
             ViewBag.SelectedApplicationId = applicationId;
             return View(deployments);
@@ -54,6 +68,28 @@ public class DeploymentsController : Controller
             ViewBag.Applications = await _applicationRepository.GetActiveAsync();
             ViewBag.SelectedApplicationId = applicationId;
             return View(new List<Models.Deployment>());
+        }
+    }
+
+    public async Task<IActionResult> ExportCsv(int? applicationId)
+    {
+        try
+        {
+            var deployments = await _deploymentService.GetDeploymentHistoryAsync(applicationId);
+
+            var csv = Helpers.CsvExportHelper.ToCsv(deployments,
+                "Id", "ApplicationId", "Version", "Status", "StartedAt", "CompletedAt", "DeployedBy");
+
+            var bytes = Helpers.CsvExportHelper.GetCsvBytes(csv);
+            var filename = Helpers.CsvExportHelper.GetTimestampedFilename("deployments");
+
+            return File(bytes, "text/csv", filename);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error exporting deployments to CSV");
+            TempData["Error"] = "Failed to export deployments";
+            return RedirectToAction(nameof(Index));
         }
     }
 
@@ -86,7 +122,7 @@ public class DeploymentsController : Controller
         {
             var today = DateTime.UtcNow.Date;
             var todayPrefix = today.ToString("yyyy.MM.dd");
-            
+
             // Get all deployments for this application today
             var allDeployments = await _deploymentRepository.GetByApplicationIdAsync(applicationId.Value);
             var todayDeployments = allDeployments
@@ -104,7 +140,7 @@ public class DeploymentsController : Controller
                     .Where(v => int.TryParse(v, out _))
                     .Select(int.Parse)
                     .ToList();
-                
+
                 if (versionNumbers.Any())
                 {
                     nextVersionNumber = versionNumbers.Max() + 1;

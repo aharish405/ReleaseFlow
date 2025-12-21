@@ -69,11 +69,6 @@
                     }
                     else if (Model.State == "Started")
                     {
-                        <form asp-action="Stop" asp-route-name="@Model.Name" method="post">
-                            <button type="submit" class="btn btn-danger w-100">
-                                <i class="bi bi-stop-fill"></i> Stop Site
-                            </button>
-                        </form>
                         <form asp-action="Restart" asp-route-name="@Model.Name" method="post">
                             <button type="submit" class="btn btn-warning w-100">
                                 <i class="bi bi-arrow-clockwise"></i> Restart Site

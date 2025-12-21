@@ -25,14 +25,14 @@ public class ApplicationsController : Controller
         _logger = logger;
     }
 
-    public async Task<IActionResult> Index()
+    public async Task<IActionResult> Index(int page = 1, int pageSize = 10)
     {
         try
         {
-            var applications = await _applicationRepository.GetActiveAsync();
+            var allApplications = await _applicationRepository.GetActiveAsync();
 
             // Load latest deployment for each application
-            foreach (var app in applications)
+            foreach (var app in allApplications)
             {
                 var latestDeployment = (await _deploymentRepository.GetByApplicationIdAsync(app.Id))
                     .Where(d => d.Status == DeploymentStatus.Succeeded)
@@ -45,6 +45,19 @@ public class ApplicationsController : Controller
                 }
             }
 
+            // Apply pagination
+            var totalItems = allApplications.Count();
+            var applications = allApplications
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
+
+            // Set pagination data for view
+            ViewBag.CurrentPage = page;
+            ViewBag.PageSize = pageSize;
+            ViewBag.TotalItems = totalItems;
+            ViewBag.TotalPages = (int)Math.Ceiling(totalItems / (double)pageSize);
+
             return View(applications);
         }
         catch (Exception ex)
@@ -52,6 +65,30 @@ public class ApplicationsController : Controller
             _logger.LogError(ex, "Error loading applications");
             TempData["Error"] = "Failed to load applications";
             return View(new List<Application>());
+        }
+    }
+
+    public async Task<IActionResult> ExportCsv()
+    {
+        try
+        {
+            var applications = await _applicationRepository.GetActiveAsync();
+
+            // Create CSV with selected properties
+            var csv = Helpers.CsvExportHelper.ToCsv(applications,
+                "Name", "Environment", "IISSiteName", "AppPoolName", "PhysicalPath",
+                "StopSiteBeforeDeployment", "CreateBackup", "RunHealthCheck");
+
+            var bytes = Helpers.CsvExportHelper.GetCsvBytes(csv);
+            var filename = Helpers.CsvExportHelper.GetTimestampedFilename("applications");
+
+            return File(bytes, "text/csv", filename);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error exporting applications to CSV");
+            TempData["Error"] = "Failed to export applications";
+            return RedirectToAction(nameof(Index));
         }
     }
 

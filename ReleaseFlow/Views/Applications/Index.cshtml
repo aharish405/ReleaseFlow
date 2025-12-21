@@ -3,33 +3,32 @@
     ViewData["Title"] = "Applications";
 }
 
-<!-- Hero Section -->
-<div class="page-hero mb-4">
-    <div class="position-relative">
-        <h2 class="mb-2">
-            <i class="bi bi-app-indicator me-2"></i>
-            Applications
-        </h2>
-        <p class="mb-0 opacity-90">
-            Manage registered applications for deployment
-        </p>
-    </div>
-</div>
-
-<!-- Action Buttons -->
-<div class="d-flex justify-content-end gap-2 mb-4">
-    <form asp-action="DiscoverFromIIS" method="post" class="d-inline">
-        <button type="submit" class="btn btn-success" style="background: linear-gradient(135deg, #11998e, #38ef7d); border: none; border-radius: 8px; padding: 0.6rem 1.5rem; font-weight: 600;">
-            <i class="bi bi-search me-1"></i>Auto-Discover from IIS
-        </button>
-    </form>
-    <a asp-action="Create" class="btn btn-primary" style="background: linear-gradient(135deg, #667eea, #764ba2); border: none; border-radius: 8px; padding: 0.6rem 1.5rem; font-weight: 600; color: white; text-decoration: none; display: inline-block;">
-        <i class="bi bi-plus-circle me-1"></i>Register Application
-    </a>
-</div>
-
 <!-- Applications Grid -->
-<div class="card modern-card" style="background: white;">
+<div class="card modern-card" style="background: white; border: none; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+    <div class="card-header" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none; padding: 1.25rem 1.5rem;">
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+            <div>
+                <h5 class="mb-0 text-white d-flex align-items-center">
+                    <i class="bi bi-app-indicator me-2"></i>
+                    Applications
+                </h5>
+                <small class="text-white-50">Manage registered applications for deployment</small>
+            </div>
+            <div class="d-flex gap-2 flex-wrap">
+                <a asp-action="ExportCsv" class="btn btn-light btn-sm" style="border-radius: 6px;">
+                    <i class="bi bi-file-earmark-spreadsheet me-1"></i>Export CSV
+                </a>
+                <form asp-action="DiscoverFromIIS" method="post" class="d-inline">
+                    <button type="submit" class="btn btn-success btn-sm" style="border-radius: 6px;">
+                        <i class="bi bi-search me-1"></i>Auto-Discover
+                    </button>
+                </form>
+                <a asp-action="Create" class="btn btn-warning btn-sm" style="border-radius: 6px; color: #000;">
+                    <i class="bi bi-plus-circle me-1"></i>Register App
+                </a>
+            </div>
+        </div>
+    </div>
     <div class="card-body p-0">
         @if (Model.Any())
         {
@@ -110,6 +109,13 @@
                         <i class="bi bi-plus-circle me-1"></i>Register Manually
                     </a>
                 </div>
+            </div>
+        }
+        
+        @if (Model.Any())
+        {
+            <div class="px-3 pb-3">
+                @await Html.PartialAsync("_Pagination")
             </div>
         }
     </div>

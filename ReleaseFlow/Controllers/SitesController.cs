@@ -25,11 +25,25 @@ public class SitesController : Controller
         _logger = logger;
     }
 
-    public async Task<IActionResult> Index()
+    public async Task<IActionResult> Index(int page = 1, int pageSize = 10)
     {
         try
         {
-            var sites = await _siteService.GetAllSitesAsync();
+            var allSites = await _siteService.GetAllSitesAsync();
+
+            // Apply pagination
+            var totalItems = allSites.Count();
+            var sites = allSites
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
+
+            // Set pagination data
+            ViewBag.CurrentPage = page;
+            ViewBag.PageSize = pageSize;
+            ViewBag.TotalItems = totalItems;
+            ViewBag.TotalPages = (int)Math.Ceiling(totalItems / (double)pageSize);
+
             return View(sites);
         }
         catch (Exception ex)
@@ -37,6 +51,28 @@ public class SitesController : Controller
             _logger.LogError(ex, "Error loading sites");
             TempData["Error"] = "Failed to load IIS sites";
             return View(new List<SiteInfo>());
+        }
+    }
+
+    public async Task<IActionResult> ExportCsv()
+    {
+        try
+        {
+            var sites = await _siteService.GetAllSitesAsync();
+
+            var csv = Helpers.CsvExportHelper.ToCsv(sites,
+                "Name", "State", "PhysicalPath", "AppPoolName", "Bindings");
+
+            var bytes = Helpers.CsvExportHelper.GetCsvBytes(csv);
+            var filename = Helpers.CsvExportHelper.GetTimestampedFilename("iis-sites");
+
+            return File(bytes, "text/csv", filename);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error exporting sites to CSV");
+            TempData["Error"] = "Failed to export sites";
+            return RedirectToAction(nameof(Index));
         }
     }
 

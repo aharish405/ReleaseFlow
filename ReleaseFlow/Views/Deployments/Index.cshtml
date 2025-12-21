@@ -3,28 +3,27 @@
     ViewData["Title"] = "Deployment History";
 }
 
-<!-- Hero Section -->
-<div class="page-hero mb-4">
-    <div class="position-relative">
-        <h2 class="mb-2">
-            <i class="bi bi-clock-history me-2"></i>
-            Deployment History
-        </h2>
-        <p class="mb-0 opacity-90">
-            View and manage all deployment activities
-        </p>
-    </div>
-</div>
-
-<!-- Action Button -->
-<div class="d-flex justify-content-end mb-4">
-    <a asp-action="Deploy" class="btn btn-primary" style="background: linear-gradient(135deg, #667eea, #764ba2); border: none; border-radius: 8px; padding: 0.6rem 1.5rem; font-weight: 600; color: white; text-decoration: none; display: inline-block;">
-        <i class="bi bi-cloud-upload me-1"></i>New Deployment
-    </a>
-</div>
-
 <!-- Deployments Grid -->
-<div class="card modern-card" style="background: white;">
+<div class="card modern-card" style="background: white; border: none; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+    <div class="card-header" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none; padding: 1.25rem 1.5rem;">
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+            <div>
+                <h5 class="mb-0 text-white d-flex align-items-center">
+                    <i class="bi bi-clock-history me-2"></i>
+                    Deployment History
+                </h5>
+                <small class="text-white-50">View and manage all deployment activities</small>
+            </div>
+            <div class="d-flex gap-2 flex-wrap">
+                <a asp-action="ExportCsv" asp-route-applicationId="@ViewBag.SelectedApplicationId" class="btn btn-light btn-sm" style="border-radius: 6px;">
+                    <i class="bi bi-file-earmark-spreadsheet me-1"></i>Export CSV
+                </a>
+                <a asp-action="Deploy" class="btn btn-warning btn-sm" style="border-radius: 6px; color: #000;">
+                    <i class="bi bi-cloud-upload me-1"></i>New Deployment
+                </a>
+            </div>
+        </div>
+    </div>
     <div class="card-body p-0">
         @if (Model.Any())
         {
@@ -75,6 +74,13 @@
                 <a asp-action="Deploy" class="btn btn-primary" style="background: linear-gradient(135deg, #667eea, #764ba2); border: none; border-radius: 8px; padding: 0.6rem 1.5rem; font-weight: 600; color: white; text-decoration: none; display: inline-block;">
                     <i class="bi bi-cloud-upload me-1"></i>Create First Deployment
                 </a>
+            </div>
+        }
+        
+        @if (Model.Any())
+        {
+            <div class="px-3 pb-3">
+                @await Html.PartialAsync("_Pagination")
             </div>
         }
     </div>

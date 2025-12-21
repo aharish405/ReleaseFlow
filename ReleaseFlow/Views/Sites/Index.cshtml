@@ -3,27 +3,29 @@
     ViewData["Title"] = "IIS Sites";
 }
 
-<!-- Hero Section -->
-<div class="page-hero mb-4">
-    <div class="position-relative">
-        <h2 class="mb-2">
-            <i class="bi bi-server me-2"></i>
-            IIS Sites
-        </h2>
-        <p class="mb-0 opacity-90">
-            Monitor and manage IIS sites on this server
-        </p>
+<!-- Sites Grid -->
+<div class="card modern-card" style="background: white; border: none; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin-bottom: 2rem;">
+    <div class="card-header" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none; padding: 1.25rem 1.5rem;">
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+            <div>
+                <h5 class="mb-0 text-white d-flex align-items-center">
+                    <i class="bi bi-server me-2"></i>
+                    IIS Sites
+                </h5>
+                <small class="text-white-50">Monitor and manage IIS sites on this server</small>
+            </div>
+            <div class="d-flex gap-2 flex-wrap">
+                <a asp-action="ExportCsv" class="btn btn-light btn-sm" style="border-radius: 6px;">
+                    <i class="bi bi-file-earmark-spreadsheet me-1"></i>Export CSV
+                </a>
+                <a asp-action="Index" class="btn btn-success btn-sm" style="border-radius: 6px;">
+                    <i class="bi bi-arrow-clockwise me-1"></i>Refresh Sites
+                </a>
+            </div>
+        </div>
     </div>
 </div>
 
-<!-- Action Button -->
-<div class="d-flex justify-content-end mb-4">
-    <a asp-action="Index" class="btn btn-gradient-primary btn-modern">
-        <i class="bi bi-arrow-clockwise me-1"></i>Refresh Sites
-    </a>
-</div>
-
-<!-- Sites Grid -->
 @if (Model.Any())
 {
     <div class="row g-4">
@@ -96,14 +98,14 @@
                             <div class="mb-3">
                                 <div class="d-flex align-items-center gap-2 mb-2">
                                     <i class="bi bi-app text-primary"></i>
-                                    <small class="text-muted fw-semibold">Applications</small>
+                                    <small class="text-muted fw-semibold">Applications (@site.Applications.Count())</small>
                                 </div>
-                                <div class="small">
+                                <div class="small" style="max-height: 200px; overflow-y: auto; background: #f8f9fa; border-radius: 6px; padding: 0.5rem;">
                                     @foreach (var app in site.Applications)
                                     {
-                                        <div class="mb-1 p-2 bg-light rounded">
-                                            <code>@app.Path</code>
-                                            <small class="text-muted">(@app.AppPoolName)</small>
+                                        <div class="mb-1 p-2 bg-white rounded border-start border-3 border-primary">
+                                            <code class="small">@app.Path</code>
+                                            <small class="text-muted d-block">@app.AppPoolName</small>
                                         </div>
                                     }
                                 </div>
@@ -130,6 +132,13 @@
             </div>
         }
     </div>
+    
+    @if (Model.Any())
+    {
+        <div class="mt-4">
+            @await Html.PartialAsync("_Pagination")
+        </div>
+    }
 }
 else
 {
