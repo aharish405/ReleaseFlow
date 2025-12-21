@@ -61,51 +61,104 @@ public class RollbackService : IRollbackService
                 return result;
             }
 
-            var application = deployment.Application;
+            // Load application directly from repository (navigation property might not be populated)
+            var application = await _applicationRepository.GetByIdAsync(deployment.ApplicationId);
+            if (application == null)
+            {
+                result.Message = "Application not found";
+                return result;
+            }
+
             result.Steps.Add("Rollback initiated");
 
-            // Stop IIS site
-            var siteStopped = await _siteService.StopSiteAsync(application.IISSiteName);
-            if (!siteStopped)
+            // Validate application has physical path
+            if (string.IsNullOrEmpty(application.PhysicalPath))
             {
-                throw new Exception($"Failed to stop IIS site: {application.IISSiteName}");
+                result.Message = "Application physical path is not configured";
+                return result;
             }
-            result.Steps.Add("IIS site stopped");
 
-            // Stop app pool
-            var appPoolStopped = await _appPoolService.StopAppPoolAsync(application.AppPoolName);
-            if (!appPoolStopped)
+            // ALWAYS stop services during rollback to unlock files for restoration
+            // We'll restore the original states afterward
+            bool siteWasRunning = false;
+            bool appPoolWasRunning = false;
+
+            try
             {
-                throw new Exception($"Failed to stop app pool: {application.AppPoolName}");
+                // Check current states
+                var siteState = await _siteService.GetSiteStateAsync(application.IISSiteName);
+                siteWasRunning = siteState == Microsoft.Web.Administration.ObjectState.Started;
+
+                var poolState = await _appPoolService.GetAppPoolStateAsync(application.AppPoolName);
+                appPoolWasRunning = poolState == Microsoft.Web.Administration.ObjectState.Started;
+
+                // Stop IIS site if running
+                if (siteWasRunning)
+                {
+                    var siteStopped = await _siteService.StopSiteAsync(application.IISSiteName);
+                    if (!siteStopped)
+                    {
+                        throw new Exception($"Failed to stop IIS site: {application.IISSiteName}");
+                    }
+                    result.Steps.Add("IIS site stopped for file restoration");
+                }
+
+                // Stop app pool if running
+                if (appPoolWasRunning)
+                {
+                    var appPoolStopped = await _appPoolService.StopAppPoolAsync(application.AppPoolName);
+                    if (!appPoolStopped)
+                    {
+                        throw new Exception($"Failed to stop app pool: {application.AppPoolName}");
+                    }
+                    result.Steps.Add("App pool stopped for file restoration");
+                }
+
+                // Wait for processes to stop
+                await Task.Delay(2000);
+
+                // Restore backup
+                var restored = await _backupService.RestoreBackupAsync(deployment.BackupPath, application.PhysicalPath);
+                if (!restored)
+                {
+                    throw new Exception("Failed to restore backup");
+                }
+                result.Steps.Add("Backup restored");
+
+                // Restore original service states
+                if (appPoolWasRunning)
+                {
+                    var appPoolStarted = await _appPoolService.StartAppPoolAsync(application.AppPoolName);
+                    if (!appPoolStarted)
+                    {
+                        throw new Exception($"Failed to start app pool: {application.AppPoolName}");
+                    }
+                    result.Steps.Add("App pool restarted");
+                }
+
+                if (siteWasRunning)
+                {
+                    var siteStarted = await _siteService.StartSiteAsync(application.IISSiteName);
+                    if (!siteStarted)
+                    {
+                        throw new Exception($"Failed to start IIS site: {application.IISSiteName}");
+                    }
+                    result.Steps.Add("IIS site restarted");
+                }
             }
-            result.Steps.Add("App pool stopped");
-
-            // Wait for processes to stop
-            await Task.Delay(2000);
-
-            // Restore backup
-            var restored = await _backupService.RestoreBackupAsync(deployment.BackupPath, application.PhysicalPath);
-            if (!restored)
+            catch (Exception)
             {
-                throw new Exception("Failed to restore backup");
+                // If rollback fails, try to restore services to their original states
+                if (appPoolWasRunning)
+                {
+                    await _appPoolService.StartAppPoolAsync(application.AppPoolName);
+                }
+                if (siteWasRunning)
+                {
+                    await _siteService.StartSiteAsync(application.IISSiteName);
+                }
+                throw;
             }
-            result.Steps.Add("Backup restored");
-
-            // Start app pool
-            var appPoolStarted = await _appPoolService.StartAppPoolAsync(application.AppPoolName);
-            if (!appPoolStarted)
-            {
-                throw new Exception($"Failed to start app pool: {application.AppPoolName}");
-            }
-            result.Steps.Add("App pool started");
-
-            // Start IIS site
-            var siteStarted = await _siteService.StartSiteAsync(application.IISSiteName);
-            if (!siteStarted)
-            {
-                throw new Exception($"Failed to start IIS site: {application.IISSiteName}");
-            }
-            result.Steps.Add("IIS site started");
 
             // Update deployment status
             deployment.Status = DeploymentStatus.RolledBack;

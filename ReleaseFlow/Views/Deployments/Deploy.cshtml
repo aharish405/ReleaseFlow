@@ -34,7 +34,23 @@
                             <option value="">-- Select Application --</option>
                             @foreach (var app in ViewBag.Applications as List<ReleaseFlow.Models.Application>)
                             {
-                                <option value="@app.Id" selected="@(ViewBag.SelectedApplicationId == app.Id)">@app.Name (@app.Environment)</option>
+                                <option value="@app.Id" 
+                                        selected="@(ViewBag.SelectedApplicationId == app.Id)"
+                                        data-name="@app.Name"
+                                        data-environment="@app.Environment"
+                                        data-site="@app.IISSiteName"
+                                        data-pool="@app.AppPoolName"
+                                        data-path="@app.PhysicalPath"
+                                        data-stop-site="@app.StopSiteBeforeDeployment.ToString().ToLower()"
+                                        data-stop-pool="@app.StopAppPoolBeforeDeployment.ToString().ToLower()"
+                                        data-start-pool="@app.StartAppPoolAfterDeployment.ToString().ToLower()"
+                                        data-start-site="@app.StartSiteAfterDeployment.ToString().ToLower()"
+                                        data-backup="@app.CreateBackup.ToString().ToLower()"
+                                        data-health-check="@app.RunHealthCheck.ToString().ToLower()"
+                                        data-delay="@app.DeploymentDelaySeconds"
+                                        data-excluded="@app.ExcludedPaths">
+                                    @app.Name (@app.Environment)
+                                </option>
                             }
                         </select>
                         <div class="form-text">Select the application to deploy</div>
@@ -81,7 +97,7 @@
                         <a asp-action="Index" class="btn btn-outline-secondary" style="border-radius: 8px; padding: 0.6rem 1.5rem; font-weight: 600;">
                             <i class="bi bi-x-circle me-1"></i>Cancel
                         </a>
-                        <button type="submit" class="btn btn-primary" style="background: linear-gradient(135deg, #667eea, #764ba2); border: none; border-radius: 8px; padding: 0.6rem 1.5rem; font-weight: 600;">
+                        <button type="button" id="showConfirmModal" class="btn btn-primary" style="background: linear-gradient(135deg, #667eea, #764ba2); border: none; border: none; border-radius: 8px; padding: 0.6rem 1.5rem; font-weight: 600;">
                             <i class="bi bi-rocket-takeoff me-1"></i>Start Deployment
                         </button>
                     </div>
@@ -91,18 +107,204 @@
     </div>
 </div>
 
+<!-- Deployment Confirmation Modal -->
+<div class="modal fade" id="confirmDeploymentModal" tabindex="-1" aria-labelledby="confirmDeploymentModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header" style="background: linear-gradient(135deg, #667eea, #764ba2); color: white;">
+                <h5 class="modal-title" id="confirmDeploymentModalLabel">
+                    <i class="bi bi-exclamation-triangle-fill me-2"></i>Confirm Deployment
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-warning">
+                    <i class="bi bi-info-circle me-2"></i>
+                    <strong>Please review the deployment details carefully before proceeding.</strong>
+                </div>
+
+                <!-- Application Details -->
+                <div class="card mb-3">
+                    <div class="card-header bg-light">
+                        <h6 class="mb-0"><i class="bi bi-app-indicator me-2"></i>Application Details</h6>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-sm mb-0">
+                            <tr>
+                                <th width="30%">Application:</th>
+                                <td><strong id="modal-app-name"></strong></td>
+                            </tr>
+                            <tr>
+                                <th>Environment:</th>
+                                <td><span id="modal-environment" class="badge"></span></td>
+                            </tr>
+                            <tr>
+                                <th>IIS Site:</th>
+                                <td id="modal-site-name"></td>
+                            </tr>
+                            <tr>
+                                <th>App Pool:</th>
+                                <td id="modal-pool-name"></td>
+                            </tr>
+                            <tr>
+                                <th>Physical Path:</th>
+                                <td><code id="modal-physical-path"></code></td>
+                            </tr>
+                            <tr>
+                                <th>Version:</th>
+                                <td><strong id="modal-version"></strong></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Deployment Actions -->
+                <div class="card mb-3">
+                    <div class="card-header bg-light">
+                        <h6 class="mb-0"><i class="bi bi-list-check me-2"></i>Deployment Actions</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6 class="text-muted small mb-2">Before Deployment:</h6>
+                                <ul class="list-unstyled mb-3">
+                                    <li id="modal-stop-site" class="mb-1"></li>
+                                    <li id="modal-stop-pool" class="mb-1"></li>
+                                    <li id="modal-backup" class="mb-1"></li>
+                                    <li id="modal-delay" class="mb-1"></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h6 class="text-muted small mb-2">After Deployment:</h6>
+                                <ul class="list-unstyled mb-3">
+                                    <li id="modal-start-pool" class="mb-1"></li>
+                                    <li id="modal-start-site" class="mb-1"></li>
+                                    <li id="modal-health-check" class="mb-1"></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div id="modal-excluded-paths" class="mt-2"></div>
+                    </div>
+                </div>
+
+                <!-- Warning -->
+                <div class="alert alert-danger mb-0">
+                    <i class="bi bi-exclamation-octagon me-2"></i>
+                    <strong>Warning:</strong> This deployment will temporarily interrupt the application. 
+                    <span id="modal-env-warning"></span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    <i class="bi bi-x-circle me-1"></i>Cancel
+                </button>
+                <button type="button" id="confirmDeployBtn" class="btn btn-danger">
+                    <i class="bi bi-rocket-takeoff me-1"></i>Confirm & Deploy
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+        const form = document.querySelector('form[action*="Deploy"]');
         const appSelect = document.getElementById('applicationId');
-        
+        const showModalBtn = document.getElementById('showConfirmModal');
+        const confirmBtn = document.getElementById('confirmDeployBtn');
+        const modal = new bootstrap.Modal(document.getElementById('confirmDeploymentModal'));
+
+        // Application change handler
         if (appSelect) {
             appSelect.addEventListener('change', function() {
                 const appId = this.value;
                 if (appId) {
-                    // Reload page with selected application to get new suggested version
-                    window.location.href = '/Deployments/Deploy?applicationId=' + appId;
+                    window.location.href = '@Url.Action("Deploy", "Deployments")?applicationId=' + appId;
                 }
             });
         }
+
+        // Show confirmation modal
+        showModalBtn.addEventListener('click', function() {
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
+            const selectedApp = appSelect.options[appSelect.selectedIndex];
+            const version = document.getElementById('version').value;
+            
+            // Populate modal with data from selected option
+            document.getElementById('modal-app-name').textContent = selectedApp.getAttribute('data-name');
+            document.getElementById('modal-site-name').textContent = selectedApp.getAttribute('data-site');
+            document.getElementById('modal-pool-name').textContent = selectedApp.getAttribute('data-pool');
+            document.getElementById('modal-physical-path').textContent = selectedApp.getAttribute('data-path');
+            document.getElementById('modal-version').textContent = version;
+
+            const environment = selectedApp.getAttribute('data-environment');
+            const envBadge = document.getElementById('modal-environment');
+            envBadge.textContent = environment;
+            envBadge.className = 'badge ' + (environment === 'Production' ? 'bg-danger' : environment === 'Staging' ? 'bg-warning text-dark' : 'bg-info');
+
+            // Actions
+            const stopSite = selectedApp.getAttribute('data-stop-site') === 'true';
+            const stopPool = selectedApp.getAttribute('data-stop-pool') === 'true';
+            const startPool = selectedApp.getAttribute('data-start-pool') === 'true';
+            const startSite = selectedApp.getAttribute('data-start-site') === 'true';
+            const createBackup = selectedApp.getAttribute('data-backup') === 'true';
+            const healthCheck = selectedApp.getAttribute('data-health-check') === 'true';
+            const delay = selectedApp.getAttribute('data-delay');
+            const excludedPaths = selectedApp.getAttribute('data-excluded');
+
+            document.getElementById('modal-stop-site').innerHTML = stopSite ? 
+                '<i class="bi bi-check-circle text-success me-1"></i>Stop IIS Site' : 
+                '<i class="bi bi-x-circle text-muted me-1"></i>Keep IIS Site Running';
+            
+            document.getElementById('modal-stop-pool').innerHTML = stopPool ? 
+                '<i class="bi bi-check-circle text-success me-1"></i>Stop App Pool' : 
+                '<i class="bi bi-x-circle text-muted me-1"></i>Keep App Pool Running';
+            
+            document.getElementById('modal-backup').innerHTML = createBackup ? 
+                '<i class="bi bi-check-circle text-success me-1"></i>Create Backup' : 
+                '<i class="bi bi-x-circle text-warning me-1"></i>No Backup';
+            
+            document.getElementById('modal-delay').innerHTML = delay > 0 ? 
+                `<i class="bi bi-clock text-info me-1"></i>Wait ${delay} seconds` : 
+                '<i class="bi bi-x-circle text-muted me-1"></i>No Delay';
+
+            document.getElementById('modal-start-pool').innerHTML = startPool ? 
+                '<i class="bi bi-check-circle text-success me-1"></i>Start App Pool' : 
+                '<i class="bi bi-x-circle text-muted me-1"></i>Leave App Pool Stopped';
+            
+            document.getElementById('modal-start-site').innerHTML = startSite ? 
+                '<i class="bi bi-check-circle text-success me-1"></i>Start IIS Site' : 
+                '<i class="bi bi-x-circle text-muted me-1"></i>Leave IIS Site Stopped';
+            
+            document.getElementById('modal-health-check').innerHTML = healthCheck ? 
+                '<i class="bi bi-check-circle text-success me-1"></i>Run Health Check' : 
+                '<i class="bi bi-x-circle text-muted me-1"></i>Skip Health Check';
+
+            if (excludedPaths && excludedPaths.trim()) {
+                document.getElementById('modal-excluded-paths').innerHTML = 
+                    `<div class="alert alert-info small mb-0"><i class="bi bi-folder-x me-1"></i><strong>Excluded:</strong> ${excludedPaths}</div>`;
+            } else {
+                document.getElementById('modal-excluded-paths').innerHTML = '';
+            }
+
+            const envWarning = document.getElementById('modal-env-warning');
+            if (environment === 'Production') {
+                envWarning.innerHTML = '<strong>You are deploying to PRODUCTION!</strong>';
+            } else {
+                envWarning.innerHTML = '';
+            }
+
+            modal.show();
+        });
+
+        // Confirm deployment
+        confirmBtn.addEventListener('click', function() {
+            modal.hide();
+            form.submit();
+        });
     });
 </script>

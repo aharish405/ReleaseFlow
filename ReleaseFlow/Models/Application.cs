@@ -16,17 +16,17 @@ public class Application
     public DateTime? LastDiscoveredAt { get; set; } // Last IIS discovery timestamp
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     public DateTime? UpdatedAt { get; set; }
-    
+
     // Deployment Configuration
-    public bool StopSiteBeforeDeployment { get; set; } = true;
-    public bool StopAppPoolBeforeDeployment { get; set; } = true;
-    public bool StartAppPoolAfterDeployment { get; set; } = true;
-    public bool StartSiteAfterDeployment { get; set; } = true;
+    public bool StopSiteBeforeDeployment { get; set; } = false;
+    public bool StopAppPoolBeforeDeployment { get; set; } = false;
+    public bool StartAppPoolAfterDeployment { get; set; } = false;
+    public bool StartSiteAfterDeployment { get; set; } = false;
     public bool CreateBackup { get; set; } = true;
-    public bool RunHealthCheck { get; set; } = true;
+    public bool RunHealthCheck { get; set; } = false;
     public int DeploymentDelaySeconds { get; set; } = 2; // Delay after stopping services
     public string? ExcludedPaths { get; set; } // Comma-separated list of paths to exclude from deployment
-    
+
     // Navigation properties
     public ICollection<Deployment> Deployments { get; set; } = new List<Deployment>();
 }
